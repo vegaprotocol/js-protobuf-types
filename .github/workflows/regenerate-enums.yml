@@ -1,0 +1,57 @@
+name: regenerate-enums-cron
+
+on:
+  schedule:
+    - cron: "0 9-18 * * 1-5"
+  workflow_dispatch:
+
+jobs:
+  check-for-new-version:
+    outputs:
+      new-version: ${{ steps.version.outputs.new-version }}
+      current-version: ${{ steps.version.outputs.current-version }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - id: current-vega-version
+        name: Get current version of vega generated against
+        run: echo "version=$(cat ./vega-version.txt)" >> $GITHUB_OUTPUT
+      - id: version
+        uses: vegaprotocol/github-action-get-vega-version@v0.0.1
+        with:
+          previous-version: ${{ steps.current-vega-version.outputs.version }}
+          include-preview-versions: true
+  regenerate-enums:
+    needs: check-for-new-version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        if: needs.check-for-new-version.outputs.new-version
+      - name: Use Node.js LTS
+        if: needs.check-for-new-version.outputs.new-version
+        uses: actions/setup-node@v3
+        with:
+          node-version: "lts/*"
+          registry-url: "https://registry.npmjs.org"
+      - run: npm install
+        if: needs.check-for-new-version.outputs.new-version
+      - run: node ./scripts/generate.js ${{ needs.check-for-new-version.outputs.current-version }}
+        if: needs.check-for-new-version.outputs.new-version
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        if: needs.check-for-new-version.outputs.new-version
+        with:
+          commit_message: "chore: update to vega version ${{ needs.check-for-new-version.outputs.current-version }}"
+          commit_user_name: vega-ci-bot
+          commit_user_email: vega-ci-bot@vega.xyz
+          skip_fetch: true
+          skip_checkout: true
+          create_branch: true
+          branch: chore/update-to-${{ needs.check-for-new-version.outputs.current-version }}
+      - name: create pull request
+        if: needs.check-for-new-version.outputs.new-version
+        run: gh pr create -B main -H chore/update-protos-to-${{ needs.check-for-new-version.outputs.current-version }} --title 'Update protos to version ${{ needs.check-for-new-version.outputs.current-version }}' --body 'Autocreated protos update'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: update version
+        if: needs.check-for-new-version.outputs.new-version
+        run: echo ${{ needs.check-for-new-version.outputs.current-version }} > ./vega-version.txt
