@@ -8,7 +8,9 @@
   "scripts": {
     "test": "echo \"who needs tests?\"",
     "generate": "node ./scripts/generate.js",
-    "build": "tsc"
+    "build": "tsc",
+    "format": "prettier --check index.ts",
+    "format:write": "yarn format --write"
   },
   "author": "",
   "license": "MIT",
