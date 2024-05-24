@@ -2,721 +2,708 @@
 /** Do not modify*/
 /** Generated from vv0.76.0*/
 /**/
-namespace vega.commands.v1 {;
-
-export interface Signature {
-  value?: string;
-  algo?: string;
-  version?: string | number;
+namespace vega.commands.v1 {
+  export interface Signature {
+    value?: string;
+    algo?: string;
+    version?: string | number;
+  }
 }
+namespace vega {
+  export interface BuiltinAssetDeposit {
+    vegaAssetId?: string;
+    partyId?: string;
+    amount?: string;
+  }
 
-};
-namespace vega {;
+  export interface BuiltinAssetEvent {
+    deposit?: vega.BuiltinAssetDeposit;
+    withdrawal?: vega.BuiltinAssetWithdrawal;
+  }
 
-export interface BuiltinAssetDeposit {
-  vegaAssetId?: string;
-  partyId?: string;
-  amount?: string;
+  export interface BuiltinAssetWithdrawal {
+    vegaAssetId?: string;
+    partyId?: string;
+    amount?: string;
+  }
+
+  export interface ERC20AssetDelist {
+    vegaAssetId?: string;
+  }
+
+  export interface ERC20AssetLimitsUpdated {
+    vegaAssetId?: string;
+    sourceEthereumAddress?: string;
+    lifetimeLimits?: string;
+    withdrawThreshold?: string;
+  }
+
+  export interface ERC20AssetList {
+    vegaAssetId?: string;
+    assetSource?: string;
+  }
+
+  export interface ERC20Deposit {
+    vegaAssetId?: string;
+    sourceEthereumAddress?: string;
+    targetPartyId?: string;
+    amount?: string;
+  }
+
+  export interface ERC20Event {
+    index?: string | number;
+    block?: string | number;
+    chainId?: string;
+    assetList?: vega.ERC20AssetList;
+    assetDelist?: vega.ERC20AssetDelist;
+    deposit?: vega.ERC20Deposit;
+    withdrawal?: vega.ERC20Withdrawal;
+    assetLimitsUpdated?: vega.ERC20AssetLimitsUpdated;
+    bridgeStopped?: boolean;
+    bridgeResumed?: boolean;
+  }
+
+  export interface ERC20MultiSigEvent {
+    index?: string | number;
+    block?: string | number;
+    chainId?: string;
+    signerAdded?: vega.ERC20SignerAdded;
+    signerRemoved?: vega.ERC20SignerRemoved;
+    thresholdSet?: vega.ERC20ThresholdSet;
+  }
+
+  export interface ERC20SignerAdded {
+    newSigner?: string;
+    nonce?: string;
+    blockTime?: string | number;
+  }
+
+  export interface ERC20SignerRemoved {
+    oldSigner?: string;
+    nonce?: string;
+    blockTime?: string | number;
+  }
+
+  export interface ERC20ThresholdSet {
+    newThreshold?: string | number;
+    nonce?: string;
+    blockTime?: string | number;
+  }
+
+  export interface ERC20Withdrawal {
+    vegaAssetId?: string;
+    targetEthereumAddress?: string;
+    referenceNonce?: string;
+  }
+
+  export interface EthContractCallEvent {
+    specId?: string;
+    blockHeight?: string | number;
+    blockTime?: string | number;
+    result?: string;
+    error?: string;
+    sourceChainId?: string | number;
+    heartbeat?: boolean;
+  }
+
+  export interface StakeDeposited {
+    ethereumAddress?: string;
+    vegaPublicKey?: string;
+    amount?: string;
+    blockTime?: string | number;
+  }
+
+  export interface StakeRemoved {
+    ethereumAddress?: string;
+    vegaPublicKey?: string;
+    amount?: string;
+    blockTime?: string | number;
+  }
+
+  export interface StakeTotalSupply {
+    tokenAddress?: string;
+    totalSupply?: string;
+  }
+
+  export interface StakingEvent {
+    index?: string | number;
+    block?: string | number;
+    stakeDeposited?: vega.StakeDeposited;
+    stakeRemoved?: vega.StakeRemoved;
+    totalSupply?: vega.StakeTotalSupply;
+  }
 }
+namespace vega.data.v1 {
+  export interface Data {
+    signers?: vega.data.v1.Signer[];
+    data?: vega.data.v1.Property[];
+    matchedSpecIds?: string[];
+    broadcastAt?: string | number;
+    metaData?: vega.data.v1.Property[];
+    error?: string;
+  }
 
-export interface BuiltinAssetEvent {
-  deposit?: vega.BuiltinAssetDeposit;
-  withdrawal?: vega.BuiltinAssetWithdrawal;
+  export interface ETHAddress {
+    address?: string;
+  }
+
+  export interface ExternalData {
+    data?: vega.data.v1.Data;
+  }
+
+  export interface Property {
+    name?: string;
+    value?: string;
+  }
+
+  export interface PubKey {
+    key?: string;
+  }
+
+  export interface Signer {
+    pubKey?: vega.data.v1.PubKey;
+    ethAddress?: vega.data.v1.ETHAddress;
+  }
 }
-
-export interface BuiltinAssetWithdrawal {
-  vegaAssetId?: string;
-  partyId?: string;
-  amount?: string;
-}
-
-export interface ERC20AssetDelist {
-  vegaAssetId?: string;
-}
-
-export interface ERC20AssetLimitsUpdated {
-  vegaAssetId?: string;
-  sourceEthereumAddress?: string;
-  lifetimeLimits?: string;
-  withdrawThreshold?: string;
-}
-
-export interface ERC20AssetList {
-  vegaAssetId?: string;
-  assetSource?: string;
-}
-
-export interface ERC20Deposit {
-  vegaAssetId?: string;
-  sourceEthereumAddress?: string;
-  targetPartyId?: string;
-  amount?: string;
-}
-
-export interface ERC20Event {
-  index?: string | number;
-  block?: string | number;
-  chainId?: string;
-  assetList?: vega.ERC20AssetList;
-  assetDelist?: vega.ERC20AssetDelist;
-  deposit?: vega.ERC20Deposit;
-  withdrawal?: vega.ERC20Withdrawal;
-  assetLimitsUpdated?: vega.ERC20AssetLimitsUpdated;
-  bridgeStopped?: boolean;
-  bridgeResumed?: boolean;
-}
-
-export interface ERC20MultiSigEvent {
-  index?: string | number;
-  block?: string | number;
-  chainId?: string;
-  signerAdded?: vega.ERC20SignerAdded;
-  signerRemoved?: vega.ERC20SignerRemoved;
-  thresholdSet?: vega.ERC20ThresholdSet;
-}
-
-export interface ERC20SignerAdded {
-  newSigner?: string;
-  nonce?: string;
-  blockTime?: string | number;
-}
-
-export interface ERC20SignerRemoved {
-  oldSigner?: string;
-  nonce?: string;
-  blockTime?: string | number;
-}
-
-export interface ERC20ThresholdSet {
-  newThreshold?: string | number;
-  nonce?: string;
-  blockTime?: string | number;
-}
-
-export interface ERC20Withdrawal {
-  vegaAssetId?: string;
-  targetEthereumAddress?: string;
-  referenceNonce?: string;
-}
-
-export interface EthContractCallEvent {
-  specId?: string;
-  blockHeight?: string | number;
-  blockTime?: string | number;
-  result?: string;
-  error?: string;
-  sourceChainId?: string | number;
-  heartbeat?: boolean;
-}
-
-export interface StakeDeposited {
-  ethereumAddress?: string;
-  vegaPublicKey?: string;
-  amount?: string;
-  blockTime?: string | number;
-}
-
-export interface StakeRemoved {
-  ethereumAddress?: string;
-  vegaPublicKey?: string;
-  amount?: string;
-  blockTime?: string | number;
-}
-
-export interface StakeTotalSupply {
-  tokenAddress?: string;
-  totalSupply?: string;
-}
-
-export interface StakingEvent {
-  index?: string | number;
-  block?: string | number;
-  stakeDeposited?: vega.StakeDeposited;
-  stakeRemoved?: vega.StakeRemoved;
-  totalSupply?: vega.StakeTotalSupply;
-}
-
-};
-namespace vega.data.v1 {;
-
-export interface Data {
-  signers?: vega.data.v1.Signer[];
-  data?: vega.data.v1.Property[];
-  matchedSpecIds?: string[];
-  broadcastAt?: string | number;
-  metaData?: vega.data.v1.Property[];
-  error?: string;
-}
-
-export interface ETHAddress {
-  address?: string;
-}
-
-export interface ExternalData {
-  data?: vega.data.v1.Data;
-}
-
-export interface Property {
-  name?: string;
-  value?: string;
-}
-
-export interface PubKey {
-  key?: string;
-}
-
-export interface Signer {
-  pubKey?: vega.data.v1.PubKey;
-  ethAddress?: vega.data.v1.ETHAddress;
-}
-
-};
-namespace vega.data.v1 {;
-
-/** Operator describes the type of comparison.*/
-export enum ConditionOperator {
-  /** The default value */
-  OPERATOR_UNSPECIFIED = "OPERATOR_UNSPECIFIED",
-  /** Verify if the property values are strictly equal or not. */
-  OPERATOR_EQUALS = "OPERATOR_EQUALS",
-  /** Verify if the data source data value is greater than the Condition value. */
-  OPERATOR_GREATER_THAN = "OPERATOR_GREATER_THAN",
-  /** Verify if the data source data value is greater than or equal to the Condition
+namespace vega.data.v1 {
+  /** Operator describes the type of comparison.*/
+  export enum ConditionOperator {
+    /** The default value */
+    OPERATOR_UNSPECIFIED = "OPERATOR_UNSPECIFIED",
+    /** Verify if the property values are strictly equal or not. */
+    OPERATOR_EQUALS = "OPERATOR_EQUALS",
+    /** Verify if the data source data value is greater than the Condition value. */
+    OPERATOR_GREATER_THAN = "OPERATOR_GREATER_THAN",
+    /** Verify if the data source data value is greater than or equal to the Condition
   value. */
-  OPERATOR_GREATER_THAN_OR_EQUAL = "OPERATOR_GREATER_THAN_OR_EQUAL",
-  /** Verify if the data source data value is less than the Condition value. */
-  OPERATOR_LESS_THAN = "OPERATOR_LESS_THAN",
-  /** Verify if the data source data value is less or equal to than the Condition
+    OPERATOR_GREATER_THAN_OR_EQUAL = "OPERATOR_GREATER_THAN_OR_EQUAL",
+    /** Verify if the data source data value is less than the Condition value. */
+    OPERATOR_LESS_THAN = "OPERATOR_LESS_THAN",
+    /** Verify if the data source data value is less or equal to than the Condition
   value. */
-  OPERATOR_LESS_THAN_OR_EQUAL = "OPERATOR_LESS_THAN_OR_EQUAL"
-}
+    OPERATOR_LESS_THAN_OR_EQUAL = "OPERATOR_LESS_THAN_OR_EQUAL",
+  }
 
-/** Operator describes the type of comparison.*/
-export enum ConditionOperatorNumber {
-  /** The default value */
-  OPERATOR_UNSPECIFIED = 0,
-  /** Verify if the property values are strictly equal or not. */
-  OPERATOR_EQUALS = 1,
-  /** Verify if the data source data value is greater than the Condition value. */
-  OPERATOR_GREATER_THAN = 2,
-  /** Verify if the data source data value is greater than or equal to the Condition
+  /** Operator describes the type of comparison.*/
+  export enum ConditionOperatorNumber {
+    /** The default value */
+    OPERATOR_UNSPECIFIED = 0,
+    /** Verify if the property values are strictly equal or not. */
+    OPERATOR_EQUALS = 1,
+    /** Verify if the data source data value is greater than the Condition value. */
+    OPERATOR_GREATER_THAN = 2,
+    /** Verify if the data source data value is greater than or equal to the Condition
   value. */
-  OPERATOR_GREATER_THAN_OR_EQUAL = 3,
-  /** Verify if the data source data value is less than the Condition value. */
-  OPERATOR_LESS_THAN = 4,
-  /** Verify if the data source data value is less or equal to than the Condition
+    OPERATOR_GREATER_THAN_OR_EQUAL = 3,
+    /** Verify if the data source data value is less than the Condition value. */
+    OPERATOR_LESS_THAN = 4,
+    /** Verify if the data source data value is less or equal to than the Condition
   value. */
-  OPERATOR_LESS_THAN_OR_EQUAL = 5
-}
+    OPERATOR_LESS_THAN_OR_EQUAL = 5,
+  }
 
-/** Type describes the data type of properties that are supported by the data source
+  /** Type describes the data type of properties that are supported by the data source
 engine.*/
-export enum PropertyKeyType {
-  /** The default value. */
-  TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED",
-  /** Any type. */
-  TYPE_EMPTY = "TYPE_EMPTY",
-  /** Integer type. */
-  TYPE_INTEGER = "TYPE_INTEGER",
-  /** String type. */
-  TYPE_STRING = "TYPE_STRING",
-  /** Boolean type. */
-  TYPE_BOOLEAN = "TYPE_BOOLEAN",
-  /** Any floating point decimal type. */
-  TYPE_DECIMAL = "TYPE_DECIMAL",
-  /** Timestamp date type. */
-  TYPE_TIMESTAMP = "TYPE_TIMESTAMP"
-}
+  export enum PropertyKeyType {
+    /** The default value. */
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED",
+    /** Any type. */
+    TYPE_EMPTY = "TYPE_EMPTY",
+    /** Integer type. */
+    TYPE_INTEGER = "TYPE_INTEGER",
+    /** String type. */
+    TYPE_STRING = "TYPE_STRING",
+    /** Boolean type. */
+    TYPE_BOOLEAN = "TYPE_BOOLEAN",
+    /** Any floating point decimal type. */
+    TYPE_DECIMAL = "TYPE_DECIMAL",
+    /** Timestamp date type. */
+    TYPE_TIMESTAMP = "TYPE_TIMESTAMP",
+  }
 
-/** Type describes the data type of properties that are supported by the data source
+  /** Type describes the data type of properties that are supported by the data source
 engine.*/
-export enum PropertyKeyTypeNumber {
-  /** The default value. */
-  TYPE_UNSPECIFIED = 0,
-  /** Any type. */
-  TYPE_EMPTY = 1,
-  /** Integer type. */
-  TYPE_INTEGER = 2,
-  /** String type. */
-  TYPE_STRING = 3,
-  /** Boolean type. */
-  TYPE_BOOLEAN = 4,
-  /** Any floating point decimal type. */
-  TYPE_DECIMAL = 5,
-  /** Timestamp date type. */
-  TYPE_TIMESTAMP = 6
+  export enum PropertyKeyTypeNumber {
+    /** The default value. */
+    TYPE_UNSPECIFIED = 0,
+    /** Any type. */
+    TYPE_EMPTY = 1,
+    /** Integer type. */
+    TYPE_INTEGER = 2,
+    /** String type. */
+    TYPE_STRING = 3,
+    /** Boolean type. */
+    TYPE_BOOLEAN = 4,
+    /** Any floating point decimal type. */
+    TYPE_DECIMAL = 5,
+    /** Timestamp date type. */
+    TYPE_TIMESTAMP = 6,
+  }
+
+  export interface Condition {
+    operator?: vega.data.v1.ConditionOperator;
+    value?: string;
+  }
+
+  export interface Filter {
+    key?: vega.data.v1.PropertyKey;
+    conditions?: vega.data.v1.Condition[];
+  }
+
+  export interface InternalTimeTrigger {
+    initial?: string | number;
+    every?: string | number;
+  }
+
+  export interface PropertyKey {
+    name?: string;
+    type?: vega.data.v1.PropertyKeyType;
+    numberDecimalPlaces?: string | number;
+  }
 }
-
-export interface Condition {
-  operator?: vega.data.v1.ConditionOperator;
-  value?: string;
-}
-
-export interface Filter {
-  key?: vega.data.v1.PropertyKey;
-  conditions?: vega.data.v1.Condition[];
-}
-
-export interface InternalTimeTrigger {
-  initial?: string | number;
-  every?: string | number;
-}
-
-export interface PropertyKey {
-  name?: string;
-  type?: vega.data.v1.PropertyKeyType;
-  numberDecimalPlaces?: string | number;
-}
-
-};
-namespace vega {;
-
-/** Status describe the status of the data source spec*/
-export enum DataSourceSpecStatus {
-  /** Default value. */
-  STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED",
-  /** STATUS_ACTIVE describes an active data source spec. */
-  STATUS_ACTIVE = "STATUS_ACTIVE",
-  /** STATUS_DEACTIVATED describes a data source spec that is not listening to
+namespace vega {
+  /** Status describe the status of the data source spec*/
+  export enum DataSourceSpecStatus {
+    /** Default value. */
+    STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED",
+    /** STATUS_ACTIVE describes an active data source spec. */
+    STATUS_ACTIVE = "STATUS_ACTIVE",
+    /** STATUS_DEACTIVATED describes a data source spec that is not listening to
   data anymore. */
-  STATUS_DEACTIVATED = "STATUS_DEACTIVATED"
-}
+    STATUS_DEACTIVATED = "STATUS_DEACTIVATED",
+  }
 
-/** Status describe the status of the data source spec*/
-export enum DataSourceSpecStatusNumber {
-  /** Default value. */
-  STATUS_UNSPECIFIED = 0,
-  /** STATUS_ACTIVE describes an active data source spec. */
-  STATUS_ACTIVE = 1,
-  /** STATUS_DEACTIVATED describes a data source spec that is not listening to
+  /** Status describe the status of the data source spec*/
+  export enum DataSourceSpecStatusNumber {
+    /** Default value. */
+    STATUS_UNSPECIFIED = 0,
+    /** STATUS_ACTIVE describes an active data source spec. */
+    STATUS_ACTIVE = 1,
+    /** STATUS_DEACTIVATED describes a data source spec that is not listening to
   data anymore. */
-  STATUS_DEACTIVATED = 2
+    STATUS_DEACTIVATED = 2,
+  }
+
+  export interface DataSourceDefinition {
+    internal?: vega.DataSourceDefinitionInternal;
+    external?: vega.DataSourceDefinitionExternal;
+  }
+
+  export interface DataSourceDefinitionExternal {
+    oracle?: vega.DataSourceSpecConfiguration;
+    ethOracle?: vega.EthCallSpec;
+  }
+
+  export interface DataSourceDefinitionInternal {
+    time?: vega.DataSourceSpecConfigurationTime;
+    timeTrigger?: vega.DataSourceSpecConfigurationTimeTrigger;
+  }
+
+  export interface DataSourceSpec {
+    id?: string;
+    createdAt?: string | number;
+    updatedAt?: string | number;
+    data?: vega.DataSourceDefinition;
+    status?: vega.DataSourceSpecStatus;
+  }
+
+  export interface DataSourceSpecConfiguration {
+    signers?: vega.data.v1.Signer[];
+    filters?: vega.data.v1.Filter[];
+  }
+
+  export interface DataSourceSpecConfigurationTime {
+    conditions?: vega.data.v1.Condition[];
+  }
+
+  export interface DataSourceSpecConfigurationTimeTrigger {
+    conditions?: vega.data.v1.Condition[];
+    triggers?: vega.data.v1.InternalTimeTrigger[];
+  }
+
+  export interface EthCallSpec {
+    address?: string;
+    abi?: string;
+    method?: string;
+    args?: any[];
+    trigger?: vega.EthCallTrigger;
+    requiredConfirmations?: string | number;
+    filters?: vega.data.v1.Filter[];
+    normalisers?: vega.Normaliser[];
+    sourceChainId?: string | number;
+  }
+
+  export interface EthCallTrigger {
+    timeTrigger?: vega.EthTimeTrigger;
+  }
+
+  export interface EthTimeTrigger {
+    initial?: string | number;
+    every?: string | number;
+    until?: string | number;
+  }
+
+  export interface ExternalDataSourceSpec {
+    spec?: vega.DataSourceSpec;
+  }
+
+  export interface Normaliser {
+    name?: string;
+    expression?: string;
+  }
+
+  export interface SpecBindingForCompositePrice {
+    priceSourceProperty?: string;
+  }
 }
+namespace vega {
+  /** */
+  export enum CompositePriceType {
+    /**  */
+    COMPOSITE_PRICE_TYPE_UNSPECIFIED = "COMPOSITE_PRICE_TYPE_UNSPECIFIED",
+    /** Composite price is calculated as a weighted average of the underlying mark prices. */
+    COMPOSITE_PRICE_TYPE_WEIGHTED = "COMPOSITE_PRICE_TYPE_WEIGHTED",
+    /** Composite price is calculated as a median of the underlying mark prices. */
+    COMPOSITE_PRICE_TYPE_MEDIAN = "COMPOSITE_PRICE_TYPE_MEDIAN",
+    /** Composite price is calculated as the last trade price. */
+    COMPOSITE_PRICE_TYPE_LAST_TRADE = "COMPOSITE_PRICE_TYPE_LAST_TRADE",
+  }
 
-export interface DataSourceDefinition {
-  internal?: vega.DataSourceDefinitionInternal;
-  external?: vega.DataSourceDefinitionExternal;
-}
+  /** */
+  export enum CompositePriceTypeNumber {
+    /**  */
+    COMPOSITE_PRICE_TYPE_UNSPECIFIED = 0,
+    /** Composite price is calculated as a weighted average of the underlying mark prices. */
+    COMPOSITE_PRICE_TYPE_WEIGHTED = 1,
+    /** Composite price is calculated as a median of the underlying mark prices. */
+    COMPOSITE_PRICE_TYPE_MEDIAN = 2,
+    /** Composite price is calculated as the last trade price. */
+    COMPOSITE_PRICE_TYPE_LAST_TRADE = 3,
+  }
 
-export interface DataSourceDefinitionExternal {
-  oracle?: vega.DataSourceSpecConfiguration;
-  ethOracle?: vega.EthCallSpec;
-}
+  /** */
+  export enum LiquidityFeeSettingsMethod {
+    /**  */
+    METHOD_UNSPECIFIED = "METHOD_UNSPECIFIED",
+    /** Fee is the smallest value of all bids, such that liquidity providers with nominated fees less than or equal to this value still have sufficient commitment to fulfil the market's target stake. */
+    METHOD_MARGINAL_COST = "METHOD_MARGINAL_COST",
+    /** Fee is the weighted average of all liquidity providers' nominated fees, weighted by their committment. */
+    METHOD_WEIGHTED_AVERAGE = "METHOD_WEIGHTED_AVERAGE",
+    /** Fee is set by the market to a constant value irrespective of any liquidity provider's nominated fee. */
+    METHOD_CONSTANT = "METHOD_CONSTANT",
+  }
 
-export interface DataSourceDefinitionInternal {
-  time?: vega.DataSourceSpecConfigurationTime;
-  timeTrigger?: vega.DataSourceSpecConfigurationTimeTrigger;
-}
+  /** */
+  export enum LiquidityFeeSettingsMethodNumber {
+    /**  */
+    METHOD_UNSPECIFIED = 0,
+    /** Fee is the smallest value of all bids, such that liquidity providers with nominated fees less than or equal to this value still have sufficient commitment to fulfil the market's target stake. */
+    METHOD_MARGINAL_COST = 1,
+    /** Fee is the weighted average of all liquidity providers' nominated fees, weighted by their committment. */
+    METHOD_WEIGHTED_AVERAGE = 2,
+    /** Fee is set by the market to a constant value irrespective of any liquidity provider's nominated fee. */
+    METHOD_CONSTANT = 3,
+  }
 
-export interface DataSourceSpec {
-  id?: string;
-  createdAt?: string | number;
-  updatedAt?: string | number;
-  data?: vega.DataSourceDefinition;
-  status?: vega.DataSourceSpecStatus;
-}
-
-export interface DataSourceSpecConfiguration {
-  signers?: vega.data.v1.Signer[];
-  filters?: vega.data.v1.Filter[];
-}
-
-export interface DataSourceSpecConfigurationTime {
-  conditions?: vega.data.v1.Condition[];
-}
-
-export interface DataSourceSpecConfigurationTimeTrigger {
-  conditions?: vega.data.v1.Condition[];
-  triggers?: vega.data.v1.InternalTimeTrigger[];
-}
-
-export interface EthCallSpec {
-  address?: string;
-  abi?: string;
-  method?: string;
-  args?: any[];
-  trigger?: vega.EthCallTrigger;
-  requiredConfirmations?: string | number;
-  filters?: vega.data.v1.Filter[];
-  normalisers?: vega.Normaliser[];
-  sourceChainId?: string | number;
-}
-
-export interface EthCallTrigger {
-  timeTrigger?: vega.EthTimeTrigger;
-}
-
-export interface EthTimeTrigger {
-  initial?: string | number;
-  every?: string | number;
-  until?: string | number;
-}
-
-export interface ExternalDataSourceSpec {
-  spec?: vega.DataSourceSpec;
-}
-
-export interface Normaliser {
-  name?: string;
-  expression?: string;
-}
-
-export interface SpecBindingForCompositePrice {
-  priceSourceProperty?: string;
-}
-
-};
-namespace vega {;
-
-/** */
-export enum CompositePriceType {
-  /**  */
-  COMPOSITE_PRICE_TYPE_UNSPECIFIED = "COMPOSITE_PRICE_TYPE_UNSPECIFIED",
-  /** Composite price is calculated as a weighted average of the underlying mark prices. */
-  COMPOSITE_PRICE_TYPE_WEIGHTED = "COMPOSITE_PRICE_TYPE_WEIGHTED",
-  /** Composite price is calculated as a median of the underlying mark prices. */
-  COMPOSITE_PRICE_TYPE_MEDIAN = "COMPOSITE_PRICE_TYPE_MEDIAN",
-  /** Composite price is calculated as the last trade price. */
-  COMPOSITE_PRICE_TYPE_LAST_TRADE = "COMPOSITE_PRICE_TYPE_LAST_TRADE"
-}
-
-/** */
-export enum CompositePriceTypeNumber {
-  /**  */
-  COMPOSITE_PRICE_TYPE_UNSPECIFIED = 0,
-  /** Composite price is calculated as a weighted average of the underlying mark prices. */
-  COMPOSITE_PRICE_TYPE_WEIGHTED = 1,
-  /** Composite price is calculated as a median of the underlying mark prices. */
-  COMPOSITE_PRICE_TYPE_MEDIAN = 2,
-  /** Composite price is calculated as the last trade price. */
-  COMPOSITE_PRICE_TYPE_LAST_TRADE = 3
-}
-
-/** */
-export enum LiquidityFeeSettingsMethod {
-  /**  */
-  METHOD_UNSPECIFIED = "METHOD_UNSPECIFIED",
-  /** Fee is the smallest value of all bids, such that liquidity providers with nominated fees less than or equal to this value still have sufficient commitment to fulfil the market's target stake. */
-  METHOD_MARGINAL_COST = "METHOD_MARGINAL_COST",
-  /** Fee is the weighted average of all liquidity providers' nominated fees, weighted by their committment. */
-  METHOD_WEIGHTED_AVERAGE = "METHOD_WEIGHTED_AVERAGE",
-  /** Fee is set by the market to a constant value irrespective of any liquidity provider's nominated fee. */
-  METHOD_CONSTANT = "METHOD_CONSTANT"
-}
-
-/** */
-export enum LiquidityFeeSettingsMethodNumber {
-  /**  */
-  METHOD_UNSPECIFIED = 0,
-  /** Fee is the smallest value of all bids, such that liquidity providers with nominated fees less than or equal to this value still have sufficient commitment to fulfil the market's target stake. */
-  METHOD_MARGINAL_COST = 1,
-  /** Fee is the weighted average of all liquidity providers' nominated fees, weighted by their committment. */
-  METHOD_WEIGHTED_AVERAGE = 2,
-  /** Fee is set by the market to a constant value irrespective of any liquidity provider's nominated fee. */
-  METHOD_CONSTANT = 3
-}
-
-/** Current state of the market*/
-export enum MarketState {
-  /** Default value, invalid */
-  STATE_UNSPECIFIED = "STATE_UNSPECIFIED",
-  /** Governance proposal valid and accepted */
-  STATE_PROPOSED = "STATE_PROPOSED",
-  /** Outcome of governance votes is to reject the market */
-  STATE_REJECTED = "STATE_REJECTED",
-  /** Governance vote passes/wins */
-  STATE_PENDING = "STATE_PENDING",
-  /** Market triggers cancellation condition or governance
+  /** Current state of the market*/
+  export enum MarketState {
+    /** Default value, invalid */
+    STATE_UNSPECIFIED = "STATE_UNSPECIFIED",
+    /** Governance proposal valid and accepted */
+    STATE_PROPOSED = "STATE_PROPOSED",
+    /** Outcome of governance votes is to reject the market */
+    STATE_REJECTED = "STATE_REJECTED",
+    /** Governance vote passes/wins */
+    STATE_PENDING = "STATE_PENDING",
+    /** Market triggers cancellation condition or governance
   votes to close before market becomes Active */
-  STATE_CANCELLED = "STATE_CANCELLED",
-  /** Enactment date reached and usual auction exit checks pass */
-  STATE_ACTIVE = "STATE_ACTIVE",
-  /** Price monitoring or liquidity monitoring trigger */
-  STATE_SUSPENDED = "STATE_SUSPENDED",
-  /** Governance vote to close (Not currently implemented) */
-  STATE_CLOSED = "STATE_CLOSED",
-  /** Defined by the product (i.e. from a product parameter,
+    STATE_CANCELLED = "STATE_CANCELLED",
+    /** Enactment date reached and usual auction exit checks pass */
+    STATE_ACTIVE = "STATE_ACTIVE",
+    /** Price monitoring or liquidity monitoring trigger */
+    STATE_SUSPENDED = "STATE_SUSPENDED",
+    /** Governance vote to close (Not currently implemented) */
+    STATE_CLOSED = "STATE_CLOSED",
+    /** Defined by the product (i.e. from a product parameter,
   specified in market definition, giving close date/time) */
-  STATE_TRADING_TERMINATED = "STATE_TRADING_TERMINATED",
-  /** Settlement triggered and completed as defined by product */
-  STATE_SETTLED = "STATE_SETTLED",
-  /** Market has been suspended via governance */
-  STATE_SUSPENDED_VIA_GOVERNANCE = "STATE_SUSPENDED_VIA_GOVERNANCE"
-}
+    STATE_TRADING_TERMINATED = "STATE_TRADING_TERMINATED",
+    /** Settlement triggered and completed as defined by product */
+    STATE_SETTLED = "STATE_SETTLED",
+    /** Market has been suspended via governance */
+    STATE_SUSPENDED_VIA_GOVERNANCE = "STATE_SUSPENDED_VIA_GOVERNANCE",
+  }
 
-/** Current state of the market*/
-export enum MarketStateNumber {
-  /** Default value, invalid */
-  STATE_UNSPECIFIED = 0,
-  /** Governance proposal valid and accepted */
-  STATE_PROPOSED = 1,
-  /** Outcome of governance votes is to reject the market */
-  STATE_REJECTED = 2,
-  /** Governance vote passes/wins */
-  STATE_PENDING = 3,
-  /** Market triggers cancellation condition or governance
+  /** Current state of the market*/
+  export enum MarketStateNumber {
+    /** Default value, invalid */
+    STATE_UNSPECIFIED = 0,
+    /** Governance proposal valid and accepted */
+    STATE_PROPOSED = 1,
+    /** Outcome of governance votes is to reject the market */
+    STATE_REJECTED = 2,
+    /** Governance vote passes/wins */
+    STATE_PENDING = 3,
+    /** Market triggers cancellation condition or governance
   votes to close before market becomes Active */
-  STATE_CANCELLED = 4,
-  /** Enactment date reached and usual auction exit checks pass */
-  STATE_ACTIVE = 5,
-  /** Price monitoring or liquidity monitoring trigger */
-  STATE_SUSPENDED = 6,
-  /** Governance vote to close (Not currently implemented) */
-  STATE_CLOSED = 7,
-  /** Defined by the product (i.e. from a product parameter,
+    STATE_CANCELLED = 4,
+    /** Enactment date reached and usual auction exit checks pass */
+    STATE_ACTIVE = 5,
+    /** Price monitoring or liquidity monitoring trigger */
+    STATE_SUSPENDED = 6,
+    /** Governance vote to close (Not currently implemented) */
+    STATE_CLOSED = 7,
+    /** Defined by the product (i.e. from a product parameter,
   specified in market definition, giving close date/time) */
-  STATE_TRADING_TERMINATED = 8,
-  /** Settlement triggered and completed as defined by product */
-  STATE_SETTLED = 9,
-  /** Market has been suspended via governance */
-  STATE_SUSPENDED_VIA_GOVERNANCE = 10
+    STATE_TRADING_TERMINATED = 8,
+    /** Settlement triggered and completed as defined by product */
+    STATE_SETTLED = 9,
+    /** Market has been suspended via governance */
+    STATE_SUSPENDED_VIA_GOVERNANCE = 10,
+  }
+
+  /** Trading mode the market is currently running, also referred to as 'market state'*/
+  export enum MarketTradingMode {
+    /** Default value, this is invalid */
+    TRADING_MODE_UNSPECIFIED = "TRADING_MODE_UNSPECIFIED",
+    /** Normal trading */
+    TRADING_MODE_CONTINUOUS = "TRADING_MODE_CONTINUOUS",
+    /** Auction trading (FBA) */
+    TRADING_MODE_BATCH_AUCTION = "TRADING_MODE_BATCH_AUCTION",
+    /** Opening auction */
+    TRADING_MODE_OPENING_AUCTION = "TRADING_MODE_OPENING_AUCTION",
+    /** Auction triggered by monitoring */
+    TRADING_MODE_MONITORING_AUCTION = "TRADING_MODE_MONITORING_AUCTION",
+    /** No trading is allowed */
+    TRADING_MODE_NO_TRADING = "TRADING_MODE_NO_TRADING",
+    /** Special auction mode triggered via governance */
+    TRADING_MODE_SUSPENDED_VIA_GOVERNANCE = "TRADING_MODE_SUSPENDED_VIA_GOVERNANCE",
+  }
+
+  /** Trading mode the market is currently running, also referred to as 'market state'*/
+  export enum MarketTradingModeNumber {
+    /** Default value, this is invalid */
+    TRADING_MODE_UNSPECIFIED = 0,
+    /** Normal trading */
+    TRADING_MODE_CONTINUOUS = 1,
+    /** Auction trading (FBA) */
+    TRADING_MODE_BATCH_AUCTION = 2,
+    /** Opening auction */
+    TRADING_MODE_OPENING_AUCTION = 3,
+    /** Auction triggered by monitoring */
+    TRADING_MODE_MONITORING_AUCTION = 4,
+    /** No trading is allowed */
+    TRADING_MODE_NO_TRADING = 5,
+    /** Special auction mode triggered via governance */
+    TRADING_MODE_SUSPENDED_VIA_GOVERNANCE = 6,
+  }
+
+  export interface AuctionDuration {
+    duration?: string | number;
+    volume?: string | number;
+  }
+
+  export interface CompositePriceConfiguration {
+    decayWeight?: string;
+    decayPower?: string | number;
+    cashAmount?: string;
+    sourceWeights?: string[];
+    sourceStalenessTolerance?: string[];
+    compositePriceType?: vega.CompositePriceType;
+    dataSourcesSpec?: vega.DataSourceDefinition[];
+    dataSourcesSpecBinding?: vega.SpecBindingForCompositePrice[];
+  }
+
+  export interface DataSourceSpecToFutureBinding {
+    settlementDataProperty?: string;
+    tradingTerminationProperty?: string;
+  }
+
+  export interface DataSourceSpecToPerpetualBinding {
+    settlementDataProperty?: string;
+    settlementScheduleProperty?: string;
+  }
+
+  export interface FeeFactors {
+    makerFee?: string;
+    infrastructureFee?: string;
+    liquidityFee?: string;
+  }
+
+  export interface Fees {
+    factors?: vega.FeeFactors;
+    liquidityFeeSettings?: vega.LiquidityFeeSettings;
+  }
+
+  export interface Future {
+    settlementAsset?: string;
+    quoteName?: string;
+    dataSourceSpecForSettlementData?: vega.DataSourceSpec;
+    dataSourceSpecForTradingTermination?: vega.DataSourceSpec;
+    dataSourceSpecBinding?: vega.DataSourceSpecToFutureBinding;
+  }
+
+  export interface Instrument {
+    id?: string;
+    code?: string;
+    name?: string;
+    metadata?: vega.InstrumentMetadata;
+    future?: vega.Future;
+    spot?: vega.Spot;
+    perpetual?: vega.Perpetual;
+  }
+
+  export interface InstrumentMetadata {
+    tags?: string[];
+  }
+
+  export interface LiquidationStrategy {
+    disposalTimeStep?: string | number;
+    disposalFraction?: string;
+    fullDisposalSize?: string | number;
+    maxFractionConsumed?: string;
+    disposalSlippageRange?: string;
+  }
+
+  export interface LiquidityFeeSettings {
+    method?: vega.LiquidityFeeSettingsMethod;
+    feeConstant?: string;
+  }
+
+  export interface LiquidityMonitoringParameters {
+    targetStakeParameters?: vega.TargetStakeParameters;
+    triggeringRatio?: string;
+    auctionExtension?: string | number;
+  }
+
+  export interface LiquiditySLAParameters {
+    priceRange?: string;
+    commitmentMinTimeFraction?: string;
+    performanceHysteresisEpochs?: string | number;
+    slaCompetitionFactor?: string;
+  }
+
+  export interface LogNormalModelParams {
+    mu?: string | number;
+    r?: string | number;
+    sigma?: string | number;
+  }
+
+  export interface LogNormalRiskModel {
+    riskAversionParameter?: string | number;
+    tau?: string | number;
+    params?: vega.LogNormalModelParams;
+  }
+
+  export interface MarginCalculator {
+    scalingFactors?: vega.ScalingFactors;
+  }
+
+  export interface Market {
+    id?: string;
+    tradableInstrument?: vega.TradableInstrument;
+    decimalPlaces?: string | number;
+    fees?: vega.Fees;
+    openingAuction?: vega.AuctionDuration;
+    priceMonitoringSettings?: vega.PriceMonitoringSettings;
+    liquidityMonitoringParameters?: vega.LiquidityMonitoringParameters;
+    tradingMode?: vega.MarketTradingMode;
+    state?: vega.MarketState;
+    marketTimestamps?: vega.MarketTimestamps;
+    positionDecimalPlaces?: string | number;
+    lpPriceRange?: string;
+    linearSlippageFactor?: string;
+    quadraticSlippageFactor?: string;
+    parentMarketId?: string;
+    insurancePoolFraction?: string;
+    successorMarketId?: string;
+    liquiditySlaParams?: vega.LiquiditySLAParameters;
+    liquidationStrategy?: vega.LiquidationStrategy;
+    markPriceConfiguration?: vega.CompositePriceConfiguration;
+    tickSize?: string;
+  }
+
+  export interface MarketTimestamps {
+    proposed?: string | number;
+    pending?: string | number;
+    open?: string | number;
+    close?: string | number;
+  }
+
+  export interface Perpetual {
+    settlementAsset?: string;
+    quoteName?: string;
+    marginFundingFactor?: string;
+    interestRate?: string;
+    clampLowerBound?: string;
+    clampUpperBound?: string;
+    dataSourceSpecForSettlementSchedule?: vega.DataSourceSpec;
+    dataSourceSpecForSettlementData?: vega.DataSourceSpec;
+    dataSourceSpecBinding?: vega.DataSourceSpecToPerpetualBinding;
+    fundingRateScalingFactor?: string;
+    fundingRateLowerBound?: string;
+    fundingRateUpperBound?: string;
+    internalCompositePriceConfig?: vega.CompositePriceConfiguration;
+  }
+
+  export interface PriceMonitoringParameters {
+    triggers?: vega.PriceMonitoringTrigger[];
+  }
+
+  export interface PriceMonitoringSettings {
+    parameters?: vega.PriceMonitoringParameters;
+  }
+
+  export interface PriceMonitoringTrigger {
+    horizon?: string | number;
+    probability?: string;
+    auctionExtension?: string | number;
+  }
+
+  export interface ScalingFactors {
+    searchLevel?: string | number;
+    initialMargin?: string | number;
+    collateralRelease?: string | number;
+  }
+
+  export interface SimpleModelParams {
+    factorLong?: string | number;
+    factorShort?: string | number;
+    maxMoveUp?: string | number;
+    minMoveDown?: string | number;
+    probabilityOfTrading?: string | number;
+  }
+
+  export interface SimpleRiskModel {
+    params?: vega.SimpleModelParams;
+  }
+
+  export interface Spot {
+    baseAsset?: string;
+    quoteAsset?: string;
+  }
+
+  export interface TargetStakeParameters {
+    timeWindow?: string | number;
+    scalingFactor?: string | number;
+  }
+
+  export interface TradableInstrument {
+    instrument?: vega.Instrument;
+    marginCalculator?: vega.MarginCalculator;
+    logNormalRiskModel?: vega.LogNormalRiskModel;
+    simpleRiskModel?: vega.SimpleRiskModel;
+  }
 }
-
-/** Trading mode the market is currently running, also referred to as 'market state'*/
-export enum MarketTradingMode {
-  /** Default value, this is invalid */
-  TRADING_MODE_UNSPECIFIED = "TRADING_MODE_UNSPECIFIED",
-  /** Normal trading */
-  TRADING_MODE_CONTINUOUS = "TRADING_MODE_CONTINUOUS",
-  /** Auction trading (FBA) */
-  TRADING_MODE_BATCH_AUCTION = "TRADING_MODE_BATCH_AUCTION",
-  /** Opening auction */
-  TRADING_MODE_OPENING_AUCTION = "TRADING_MODE_OPENING_AUCTION",
-  /** Auction triggered by monitoring */
-  TRADING_MODE_MONITORING_AUCTION = "TRADING_MODE_MONITORING_AUCTION",
-  /** No trading is allowed */
-  TRADING_MODE_NO_TRADING = "TRADING_MODE_NO_TRADING",
-  /** Special auction mode triggered via governance */
-  TRADING_MODE_SUSPENDED_VIA_GOVERNANCE = "TRADING_MODE_SUSPENDED_VIA_GOVERNANCE"
-}
-
-/** Trading mode the market is currently running, also referred to as 'market state'*/
-export enum MarketTradingModeNumber {
-  /** Default value, this is invalid */
-  TRADING_MODE_UNSPECIFIED = 0,
-  /** Normal trading */
-  TRADING_MODE_CONTINUOUS = 1,
-  /** Auction trading (FBA) */
-  TRADING_MODE_BATCH_AUCTION = 2,
-  /** Opening auction */
-  TRADING_MODE_OPENING_AUCTION = 3,
-  /** Auction triggered by monitoring */
-  TRADING_MODE_MONITORING_AUCTION = 4,
-  /** No trading is allowed */
-  TRADING_MODE_NO_TRADING = 5,
-  /** Special auction mode triggered via governance */
-  TRADING_MODE_SUSPENDED_VIA_GOVERNANCE = 6
-}
-
-export interface AuctionDuration {
-  duration?: string | number;
-  volume?: string | number;
-}
-
-export interface CompositePriceConfiguration {
-  decayWeight?: string;
-  decayPower?: string | number;
-  cashAmount?: string;
-  sourceWeights?: string[];
-  sourceStalenessTolerance?: string[];
-  compositePriceType?: vega.CompositePriceType;
-  dataSourcesSpec?: vega.DataSourceDefinition[];
-  dataSourcesSpecBinding?: vega.SpecBindingForCompositePrice[];
-}
-
-export interface DataSourceSpecToFutureBinding {
-  settlementDataProperty?: string;
-  tradingTerminationProperty?: string;
-}
-
-export interface DataSourceSpecToPerpetualBinding {
-  settlementDataProperty?: string;
-  settlementScheduleProperty?: string;
-}
-
-export interface FeeFactors {
-  makerFee?: string;
-  infrastructureFee?: string;
-  liquidityFee?: string;
-}
-
-export interface Fees {
-  factors?: vega.FeeFactors;
-  liquidityFeeSettings?: vega.LiquidityFeeSettings;
-}
-
-export interface Future {
-  settlementAsset?: string;
-  quoteName?: string;
-  dataSourceSpecForSettlementData?: vega.DataSourceSpec;
-  dataSourceSpecForTradingTermination?: vega.DataSourceSpec;
-  dataSourceSpecBinding?: vega.DataSourceSpecToFutureBinding;
-}
-
-export interface Instrument {
-  id?: string;
-  code?: string;
-  name?: string;
-  metadata?: vega.InstrumentMetadata;
-  future?: vega.Future;
-  spot?: vega.Spot;
-  perpetual?: vega.Perpetual;
-}
-
-export interface InstrumentMetadata {
-  tags?: string[];
-}
-
-export interface LiquidationStrategy {
-  disposalTimeStep?: string | number;
-  disposalFraction?: string;
-  fullDisposalSize?: string | number;
-  maxFractionConsumed?: string;
-  disposalSlippageRange?: string;
-}
-
-export interface LiquidityFeeSettings {
-  method?: vega.LiquidityFeeSettingsMethod;
-  feeConstant?: string;
-}
-
-export interface LiquidityMonitoringParameters {
-  targetStakeParameters?: vega.TargetStakeParameters;
-  triggeringRatio?: string;
-  auctionExtension?: string | number;
-}
-
-export interface LiquiditySLAParameters {
-  priceRange?: string;
-  commitmentMinTimeFraction?: string;
-  performanceHysteresisEpochs?: string | number;
-  slaCompetitionFactor?: string;
-}
-
-export interface LogNormalModelParams {
-  mu?: string | number;
-  r?: string | number;
-  sigma?: string | number;
-}
-
-export interface LogNormalRiskModel {
-  riskAversionParameter?: string | number;
-  tau?: string | number;
-  params?: vega.LogNormalModelParams;
-}
-
-export interface MarginCalculator {
-  scalingFactors?: vega.ScalingFactors;
-}
-
-export interface Market {
-  id?: string;
-  tradableInstrument?: vega.TradableInstrument;
-  decimalPlaces?: string | number;
-  fees?: vega.Fees;
-  openingAuction?: vega.AuctionDuration;
-  priceMonitoringSettings?: vega.PriceMonitoringSettings;
-  liquidityMonitoringParameters?: vega.LiquidityMonitoringParameters;
-  tradingMode?: vega.MarketTradingMode;
-  state?: vega.MarketState;
-  marketTimestamps?: vega.MarketTimestamps;
-  positionDecimalPlaces?: string | number;
-  lpPriceRange?: string;
-  linearSlippageFactor?: string;
-  quadraticSlippageFactor?: string;
-  parentMarketId?: string;
-  insurancePoolFraction?: string;
-  successorMarketId?: string;
-  liquiditySlaParams?: vega.LiquiditySLAParameters;
-  liquidationStrategy?: vega.LiquidationStrategy;
-  markPriceConfiguration?: vega.CompositePriceConfiguration;
-  tickSize?: string;
-}
-
-export interface MarketTimestamps {
-  proposed?: string | number;
-  pending?: string | number;
-  open?: string | number;
-  close?: string | number;
-}
-
-export interface Perpetual {
-  settlementAsset?: string;
-  quoteName?: string;
-  marginFundingFactor?: string;
-  interestRate?: string;
-  clampLowerBound?: string;
-  clampUpperBound?: string;
-  dataSourceSpecForSettlementSchedule?: vega.DataSourceSpec;
-  dataSourceSpecForSettlementData?: vega.DataSourceSpec;
-  dataSourceSpecBinding?: vega.DataSourceSpecToPerpetualBinding;
-  fundingRateScalingFactor?: string;
-  fundingRateLowerBound?: string;
-  fundingRateUpperBound?: string;
-  internalCompositePriceConfig?: vega.CompositePriceConfiguration;
-}
-
-export interface PriceMonitoringParameters {
-  triggers?: vega.PriceMonitoringTrigger[];
-}
-
-export interface PriceMonitoringSettings {
-  parameters?: vega.PriceMonitoringParameters;
-}
-
-export interface PriceMonitoringTrigger {
-  horizon?: string | number;
-  probability?: string;
-  auctionExtension?: string | number;
-}
-
-export interface ScalingFactors {
-  searchLevel?: string | number;
-  initialMargin?: string | number;
-  collateralRelease?: string | number;
-}
-
-export interface SimpleModelParams {
-  factorLong?: string | number;
-  factorShort?: string | number;
-  maxMoveUp?: string | number;
-  minMoveDown?: string | number;
-  probabilityOfTrading?: string | number;
-}
-
-export interface SimpleRiskModel {
-  params?: vega.SimpleModelParams;
-}
-
-export interface Spot {
-  baseAsset?: string;
-  quoteAsset?: string;
-}
-
-export interface TargetStakeParameters {
-  timeWindow?: string | number;
-  scalingFactor?: string | number;
-}
-
-export interface TradableInstrument {
-  instrument?: vega.Instrument;
-  marginCalculator?: vega.MarginCalculator;
-  logNormalRiskModel?: vega.LogNormalRiskModel;
-  simpleRiskModel?: vega.SimpleRiskModel;
-}
-
-};
-namespace vega {;
-
-/** Various collateral/account types as used by Vega*/
-export enum AccountType {
-  /** Default value */
-  ACCOUNT_TYPE_UNSPECIFIED = "ACCOUNT_TYPE_UNSPECIFIED",
-  /** Insurance pool accounts contain insurance pool funds for a market */
-  ACCOUNT_TYPE_INSURANCE = "ACCOUNT_TYPE_INSURANCE",
-  /** Settlement accounts exist only during settlement or mark-to-market */
-  ACCOUNT_TYPE_SETTLEMENT = "ACCOUNT_TYPE_SETTLEMENT",
-  /** Margin accounts contain funds set aside for the margin needed to support a party's open positions.
+namespace vega {
+  /** Various collateral/account types as used by Vega*/
+  export enum AccountType {
+    /** Default value */
+    ACCOUNT_TYPE_UNSPECIFIED = "ACCOUNT_TYPE_UNSPECIFIED",
+    /** Insurance pool accounts contain insurance pool funds for a market */
+    ACCOUNT_TYPE_INSURANCE = "ACCOUNT_TYPE_INSURANCE",
+    /** Settlement accounts exist only during settlement or mark-to-market */
+    ACCOUNT_TYPE_SETTLEMENT = "ACCOUNT_TYPE_SETTLEMENT",
+    /** Margin accounts contain funds set aside for the margin needed to support a party's open positions.
   Each party will have a margin account for each market they have traded in.
   Required initial margin is allocated to each market from user's general account.
   Collateral in the margin account can't be withdrawn or used as margin on another market until
@@ -725,77 +712,77 @@ export enum AccountType {
   margin from other funds to ensure they are never lost or 'double spent'
 
   Margin account funds will vary as margin requirements on positions change */
-  ACCOUNT_TYPE_MARGIN = "ACCOUNT_TYPE_MARGIN",
-  /** General accounts contain the collateral for a party that is not otherwise allocated. A party will
+    ACCOUNT_TYPE_MARGIN = "ACCOUNT_TYPE_MARGIN",
+    /** General accounts contain the collateral for a party that is not otherwise allocated. A party will
   have multiple general accounts, one for each asset they want
   to trade with
 
   General accounts are where funds are initially deposited or withdrawn from,
   it is also the account where funds are taken to fulfil fees and initial margin requirements */
-  ACCOUNT_TYPE_GENERAL = "ACCOUNT_TYPE_GENERAL",
-  /** Infrastructure accounts contain fees earned by providing infrastructure on Vega */
-  ACCOUNT_TYPE_FEES_INFRASTRUCTURE = "ACCOUNT_TYPE_FEES_INFRASTRUCTURE",
-  /** Liquidity accounts contain fees earned by providing liquidity on Vega markets */
-  ACCOUNT_TYPE_FEES_LIQUIDITY = "ACCOUNT_TYPE_FEES_LIQUIDITY",
-  /** This account is created to hold fees earned by placing orders that sit on the book
+    ACCOUNT_TYPE_GENERAL = "ACCOUNT_TYPE_GENERAL",
+    /** Infrastructure accounts contain fees earned by providing infrastructure on Vega */
+    ACCOUNT_TYPE_FEES_INFRASTRUCTURE = "ACCOUNT_TYPE_FEES_INFRASTRUCTURE",
+    /** Liquidity accounts contain fees earned by providing liquidity on Vega markets */
+    ACCOUNT_TYPE_FEES_LIQUIDITY = "ACCOUNT_TYPE_FEES_LIQUIDITY",
+    /** This account is created to hold fees earned by placing orders that sit on the book
   and are then matched with an incoming order to create a trade - These fees reward parties
   who provide the best priced liquidity that actually allows trading to take place */
-  ACCOUNT_TYPE_FEES_MAKER = "ACCOUNT_TYPE_FEES_MAKER",
-  /** This account is created to maintain liquidity providers funds commitments */
-  ACCOUNT_TYPE_BOND = "ACCOUNT_TYPE_BOND",
-  /** External account represents an external source (deposit/withdrawal) */
-  ACCOUNT_TYPE_EXTERNAL = "ACCOUNT_TYPE_EXTERNAL",
-  /** Global insurance account for the asset */
-  ACCOUNT_TYPE_GLOBAL_INSURANCE = "ACCOUNT_TYPE_GLOBAL_INSURANCE",
-  /** Global reward account for the asset */
-  ACCOUNT_TYPE_GLOBAL_REWARD = "ACCOUNT_TYPE_GLOBAL_REWARD",
-  /** Per asset account used to store pending transfers (if any) */
-  ACCOUNT_TYPE_PENDING_TRANSFERS = "ACCOUNT_TYPE_PENDING_TRANSFERS",
-  /** Per asset reward account for fees paid to makers */
-  ACCOUNT_TYPE_REWARD_MAKER_PAID_FEES = "ACCOUNT_TYPE_REWARD_MAKER_PAID_FEES",
-  /** Per asset reward account for fees received by makers */
-  ACCOUNT_TYPE_REWARD_MAKER_RECEIVED_FEES = "ACCOUNT_TYPE_REWARD_MAKER_RECEIVED_FEES",
-  /** Per asset reward account for fees received by liquidity providers */
-  ACCOUNT_TYPE_REWARD_LP_RECEIVED_FEES = "ACCOUNT_TYPE_REWARD_LP_RECEIVED_FEES",
-  /** Per asset reward account for market proposers when the market goes above some trading threshold */
-  ACCOUNT_TYPE_REWARD_MARKET_PROPOSERS = "ACCOUNT_TYPE_REWARD_MARKET_PROPOSERS",
-  /** Per asset account for holding in-flight unfilled orders' funds */
-  ACCOUNT_TYPE_HOLDING = "ACCOUNT_TYPE_HOLDING",
-  /** Network controlled liquidity provider's account, per market, to hold accrued liquidity fees. */
-  ACCOUNT_TYPE_LP_LIQUIDITY_FEES = "ACCOUNT_TYPE_LP_LIQUIDITY_FEES",
-  /** Network controlled liquidity fees bonus distribution account, per market. */
-  ACCOUNT_TYPE_LIQUIDITY_FEES_BONUS_DISTRIBUTION = "ACCOUNT_TYPE_LIQUIDITY_FEES_BONUS_DISTRIBUTION",
-  /** Network controlled treasury */
-  ACCOUNT_TYPE_NETWORK_TREASURY = "ACCOUNT_TYPE_NETWORK_TREASURY",
-  /** Account holding user's rewards for the vesting period */
-  ACCOUNT_TYPE_VESTING_REWARDS = "ACCOUNT_TYPE_VESTING_REWARDS",
-  /** Account holding user's rewards after the vesting period */
-  ACCOUNT_TYPE_VESTED_REWARDS = "ACCOUNT_TYPE_VESTED_REWARDS",
-  /** Per asset market reward account given for average position */
-  ACCOUNT_TYPE_REWARD_AVERAGE_POSITION = "ACCOUNT_TYPE_REWARD_AVERAGE_POSITION",
-  /** Per asset market reward account given for relative return */
-  ACCOUNT_TYPE_REWARD_RELATIVE_RETURN = "ACCOUNT_TYPE_REWARD_RELATIVE_RETURN",
-  /** Per asset market reward account given for return volatility */
-  ACCOUNT_TYPE_REWARD_RETURN_VOLATILITY = "ACCOUNT_TYPE_REWARD_RETURN_VOLATILITY",
-  /** Per asset market reward account given to validators by their ranking */
-  ACCOUNT_TYPE_REWARD_VALIDATOR_RANKING = "ACCOUNT_TYPE_REWARD_VALIDATOR_RANKING",
-  /** Per asset account for pending fee referral reward payouts */
-  ACCOUNT_TYPE_PENDING_FEE_REFERRAL_REWARD = "ACCOUNT_TYPE_PENDING_FEE_REFERRAL_REWARD",
-  /** Per asset market account for party in isolated margin mode */
-  ACCOUNT_TYPE_ORDER_MARGIN = "ACCOUNT_TYPE_ORDER_MARGIN",
-  /** Per asset market reward account for realised return */
-  ACCOUNT_TYPE_REWARD_REALISED_RETURN = "ACCOUNT_TYPE_REWARD_REALISED_RETURN"
-}
+    ACCOUNT_TYPE_FEES_MAKER = "ACCOUNT_TYPE_FEES_MAKER",
+    /** This account is created to maintain liquidity providers funds commitments */
+    ACCOUNT_TYPE_BOND = "ACCOUNT_TYPE_BOND",
+    /** External account represents an external source (deposit/withdrawal) */
+    ACCOUNT_TYPE_EXTERNAL = "ACCOUNT_TYPE_EXTERNAL",
+    /** Global insurance account for the asset */
+    ACCOUNT_TYPE_GLOBAL_INSURANCE = "ACCOUNT_TYPE_GLOBAL_INSURANCE",
+    /** Global reward account for the asset */
+    ACCOUNT_TYPE_GLOBAL_REWARD = "ACCOUNT_TYPE_GLOBAL_REWARD",
+    /** Per asset account used to store pending transfers (if any) */
+    ACCOUNT_TYPE_PENDING_TRANSFERS = "ACCOUNT_TYPE_PENDING_TRANSFERS",
+    /** Per asset reward account for fees paid to makers */
+    ACCOUNT_TYPE_REWARD_MAKER_PAID_FEES = "ACCOUNT_TYPE_REWARD_MAKER_PAID_FEES",
+    /** Per asset reward account for fees received by makers */
+    ACCOUNT_TYPE_REWARD_MAKER_RECEIVED_FEES = "ACCOUNT_TYPE_REWARD_MAKER_RECEIVED_FEES",
+    /** Per asset reward account for fees received by liquidity providers */
+    ACCOUNT_TYPE_REWARD_LP_RECEIVED_FEES = "ACCOUNT_TYPE_REWARD_LP_RECEIVED_FEES",
+    /** Per asset reward account for market proposers when the market goes above some trading threshold */
+    ACCOUNT_TYPE_REWARD_MARKET_PROPOSERS = "ACCOUNT_TYPE_REWARD_MARKET_PROPOSERS",
+    /** Per asset account for holding in-flight unfilled orders' funds */
+    ACCOUNT_TYPE_HOLDING = "ACCOUNT_TYPE_HOLDING",
+    /** Network controlled liquidity provider's account, per market, to hold accrued liquidity fees. */
+    ACCOUNT_TYPE_LP_LIQUIDITY_FEES = "ACCOUNT_TYPE_LP_LIQUIDITY_FEES",
+    /** Network controlled liquidity fees bonus distribution account, per market. */
+    ACCOUNT_TYPE_LIQUIDITY_FEES_BONUS_DISTRIBUTION = "ACCOUNT_TYPE_LIQUIDITY_FEES_BONUS_DISTRIBUTION",
+    /** Network controlled treasury */
+    ACCOUNT_TYPE_NETWORK_TREASURY = "ACCOUNT_TYPE_NETWORK_TREASURY",
+    /** Account holding user's rewards for the vesting period */
+    ACCOUNT_TYPE_VESTING_REWARDS = "ACCOUNT_TYPE_VESTING_REWARDS",
+    /** Account holding user's rewards after the vesting period */
+    ACCOUNT_TYPE_VESTED_REWARDS = "ACCOUNT_TYPE_VESTED_REWARDS",
+    /** Per asset market reward account given for average position */
+    ACCOUNT_TYPE_REWARD_AVERAGE_POSITION = "ACCOUNT_TYPE_REWARD_AVERAGE_POSITION",
+    /** Per asset market reward account given for relative return */
+    ACCOUNT_TYPE_REWARD_RELATIVE_RETURN = "ACCOUNT_TYPE_REWARD_RELATIVE_RETURN",
+    /** Per asset market reward account given for return volatility */
+    ACCOUNT_TYPE_REWARD_RETURN_VOLATILITY = "ACCOUNT_TYPE_REWARD_RETURN_VOLATILITY",
+    /** Per asset market reward account given to validators by their ranking */
+    ACCOUNT_TYPE_REWARD_VALIDATOR_RANKING = "ACCOUNT_TYPE_REWARD_VALIDATOR_RANKING",
+    /** Per asset account for pending fee referral reward payouts */
+    ACCOUNT_TYPE_PENDING_FEE_REFERRAL_REWARD = "ACCOUNT_TYPE_PENDING_FEE_REFERRAL_REWARD",
+    /** Per asset market account for party in isolated margin mode */
+    ACCOUNT_TYPE_ORDER_MARGIN = "ACCOUNT_TYPE_ORDER_MARGIN",
+    /** Per asset market reward account for realised return */
+    ACCOUNT_TYPE_REWARD_REALISED_RETURN = "ACCOUNT_TYPE_REWARD_REALISED_RETURN",
+  }
 
-/** Various collateral/account types as used by Vega*/
-export enum AccountTypeNumber {
-  /** Default value */
-  ACCOUNT_TYPE_UNSPECIFIED = 0,
-  /** Insurance pool accounts contain insurance pool funds for a market */
-  ACCOUNT_TYPE_INSURANCE = 1,
-  /** Settlement accounts exist only during settlement or mark-to-market */
-  ACCOUNT_TYPE_SETTLEMENT = 2,
-  /** Margin accounts contain funds set aside for the margin needed to support a party's open positions.
+  /** Various collateral/account types as used by Vega*/
+  export enum AccountTypeNumber {
+    /** Default value */
+    ACCOUNT_TYPE_UNSPECIFIED = 0,
+    /** Insurance pool accounts contain insurance pool funds for a market */
+    ACCOUNT_TYPE_INSURANCE = 1,
+    /** Settlement accounts exist only during settlement or mark-to-market */
+    ACCOUNT_TYPE_SETTLEMENT = 2,
+    /** Margin accounts contain funds set aside for the margin needed to support a party's open positions.
   Each party will have a margin account for each market they have traded in.
   Required initial margin is allocated to each market from user's general account.
   Collateral in the margin account can't be withdrawn or used as margin on another market until
@@ -804,7468 +791,7441 @@ export enum AccountTypeNumber {
   margin from other funds to ensure they are never lost or 'double spent'
 
   Margin account funds will vary as margin requirements on positions change */
-  ACCOUNT_TYPE_MARGIN = 3,
-  /** General accounts contain the collateral for a party that is not otherwise allocated. A party will
+    ACCOUNT_TYPE_MARGIN = 3,
+    /** General accounts contain the collateral for a party that is not otherwise allocated. A party will
   have multiple general accounts, one for each asset they want
   to trade with
 
   General accounts are where funds are initially deposited or withdrawn from,
   it is also the account where funds are taken to fulfil fees and initial margin requirements */
-  ACCOUNT_TYPE_GENERAL = 4,
-  /** Infrastructure accounts contain fees earned by providing infrastructure on Vega */
-  ACCOUNT_TYPE_FEES_INFRASTRUCTURE = 5,
-  /** Liquidity accounts contain fees earned by providing liquidity on Vega markets */
-  ACCOUNT_TYPE_FEES_LIQUIDITY = 6,
-  /** This account is created to hold fees earned by placing orders that sit on the book
+    ACCOUNT_TYPE_GENERAL = 4,
+    /** Infrastructure accounts contain fees earned by providing infrastructure on Vega */
+    ACCOUNT_TYPE_FEES_INFRASTRUCTURE = 5,
+    /** Liquidity accounts contain fees earned by providing liquidity on Vega markets */
+    ACCOUNT_TYPE_FEES_LIQUIDITY = 6,
+    /** This account is created to hold fees earned by placing orders that sit on the book
   and are then matched with an incoming order to create a trade - These fees reward parties
   who provide the best priced liquidity that actually allows trading to take place */
-  ACCOUNT_TYPE_FEES_MAKER = 7,
-  /** This account is created to maintain liquidity providers funds commitments */
-  ACCOUNT_TYPE_BOND = 9,
-  /** External account represents an external source (deposit/withdrawal) */
-  ACCOUNT_TYPE_EXTERNAL = 10,
-  /** Global insurance account for the asset */
-  ACCOUNT_TYPE_GLOBAL_INSURANCE = 11,
-  /** Global reward account for the asset */
-  ACCOUNT_TYPE_GLOBAL_REWARD = 12,
-  /** Per asset account used to store pending transfers (if any) */
-  ACCOUNT_TYPE_PENDING_TRANSFERS = 13,
-  /** Per asset reward account for fees paid to makers */
-  ACCOUNT_TYPE_REWARD_MAKER_PAID_FEES = 14,
-  /** Per asset reward account for fees received by makers */
-  ACCOUNT_TYPE_REWARD_MAKER_RECEIVED_FEES = 15,
-  /** Per asset reward account for fees received by liquidity providers */
-  ACCOUNT_TYPE_REWARD_LP_RECEIVED_FEES = 16,
-  /** Per asset reward account for market proposers when the market goes above some trading threshold */
-  ACCOUNT_TYPE_REWARD_MARKET_PROPOSERS = 17,
-  /** Per asset account for holding in-flight unfilled orders' funds */
-  ACCOUNT_TYPE_HOLDING = 18,
-  /** Network controlled liquidity provider's account, per market, to hold accrued liquidity fees. */
-  ACCOUNT_TYPE_LP_LIQUIDITY_FEES = 19,
-  /** Network controlled liquidity fees bonus distribution account, per market. */
-  ACCOUNT_TYPE_LIQUIDITY_FEES_BONUS_DISTRIBUTION = 20,
-  /** Network controlled treasury */
-  ACCOUNT_TYPE_NETWORK_TREASURY = 21,
-  /** Account holding user's rewards for the vesting period */
-  ACCOUNT_TYPE_VESTING_REWARDS = 22,
-  /** Account holding user's rewards after the vesting period */
-  ACCOUNT_TYPE_VESTED_REWARDS = 23,
-  /** Per asset market reward account given for average position */
-  ACCOUNT_TYPE_REWARD_AVERAGE_POSITION = 24,
-  /** Per asset market reward account given for relative return */
-  ACCOUNT_TYPE_REWARD_RELATIVE_RETURN = 25,
-  /** Per asset market reward account given for return volatility */
-  ACCOUNT_TYPE_REWARD_RETURN_VOLATILITY = 26,
-  /** Per asset market reward account given to validators by their ranking */
-  ACCOUNT_TYPE_REWARD_VALIDATOR_RANKING = 27,
-  /** Per asset account for pending fee referral reward payouts */
-  ACCOUNT_TYPE_PENDING_FEE_REFERRAL_REWARD = 28,
-  /** Per asset market account for party in isolated margin mode */
-  ACCOUNT_TYPE_ORDER_MARGIN = 29,
-  /** Per asset market reward account for realised return */
-  ACCOUNT_TYPE_REWARD_REALISED_RETURN = 30
-}
+    ACCOUNT_TYPE_FEES_MAKER = 7,
+    /** This account is created to maintain liquidity providers funds commitments */
+    ACCOUNT_TYPE_BOND = 9,
+    /** External account represents an external source (deposit/withdrawal) */
+    ACCOUNT_TYPE_EXTERNAL = 10,
+    /** Global insurance account for the asset */
+    ACCOUNT_TYPE_GLOBAL_INSURANCE = 11,
+    /** Global reward account for the asset */
+    ACCOUNT_TYPE_GLOBAL_REWARD = 12,
+    /** Per asset account used to store pending transfers (if any) */
+    ACCOUNT_TYPE_PENDING_TRANSFERS = 13,
+    /** Per asset reward account for fees paid to makers */
+    ACCOUNT_TYPE_REWARD_MAKER_PAID_FEES = 14,
+    /** Per asset reward account for fees received by makers */
+    ACCOUNT_TYPE_REWARD_MAKER_RECEIVED_FEES = 15,
+    /** Per asset reward account for fees received by liquidity providers */
+    ACCOUNT_TYPE_REWARD_LP_RECEIVED_FEES = 16,
+    /** Per asset reward account for market proposers when the market goes above some trading threshold */
+    ACCOUNT_TYPE_REWARD_MARKET_PROPOSERS = 17,
+    /** Per asset account for holding in-flight unfilled orders' funds */
+    ACCOUNT_TYPE_HOLDING = 18,
+    /** Network controlled liquidity provider's account, per market, to hold accrued liquidity fees. */
+    ACCOUNT_TYPE_LP_LIQUIDITY_FEES = 19,
+    /** Network controlled liquidity fees bonus distribution account, per market. */
+    ACCOUNT_TYPE_LIQUIDITY_FEES_BONUS_DISTRIBUTION = 20,
+    /** Network controlled treasury */
+    ACCOUNT_TYPE_NETWORK_TREASURY = 21,
+    /** Account holding user's rewards for the vesting period */
+    ACCOUNT_TYPE_VESTING_REWARDS = 22,
+    /** Account holding user's rewards after the vesting period */
+    ACCOUNT_TYPE_VESTED_REWARDS = 23,
+    /** Per asset market reward account given for average position */
+    ACCOUNT_TYPE_REWARD_AVERAGE_POSITION = 24,
+    /** Per asset market reward account given for relative return */
+    ACCOUNT_TYPE_REWARD_RELATIVE_RETURN = 25,
+    /** Per asset market reward account given for return volatility */
+    ACCOUNT_TYPE_REWARD_RETURN_VOLATILITY = 26,
+    /** Per asset market reward account given to validators by their ranking */
+    ACCOUNT_TYPE_REWARD_VALIDATOR_RANKING = 27,
+    /** Per asset account for pending fee referral reward payouts */
+    ACCOUNT_TYPE_PENDING_FEE_REFERRAL_REWARD = 28,
+    /** Per asset market account for party in isolated margin mode */
+    ACCOUNT_TYPE_ORDER_MARGIN = 29,
+    /** Per asset market reward account for realised return */
+    ACCOUNT_TYPE_REWARD_REALISED_RETURN = 30,
+  }
 
-/** Auction triggers indicate what condition triggered an auction (if market is in auction mode)*/
-export enum AuctionTrigger {
-  /** Default value for AuctionTrigger, no auction triggered */
-  AUCTION_TRIGGER_UNSPECIFIED = "AUCTION_TRIGGER_UNSPECIFIED",
-  /** Batch auction */
-  AUCTION_TRIGGER_BATCH = "AUCTION_TRIGGER_BATCH",
-  /** Opening auction */
-  AUCTION_TRIGGER_OPENING = "AUCTION_TRIGGER_OPENING",
-  /** Price monitoring trigger */
-  AUCTION_TRIGGER_PRICE = "AUCTION_TRIGGER_PRICE",
-  /** Deprecated */
-  AUCTION_TRIGGER_LIQUIDITY = "AUCTION_TRIGGER_LIQUIDITY",
-  /** Liquidity auction due to not enough committed liquidity */
-  AUCTION_TRIGGER_LIQUIDITY_TARGET_NOT_MET = "AUCTION_TRIGGER_LIQUIDITY_TARGET_NOT_MET",
-  /** Deprecated */
-  AUCTION_TRIGGER_UNABLE_TO_DEPLOY_LP_ORDERS = "AUCTION_TRIGGER_UNABLE_TO_DEPLOY_LP_ORDERS",
-  /** Market is suspended and put into auction via governance */
-  AUCTION_TRIGGER_GOVERNANCE_SUSPENSION = "AUCTION_TRIGGER_GOVERNANCE_SUSPENSION"
-}
+  /** Auction triggers indicate what condition triggered an auction (if market is in auction mode)*/
+  export enum AuctionTrigger {
+    /** Default value for AuctionTrigger, no auction triggered */
+    AUCTION_TRIGGER_UNSPECIFIED = "AUCTION_TRIGGER_UNSPECIFIED",
+    /** Batch auction */
+    AUCTION_TRIGGER_BATCH = "AUCTION_TRIGGER_BATCH",
+    /** Opening auction */
+    AUCTION_TRIGGER_OPENING = "AUCTION_TRIGGER_OPENING",
+    /** Price monitoring trigger */
+    AUCTION_TRIGGER_PRICE = "AUCTION_TRIGGER_PRICE",
+    /** Deprecated */
+    AUCTION_TRIGGER_LIQUIDITY = "AUCTION_TRIGGER_LIQUIDITY",
+    /** Liquidity auction due to not enough committed liquidity */
+    AUCTION_TRIGGER_LIQUIDITY_TARGET_NOT_MET = "AUCTION_TRIGGER_LIQUIDITY_TARGET_NOT_MET",
+    /** Deprecated */
+    AUCTION_TRIGGER_UNABLE_TO_DEPLOY_LP_ORDERS = "AUCTION_TRIGGER_UNABLE_TO_DEPLOY_LP_ORDERS",
+    /** Market is suspended and put into auction via governance */
+    AUCTION_TRIGGER_GOVERNANCE_SUSPENSION = "AUCTION_TRIGGER_GOVERNANCE_SUSPENSION",
+  }
 
-/** Auction triggers indicate what condition triggered an auction (if market is in auction mode)*/
-export enum AuctionTriggerNumber {
-  /** Default value for AuctionTrigger, no auction triggered */
-  AUCTION_TRIGGER_UNSPECIFIED = 0,
-  /** Batch auction */
-  AUCTION_TRIGGER_BATCH = 1,
-  /** Opening auction */
-  AUCTION_TRIGGER_OPENING = 2,
-  /** Price monitoring trigger */
-  AUCTION_TRIGGER_PRICE = 3,
-  /** Deprecated */
-  AUCTION_TRIGGER_LIQUIDITY = 4,
-  /** Liquidity auction due to not enough committed liquidity */
-  AUCTION_TRIGGER_LIQUIDITY_TARGET_NOT_MET = 5,
-  /** Deprecated */
-  AUCTION_TRIGGER_UNABLE_TO_DEPLOY_LP_ORDERS = 6,
-  /** Market is suspended and put into auction via governance */
-  AUCTION_TRIGGER_GOVERNANCE_SUSPENSION = 7
-}
+  /** Auction triggers indicate what condition triggered an auction (if market is in auction mode)*/
+  export enum AuctionTriggerNumber {
+    /** Default value for AuctionTrigger, no auction triggered */
+    AUCTION_TRIGGER_UNSPECIFIED = 0,
+    /** Batch auction */
+    AUCTION_TRIGGER_BATCH = 1,
+    /** Opening auction */
+    AUCTION_TRIGGER_OPENING = 2,
+    /** Price monitoring trigger */
+    AUCTION_TRIGGER_PRICE = 3,
+    /** Deprecated */
+    AUCTION_TRIGGER_LIQUIDITY = 4,
+    /** Liquidity auction due to not enough committed liquidity */
+    AUCTION_TRIGGER_LIQUIDITY_TARGET_NOT_MET = 5,
+    /** Deprecated */
+    AUCTION_TRIGGER_UNABLE_TO_DEPLOY_LP_ORDERS = 6,
+    /** Market is suspended and put into auction via governance */
+    AUCTION_TRIGGER_GOVERNANCE_SUSPENSION = 7,
+  }
 
-/** Vega blockchain status as reported by the node the caller is connected to*/
-export enum ChainStatus {
-  /** Default value, always invalid */
-  CHAIN_STATUS_UNSPECIFIED = "CHAIN_STATUS_UNSPECIFIED",
-  /** Blockchain is disconnected */
-  CHAIN_STATUS_DISCONNECTED = "CHAIN_STATUS_DISCONNECTED",
-  /** Blockchain is replaying historic transactions */
-  CHAIN_STATUS_REPLAYING = "CHAIN_STATUS_REPLAYING",
-  /** Blockchain is connected and receiving transactions */
-  CHAIN_STATUS_CONNECTED = "CHAIN_STATUS_CONNECTED"
-}
+  /** Vega blockchain status as reported by the node the caller is connected to*/
+  export enum ChainStatus {
+    /** Default value, always invalid */
+    CHAIN_STATUS_UNSPECIFIED = "CHAIN_STATUS_UNSPECIFIED",
+    /** Blockchain is disconnected */
+    CHAIN_STATUS_DISCONNECTED = "CHAIN_STATUS_DISCONNECTED",
+    /** Blockchain is replaying historic transactions */
+    CHAIN_STATUS_REPLAYING = "CHAIN_STATUS_REPLAYING",
+    /** Blockchain is connected and receiving transactions */
+    CHAIN_STATUS_CONNECTED = "CHAIN_STATUS_CONNECTED",
+  }
 
-/** Vega blockchain status as reported by the node the caller is connected to*/
-export enum ChainStatusNumber {
-  /** Default value, always invalid */
-  CHAIN_STATUS_UNSPECIFIED = 0,
-  /** Blockchain is disconnected */
-  CHAIN_STATUS_DISCONNECTED = 1,
-  /** Blockchain is replaying historic transactions */
-  CHAIN_STATUS_REPLAYING = 2,
-  /** Blockchain is connected and receiving transactions */
-  CHAIN_STATUS_CONNECTED = 3
-}
+  /** Vega blockchain status as reported by the node the caller is connected to*/
+  export enum ChainStatusNumber {
+    /** Default value, always invalid */
+    CHAIN_STATUS_UNSPECIFIED = 0,
+    /** Blockchain is disconnected */
+    CHAIN_STATUS_DISCONNECTED = 1,
+    /** Blockchain is replaying historic transactions */
+    CHAIN_STATUS_REPLAYING = 2,
+    /** Blockchain is connected and receiving transactions */
+    CHAIN_STATUS_CONNECTED = 3,
+  }
 
-/** Status of the deposit*/
-export enum DepositStatus {
-  /** Default value, always invalid */
-  STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED",
-  /** Deposit is being processed by the network */
-  STATUS_OPEN = "STATUS_OPEN",
-  /** Deposit has been cancelled or failed to be verified by the network */
-  STATUS_CANCELLED = "STATUS_CANCELLED",
-  /** Deposit has been finalised and accounts have been updated */
-  STATUS_FINALIZED = "STATUS_FINALIZED",
-  /** Deposit has been rejected as a duplicate transaction. */
-  STATUS_DUPLICATE_REJECTED = "STATUS_DUPLICATE_REJECTED"
-}
+  /** Status of the deposit*/
+  export enum DepositStatus {
+    /** Default value, always invalid */
+    STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED",
+    /** Deposit is being processed by the network */
+    STATUS_OPEN = "STATUS_OPEN",
+    /** Deposit has been cancelled or failed to be verified by the network */
+    STATUS_CANCELLED = "STATUS_CANCELLED",
+    /** Deposit has been finalised and accounts have been updated */
+    STATUS_FINALIZED = "STATUS_FINALIZED",
+    /** Deposit has been rejected as a duplicate transaction. */
+    STATUS_DUPLICATE_REJECTED = "STATUS_DUPLICATE_REJECTED",
+  }
 
-/** Status of the deposit*/
-export enum DepositStatusNumber {
-  /** Default value, always invalid */
-  STATUS_UNSPECIFIED = 0,
-  /** Deposit is being processed by the network */
-  STATUS_OPEN = 1,
-  /** Deposit has been cancelled or failed to be verified by the network */
-  STATUS_CANCELLED = 2,
-  /** Deposit has been finalised and accounts have been updated */
-  STATUS_FINALIZED = 3,
-  /** Deposit has been rejected as a duplicate transaction. */
-  STATUS_DUPLICATE_REJECTED = 4
-}
+  /** Status of the deposit*/
+  export enum DepositStatusNumber {
+    /** Default value, always invalid */
+    STATUS_UNSPECIFIED = 0,
+    /** Deposit is being processed by the network */
+    STATUS_OPEN = 1,
+    /** Deposit has been cancelled or failed to be verified by the network */
+    STATUS_CANCELLED = 2,
+    /** Deposit has been finalised and accounts have been updated */
+    STATUS_FINALIZED = 3,
+    /** Deposit has been rejected as a duplicate transaction. */
+    STATUS_DUPLICATE_REJECTED = 4,
+  }
 
-/** */
-export enum DispatchMetric {
-  /**  */
-  DISPATCH_METRIC_UNSPECIFIED = "DISPATCH_METRIC_UNSPECIFIED",
-  /** Dispatch metric that uses the total maker fees paid in the market */
-  DISPATCH_METRIC_MAKER_FEES_PAID = "DISPATCH_METRIC_MAKER_FEES_PAID",
-  /** Dispatch metric that uses the total maker fees received in the market */
-  DISPATCH_METRIC_MAKER_FEES_RECEIVED = "DISPATCH_METRIC_MAKER_FEES_RECEIVED",
-  /** Dispatch metric that uses the total LP fees received in the market */
-  DISPATCH_METRIC_LP_FEES_RECEIVED = "DISPATCH_METRIC_LP_FEES_RECEIVED",
-  /** Dispatch metric that uses total value of the market if above the required threshold and not paid given proposer bonus yet */
-  DISPATCH_METRIC_MARKET_VALUE = "DISPATCH_METRIC_MARKET_VALUE",
-  /** Dispatch metric that uses the time weighted average position */
-  DISPATCH_METRIC_AVERAGE_POSITION = "DISPATCH_METRIC_AVERAGE_POSITION",
-  /** Dispatch metric that uses the relative PNL of the party in the market */
-  DISPATCH_METRIC_RELATIVE_RETURN = "DISPATCH_METRIC_RELATIVE_RETURN",
-  /** Dispatch metric that uses return volatility of the party in the market */
-  DISPATCH_METRIC_RETURN_VOLATILITY = "DISPATCH_METRIC_RETURN_VOLATILITY",
-  /** Dispatch metric that uses the validator ranking of the validator as metric */
-  DISPATCH_METRIC_VALIDATOR_RANKING = "DISPATCH_METRIC_VALIDATOR_RANKING",
-  /** Dispatch metric that uses the realised return of the party in a market */
-  DISPATCH_METRIC_REALISED_RETURN = "DISPATCH_METRIC_REALISED_RETURN"
-}
+  /** */
+  export enum DispatchMetric {
+    /**  */
+    DISPATCH_METRIC_UNSPECIFIED = "DISPATCH_METRIC_UNSPECIFIED",
+    /** Dispatch metric that uses the total maker fees paid in the market */
+    DISPATCH_METRIC_MAKER_FEES_PAID = "DISPATCH_METRIC_MAKER_FEES_PAID",
+    /** Dispatch metric that uses the total maker fees received in the market */
+    DISPATCH_METRIC_MAKER_FEES_RECEIVED = "DISPATCH_METRIC_MAKER_FEES_RECEIVED",
+    /** Dispatch metric that uses the total LP fees received in the market */
+    DISPATCH_METRIC_LP_FEES_RECEIVED = "DISPATCH_METRIC_LP_FEES_RECEIVED",
+    /** Dispatch metric that uses total value of the market if above the required threshold and not paid given proposer bonus yet */
+    DISPATCH_METRIC_MARKET_VALUE = "DISPATCH_METRIC_MARKET_VALUE",
+    /** Dispatch metric that uses the time weighted average position */
+    DISPATCH_METRIC_AVERAGE_POSITION = "DISPATCH_METRIC_AVERAGE_POSITION",
+    /** Dispatch metric that uses the relative PNL of the party in the market */
+    DISPATCH_METRIC_RELATIVE_RETURN = "DISPATCH_METRIC_RELATIVE_RETURN",
+    /** Dispatch metric that uses return volatility of the party in the market */
+    DISPATCH_METRIC_RETURN_VOLATILITY = "DISPATCH_METRIC_RETURN_VOLATILITY",
+    /** Dispatch metric that uses the validator ranking of the validator as metric */
+    DISPATCH_METRIC_VALIDATOR_RANKING = "DISPATCH_METRIC_VALIDATOR_RANKING",
+    /** Dispatch metric that uses the realised return of the party in a market */
+    DISPATCH_METRIC_REALISED_RETURN = "DISPATCH_METRIC_REALISED_RETURN",
+  }
 
-/** */
-export enum DispatchMetricNumber {
-  /**  */
-  DISPATCH_METRIC_UNSPECIFIED = 0,
-  /** Dispatch metric that uses the total maker fees paid in the market */
-  DISPATCH_METRIC_MAKER_FEES_PAID = 1,
-  /** Dispatch metric that uses the total maker fees received in the market */
-  DISPATCH_METRIC_MAKER_FEES_RECEIVED = 2,
-  /** Dispatch metric that uses the total LP fees received in the market */
-  DISPATCH_METRIC_LP_FEES_RECEIVED = 3,
-  /** Dispatch metric that uses total value of the market if above the required threshold and not paid given proposer bonus yet */
-  DISPATCH_METRIC_MARKET_VALUE = 4,
-  /** Dispatch metric that uses the time weighted average position */
-  DISPATCH_METRIC_AVERAGE_POSITION = 5,
-  /** Dispatch metric that uses the relative PNL of the party in the market */
-  DISPATCH_METRIC_RELATIVE_RETURN = 6,
-  /** Dispatch metric that uses return volatility of the party in the market */
-  DISPATCH_METRIC_RETURN_VOLATILITY = 7,
-  /** Dispatch metric that uses the validator ranking of the validator as metric */
-  DISPATCH_METRIC_VALIDATOR_RANKING = 8,
-  /** Dispatch metric that uses the realised return of the party in a market */
-  DISPATCH_METRIC_REALISED_RETURN = 9
-}
+  /** */
+  export enum DispatchMetricNumber {
+    /**  */
+    DISPATCH_METRIC_UNSPECIFIED = 0,
+    /** Dispatch metric that uses the total maker fees paid in the market */
+    DISPATCH_METRIC_MAKER_FEES_PAID = 1,
+    /** Dispatch metric that uses the total maker fees received in the market */
+    DISPATCH_METRIC_MAKER_FEES_RECEIVED = 2,
+    /** Dispatch metric that uses the total LP fees received in the market */
+    DISPATCH_METRIC_LP_FEES_RECEIVED = 3,
+    /** Dispatch metric that uses total value of the market if above the required threshold and not paid given proposer bonus yet */
+    DISPATCH_METRIC_MARKET_VALUE = 4,
+    /** Dispatch metric that uses the time weighted average position */
+    DISPATCH_METRIC_AVERAGE_POSITION = 5,
+    /** Dispatch metric that uses the relative PNL of the party in the market */
+    DISPATCH_METRIC_RELATIVE_RETURN = 6,
+    /** Dispatch metric that uses return volatility of the party in the market */
+    DISPATCH_METRIC_RETURN_VOLATILITY = 7,
+    /** Dispatch metric that uses the validator ranking of the validator as metric */
+    DISPATCH_METRIC_VALIDATOR_RANKING = 8,
+    /** Dispatch metric that uses the realised return of the party in a market */
+    DISPATCH_METRIC_REALISED_RETURN = 9,
+  }
 
-/** */
-export enum DistributionStrategy {
-  /**  */
-  DISTRIBUTION_STRATEGY_UNSPECIFIED = "DISTRIBUTION_STRATEGY_UNSPECIFIED",
-  /** Rewards funded using the pro-rata strategy should be distributed pro-rata by each entity's reward metric, scaled by any active multipliers that party has. */
-  DISTRIBUTION_STRATEGY_PRO_RATA = "DISTRIBUTION_STRATEGY_PRO_RATA",
-  /** Rewards funded using the party rank. */
-  DISTRIBUTION_STRATEGY_RANK = "DISTRIBUTION_STRATEGY_RANK"
-}
+  /** */
+  export enum DistributionStrategy {
+    /**  */
+    DISTRIBUTION_STRATEGY_UNSPECIFIED = "DISTRIBUTION_STRATEGY_UNSPECIFIED",
+    /** Rewards funded using the pro-rata strategy should be distributed pro-rata by each entity's reward metric, scaled by any active multipliers that party has. */
+    DISTRIBUTION_STRATEGY_PRO_RATA = "DISTRIBUTION_STRATEGY_PRO_RATA",
+    /** Rewards funded using the party rank. */
+    DISTRIBUTION_STRATEGY_RANK = "DISTRIBUTION_STRATEGY_RANK",
+  }
 
-/** */
-export enum DistributionStrategyNumber {
-  /**  */
-  DISTRIBUTION_STRATEGY_UNSPECIFIED = 0,
-  /** Rewards funded using the pro-rata strategy should be distributed pro-rata by each entity's reward metric, scaled by any active multipliers that party has. */
-  DISTRIBUTION_STRATEGY_PRO_RATA = 1,
-  /** Rewards funded using the party rank. */
-  DISTRIBUTION_STRATEGY_RANK = 2
-}
+  /** */
+  export enum DistributionStrategyNumber {
+    /**  */
+    DISTRIBUTION_STRATEGY_UNSPECIFIED = 0,
+    /** Rewards funded using the pro-rata strategy should be distributed pro-rata by each entity's reward metric, scaled by any active multipliers that party has. */
+    DISTRIBUTION_STRATEGY_PRO_RATA = 1,
+    /** Rewards funded using the party rank. */
+    DISTRIBUTION_STRATEGY_RANK = 2,
+  }
 
-/** */
-export enum EntityScope {
-  /**  */
-  ENTITY_SCOPE_UNSPECIFIED = "ENTITY_SCOPE_UNSPECIFIED",
-  /** Rewards must be distributed directly to eligible parties. */
-  ENTITY_SCOPE_INDIVIDUALS = "ENTITY_SCOPE_INDIVIDUALS",
-  /** Rewards must be distributed to directly eligible teams, and then amongst team members */
-  ENTITY_SCOPE_TEAMS = "ENTITY_SCOPE_TEAMS"
-}
+  /** */
+  export enum EntityScope {
+    /**  */
+    ENTITY_SCOPE_UNSPECIFIED = "ENTITY_SCOPE_UNSPECIFIED",
+    /** Rewards must be distributed directly to eligible parties. */
+    ENTITY_SCOPE_INDIVIDUALS = "ENTITY_SCOPE_INDIVIDUALS",
+    /** Rewards must be distributed to directly eligible teams, and then amongst team members */
+    ENTITY_SCOPE_TEAMS = "ENTITY_SCOPE_TEAMS",
+  }
 
-/** */
-export enum EntityScopeNumber {
-  /**  */
-  ENTITY_SCOPE_UNSPECIFIED = 0,
-  /** Rewards must be distributed directly to eligible parties. */
-  ENTITY_SCOPE_INDIVIDUALS = 1,
-  /** Rewards must be distributed to directly eligible teams, and then amongst team members */
-  ENTITY_SCOPE_TEAMS = 2
-}
+  /** */
+  export enum EntityScopeNumber {
+    /**  */
+    ENTITY_SCOPE_UNSPECIFIED = 0,
+    /** Rewards must be distributed directly to eligible parties. */
+    ENTITY_SCOPE_INDIVIDUALS = 1,
+    /** Rewards must be distributed to directly eligible teams, and then amongst team members */
+    ENTITY_SCOPE_TEAMS = 2,
+  }
 
-/** What epoch action has occurred*/
-export enum EpochAction {
-  /**  */
-  EPOCH_ACTION_UNSPECIFIED = "EPOCH_ACTION_UNSPECIFIED",
-  /** Epoch update is for a new epoch. */
-  EPOCH_ACTION_START = "EPOCH_ACTION_START",
-  /** Epoch update is for the end of an epoch. */
-  EPOCH_ACTION_END = "EPOCH_ACTION_END"
-}
+  /** What epoch action has occurred*/
+  export enum EpochAction {
+    /**  */
+    EPOCH_ACTION_UNSPECIFIED = "EPOCH_ACTION_UNSPECIFIED",
+    /** Epoch update is for a new epoch. */
+    EPOCH_ACTION_START = "EPOCH_ACTION_START",
+    /** Epoch update is for the end of an epoch. */
+    EPOCH_ACTION_END = "EPOCH_ACTION_END",
+  }
 
-/** What epoch action has occurred*/
-export enum EpochActionNumber {
-  /**  */
-  EPOCH_ACTION_UNSPECIFIED = 0,
-  /** Epoch update is for a new epoch. */
-  EPOCH_ACTION_START = 1,
-  /** Epoch update is for the end of an epoch. */
-  EPOCH_ACTION_END = 2
-}
+  /** What epoch action has occurred*/
+  export enum EpochActionNumber {
+    /**  */
+    EPOCH_ACTION_UNSPECIFIED = 0,
+    /** Epoch update is for a new epoch. */
+    EPOCH_ACTION_START = 1,
+    /** Epoch update is for the end of an epoch. */
+    EPOCH_ACTION_END = 2,
+  }
 
-/** */
-export enum IndividualScope {
-  /**  */
-  INDIVIDUAL_SCOPE_UNSPECIFIED = "INDIVIDUAL_SCOPE_UNSPECIFIED",
-  /** All parties on the network are within the scope of this reward. */
-  INDIVIDUAL_SCOPE_ALL = "INDIVIDUAL_SCOPE_ALL",
-  /** All parties that are part of a team are within the scope of this reward. */
-  INDIVIDUAL_SCOPE_IN_TEAM = "INDIVIDUAL_SCOPE_IN_TEAM",
-  /** All parties that are not part of a team are within the scope of this reward. */
-  INDIVIDUAL_SCOPE_NOT_IN_TEAM = "INDIVIDUAL_SCOPE_NOT_IN_TEAM"
-}
+  /** */
+  export enum IndividualScope {
+    /**  */
+    INDIVIDUAL_SCOPE_UNSPECIFIED = "INDIVIDUAL_SCOPE_UNSPECIFIED",
+    /** All parties on the network are within the scope of this reward. */
+    INDIVIDUAL_SCOPE_ALL = "INDIVIDUAL_SCOPE_ALL",
+    /** All parties that are part of a team are within the scope of this reward. */
+    INDIVIDUAL_SCOPE_IN_TEAM = "INDIVIDUAL_SCOPE_IN_TEAM",
+    /** All parties that are not part of a team are within the scope of this reward. */
+    INDIVIDUAL_SCOPE_NOT_IN_TEAM = "INDIVIDUAL_SCOPE_NOT_IN_TEAM",
+  }
 
-/** */
-export enum IndividualScopeNumber {
-  /**  */
-  INDIVIDUAL_SCOPE_UNSPECIFIED = 0,
-  /** All parties on the network are within the scope of this reward. */
-  INDIVIDUAL_SCOPE_ALL = 1,
-  /** All parties that are part of a team are within the scope of this reward. */
-  INDIVIDUAL_SCOPE_IN_TEAM = 2,
-  /** All parties that are not part of a team are within the scope of this reward. */
-  INDIVIDUAL_SCOPE_NOT_IN_TEAM = 3
-}
+  /** */
+  export enum IndividualScopeNumber {
+    /**  */
+    INDIVIDUAL_SCOPE_UNSPECIFIED = 0,
+    /** All parties on the network are within the scope of this reward. */
+    INDIVIDUAL_SCOPE_ALL = 1,
+    /** All parties that are part of a team are within the scope of this reward. */
+    INDIVIDUAL_SCOPE_IN_TEAM = 2,
+    /** All parties that are not part of a team are within the scope of this reward. */
+    INDIVIDUAL_SCOPE_NOT_IN_TEAM = 3,
+  }
 
-/** Represents a set of time intervals that are used when querying for candle-stick data*/
-export enum Interval {
-  /** Default value, always invalid */
-  INTERVAL_UNSPECIFIED = "INTERVAL_UNSPECIFIED",
-  /** Block interval is not a fixed amount of time, rather it is used to indicate grouping of events that occur in a single block. It is usually about a second. */
-  INTERVAL_BLOCK = "INTERVAL_BLOCK",
-  /** 1 minute. */
-  INTERVAL_I1M = "INTERVAL_I1M",
-  /** 5 minutes. */
-  INTERVAL_I5M = "INTERVAL_I5M",
-  /** 15 minutes. */
-  INTERVAL_I15M = "INTERVAL_I15M",
-  /** 30 minutes. */
-  INTERVAL_I30M = "INTERVAL_I30M",
-  /** 1 hour. */
-  INTERVAL_I1H = "INTERVAL_I1H",
-  /** 4 hours. */
-  INTERVAL_I4H = "INTERVAL_I4H",
-  /** 6 hours. */
-  INTERVAL_I6H = "INTERVAL_I6H",
-  /** 8 hours. */
-  INTERVAL_I8H = "INTERVAL_I8H",
-  /** 12 hours. */
-  INTERVAL_I12H = "INTERVAL_I12H",
-  /** 1 day. */
-  INTERVAL_I1D = "INTERVAL_I1D",
-  /** 7 days. */
-  INTERVAL_I7D = "INTERVAL_I7D"
-}
+  /** Represents a set of time intervals that are used when querying for candle-stick data*/
+  export enum Interval {
+    /** Default value, always invalid */
+    INTERVAL_UNSPECIFIED = "INTERVAL_UNSPECIFIED",
+    /** Block interval is not a fixed amount of time, rather it is used to indicate grouping of events that occur in a single block. It is usually about a second. */
+    INTERVAL_BLOCK = "INTERVAL_BLOCK",
+    /** 1 minute. */
+    INTERVAL_I1M = "INTERVAL_I1M",
+    /** 5 minutes. */
+    INTERVAL_I5M = "INTERVAL_I5M",
+    /** 15 minutes. */
+    INTERVAL_I15M = "INTERVAL_I15M",
+    /** 30 minutes. */
+    INTERVAL_I30M = "INTERVAL_I30M",
+    /** 1 hour. */
+    INTERVAL_I1H = "INTERVAL_I1H",
+    /** 4 hours. */
+    INTERVAL_I4H = "INTERVAL_I4H",
+    /** 6 hours. */
+    INTERVAL_I6H = "INTERVAL_I6H",
+    /** 8 hours. */
+    INTERVAL_I8H = "INTERVAL_I8H",
+    /** 12 hours. */
+    INTERVAL_I12H = "INTERVAL_I12H",
+    /** 1 day. */
+    INTERVAL_I1D = "INTERVAL_I1D",
+    /** 7 days. */
+    INTERVAL_I7D = "INTERVAL_I7D",
+  }
 
-/** Represents a set of time intervals that are used when querying for candle-stick data*/
-export enum IntervalNumber {
-  /** Default value, always invalid */
-  INTERVAL_UNSPECIFIED = 0,
-  /** Block interval is not a fixed amount of time, rather it is used to indicate grouping of events that occur in a single block. It is usually about a second. */
-  INTERVAL_BLOCK = -1,
-  /** 1 minute. */
-  INTERVAL_I1M = 60,
-  /** 5 minutes. */
-  INTERVAL_I5M = 300,
-  /** 15 minutes. */
-  INTERVAL_I15M = 900,
-  /** 30 minutes. */
-  INTERVAL_I30M = 1800,
-  /** 1 hour. */
-  INTERVAL_I1H = 3600,
-  /** 4 hours. */
-  INTERVAL_I4H = 14400,
-  /** 6 hours. */
-  INTERVAL_I6H = 21600,
-  /** 8 hours. */
-  INTERVAL_I8H = 28800,
-  /** 12 hours. */
-  INTERVAL_I12H = 43200,
-  /** 1 day. */
-  INTERVAL_I1D = 86400,
-  /** 7 days. */
-  INTERVAL_I7D = 604800
-}
+  /** Represents a set of time intervals that are used when querying for candle-stick data*/
+  export enum IntervalNumber {
+    /** Default value, always invalid */
+    INTERVAL_UNSPECIFIED = 0,
+    /** Block interval is not a fixed amount of time, rather it is used to indicate grouping of events that occur in a single block. It is usually about a second. */
+    INTERVAL_BLOCK = -1,
+    /** 1 minute. */
+    INTERVAL_I1M = 60,
+    /** 5 minutes. */
+    INTERVAL_I5M = 300,
+    /** 15 minutes. */
+    INTERVAL_I15M = 900,
+    /** 30 minutes. */
+    INTERVAL_I30M = 1800,
+    /** 1 hour. */
+    INTERVAL_I1H = 3600,
+    /** 4 hours. */
+    INTERVAL_I4H = 14400,
+    /** 6 hours. */
+    INTERVAL_I6H = 21600,
+    /** 8 hours. */
+    INTERVAL_I8H = 28800,
+    /** 12 hours. */
+    INTERVAL_I12H = 43200,
+    /** 1 day. */
+    INTERVAL_I1D = 86400,
+    /** 7 days. */
+    INTERVAL_I7D = 604800,
+  }
 
-/** Status of a liquidity provision.*/
-export enum LiquidityProvisionStatus {
-  /** Always invalid */
-  STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED",
-  /** Liquidity provision is active */
-  STATUS_ACTIVE = "STATUS_ACTIVE",
-  /** Liquidity provision was stopped by the network */
-  STATUS_STOPPED = "STATUS_STOPPED",
-  /** Liquidity provision was cancelled by the liquidity provider */
-  STATUS_CANCELLED = "STATUS_CANCELLED",
-  /** Liquidity provision was invalid and got rejected */
-  STATUS_REJECTED = "STATUS_REJECTED",
-  /** Liquidity provision is valid and accepted by network, but orders aren't deployed */
-  STATUS_UNDEPLOYED = "STATUS_UNDEPLOYED",
-  /** Liquidity provision is valid and accepted by network
+  /** Status of a liquidity provision.*/
+  export enum LiquidityProvisionStatus {
+    /** Always invalid */
+    STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED",
+    /** Liquidity provision is active */
+    STATUS_ACTIVE = "STATUS_ACTIVE",
+    /** Liquidity provision was stopped by the network */
+    STATUS_STOPPED = "STATUS_STOPPED",
+    /** Liquidity provision was cancelled by the liquidity provider */
+    STATUS_CANCELLED = "STATUS_CANCELLED",
+    /** Liquidity provision was invalid and got rejected */
+    STATUS_REJECTED = "STATUS_REJECTED",
+    /** Liquidity provision is valid and accepted by network, but orders aren't deployed */
+    STATUS_UNDEPLOYED = "STATUS_UNDEPLOYED",
+    /** Liquidity provision is valid and accepted by network
   but has never been deployed. If when it's possible to deploy the orders for the first time
   margin check fails, then they will be cancelled without any penalties. */
-  STATUS_PENDING = "STATUS_PENDING"
-}
+    STATUS_PENDING = "STATUS_PENDING",
+  }
 
-/** Status of a liquidity provision.*/
-export enum LiquidityProvisionStatusNumber {
-  /** Always invalid */
-  STATUS_UNSPECIFIED = 0,
-  /** Liquidity provision is active */
-  STATUS_ACTIVE = 1,
-  /** Liquidity provision was stopped by the network */
-  STATUS_STOPPED = 2,
-  /** Liquidity provision was cancelled by the liquidity provider */
-  STATUS_CANCELLED = 3,
-  /** Liquidity provision was invalid and got rejected */
-  STATUS_REJECTED = 4,
-  /** Liquidity provision is valid and accepted by network, but orders aren't deployed */
-  STATUS_UNDEPLOYED = 5,
-  /** Liquidity provision is valid and accepted by network
+  /** Status of a liquidity provision.*/
+  export enum LiquidityProvisionStatusNumber {
+    /** Always invalid */
+    STATUS_UNSPECIFIED = 0,
+    /** Liquidity provision is active */
+    STATUS_ACTIVE = 1,
+    /** Liquidity provision was stopped by the network */
+    STATUS_STOPPED = 2,
+    /** Liquidity provision was cancelled by the liquidity provider */
+    STATUS_CANCELLED = 3,
+    /** Liquidity provision was invalid and got rejected */
+    STATUS_REJECTED = 4,
+    /** Liquidity provision is valid and accepted by network, but orders aren't deployed */
+    STATUS_UNDEPLOYED = 5,
+    /** Liquidity provision is valid and accepted by network
   but has never been deployed. If when it's possible to deploy the orders for the first time
   margin check fails, then they will be cancelled without any penalties. */
-  STATUS_PENDING = 6
-}
+    STATUS_PENDING = 6,
+  }
 
-/** */
-export enum MarginMode {
-  /** Never valid. */
-  MARGIN_MODE_UNSPECIFIED = "MARGIN_MODE_UNSPECIFIED",
-  /** Cross margin mode - margin is dynamically acquired and released as a position is marked to market */
-  MARGIN_MODE_CROSS_MARGIN = "MARGIN_MODE_CROSS_MARGIN",
-  /** Isolated margin mode - margin for any newly opened position volume is transferred to the margin account when the trade is executed */
-  MARGIN_MODE_ISOLATED_MARGIN = "MARGIN_MODE_ISOLATED_MARGIN"
-}
+  /** */
+  export enum MarginMode {
+    /** Never valid. */
+    MARGIN_MODE_UNSPECIFIED = "MARGIN_MODE_UNSPECIFIED",
+    /** Cross margin mode - margin is dynamically acquired and released as a position is marked to market */
+    MARGIN_MODE_CROSS_MARGIN = "MARGIN_MODE_CROSS_MARGIN",
+    /** Isolated margin mode - margin for any newly opened position volume is transferred to the margin account when the trade is executed */
+    MARGIN_MODE_ISOLATED_MARGIN = "MARGIN_MODE_ISOLATED_MARGIN",
+  }
 
-/** */
-export enum MarginModeNumber {
-  /** Never valid. */
-  MARGIN_MODE_UNSPECIFIED = 0,
-  /** Cross margin mode - margin is dynamically acquired and released as a position is marked to market */
-  MARGIN_MODE_CROSS_MARGIN = 1,
-  /** Isolated margin mode - margin for any newly opened position volume is transferred to the margin account when the trade is executed */
-  MARGIN_MODE_ISOLATED_MARGIN = 2
-}
+  /** */
+  export enum MarginModeNumber {
+    /** Never valid. */
+    MARGIN_MODE_UNSPECIFIED = 0,
+    /** Cross margin mode - margin is dynamically acquired and released as a position is marked to market */
+    MARGIN_MODE_CROSS_MARGIN = 1,
+    /** Isolated margin mode - margin for any newly opened position volume is transferred to the margin account when the trade is executed */
+    MARGIN_MODE_ISOLATED_MARGIN = 2,
+  }
 
-/** Node status type*/
-export enum NodeStatus {
-  /**  */
-  NODE_STATUS_UNSPECIFIED = "NODE_STATUS_UNSPECIFIED",
-  /** Node is a validating node */
-  NODE_STATUS_VALIDATOR = "NODE_STATUS_VALIDATOR",
-  /** Node is a non-validating node */
-  NODE_STATUS_NON_VALIDATOR = "NODE_STATUS_NON_VALIDATOR"
-}
+  /** Node status type*/
+  export enum NodeStatus {
+    /**  */
+    NODE_STATUS_UNSPECIFIED = "NODE_STATUS_UNSPECIFIED",
+    /** Node is a validating node */
+    NODE_STATUS_VALIDATOR = "NODE_STATUS_VALIDATOR",
+    /** Node is a non-validating node */
+    NODE_STATUS_NON_VALIDATOR = "NODE_STATUS_NON_VALIDATOR",
+  }
 
-/** Node status type*/
-export enum NodeStatusNumber {
-  /**  */
-  NODE_STATUS_UNSPECIFIED = 0,
-  /** Node is a validating node */
-  NODE_STATUS_VALIDATOR = 1,
-  /** Node is a non-validating node */
-  NODE_STATUS_NON_VALIDATOR = 2
-}
+  /** Node status type*/
+  export enum NodeStatusNumber {
+    /**  */
+    NODE_STATUS_UNSPECIFIED = 0,
+    /** Node is a validating node */
+    NODE_STATUS_VALIDATOR = 1,
+    /** Node is a non-validating node */
+    NODE_STATUS_NON_VALIDATOR = 2,
+  }
 
-/** Status values for an order*/
-export enum OrderStatus {
-  /** Default value, always invalid */
-  STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED",
-  /** Used for active unfilled or partially filled orders */
-  STATUS_ACTIVE = "STATUS_ACTIVE",
-  /** Used for expired GTT orders */
-  STATUS_EXPIRED = "STATUS_EXPIRED",
-  /** Used for orders cancelled by the party that created the order */
-  STATUS_CANCELLED = "STATUS_CANCELLED",
-  /** Used for unfilled FOK or IOC orders, and for orders that were stopped by the network */
-  STATUS_STOPPED = "STATUS_STOPPED",
-  /** Used for closed fully filled orders */
-  STATUS_FILLED = "STATUS_FILLED",
-  /** Used for orders when not enough collateral was available to fill the margin requirements */
-  STATUS_REJECTED = "STATUS_REJECTED",
-  /** Used for closed partially filled IOC orders */
-  STATUS_PARTIALLY_FILLED = "STATUS_PARTIALLY_FILLED",
-  /** Order has been removed from the order book and has been parked,
+  /** Status values for an order*/
+  export enum OrderStatus {
+    /** Default value, always invalid */
+    STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED",
+    /** Used for active unfilled or partially filled orders */
+    STATUS_ACTIVE = "STATUS_ACTIVE",
+    /** Used for expired GTT orders */
+    STATUS_EXPIRED = "STATUS_EXPIRED",
+    /** Used for orders cancelled by the party that created the order */
+    STATUS_CANCELLED = "STATUS_CANCELLED",
+    /** Used for unfilled FOK or IOC orders, and for orders that were stopped by the network */
+    STATUS_STOPPED = "STATUS_STOPPED",
+    /** Used for closed fully filled orders */
+    STATUS_FILLED = "STATUS_FILLED",
+    /** Used for orders when not enough collateral was available to fill the margin requirements */
+    STATUS_REJECTED = "STATUS_REJECTED",
+    /** Used for closed partially filled IOC orders */
+    STATUS_PARTIALLY_FILLED = "STATUS_PARTIALLY_FILLED",
+    /** Order has been removed from the order book and has been parked,
   this applies to pegged orders and liquidity orders (orders created from a liquidity provision shape) */
-  STATUS_PARKED = "STATUS_PARKED"
-}
+    STATUS_PARKED = "STATUS_PARKED",
+  }
 
-/** Status values for an order*/
-export enum OrderStatusNumber {
-  /** Default value, always invalid */
-  STATUS_UNSPECIFIED = 0,
-  /** Used for active unfilled or partially filled orders */
-  STATUS_ACTIVE = 1,
-  /** Used for expired GTT orders */
-  STATUS_EXPIRED = 2,
-  /** Used for orders cancelled by the party that created the order */
-  STATUS_CANCELLED = 3,
-  /** Used for unfilled FOK or IOC orders, and for orders that were stopped by the network */
-  STATUS_STOPPED = 4,
-  /** Used for closed fully filled orders */
-  STATUS_FILLED = 5,
-  /** Used for orders when not enough collateral was available to fill the margin requirements */
-  STATUS_REJECTED = 6,
-  /** Used for closed partially filled IOC orders */
-  STATUS_PARTIALLY_FILLED = 7,
-  /** Order has been removed from the order book and has been parked,
+  /** Status values for an order*/
+  export enum OrderStatusNumber {
+    /** Default value, always invalid */
+    STATUS_UNSPECIFIED = 0,
+    /** Used for active unfilled or partially filled orders */
+    STATUS_ACTIVE = 1,
+    /** Used for expired GTT orders */
+    STATUS_EXPIRED = 2,
+    /** Used for orders cancelled by the party that created the order */
+    STATUS_CANCELLED = 3,
+    /** Used for unfilled FOK or IOC orders, and for orders that were stopped by the network */
+    STATUS_STOPPED = 4,
+    /** Used for closed fully filled orders */
+    STATUS_FILLED = 5,
+    /** Used for orders when not enough collateral was available to fill the margin requirements */
+    STATUS_REJECTED = 6,
+    /** Used for closed partially filled IOC orders */
+    STATUS_PARTIALLY_FILLED = 7,
+    /** Order has been removed from the order book and has been parked,
   this applies to pegged orders and liquidity orders (orders created from a liquidity provision shape) */
-  STATUS_PARKED = 8
-}
+    STATUS_PARKED = 8,
+  }
 
-/** Time In Force for an order*/
-export enum OrderTimeInForce {
-  /** Default value for TimeInForce, can be valid for an amend */
-  TIME_IN_FORCE_UNSPECIFIED = "TIME_IN_FORCE_UNSPECIFIED",
-  /** Good until cancelled, the order trades any amount and as much as possible
+  /** Time In Force for an order*/
+  export enum OrderTimeInForce {
+    /** Default value for TimeInForce, can be valid for an amend */
+    TIME_IN_FORCE_UNSPECIFIED = "TIME_IN_FORCE_UNSPECIFIED",
+    /** Good until cancelled, the order trades any amount and as much as possible
   and remains on the book until it either trades completely or is cancelled */
-  TIME_IN_FORCE_GTC = "TIME_IN_FORCE_GTC",
-  /** Good until specified time, this order type trades any amount and as much as possible
+    TIME_IN_FORCE_GTC = "TIME_IN_FORCE_GTC",
+    /** Good until specified time, this order type trades any amount and as much as possible
   and remains on the book until it either trades completely, is cancelled, or expires at a set time
   NOTE: this may in future be multiple types or have sub types for orders that provide different ways of specifying expiry */
-  TIME_IN_FORCE_GTT = "TIME_IN_FORCE_GTT",
-  /** Immediate or cancel, the order trades any amount and as much as possible
+    TIME_IN_FORCE_GTT = "TIME_IN_FORCE_GTT",
+    /** Immediate or cancel, the order trades any amount and as much as possible
   but does not remain on the book (whether it trades or not) */
-  TIME_IN_FORCE_IOC = "TIME_IN_FORCE_IOC",
-  /** Fill or kill, the order either trades completely i.e. remainingSize == 0 after adding,
+    TIME_IN_FORCE_IOC = "TIME_IN_FORCE_IOC",
+    /** Fill or kill, the order either trades completely i.e. remainingSize == 0 after adding,
   or not at all, and does not remain on the book if it doesn't trade */
-  TIME_IN_FORCE_FOK = "TIME_IN_FORCE_FOK",
-  /** Good for auction, this order is only accepted during an auction period */
-  TIME_IN_FORCE_GFA = "TIME_IN_FORCE_GFA",
-  /** Good for normal, this order is only accepted during normal trading (that can be continuous trading or frequent batched auctions) */
-  TIME_IN_FORCE_GFN = "TIME_IN_FORCE_GFN"
-}
+    TIME_IN_FORCE_FOK = "TIME_IN_FORCE_FOK",
+    /** Good for auction, this order is only accepted during an auction period */
+    TIME_IN_FORCE_GFA = "TIME_IN_FORCE_GFA",
+    /** Good for normal, this order is only accepted during normal trading (that can be continuous trading or frequent batched auctions) */
+    TIME_IN_FORCE_GFN = "TIME_IN_FORCE_GFN",
+  }
 
-/** Time In Force for an order*/
-export enum OrderTimeInForceNumber {
-  /** Default value for TimeInForce, can be valid for an amend */
-  TIME_IN_FORCE_UNSPECIFIED = 0,
-  /** Good until cancelled, the order trades any amount and as much as possible
+  /** Time In Force for an order*/
+  export enum OrderTimeInForceNumber {
+    /** Default value for TimeInForce, can be valid for an amend */
+    TIME_IN_FORCE_UNSPECIFIED = 0,
+    /** Good until cancelled, the order trades any amount and as much as possible
   and remains on the book until it either trades completely or is cancelled */
-  TIME_IN_FORCE_GTC = 1,
-  /** Good until specified time, this order type trades any amount and as much as possible
+    TIME_IN_FORCE_GTC = 1,
+    /** Good until specified time, this order type trades any amount and as much as possible
   and remains on the book until it either trades completely, is cancelled, or expires at a set time
   NOTE: this may in future be multiple types or have sub types for orders that provide different ways of specifying expiry */
-  TIME_IN_FORCE_GTT = 2,
-  /** Immediate or cancel, the order trades any amount and as much as possible
+    TIME_IN_FORCE_GTT = 2,
+    /** Immediate or cancel, the order trades any amount and as much as possible
   but does not remain on the book (whether it trades or not) */
-  TIME_IN_FORCE_IOC = 3,
-  /** Fill or kill, the order either trades completely i.e. remainingSize == 0 after adding,
+    TIME_IN_FORCE_IOC = 3,
+    /** Fill or kill, the order either trades completely i.e. remainingSize == 0 after adding,
   or not at all, and does not remain on the book if it doesn't trade */
-  TIME_IN_FORCE_FOK = 4,
-  /** Good for auction, this order is only accepted during an auction period */
-  TIME_IN_FORCE_GFA = 5,
-  /** Good for normal, this order is only accepted during normal trading (that can be continuous trading or frequent batched auctions) */
-  TIME_IN_FORCE_GFN = 6
-}
+    TIME_IN_FORCE_FOK = 4,
+    /** Good for auction, this order is only accepted during an auction period */
+    TIME_IN_FORCE_GFA = 5,
+    /** Good for normal, this order is only accepted during normal trading (that can be continuous trading or frequent batched auctions) */
+    TIME_IN_FORCE_GFN = 6,
+  }
 
-/** Type values for an order*/
-export enum OrderType {
-  /** Default value, always invalid */
-  TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED",
-  /** Used for Limit orders */
-  TYPE_LIMIT = "TYPE_LIMIT",
-  /** Used for Market orders */
-  TYPE_MARKET = "TYPE_MARKET",
-  /** Used for orders where the initiating party is the network (with distressed parties) */
-  TYPE_NETWORK = "TYPE_NETWORK"
-}
+  /** Type values for an order*/
+  export enum OrderType {
+    /** Default value, always invalid */
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED",
+    /** Used for Limit orders */
+    TYPE_LIMIT = "TYPE_LIMIT",
+    /** Used for Market orders */
+    TYPE_MARKET = "TYPE_MARKET",
+    /** Used for orders where the initiating party is the network (with distressed parties) */
+    TYPE_NETWORK = "TYPE_NETWORK",
+  }
 
-/** Type values for an order*/
-export enum OrderTypeNumber {
-  /** Default value, always invalid */
-  TYPE_UNSPECIFIED = 0,
-  /** Used for Limit orders */
-  TYPE_LIMIT = 1,
-  /** Used for Market orders */
-  TYPE_MARKET = 2,
-  /** Used for orders where the initiating party is the network (with distressed parties) */
-  TYPE_NETWORK = 3
-}
+  /** Type values for an order*/
+  export enum OrderTypeNumber {
+    /** Default value, always invalid */
+    TYPE_UNSPECIFIED = 0,
+    /** Used for Limit orders */
+    TYPE_LIMIT = 1,
+    /** Used for Market orders */
+    TYPE_MARKET = 2,
+    /** Used for orders where the initiating party is the network (with distressed parties) */
+    TYPE_NETWORK = 3,
+  }
 
-/** OrderError codes are returned in the Order.reason field - If there is an issue
+  /** OrderError codes are returned in the Order.reason field - If there is an issue
 with an order during its life-cycle, it will be marked with `status.ORDER_STATUS_REJECTED`*/
-export enum OrderError {
-  /** Default value, no error reported */
-  ORDER_ERROR_UNSPECIFIED = "ORDER_ERROR_UNSPECIFIED",
-  /** Order was submitted for a market that does not exist */
-  ORDER_ERROR_INVALID_MARKET_ID = "ORDER_ERROR_INVALID_MARKET_ID",
-  /** Order was submitted with an invalid ID */
-  ORDER_ERROR_INVALID_ORDER_ID = "ORDER_ERROR_INVALID_ORDER_ID",
-  /** Order was amended with a sequence number that was not previous version + 1 */
-  ORDER_ERROR_OUT_OF_SEQUENCE = "ORDER_ERROR_OUT_OF_SEQUENCE",
-  /** Order was amended with an invalid remaining size (e.g. remaining greater than total size) */
-  ORDER_ERROR_INVALID_REMAINING_SIZE = "ORDER_ERROR_INVALID_REMAINING_SIZE",
-  /** Node was unable to get Vega (blockchain) time */
-  ORDER_ERROR_TIME_FAILURE = "ORDER_ERROR_TIME_FAILURE",
-  /** Failed to remove an order from the book */
-  ORDER_ERROR_REMOVAL_FAILURE = "ORDER_ERROR_REMOVAL_FAILURE",
-  /** Order with `TimeInForce.TIME_IN_FORCE_GTT` was submitted or amended
+  export enum OrderError {
+    /** Default value, no error reported */
+    ORDER_ERROR_UNSPECIFIED = "ORDER_ERROR_UNSPECIFIED",
+    /** Order was submitted for a market that does not exist */
+    ORDER_ERROR_INVALID_MARKET_ID = "ORDER_ERROR_INVALID_MARKET_ID",
+    /** Order was submitted with an invalid ID */
+    ORDER_ERROR_INVALID_ORDER_ID = "ORDER_ERROR_INVALID_ORDER_ID",
+    /** Order was amended with a sequence number that was not previous version + 1 */
+    ORDER_ERROR_OUT_OF_SEQUENCE = "ORDER_ERROR_OUT_OF_SEQUENCE",
+    /** Order was amended with an invalid remaining size (e.g. remaining greater than total size) */
+    ORDER_ERROR_INVALID_REMAINING_SIZE = "ORDER_ERROR_INVALID_REMAINING_SIZE",
+    /** Node was unable to get Vega (blockchain) time */
+    ORDER_ERROR_TIME_FAILURE = "ORDER_ERROR_TIME_FAILURE",
+    /** Failed to remove an order from the book */
+    ORDER_ERROR_REMOVAL_FAILURE = "ORDER_ERROR_REMOVAL_FAILURE",
+    /** Order with `TimeInForce.TIME_IN_FORCE_GTT` was submitted or amended
   with an expiration that was badly formatted or otherwise invalid */
-  ORDER_ERROR_INVALID_EXPIRATION_DATETIME = "ORDER_ERROR_INVALID_EXPIRATION_DATETIME",
-  /** Order was submitted or amended with an invalid reference field */
-  ORDER_ERROR_INVALID_ORDER_REFERENCE = "ORDER_ERROR_INVALID_ORDER_REFERENCE",
-  /** Order amend was submitted for an order field that cannot not be amended (e.g. order ID) */
-  ORDER_ERROR_EDIT_NOT_ALLOWED = "ORDER_ERROR_EDIT_NOT_ALLOWED",
-  /** Amend failure because amend details do not match original order */
-  ORDER_ERROR_AMEND_FAILURE = "ORDER_ERROR_AMEND_FAILURE",
-  /** Order not found in an order book or store */
-  ORDER_ERROR_NOT_FOUND = "ORDER_ERROR_NOT_FOUND",
-  /** Order was submitted with an invalid or missing party ID */
-  ORDER_ERROR_INVALID_PARTY_ID = "ORDER_ERROR_INVALID_PARTY_ID",
-  /** Order was submitted for a market that has closed */
-  ORDER_ERROR_MARKET_CLOSED = "ORDER_ERROR_MARKET_CLOSED",
-  /** Order was submitted, but the party did not have enough collateral to cover the order */
-  ORDER_ERROR_MARGIN_CHECK_FAILED = "ORDER_ERROR_MARGIN_CHECK_FAILED",
-  /** Order was submitted, but the party did not have an account for this asset */
-  ORDER_ERROR_MISSING_GENERAL_ACCOUNT = "ORDER_ERROR_MISSING_GENERAL_ACCOUNT",
-  /** Unspecified internal error */
-  ORDER_ERROR_INTERNAL_ERROR = "ORDER_ERROR_INTERNAL_ERROR",
-  /** Order was submitted with an invalid or missing size (e.g. 0) */
-  ORDER_ERROR_INVALID_SIZE = "ORDER_ERROR_INVALID_SIZE",
-  /** Order was submitted with an invalid persistence for its type */
-  ORDER_ERROR_INVALID_PERSISTENCE = "ORDER_ERROR_INVALID_PERSISTENCE",
-  /** Order was submitted with an invalid type field */
-  ORDER_ERROR_INVALID_TYPE = "ORDER_ERROR_INVALID_TYPE",
-  /** Order was stopped as it would have traded with another order submitted from the same party */
-  ORDER_ERROR_SELF_TRADING = "ORDER_ERROR_SELF_TRADING",
-  /** Order was submitted, but the party did not have enough collateral to cover the fees for the order */
-  ORDER_ERROR_INSUFFICIENT_FUNDS_TO_PAY_FEES = "ORDER_ERROR_INSUFFICIENT_FUNDS_TO_PAY_FEES",
-  /** Order was submitted with an incorrect or invalid market type */
-  ORDER_ERROR_INCORRECT_MARKET_TYPE = "ORDER_ERROR_INCORRECT_MARKET_TYPE",
-  /** Order was submitted with invalid time in force */
-  ORDER_ERROR_INVALID_TIME_IN_FORCE = "ORDER_ERROR_INVALID_TIME_IN_FORCE",
-  /** Good For Normal order has reached the market when it is in auction mode */
-  ORDER_ERROR_CANNOT_SEND_GFN_ORDER_DURING_AN_AUCTION = "ORDER_ERROR_CANNOT_SEND_GFN_ORDER_DURING_AN_AUCTION",
-  /** Good For Auction order has reached the market when it is in continuous trading mode */
-  ORDER_ERROR_CANNOT_SEND_GFA_ORDER_DURING_CONTINUOUS_TRADING = "ORDER_ERROR_CANNOT_SEND_GFA_ORDER_DURING_CONTINUOUS_TRADING",
-  /** Attempt to amend order to GTT without ExpiryAt */
-  ORDER_ERROR_CANNOT_AMEND_TO_GTT_WITHOUT_EXPIRYAT = "ORDER_ERROR_CANNOT_AMEND_TO_GTT_WITHOUT_EXPIRYAT",
-  /** Attempt to amend ExpiryAt to a value before CreatedAt */
-  ORDER_ERROR_EXPIRYAT_BEFORE_CREATEDAT = "ORDER_ERROR_EXPIRYAT_BEFORE_CREATEDAT",
-  /** Attempt to amend to GTC without an ExpiryAt value */
-  ORDER_ERROR_CANNOT_HAVE_GTC_AND_EXPIRYAT = "ORDER_ERROR_CANNOT_HAVE_GTC_AND_EXPIRYAT",
-  /** Amending to FOK or IOC is invalid */
-  ORDER_ERROR_CANNOT_AMEND_TO_FOK_OR_IOC = "ORDER_ERROR_CANNOT_AMEND_TO_FOK_OR_IOC",
-  /** Amending to GFA or GFN is invalid */
-  ORDER_ERROR_CANNOT_AMEND_TO_GFA_OR_GFN = "ORDER_ERROR_CANNOT_AMEND_TO_GFA_OR_GFN",
-  /** Amending from GFA or GFN is invalid */
-  ORDER_ERROR_CANNOT_AMEND_FROM_GFA_OR_GFN = "ORDER_ERROR_CANNOT_AMEND_FROM_GFA_OR_GFN",
-  /** IOC orders are not allowed during auction */
-  ORDER_ERROR_CANNOT_SEND_IOC_ORDER_DURING_AUCTION = "ORDER_ERROR_CANNOT_SEND_IOC_ORDER_DURING_AUCTION",
-  /** FOK orders are not allowed during auction */
-  ORDER_ERROR_CANNOT_SEND_FOK_ORDER_DURING_AUCTION = "ORDER_ERROR_CANNOT_SEND_FOK_ORDER_DURING_AUCTION",
-  /** Pegged orders must be LIMIT orders */
-  ORDER_ERROR_MUST_BE_LIMIT_ORDER = "ORDER_ERROR_MUST_BE_LIMIT_ORDER",
-  /** Pegged orders can only have TIF GTC or GTT */
-  ORDER_ERROR_MUST_BE_GTT_OR_GTC = "ORDER_ERROR_MUST_BE_GTT_OR_GTC",
-  /** Pegged order must have a reference price */
-  ORDER_ERROR_WITHOUT_REFERENCE_PRICE = "ORDER_ERROR_WITHOUT_REFERENCE_PRICE",
-  /** Buy pegged order cannot reference best ask price */
-  ORDER_ERROR_BUY_CANNOT_REFERENCE_BEST_ASK_PRICE = "ORDER_ERROR_BUY_CANNOT_REFERENCE_BEST_ASK_PRICE",
-  /** Pegged order offset must be >= 0 */
-  ORDER_ERROR_OFFSET_MUST_BE_GREATER_OR_EQUAL_TO_ZERO = "ORDER_ERROR_OFFSET_MUST_BE_GREATER_OR_EQUAL_TO_ZERO",
-  /** Sell pegged order cannot reference best bid price */
-  ORDER_ERROR_SELL_CANNOT_REFERENCE_BEST_BID_PRICE = "ORDER_ERROR_SELL_CANNOT_REFERENCE_BEST_BID_PRICE",
-  /** Pegged order offset must be > zero */
-  ORDER_ERROR_OFFSET_MUST_BE_GREATER_THAN_ZERO = "ORDER_ERROR_OFFSET_MUST_BE_GREATER_THAN_ZERO",
-  /** Party has an insufficient balance, or does not have
+    ORDER_ERROR_INVALID_EXPIRATION_DATETIME = "ORDER_ERROR_INVALID_EXPIRATION_DATETIME",
+    /** Order was submitted or amended with an invalid reference field */
+    ORDER_ERROR_INVALID_ORDER_REFERENCE = "ORDER_ERROR_INVALID_ORDER_REFERENCE",
+    /** Order amend was submitted for an order field that cannot not be amended (e.g. order ID) */
+    ORDER_ERROR_EDIT_NOT_ALLOWED = "ORDER_ERROR_EDIT_NOT_ALLOWED",
+    /** Amend failure because amend details do not match original order */
+    ORDER_ERROR_AMEND_FAILURE = "ORDER_ERROR_AMEND_FAILURE",
+    /** Order not found in an order book or store */
+    ORDER_ERROR_NOT_FOUND = "ORDER_ERROR_NOT_FOUND",
+    /** Order was submitted with an invalid or missing party ID */
+    ORDER_ERROR_INVALID_PARTY_ID = "ORDER_ERROR_INVALID_PARTY_ID",
+    /** Order was submitted for a market that has closed */
+    ORDER_ERROR_MARKET_CLOSED = "ORDER_ERROR_MARKET_CLOSED",
+    /** Order was submitted, but the party did not have enough collateral to cover the order */
+    ORDER_ERROR_MARGIN_CHECK_FAILED = "ORDER_ERROR_MARGIN_CHECK_FAILED",
+    /** Order was submitted, but the party did not have an account for this asset */
+    ORDER_ERROR_MISSING_GENERAL_ACCOUNT = "ORDER_ERROR_MISSING_GENERAL_ACCOUNT",
+    /** Unspecified internal error */
+    ORDER_ERROR_INTERNAL_ERROR = "ORDER_ERROR_INTERNAL_ERROR",
+    /** Order was submitted with an invalid or missing size (e.g. 0) */
+    ORDER_ERROR_INVALID_SIZE = "ORDER_ERROR_INVALID_SIZE",
+    /** Order was submitted with an invalid persistence for its type */
+    ORDER_ERROR_INVALID_PERSISTENCE = "ORDER_ERROR_INVALID_PERSISTENCE",
+    /** Order was submitted with an invalid type field */
+    ORDER_ERROR_INVALID_TYPE = "ORDER_ERROR_INVALID_TYPE",
+    /** Order was stopped as it would have traded with another order submitted from the same party */
+    ORDER_ERROR_SELF_TRADING = "ORDER_ERROR_SELF_TRADING",
+    /** Order was submitted, but the party did not have enough collateral to cover the fees for the order */
+    ORDER_ERROR_INSUFFICIENT_FUNDS_TO_PAY_FEES = "ORDER_ERROR_INSUFFICIENT_FUNDS_TO_PAY_FEES",
+    /** Order was submitted with an incorrect or invalid market type */
+    ORDER_ERROR_INCORRECT_MARKET_TYPE = "ORDER_ERROR_INCORRECT_MARKET_TYPE",
+    /** Order was submitted with invalid time in force */
+    ORDER_ERROR_INVALID_TIME_IN_FORCE = "ORDER_ERROR_INVALID_TIME_IN_FORCE",
+    /** Good For Normal order has reached the market when it is in auction mode */
+    ORDER_ERROR_CANNOT_SEND_GFN_ORDER_DURING_AN_AUCTION = "ORDER_ERROR_CANNOT_SEND_GFN_ORDER_DURING_AN_AUCTION",
+    /** Good For Auction order has reached the market when it is in continuous trading mode */
+    ORDER_ERROR_CANNOT_SEND_GFA_ORDER_DURING_CONTINUOUS_TRADING = "ORDER_ERROR_CANNOT_SEND_GFA_ORDER_DURING_CONTINUOUS_TRADING",
+    /** Attempt to amend order to GTT without ExpiryAt */
+    ORDER_ERROR_CANNOT_AMEND_TO_GTT_WITHOUT_EXPIRYAT = "ORDER_ERROR_CANNOT_AMEND_TO_GTT_WITHOUT_EXPIRYAT",
+    /** Attempt to amend ExpiryAt to a value before CreatedAt */
+    ORDER_ERROR_EXPIRYAT_BEFORE_CREATEDAT = "ORDER_ERROR_EXPIRYAT_BEFORE_CREATEDAT",
+    /** Attempt to amend to GTC without an ExpiryAt value */
+    ORDER_ERROR_CANNOT_HAVE_GTC_AND_EXPIRYAT = "ORDER_ERROR_CANNOT_HAVE_GTC_AND_EXPIRYAT",
+    /** Amending to FOK or IOC is invalid */
+    ORDER_ERROR_CANNOT_AMEND_TO_FOK_OR_IOC = "ORDER_ERROR_CANNOT_AMEND_TO_FOK_OR_IOC",
+    /** Amending to GFA or GFN is invalid */
+    ORDER_ERROR_CANNOT_AMEND_TO_GFA_OR_GFN = "ORDER_ERROR_CANNOT_AMEND_TO_GFA_OR_GFN",
+    /** Amending from GFA or GFN is invalid */
+    ORDER_ERROR_CANNOT_AMEND_FROM_GFA_OR_GFN = "ORDER_ERROR_CANNOT_AMEND_FROM_GFA_OR_GFN",
+    /** IOC orders are not allowed during auction */
+    ORDER_ERROR_CANNOT_SEND_IOC_ORDER_DURING_AUCTION = "ORDER_ERROR_CANNOT_SEND_IOC_ORDER_DURING_AUCTION",
+    /** FOK orders are not allowed during auction */
+    ORDER_ERROR_CANNOT_SEND_FOK_ORDER_DURING_AUCTION = "ORDER_ERROR_CANNOT_SEND_FOK_ORDER_DURING_AUCTION",
+    /** Pegged orders must be LIMIT orders */
+    ORDER_ERROR_MUST_BE_LIMIT_ORDER = "ORDER_ERROR_MUST_BE_LIMIT_ORDER",
+    /** Pegged orders can only have TIF GTC or GTT */
+    ORDER_ERROR_MUST_BE_GTT_OR_GTC = "ORDER_ERROR_MUST_BE_GTT_OR_GTC",
+    /** Pegged order must have a reference price */
+    ORDER_ERROR_WITHOUT_REFERENCE_PRICE = "ORDER_ERROR_WITHOUT_REFERENCE_PRICE",
+    /** Buy pegged order cannot reference best ask price */
+    ORDER_ERROR_BUY_CANNOT_REFERENCE_BEST_ASK_PRICE = "ORDER_ERROR_BUY_CANNOT_REFERENCE_BEST_ASK_PRICE",
+    /** Pegged order offset must be >= 0 */
+    ORDER_ERROR_OFFSET_MUST_BE_GREATER_OR_EQUAL_TO_ZERO = "ORDER_ERROR_OFFSET_MUST_BE_GREATER_OR_EQUAL_TO_ZERO",
+    /** Sell pegged order cannot reference best bid price */
+    ORDER_ERROR_SELL_CANNOT_REFERENCE_BEST_BID_PRICE = "ORDER_ERROR_SELL_CANNOT_REFERENCE_BEST_BID_PRICE",
+    /** Pegged order offset must be > zero */
+    ORDER_ERROR_OFFSET_MUST_BE_GREATER_THAN_ZERO = "ORDER_ERROR_OFFSET_MUST_BE_GREATER_THAN_ZERO",
+    /** Party has an insufficient balance, or does not have
   a general account to submit the order (no deposits made
   for the required asset) */
-  ORDER_ERROR_INSUFFICIENT_ASSET_BALANCE = "ORDER_ERROR_INSUFFICIENT_ASSET_BALANCE",
-  /** Cannot amend details of a non pegged details */
-  ORDER_ERROR_CANNOT_AMEND_PEGGED_ORDER_DETAILS_ON_NON_PEGGED_ORDER = "ORDER_ERROR_CANNOT_AMEND_PEGGED_ORDER_DETAILS_ON_NON_PEGGED_ORDER",
-  /** Could not re-price a pegged order because a market price is unavailable */
-  ORDER_ERROR_UNABLE_TO_REPRICE_PEGGED_ORDER = "ORDER_ERROR_UNABLE_TO_REPRICE_PEGGED_ORDER",
-  /** It is not possible to amend the price of an existing pegged order */
-  ORDER_ERROR_UNABLE_TO_AMEND_PRICE_ON_PEGGED_ORDER = "ORDER_ERROR_UNABLE_TO_AMEND_PRICE_ON_PEGGED_ORDER",
-  /** FOK, IOC, or GFN order was rejected because it resulted in trades outside the price bounds */
-  ORDER_ERROR_NON_PERSISTENT_ORDER_OUT_OF_PRICE_BOUNDS = "ORDER_ERROR_NON_PERSISTENT_ORDER_OUT_OF_PRICE_BOUNDS",
-  /** Unable to submit pegged order, temporarily too many pegged orders across all markets */
-  ORDER_ERROR_TOO_MANY_PEGGED_ORDERS = "ORDER_ERROR_TOO_MANY_PEGGED_ORDERS",
-  /** Post order would trade */
-  ORDER_ERROR_POST_ONLY_ORDER_WOULD_TRADE = "ORDER_ERROR_POST_ONLY_ORDER_WOULD_TRADE",
-  /** Post order would trade */
-  ORDER_ERROR_REDUCE_ONLY_ORDER_WOULD_NOT_REDUCE_POSITION = "ORDER_ERROR_REDUCE_ONLY_ORDER_WOULD_NOT_REDUCE_POSITION",
-  /** Isolated margin check failed */
-  ORDER_ERROR_ISOLATED_MARGIN_CHECK_FAILED = "ORDER_ERROR_ISOLATED_MARGIN_CHECK_FAILED",
-  /** In isolated margin pegged orders are rejected */
-  ORDER_ERROR_PEGGED_ORDERS_NOT_ALLOWED_IN_ISOLATED_MARGIN_MODE = "ORDER_ERROR_PEGGED_ORDERS_NOT_ALLOWED_IN_ISOLATED_MARGIN_MODE",
-  /** Order price does not respect market's required tick size */
-  ORDER_ERROR_PRICE_NOT_IN_TICK_SIZE = "ORDER_ERROR_PRICE_NOT_IN_TICK_SIZE"
-}
+    ORDER_ERROR_INSUFFICIENT_ASSET_BALANCE = "ORDER_ERROR_INSUFFICIENT_ASSET_BALANCE",
+    /** Cannot amend details of a non pegged details */
+    ORDER_ERROR_CANNOT_AMEND_PEGGED_ORDER_DETAILS_ON_NON_PEGGED_ORDER = "ORDER_ERROR_CANNOT_AMEND_PEGGED_ORDER_DETAILS_ON_NON_PEGGED_ORDER",
+    /** Could not re-price a pegged order because a market price is unavailable */
+    ORDER_ERROR_UNABLE_TO_REPRICE_PEGGED_ORDER = "ORDER_ERROR_UNABLE_TO_REPRICE_PEGGED_ORDER",
+    /** It is not possible to amend the price of an existing pegged order */
+    ORDER_ERROR_UNABLE_TO_AMEND_PRICE_ON_PEGGED_ORDER = "ORDER_ERROR_UNABLE_TO_AMEND_PRICE_ON_PEGGED_ORDER",
+    /** FOK, IOC, or GFN order was rejected because it resulted in trades outside the price bounds */
+    ORDER_ERROR_NON_PERSISTENT_ORDER_OUT_OF_PRICE_BOUNDS = "ORDER_ERROR_NON_PERSISTENT_ORDER_OUT_OF_PRICE_BOUNDS",
+    /** Unable to submit pegged order, temporarily too many pegged orders across all markets */
+    ORDER_ERROR_TOO_MANY_PEGGED_ORDERS = "ORDER_ERROR_TOO_MANY_PEGGED_ORDERS",
+    /** Post order would trade */
+    ORDER_ERROR_POST_ONLY_ORDER_WOULD_TRADE = "ORDER_ERROR_POST_ONLY_ORDER_WOULD_TRADE",
+    /** Post order would trade */
+    ORDER_ERROR_REDUCE_ONLY_ORDER_WOULD_NOT_REDUCE_POSITION = "ORDER_ERROR_REDUCE_ONLY_ORDER_WOULD_NOT_REDUCE_POSITION",
+    /** Isolated margin check failed */
+    ORDER_ERROR_ISOLATED_MARGIN_CHECK_FAILED = "ORDER_ERROR_ISOLATED_MARGIN_CHECK_FAILED",
+    /** In isolated margin pegged orders are rejected */
+    ORDER_ERROR_PEGGED_ORDERS_NOT_ALLOWED_IN_ISOLATED_MARGIN_MODE = "ORDER_ERROR_PEGGED_ORDERS_NOT_ALLOWED_IN_ISOLATED_MARGIN_MODE",
+    /** Order price does not respect market's required tick size */
+    ORDER_ERROR_PRICE_NOT_IN_TICK_SIZE = "ORDER_ERROR_PRICE_NOT_IN_TICK_SIZE",
+  }
 
-/** OrderError codes are returned in the Order.reason field - If there is an issue
+  /** OrderError codes are returned in the Order.reason field - If there is an issue
 with an order during its life-cycle, it will be marked with `status.ORDER_STATUS_REJECTED`*/
-export enum OrderErrorNumber {
-  /** Default value, no error reported */
-  ORDER_ERROR_UNSPECIFIED = 0,
-  /** Order was submitted for a market that does not exist */
-  ORDER_ERROR_INVALID_MARKET_ID = 1,
-  /** Order was submitted with an invalid ID */
-  ORDER_ERROR_INVALID_ORDER_ID = 2,
-  /** Order was amended with a sequence number that was not previous version + 1 */
-  ORDER_ERROR_OUT_OF_SEQUENCE = 3,
-  /** Order was amended with an invalid remaining size (e.g. remaining greater than total size) */
-  ORDER_ERROR_INVALID_REMAINING_SIZE = 4,
-  /** Node was unable to get Vega (blockchain) time */
-  ORDER_ERROR_TIME_FAILURE = 5,
-  /** Failed to remove an order from the book */
-  ORDER_ERROR_REMOVAL_FAILURE = 6,
-  /** Order with `TimeInForce.TIME_IN_FORCE_GTT` was submitted or amended
+  export enum OrderErrorNumber {
+    /** Default value, no error reported */
+    ORDER_ERROR_UNSPECIFIED = 0,
+    /** Order was submitted for a market that does not exist */
+    ORDER_ERROR_INVALID_MARKET_ID = 1,
+    /** Order was submitted with an invalid ID */
+    ORDER_ERROR_INVALID_ORDER_ID = 2,
+    /** Order was amended with a sequence number that was not previous version + 1 */
+    ORDER_ERROR_OUT_OF_SEQUENCE = 3,
+    /** Order was amended with an invalid remaining size (e.g. remaining greater than total size) */
+    ORDER_ERROR_INVALID_REMAINING_SIZE = 4,
+    /** Node was unable to get Vega (blockchain) time */
+    ORDER_ERROR_TIME_FAILURE = 5,
+    /** Failed to remove an order from the book */
+    ORDER_ERROR_REMOVAL_FAILURE = 6,
+    /** Order with `TimeInForce.TIME_IN_FORCE_GTT` was submitted or amended
   with an expiration that was badly formatted or otherwise invalid */
-  ORDER_ERROR_INVALID_EXPIRATION_DATETIME = 7,
-  /** Order was submitted or amended with an invalid reference field */
-  ORDER_ERROR_INVALID_ORDER_REFERENCE = 8,
-  /** Order amend was submitted for an order field that cannot not be amended (e.g. order ID) */
-  ORDER_ERROR_EDIT_NOT_ALLOWED = 9,
-  /** Amend failure because amend details do not match original order */
-  ORDER_ERROR_AMEND_FAILURE = 10,
-  /** Order not found in an order book or store */
-  ORDER_ERROR_NOT_FOUND = 11,
-  /** Order was submitted with an invalid or missing party ID */
-  ORDER_ERROR_INVALID_PARTY_ID = 12,
-  /** Order was submitted for a market that has closed */
-  ORDER_ERROR_MARKET_CLOSED = 13,
-  /** Order was submitted, but the party did not have enough collateral to cover the order */
-  ORDER_ERROR_MARGIN_CHECK_FAILED = 14,
-  /** Order was submitted, but the party did not have an account for this asset */
-  ORDER_ERROR_MISSING_GENERAL_ACCOUNT = 15,
-  /** Unspecified internal error */
-  ORDER_ERROR_INTERNAL_ERROR = 16,
-  /** Order was submitted with an invalid or missing size (e.g. 0) */
-  ORDER_ERROR_INVALID_SIZE = 17,
-  /** Order was submitted with an invalid persistence for its type */
-  ORDER_ERROR_INVALID_PERSISTENCE = 18,
-  /** Order was submitted with an invalid type field */
-  ORDER_ERROR_INVALID_TYPE = 19,
-  /** Order was stopped as it would have traded with another order submitted from the same party */
-  ORDER_ERROR_SELF_TRADING = 20,
-  /** Order was submitted, but the party did not have enough collateral to cover the fees for the order */
-  ORDER_ERROR_INSUFFICIENT_FUNDS_TO_PAY_FEES = 21,
-  /** Order was submitted with an incorrect or invalid market type */
-  ORDER_ERROR_INCORRECT_MARKET_TYPE = 22,
-  /** Order was submitted with invalid time in force */
-  ORDER_ERROR_INVALID_TIME_IN_FORCE = 23,
-  /** Good For Normal order has reached the market when it is in auction mode */
-  ORDER_ERROR_CANNOT_SEND_GFN_ORDER_DURING_AN_AUCTION = 24,
-  /** Good For Auction order has reached the market when it is in continuous trading mode */
-  ORDER_ERROR_CANNOT_SEND_GFA_ORDER_DURING_CONTINUOUS_TRADING = 25,
-  /** Attempt to amend order to GTT without ExpiryAt */
-  ORDER_ERROR_CANNOT_AMEND_TO_GTT_WITHOUT_EXPIRYAT = 26,
-  /** Attempt to amend ExpiryAt to a value before CreatedAt */
-  ORDER_ERROR_EXPIRYAT_BEFORE_CREATEDAT = 27,
-  /** Attempt to amend to GTC without an ExpiryAt value */
-  ORDER_ERROR_CANNOT_HAVE_GTC_AND_EXPIRYAT = 28,
-  /** Amending to FOK or IOC is invalid */
-  ORDER_ERROR_CANNOT_AMEND_TO_FOK_OR_IOC = 29,
-  /** Amending to GFA or GFN is invalid */
-  ORDER_ERROR_CANNOT_AMEND_TO_GFA_OR_GFN = 30,
-  /** Amending from GFA or GFN is invalid */
-  ORDER_ERROR_CANNOT_AMEND_FROM_GFA_OR_GFN = 31,
-  /** IOC orders are not allowed during auction */
-  ORDER_ERROR_CANNOT_SEND_IOC_ORDER_DURING_AUCTION = 32,
-  /** FOK orders are not allowed during auction */
-  ORDER_ERROR_CANNOT_SEND_FOK_ORDER_DURING_AUCTION = 33,
-  /** Pegged orders must be LIMIT orders */
-  ORDER_ERROR_MUST_BE_LIMIT_ORDER = 34,
-  /** Pegged orders can only have TIF GTC or GTT */
-  ORDER_ERROR_MUST_BE_GTT_OR_GTC = 35,
-  /** Pegged order must have a reference price */
-  ORDER_ERROR_WITHOUT_REFERENCE_PRICE = 36,
-  /** Buy pegged order cannot reference best ask price */
-  ORDER_ERROR_BUY_CANNOT_REFERENCE_BEST_ASK_PRICE = 37,
-  /** Pegged order offset must be >= 0 */
-  ORDER_ERROR_OFFSET_MUST_BE_GREATER_OR_EQUAL_TO_ZERO = 40,
-  /** Sell pegged order cannot reference best bid price */
-  ORDER_ERROR_SELL_CANNOT_REFERENCE_BEST_BID_PRICE = 41,
-  /** Pegged order offset must be > zero */
-  ORDER_ERROR_OFFSET_MUST_BE_GREATER_THAN_ZERO = 42,
-  /** Party has an insufficient balance, or does not have
+    ORDER_ERROR_INVALID_EXPIRATION_DATETIME = 7,
+    /** Order was submitted or amended with an invalid reference field */
+    ORDER_ERROR_INVALID_ORDER_REFERENCE = 8,
+    /** Order amend was submitted for an order field that cannot not be amended (e.g. order ID) */
+    ORDER_ERROR_EDIT_NOT_ALLOWED = 9,
+    /** Amend failure because amend details do not match original order */
+    ORDER_ERROR_AMEND_FAILURE = 10,
+    /** Order not found in an order book or store */
+    ORDER_ERROR_NOT_FOUND = 11,
+    /** Order was submitted with an invalid or missing party ID */
+    ORDER_ERROR_INVALID_PARTY_ID = 12,
+    /** Order was submitted for a market that has closed */
+    ORDER_ERROR_MARKET_CLOSED = 13,
+    /** Order was submitted, but the party did not have enough collateral to cover the order */
+    ORDER_ERROR_MARGIN_CHECK_FAILED = 14,
+    /** Order was submitted, but the party did not have an account for this asset */
+    ORDER_ERROR_MISSING_GENERAL_ACCOUNT = 15,
+    /** Unspecified internal error */
+    ORDER_ERROR_INTERNAL_ERROR = 16,
+    /** Order was submitted with an invalid or missing size (e.g. 0) */
+    ORDER_ERROR_INVALID_SIZE = 17,
+    /** Order was submitted with an invalid persistence for its type */
+    ORDER_ERROR_INVALID_PERSISTENCE = 18,
+    /** Order was submitted with an invalid type field */
+    ORDER_ERROR_INVALID_TYPE = 19,
+    /** Order was stopped as it would have traded with another order submitted from the same party */
+    ORDER_ERROR_SELF_TRADING = 20,
+    /** Order was submitted, but the party did not have enough collateral to cover the fees for the order */
+    ORDER_ERROR_INSUFFICIENT_FUNDS_TO_PAY_FEES = 21,
+    /** Order was submitted with an incorrect or invalid market type */
+    ORDER_ERROR_INCORRECT_MARKET_TYPE = 22,
+    /** Order was submitted with invalid time in force */
+    ORDER_ERROR_INVALID_TIME_IN_FORCE = 23,
+    /** Good For Normal order has reached the market when it is in auction mode */
+    ORDER_ERROR_CANNOT_SEND_GFN_ORDER_DURING_AN_AUCTION = 24,
+    /** Good For Auction order has reached the market when it is in continuous trading mode */
+    ORDER_ERROR_CANNOT_SEND_GFA_ORDER_DURING_CONTINUOUS_TRADING = 25,
+    /** Attempt to amend order to GTT without ExpiryAt */
+    ORDER_ERROR_CANNOT_AMEND_TO_GTT_WITHOUT_EXPIRYAT = 26,
+    /** Attempt to amend ExpiryAt to a value before CreatedAt */
+    ORDER_ERROR_EXPIRYAT_BEFORE_CREATEDAT = 27,
+    /** Attempt to amend to GTC without an ExpiryAt value */
+    ORDER_ERROR_CANNOT_HAVE_GTC_AND_EXPIRYAT = 28,
+    /** Amending to FOK or IOC is invalid */
+    ORDER_ERROR_CANNOT_AMEND_TO_FOK_OR_IOC = 29,
+    /** Amending to GFA or GFN is invalid */
+    ORDER_ERROR_CANNOT_AMEND_TO_GFA_OR_GFN = 30,
+    /** Amending from GFA or GFN is invalid */
+    ORDER_ERROR_CANNOT_AMEND_FROM_GFA_OR_GFN = 31,
+    /** IOC orders are not allowed during auction */
+    ORDER_ERROR_CANNOT_SEND_IOC_ORDER_DURING_AUCTION = 32,
+    /** FOK orders are not allowed during auction */
+    ORDER_ERROR_CANNOT_SEND_FOK_ORDER_DURING_AUCTION = 33,
+    /** Pegged orders must be LIMIT orders */
+    ORDER_ERROR_MUST_BE_LIMIT_ORDER = 34,
+    /** Pegged orders can only have TIF GTC or GTT */
+    ORDER_ERROR_MUST_BE_GTT_OR_GTC = 35,
+    /** Pegged order must have a reference price */
+    ORDER_ERROR_WITHOUT_REFERENCE_PRICE = 36,
+    /** Buy pegged order cannot reference best ask price */
+    ORDER_ERROR_BUY_CANNOT_REFERENCE_BEST_ASK_PRICE = 37,
+    /** Pegged order offset must be >= 0 */
+    ORDER_ERROR_OFFSET_MUST_BE_GREATER_OR_EQUAL_TO_ZERO = 40,
+    /** Sell pegged order cannot reference best bid price */
+    ORDER_ERROR_SELL_CANNOT_REFERENCE_BEST_BID_PRICE = 41,
+    /** Pegged order offset must be > zero */
+    ORDER_ERROR_OFFSET_MUST_BE_GREATER_THAN_ZERO = 42,
+    /** Party has an insufficient balance, or does not have
   a general account to submit the order (no deposits made
   for the required asset) */
-  ORDER_ERROR_INSUFFICIENT_ASSET_BALANCE = 43,
-  /** Cannot amend details of a non pegged details */
-  ORDER_ERROR_CANNOT_AMEND_PEGGED_ORDER_DETAILS_ON_NON_PEGGED_ORDER = 44,
-  /** Could not re-price a pegged order because a market price is unavailable */
-  ORDER_ERROR_UNABLE_TO_REPRICE_PEGGED_ORDER = 45,
-  /** It is not possible to amend the price of an existing pegged order */
-  ORDER_ERROR_UNABLE_TO_AMEND_PRICE_ON_PEGGED_ORDER = 46,
-  /** FOK, IOC, or GFN order was rejected because it resulted in trades outside the price bounds */
-  ORDER_ERROR_NON_PERSISTENT_ORDER_OUT_OF_PRICE_BOUNDS = 47,
-  /** Unable to submit pegged order, temporarily too many pegged orders across all markets */
-  ORDER_ERROR_TOO_MANY_PEGGED_ORDERS = 48,
-  /** Post order would trade */
-  ORDER_ERROR_POST_ONLY_ORDER_WOULD_TRADE = 49,
-  /** Post order would trade */
-  ORDER_ERROR_REDUCE_ONLY_ORDER_WOULD_NOT_REDUCE_POSITION = 50,
-  /** Isolated margin check failed */
-  ORDER_ERROR_ISOLATED_MARGIN_CHECK_FAILED = 51,
-  /** In isolated margin pegged orders are rejected */
-  ORDER_ERROR_PEGGED_ORDERS_NOT_ALLOWED_IN_ISOLATED_MARGIN_MODE = 52,
-  /** Order price does not respect market's required tick size */
-  ORDER_ERROR_PRICE_NOT_IN_TICK_SIZE = 53
-}
+    ORDER_ERROR_INSUFFICIENT_ASSET_BALANCE = 43,
+    /** Cannot amend details of a non pegged details */
+    ORDER_ERROR_CANNOT_AMEND_PEGGED_ORDER_DETAILS_ON_NON_PEGGED_ORDER = 44,
+    /** Could not re-price a pegged order because a market price is unavailable */
+    ORDER_ERROR_UNABLE_TO_REPRICE_PEGGED_ORDER = 45,
+    /** It is not possible to amend the price of an existing pegged order */
+    ORDER_ERROR_UNABLE_TO_AMEND_PRICE_ON_PEGGED_ORDER = 46,
+    /** FOK, IOC, or GFN order was rejected because it resulted in trades outside the price bounds */
+    ORDER_ERROR_NON_PERSISTENT_ORDER_OUT_OF_PRICE_BOUNDS = 47,
+    /** Unable to submit pegged order, temporarily too many pegged orders across all markets */
+    ORDER_ERROR_TOO_MANY_PEGGED_ORDERS = 48,
+    /** Post order would trade */
+    ORDER_ERROR_POST_ONLY_ORDER_WOULD_TRADE = 49,
+    /** Post order would trade */
+    ORDER_ERROR_REDUCE_ONLY_ORDER_WOULD_NOT_REDUCE_POSITION = 50,
+    /** Isolated margin check failed */
+    ORDER_ERROR_ISOLATED_MARGIN_CHECK_FAILED = 51,
+    /** In isolated margin pegged orders are rejected */
+    ORDER_ERROR_PEGGED_ORDERS_NOT_ALLOWED_IN_ISOLATED_MARGIN_MODE = 52,
+    /** Order price does not respect market's required tick size */
+    ORDER_ERROR_PRICE_NOT_IN_TICK_SIZE = 53,
+  }
 
-/** Pegged reference defines which price point a pegged order is linked to - meaning
+  /** Pegged reference defines which price point a pegged order is linked to - meaning
 the price for a pegged order is calculated from the value of the reference price point*/
-export enum PeggedReference {
-  /** Default value for PeggedReference, no reference given */
-  PEGGED_REFERENCE_UNSPECIFIED = "PEGGED_REFERENCE_UNSPECIFIED",
-  /** Mid price reference */
-  PEGGED_REFERENCE_MID = "PEGGED_REFERENCE_MID",
-  /** Best bid price reference */
-  PEGGED_REFERENCE_BEST_BID = "PEGGED_REFERENCE_BEST_BID",
-  /** Best ask price reference */
-  PEGGED_REFERENCE_BEST_ASK = "PEGGED_REFERENCE_BEST_ASK"
-}
+  export enum PeggedReference {
+    /** Default value for PeggedReference, no reference given */
+    PEGGED_REFERENCE_UNSPECIFIED = "PEGGED_REFERENCE_UNSPECIFIED",
+    /** Mid price reference */
+    PEGGED_REFERENCE_MID = "PEGGED_REFERENCE_MID",
+    /** Best bid price reference */
+    PEGGED_REFERENCE_BEST_BID = "PEGGED_REFERENCE_BEST_BID",
+    /** Best ask price reference */
+    PEGGED_REFERENCE_BEST_ASK = "PEGGED_REFERENCE_BEST_ASK",
+  }
 
-/** Pegged reference defines which price point a pegged order is linked to - meaning
+  /** Pegged reference defines which price point a pegged order is linked to - meaning
 the price for a pegged order is calculated from the value of the reference price point*/
-export enum PeggedReferenceNumber {
-  /** Default value for PeggedReference, no reference given */
-  PEGGED_REFERENCE_UNSPECIFIED = 0,
-  /** Mid price reference */
-  PEGGED_REFERENCE_MID = 1,
-  /** Best bid price reference */
-  PEGGED_REFERENCE_BEST_BID = 2,
-  /** Best ask price reference */
-  PEGGED_REFERENCE_BEST_ASK = 3
-}
+  export enum PeggedReferenceNumber {
+    /** Default value for PeggedReference, no reference given */
+    PEGGED_REFERENCE_UNSPECIFIED = 0,
+    /** Mid price reference */
+    PEGGED_REFERENCE_MID = 1,
+    /** Best bid price reference */
+    PEGGED_REFERENCE_BEST_BID = 2,
+    /** Best ask price reference */
+    PEGGED_REFERENCE_BEST_ASK = 3,
+  }
 
-/** Represents the status of a position*/
-export enum PositionStatus {
-  /**  */
-  POSITION_STATUS_UNSPECIFIED = "POSITION_STATUS_UNSPECIFIED",
-  /**  */
-  POSITION_STATUS_ORDERS_CLOSED = "POSITION_STATUS_ORDERS_CLOSED",
-  /**  */
-  POSITION_STATUS_CLOSED_OUT = "POSITION_STATUS_CLOSED_OUT",
-  /**  */
-  POSITION_STATUS_DISTRESSED = "POSITION_STATUS_DISTRESSED"
-}
+  /** Represents the status of a position*/
+  export enum PositionStatus {
+    /**  */
+    POSITION_STATUS_UNSPECIFIED = "POSITION_STATUS_UNSPECIFIED",
+    /**  */
+    POSITION_STATUS_ORDERS_CLOSED = "POSITION_STATUS_ORDERS_CLOSED",
+    /**  */
+    POSITION_STATUS_CLOSED_OUT = "POSITION_STATUS_CLOSED_OUT",
+    /**  */
+    POSITION_STATUS_DISTRESSED = "POSITION_STATUS_DISTRESSED",
+  }
 
-/** Represents the status of a position*/
-export enum PositionStatusNumber {
-  /**  */
-  POSITION_STATUS_UNSPECIFIED = 0,
-  /**  */
-  POSITION_STATUS_ORDERS_CLOSED = 1,
-  /**  */
-  POSITION_STATUS_CLOSED_OUT = 2,
-  /**  */
-  POSITION_STATUS_DISTRESSED = 4
-}
+  /** Represents the status of a position*/
+  export enum PositionStatusNumber {
+    /**  */
+    POSITION_STATUS_UNSPECIFIED = 0,
+    /**  */
+    POSITION_STATUS_ORDERS_CLOSED = 1,
+    /**  */
+    POSITION_STATUS_CLOSED_OUT = 2,
+    /**  */
+    POSITION_STATUS_DISTRESSED = 4,
+  }
 
-/** Side relates to the direction of an order, to Buy, or Sell*/
-export enum Side {
-  /** Default value, always invalid */
-  SIDE_UNSPECIFIED = "SIDE_UNSPECIFIED",
-  /** Buy order */
-  SIDE_BUY = "SIDE_BUY",
-  /** Sell order */
-  SIDE_SELL = "SIDE_SELL"
-}
+  /** Side relates to the direction of an order, to Buy, or Sell*/
+  export enum Side {
+    /** Default value, always invalid */
+    SIDE_UNSPECIFIED = "SIDE_UNSPECIFIED",
+    /** Buy order */
+    SIDE_BUY = "SIDE_BUY",
+    /** Sell order */
+    SIDE_SELL = "SIDE_SELL",
+  }
 
-/** Side relates to the direction of an order, to Buy, or Sell*/
-export enum SideNumber {
-  /** Default value, always invalid */
-  SIDE_UNSPECIFIED = 0,
-  /** Buy order */
-  SIDE_BUY = 1,
-  /** Sell order */
-  SIDE_SELL = 2
-}
+  /** Side relates to the direction of an order, to Buy, or Sell*/
+  export enum SideNumber {
+    /** Default value, always invalid */
+    SIDE_UNSPECIFIED = 0,
+    /** Buy order */
+    SIDE_BUY = 1,
+    /** Sell order */
+    SIDE_SELL = 2,
+  }
 
-/** */
-export enum StopOrderExpiryStrategy {
-  /** Never valid */
-  EXPIRY_STRATEGY_UNSPECIFIED = "EXPIRY_STRATEGY_UNSPECIFIED",
-  /** Stop order should be cancelled if the expiry time is reached. */
-  EXPIRY_STRATEGY_CANCELS = "EXPIRY_STRATEGY_CANCELS",
-  /** Order should be submitted if the expiry time is reached. */
-  EXPIRY_STRATEGY_SUBMIT = "EXPIRY_STRATEGY_SUBMIT"
-}
+  /** */
+  export enum StopOrderExpiryStrategy {
+    /** Never valid */
+    EXPIRY_STRATEGY_UNSPECIFIED = "EXPIRY_STRATEGY_UNSPECIFIED",
+    /** Stop order should be cancelled if the expiry time is reached. */
+    EXPIRY_STRATEGY_CANCELS = "EXPIRY_STRATEGY_CANCELS",
+    /** Order should be submitted if the expiry time is reached. */
+    EXPIRY_STRATEGY_SUBMIT = "EXPIRY_STRATEGY_SUBMIT",
+  }
 
-/** */
-export enum StopOrderExpiryStrategyNumber {
-  /** Never valid */
-  EXPIRY_STRATEGY_UNSPECIFIED = 0,
-  /** Stop order should be cancelled if the expiry time is reached. */
-  EXPIRY_STRATEGY_CANCELS = 1,
-  /** Order should be submitted if the expiry time is reached. */
-  EXPIRY_STRATEGY_SUBMIT = 2
-}
+  /** */
+  export enum StopOrderExpiryStrategyNumber {
+    /** Never valid */
+    EXPIRY_STRATEGY_UNSPECIFIED = 0,
+    /** Stop order should be cancelled if the expiry time is reached. */
+    EXPIRY_STRATEGY_CANCELS = 1,
+    /** Order should be submitted if the expiry time is reached. */
+    EXPIRY_STRATEGY_SUBMIT = 2,
+  }
 
-/** */
-export enum StopOrderRejectionReason {
-  /** Never valid */
-  REJECTION_REASON_UNSPECIFIED = "REJECTION_REASON_UNSPECIFIED",
-  /** Trading is not allowed yet */
-  REJECTION_REASON_TRADING_NOT_ALLOWED = "REJECTION_REASON_TRADING_NOT_ALLOWED",
-  /** Expiry of the stop order is in the past */
-  REJECTION_REASON_EXPIRY_IN_THE_PAST = "REJECTION_REASON_EXPIRY_IN_THE_PAST",
-  /** Stop orders submission must be reduce only */
-  REJECTION_REASON_MUST_BE_REDUCE_ONLY = "REJECTION_REASON_MUST_BE_REDUCE_ONLY",
-  /** Party has reached the maximum stop orders allowed for this market */
-  REJECTION_REASON_MAX_STOP_ORDERS_PER_PARTY_REACHED = "REJECTION_REASON_MAX_STOP_ORDERS_PER_PARTY_REACHED",
-  /** Stop orders are not allowed if there is no open position */
-  REJECTION_REASON_STOP_ORDER_NOT_ALLOWED_WITHOUT_A_POSITION = "REJECTION_REASON_STOP_ORDER_NOT_ALLOWED_WITHOUT_A_POSITION",
-  /** This stop order does not close the position */
-  REJECTION_REASON_STOP_ORDER_NOT_CLOSING_THE_POSITION = "REJECTION_REASON_STOP_ORDER_NOT_CLOSING_THE_POSITION",
-  /** The percentage value for the linked stop order is invalid */
-  REJECTION_REASON_STOP_ORDER_LINKED_PERCENTAGE_INVALID = "REJECTION_REASON_STOP_ORDER_LINKED_PERCENTAGE_INVALID",
-  /** Stop orders are not allowed during the opening auction */
-  REJECTION_REASON_STOP_ORDER_NOT_ALLOWED_DURING_OPENING_AUCTION = "REJECTION_REASON_STOP_ORDER_NOT_ALLOWED_DURING_OPENING_AUCTION",
-  /** Stop OCO orders cannot have the same expiry timestamp */
-  REJECTION_REASON_STOP_ORDER_CANNOT_MATCH_OCO_EXPIRY_TIMES = "REJECTION_REASON_STOP_ORDER_CANNOT_MATCH_OCO_EXPIRY_TIMES",
-  /** Stop orders with a position size override are not supported for spot markets */
-  REJECTION_REASON_STOP_ORDER_SIZE_OVERRIDE_UNSUPPORTED_FOR_SPOT = "REJECTION_REASON_STOP_ORDER_SIZE_OVERRIDE_UNSUPPORTED_FOR_SPOT"
-}
+  /** */
+  export enum StopOrderRejectionReason {
+    /** Never valid */
+    REJECTION_REASON_UNSPECIFIED = "REJECTION_REASON_UNSPECIFIED",
+    /** Trading is not allowed yet */
+    REJECTION_REASON_TRADING_NOT_ALLOWED = "REJECTION_REASON_TRADING_NOT_ALLOWED",
+    /** Expiry of the stop order is in the past */
+    REJECTION_REASON_EXPIRY_IN_THE_PAST = "REJECTION_REASON_EXPIRY_IN_THE_PAST",
+    /** Stop orders submission must be reduce only */
+    REJECTION_REASON_MUST_BE_REDUCE_ONLY = "REJECTION_REASON_MUST_BE_REDUCE_ONLY",
+    /** Party has reached the maximum stop orders allowed for this market */
+    REJECTION_REASON_MAX_STOP_ORDERS_PER_PARTY_REACHED = "REJECTION_REASON_MAX_STOP_ORDERS_PER_PARTY_REACHED",
+    /** Stop orders are not allowed if there is no open position */
+    REJECTION_REASON_STOP_ORDER_NOT_ALLOWED_WITHOUT_A_POSITION = "REJECTION_REASON_STOP_ORDER_NOT_ALLOWED_WITHOUT_A_POSITION",
+    /** This stop order does not close the position */
+    REJECTION_REASON_STOP_ORDER_NOT_CLOSING_THE_POSITION = "REJECTION_REASON_STOP_ORDER_NOT_CLOSING_THE_POSITION",
+    /** The percentage value for the linked stop order is invalid */
+    REJECTION_REASON_STOP_ORDER_LINKED_PERCENTAGE_INVALID = "REJECTION_REASON_STOP_ORDER_LINKED_PERCENTAGE_INVALID",
+    /** Stop orders are not allowed during the opening auction */
+    REJECTION_REASON_STOP_ORDER_NOT_ALLOWED_DURING_OPENING_AUCTION = "REJECTION_REASON_STOP_ORDER_NOT_ALLOWED_DURING_OPENING_AUCTION",
+    /** Stop OCO orders cannot have the same expiry timestamp */
+    REJECTION_REASON_STOP_ORDER_CANNOT_MATCH_OCO_EXPIRY_TIMES = "REJECTION_REASON_STOP_ORDER_CANNOT_MATCH_OCO_EXPIRY_TIMES",
+    /** Stop orders with a position size override are not supported for spot markets */
+    REJECTION_REASON_STOP_ORDER_SIZE_OVERRIDE_UNSUPPORTED_FOR_SPOT = "REJECTION_REASON_STOP_ORDER_SIZE_OVERRIDE_UNSUPPORTED_FOR_SPOT",
+  }
 
-/** */
-export enum StopOrderRejectionReasonNumber {
-  /** Never valid */
-  REJECTION_REASON_UNSPECIFIED = 0,
-  /** Trading is not allowed yet */
-  REJECTION_REASON_TRADING_NOT_ALLOWED = 1,
-  /** Expiry of the stop order is in the past */
-  REJECTION_REASON_EXPIRY_IN_THE_PAST = 2,
-  /** Stop orders submission must be reduce only */
-  REJECTION_REASON_MUST_BE_REDUCE_ONLY = 3,
-  /** Party has reached the maximum stop orders allowed for this market */
-  REJECTION_REASON_MAX_STOP_ORDERS_PER_PARTY_REACHED = 4,
-  /** Stop orders are not allowed if there is no open position */
-  REJECTION_REASON_STOP_ORDER_NOT_ALLOWED_WITHOUT_A_POSITION = 5,
-  /** This stop order does not close the position */
-  REJECTION_REASON_STOP_ORDER_NOT_CLOSING_THE_POSITION = 6,
-  /** The percentage value for the linked stop order is invalid */
-  REJECTION_REASON_STOP_ORDER_LINKED_PERCENTAGE_INVALID = 7,
-  /** Stop orders are not allowed during the opening auction */
-  REJECTION_REASON_STOP_ORDER_NOT_ALLOWED_DURING_OPENING_AUCTION = 8,
-  /** Stop OCO orders cannot have the same expiry timestamp */
-  REJECTION_REASON_STOP_ORDER_CANNOT_MATCH_OCO_EXPIRY_TIMES = 9,
-  /** Stop orders with a position size override are not supported for spot markets */
-  REJECTION_REASON_STOP_ORDER_SIZE_OVERRIDE_UNSUPPORTED_FOR_SPOT = 10
-}
+  /** */
+  export enum StopOrderRejectionReasonNumber {
+    /** Never valid */
+    REJECTION_REASON_UNSPECIFIED = 0,
+    /** Trading is not allowed yet */
+    REJECTION_REASON_TRADING_NOT_ALLOWED = 1,
+    /** Expiry of the stop order is in the past */
+    REJECTION_REASON_EXPIRY_IN_THE_PAST = 2,
+    /** Stop orders submission must be reduce only */
+    REJECTION_REASON_MUST_BE_REDUCE_ONLY = 3,
+    /** Party has reached the maximum stop orders allowed for this market */
+    REJECTION_REASON_MAX_STOP_ORDERS_PER_PARTY_REACHED = 4,
+    /** Stop orders are not allowed if there is no open position */
+    REJECTION_REASON_STOP_ORDER_NOT_ALLOWED_WITHOUT_A_POSITION = 5,
+    /** This stop order does not close the position */
+    REJECTION_REASON_STOP_ORDER_NOT_CLOSING_THE_POSITION = 6,
+    /** The percentage value for the linked stop order is invalid */
+    REJECTION_REASON_STOP_ORDER_LINKED_PERCENTAGE_INVALID = 7,
+    /** Stop orders are not allowed during the opening auction */
+    REJECTION_REASON_STOP_ORDER_NOT_ALLOWED_DURING_OPENING_AUCTION = 8,
+    /** Stop OCO orders cannot have the same expiry timestamp */
+    REJECTION_REASON_STOP_ORDER_CANNOT_MATCH_OCO_EXPIRY_TIMES = 9,
+    /** Stop orders with a position size override are not supported for spot markets */
+    REJECTION_REASON_STOP_ORDER_SIZE_OVERRIDE_UNSUPPORTED_FOR_SPOT = 10,
+  }
 
-/** */
-export enum StopOrderSizeOverrideSetting {
-  /** Never valid */
-  SIZE_OVERRIDE_SETTING_UNSPECIFIED = "SIZE_OVERRIDE_SETTING_UNSPECIFIED",
-  /** No override, the size within the contained normal order submission will be used */
-  SIZE_OVERRIDE_SETTING_NONE = "SIZE_OVERRIDE_SETTING_NONE",
-  /** Use the total position of the trader */
-  SIZE_OVERRIDE_SETTING_POSITION = "SIZE_OVERRIDE_SETTING_POSITION"
-}
+  /** */
+  export enum StopOrderSizeOverrideSetting {
+    /** Never valid */
+    SIZE_OVERRIDE_SETTING_UNSPECIFIED = "SIZE_OVERRIDE_SETTING_UNSPECIFIED",
+    /** No override, the size within the contained normal order submission will be used */
+    SIZE_OVERRIDE_SETTING_NONE = "SIZE_OVERRIDE_SETTING_NONE",
+    /** Use the total position of the trader */
+    SIZE_OVERRIDE_SETTING_POSITION = "SIZE_OVERRIDE_SETTING_POSITION",
+  }
 
-/** */
-export enum StopOrderSizeOverrideSettingNumber {
-  /** Never valid */
-  SIZE_OVERRIDE_SETTING_UNSPECIFIED = 0,
-  /** No override, the size within the contained normal order submission will be used */
-  SIZE_OVERRIDE_SETTING_NONE = 1,
-  /** Use the total position of the trader */
-  SIZE_OVERRIDE_SETTING_POSITION = 2
-}
+  /** */
+  export enum StopOrderSizeOverrideSettingNumber {
+    /** Never valid */
+    SIZE_OVERRIDE_SETTING_UNSPECIFIED = 0,
+    /** No override, the size within the contained normal order submission will be used */
+    SIZE_OVERRIDE_SETTING_NONE = 1,
+    /** Use the total position of the trader */
+    SIZE_OVERRIDE_SETTING_POSITION = 2,
+  }
 
-/** */
-export enum StopOrderStatus {
-  /** Never valid */
-  STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED",
-  /** Pending to be executed once the trigger is breached */
-  STATUS_PENDING = "STATUS_PENDING",
-  /** Cancelled by the user */
-  STATUS_CANCELLED = "STATUS_CANCELLED",
-  /** Stopped by the network, e.g: OCO on the other side has been triggered */
-  STATUS_STOPPED = "STATUS_STOPPED",
-  /** Stop order has been triggered and generated an order */
-  STATUS_TRIGGERED = "STATUS_TRIGGERED",
-  /** Stop order has expired */
-  STATUS_EXPIRED = "STATUS_EXPIRED",
-  /** Stop order was rejected at submission */
-  STATUS_REJECTED = "STATUS_REJECTED"
-}
+  /** */
+  export enum StopOrderStatus {
+    /** Never valid */
+    STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED",
+    /** Pending to be executed once the trigger is breached */
+    STATUS_PENDING = "STATUS_PENDING",
+    /** Cancelled by the user */
+    STATUS_CANCELLED = "STATUS_CANCELLED",
+    /** Stopped by the network, e.g: OCO on the other side has been triggered */
+    STATUS_STOPPED = "STATUS_STOPPED",
+    /** Stop order has been triggered and generated an order */
+    STATUS_TRIGGERED = "STATUS_TRIGGERED",
+    /** Stop order has expired */
+    STATUS_EXPIRED = "STATUS_EXPIRED",
+    /** Stop order was rejected at submission */
+    STATUS_REJECTED = "STATUS_REJECTED",
+  }
 
-/** */
-export enum StopOrderStatusNumber {
-  /** Never valid */
-  STATUS_UNSPECIFIED = 0,
-  /** Pending to be executed once the trigger is breached */
-  STATUS_PENDING = 1,
-  /** Cancelled by the user */
-  STATUS_CANCELLED = 2,
-  /** Stopped by the network, e.g: OCO on the other side has been triggered */
-  STATUS_STOPPED = 3,
-  /** Stop order has been triggered and generated an order */
-  STATUS_TRIGGERED = 4,
-  /** Stop order has expired */
-  STATUS_EXPIRED = 5,
-  /** Stop order was rejected at submission */
-  STATUS_REJECTED = 6
-}
+  /** */
+  export enum StopOrderStatusNumber {
+    /** Never valid */
+    STATUS_UNSPECIFIED = 0,
+    /** Pending to be executed once the trigger is breached */
+    STATUS_PENDING = 1,
+    /** Cancelled by the user */
+    STATUS_CANCELLED = 2,
+    /** Stopped by the network, e.g: OCO on the other side has been triggered */
+    STATUS_STOPPED = 3,
+    /** Stop order has been triggered and generated an order */
+    STATUS_TRIGGERED = 4,
+    /** Stop order has expired */
+    STATUS_EXPIRED = 5,
+    /** Stop order was rejected at submission */
+    STATUS_REJECTED = 6,
+  }
 
-/** */
-export enum StopOrderTriggerDirection {
-  /** Never valid */
-  TRIGGER_DIRECTION_UNSPECIFIED = "TRIGGER_DIRECTION_UNSPECIFIED",
-  /** Stop order is triggered once the price rises above a certain level */
-  TRIGGER_DIRECTION_RISES_ABOVE = "TRIGGER_DIRECTION_RISES_ABOVE",
-  /** Stop order is triggered once the price falls below a certain level */
-  TRIGGER_DIRECTION_FALLS_BELOW = "TRIGGER_DIRECTION_FALLS_BELOW"
-}
+  /** */
+  export enum StopOrderTriggerDirection {
+    /** Never valid */
+    TRIGGER_DIRECTION_UNSPECIFIED = "TRIGGER_DIRECTION_UNSPECIFIED",
+    /** Stop order is triggered once the price rises above a certain level */
+    TRIGGER_DIRECTION_RISES_ABOVE = "TRIGGER_DIRECTION_RISES_ABOVE",
+    /** Stop order is triggered once the price falls below a certain level */
+    TRIGGER_DIRECTION_FALLS_BELOW = "TRIGGER_DIRECTION_FALLS_BELOW",
+  }
 
-/** */
-export enum StopOrderTriggerDirectionNumber {
-  /** Never valid */
-  TRIGGER_DIRECTION_UNSPECIFIED = 0,
-  /** Stop order is triggered once the price rises above a certain level */
-  TRIGGER_DIRECTION_RISES_ABOVE = 1,
-  /** Stop order is triggered once the price falls below a certain level */
-  TRIGGER_DIRECTION_FALLS_BELOW = 2
-}
+  /** */
+  export enum StopOrderTriggerDirectionNumber {
+    /** Never valid */
+    TRIGGER_DIRECTION_UNSPECIFIED = 0,
+    /** Stop order is triggered once the price rises above a certain level */
+    TRIGGER_DIRECTION_RISES_ABOVE = 1,
+    /** Stop order is triggered once the price falls below a certain level */
+    TRIGGER_DIRECTION_FALLS_BELOW = 2,
+  }
 
-/** Type values for a trade*/
-export enum TradeType {
-  /** Default value, always invalid */
-  TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED",
-  /** Normal trading between two parties */
-  TYPE_DEFAULT = "TYPE_DEFAULT",
-  /** Trading initiated by the network with another party on the book,
+  /** Type values for a trade*/
+  export enum TradeType {
+    /** Default value, always invalid */
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED",
+    /** Normal trading between two parties */
+    TYPE_DEFAULT = "TYPE_DEFAULT",
+    /** Trading initiated by the network with another party on the book,
   which helps to zero-out the positions of one or more distressed parties */
-  TYPE_NETWORK_CLOSE_OUT_GOOD = "TYPE_NETWORK_CLOSE_OUT_GOOD",
-  /** Trading initiated by the network with another party off the book,
+    TYPE_NETWORK_CLOSE_OUT_GOOD = "TYPE_NETWORK_CLOSE_OUT_GOOD",
+    /** Trading initiated by the network with another party off the book,
   with a distressed party in order to zero-out the position of the party */
-  TYPE_NETWORK_CLOSE_OUT_BAD = "TYPE_NETWORK_CLOSE_OUT_BAD"
-}
+    TYPE_NETWORK_CLOSE_OUT_BAD = "TYPE_NETWORK_CLOSE_OUT_BAD",
+  }
 
-/** Type values for a trade*/
-export enum TradeTypeNumber {
-  /** Default value, always invalid */
-  TYPE_UNSPECIFIED = 0,
-  /** Normal trading between two parties */
-  TYPE_DEFAULT = 1,
-  /** Trading initiated by the network with another party on the book,
+  /** Type values for a trade*/
+  export enum TradeTypeNumber {
+    /** Default value, always invalid */
+    TYPE_UNSPECIFIED = 0,
+    /** Normal trading between two parties */
+    TYPE_DEFAULT = 1,
+    /** Trading initiated by the network with another party on the book,
   which helps to zero-out the positions of one or more distressed parties */
-  TYPE_NETWORK_CLOSE_OUT_GOOD = 2,
-  /** Trading initiated by the network with another party off the book,
+    TYPE_NETWORK_CLOSE_OUT_GOOD = 2,
+    /** Trading initiated by the network with another party off the book,
   with a distressed party in order to zero-out the position of the party */
-  TYPE_NETWORK_CLOSE_OUT_BAD = 3
-}
+    TYPE_NETWORK_CLOSE_OUT_BAD = 3,
+  }
 
-/** Transfers can occur between parties on Vega, these are the types that indicate why a transfer took place*/
-export enum TransferType {
-  /** Default value, always invalid */
-  TRANSFER_TYPE_UNSPECIFIED = "TRANSFER_TYPE_UNSPECIFIED",
-  /** Funds deducted after final settlement loss */
-  TRANSFER_TYPE_LOSS = "TRANSFER_TYPE_LOSS",
-  /** Funds added to general account after final settlement gain */
-  TRANSFER_TYPE_WIN = "TRANSFER_TYPE_WIN",
-  /** Funds deducted from margin account after mark to market loss */
-  TRANSFER_TYPE_MTM_LOSS = "TRANSFER_TYPE_MTM_LOSS",
-  /** Funds added to margin account after mark to market gain */
-  TRANSFER_TYPE_MTM_WIN = "TRANSFER_TYPE_MTM_WIN",
-  /** Funds transferred from general account to meet margin requirement */
-  TRANSFER_TYPE_MARGIN_LOW = "TRANSFER_TYPE_MARGIN_LOW",
-  /** Excess margin amount returned to general account */
-  TRANSFER_TYPE_MARGIN_HIGH = "TRANSFER_TYPE_MARGIN_HIGH",
-  /** Margin confiscated from margin account to fulfil closeout */
-  TRANSFER_TYPE_MARGIN_CONFISCATED = "TRANSFER_TYPE_MARGIN_CONFISCATED",
-  /** Maker fee paid from general account */
-  TRANSFER_TYPE_MAKER_FEE_PAY = "TRANSFER_TYPE_MAKER_FEE_PAY",
-  /** Maker fee received into general account */
-  TRANSFER_TYPE_MAKER_FEE_RECEIVE = "TRANSFER_TYPE_MAKER_FEE_RECEIVE",
-  /** Infrastructure fee paid from general account */
-  TRANSFER_TYPE_INFRASTRUCTURE_FEE_PAY = "TRANSFER_TYPE_INFRASTRUCTURE_FEE_PAY",
-  /** Infrastructure fee received into general account */
-  TRANSFER_TYPE_INFRASTRUCTURE_FEE_DISTRIBUTE = "TRANSFER_TYPE_INFRASTRUCTURE_FEE_DISTRIBUTE",
-  /** Liquidity fee paid from general account */
-  TRANSFER_TYPE_LIQUIDITY_FEE_PAY = "TRANSFER_TYPE_LIQUIDITY_FEE_PAY",
-  /** Liquidity fee received into general account */
-  TRANSFER_TYPE_LIQUIDITY_FEE_DISTRIBUTE = "TRANSFER_TYPE_LIQUIDITY_FEE_DISTRIBUTE",
-  /** Bond account funded from general account to meet required bond amount */
-  TRANSFER_TYPE_BOND_LOW = "TRANSFER_TYPE_BOND_LOW",
-  /** Bond returned to general account after liquidity commitment was reduced */
-  TRANSFER_TYPE_BOND_HIGH = "TRANSFER_TYPE_BOND_HIGH",
-  /** Funds withdrawn from general account */
-  TRANSFER_TYPE_WITHDRAW = "TRANSFER_TYPE_WITHDRAW",
-  /** Funds deposited to general account */
-  TRANSFER_TYPE_DEPOSIT = "TRANSFER_TYPE_DEPOSIT",
-  /** Bond account penalised when liquidity commitment not met */
-  TRANSFER_TYPE_BOND_SLASHING = "TRANSFER_TYPE_BOND_SLASHING",
-  /** Reward payout received */
-  TRANSFER_TYPE_REWARD_PAYOUT = "TRANSFER_TYPE_REWARD_PAYOUT",
-  /** Internal Vega network instruction for the collateral engine to move funds from a user's general account into the pending transfers pool */
-  TRANSFER_TYPE_TRANSFER_FUNDS_SEND = "TRANSFER_TYPE_TRANSFER_FUNDS_SEND",
-  /** Internal Vega network instruction for the collateral engine to move funds from the pending transfers pool account into the destination account */
-  TRANSFER_TYPE_TRANSFER_FUNDS_DISTRIBUTE = "TRANSFER_TYPE_TRANSFER_FUNDS_DISTRIBUTE",
-  /** Market-related accounts emptied because market has closed */
-  TRANSFER_TYPE_CLEAR_ACCOUNT = "TRANSFER_TYPE_CLEAR_ACCOUNT",
-  /** Balances restored after network restart */
-  TRANSFER_TYPE_CHECKPOINT_BALANCE_RESTORE = "TRANSFER_TYPE_CHECKPOINT_BALANCE_RESTORE",
-  /** Spot trade delivery */
-  TRANSFER_TYPE_SPOT = "TRANSFER_TYPE_SPOT",
-  /** An internal instruction to transfer a quantity corresponding to an active spot order from a general account into a party holding account. */
-  TRANSFER_TYPE_HOLDING_LOCK = "TRANSFER_TYPE_HOLDING_LOCK",
-  /** An internal instruction to transfer an excess quantity corresponding to an active spot order from a holding account into a party general account. */
-  TRANSFER_TYPE_HOLDING_RELEASE = "TRANSFER_TYPE_HOLDING_RELEASE",
-  /** Insurance pool fraction transfer from parent to successor market. */
-  TRANSFER_TYPE_SUCCESSOR_INSURANCE_FRACTION = "TRANSFER_TYPE_SUCCESSOR_INSURANCE_FRACTION",
-  /** Allocates liquidity fee earnings to each liquidity provider's network controlled liquidity fee account. */
-  TRANSFER_TYPE_LIQUIDITY_FEE_ALLOCATE = "TRANSFER_TYPE_LIQUIDITY_FEE_ALLOCATE",
-  /** Distributes net fee earnings from liquidity provider's fee account to their general account. */
-  TRANSFER_TYPE_LIQUIDITY_FEE_NET_DISTRIBUTE = "TRANSFER_TYPE_LIQUIDITY_FEE_NET_DISTRIBUTE",
-  /** Applies SLA penalty by moving funds from party's bond account to market's insurance pool. */
-  TRANSFER_TYPE_SLA_PENALTY_BOND_APPLY = "TRANSFER_TYPE_SLA_PENALTY_BOND_APPLY",
-  /** Applies SLA penalty by moving funds from the liquidity provider's fee account to market insurance pool. */
-  TRANSFER_TYPE_SLA_PENALTY_LP_FEE_APPLY = "TRANSFER_TYPE_SLA_PENALTY_LP_FEE_APPLY",
-  /** Collects penalties from the liquidity provider's fee account before the fee revenue is paid, and transfers it to the market's bonus distribution account. */
-  TRANSFER_TYPE_LIQUIDITY_FEE_UNPAID_COLLECT = "TRANSFER_TYPE_LIQUIDITY_FEE_UNPAID_COLLECT",
-  /** Distributes performance bonus from market bonus to liquidity provider's general account. */
-  TRANSFER_TYPE_SLA_PERFORMANCE_BONUS_DISTRIBUTE = "TRANSFER_TYPE_SLA_PERFORMANCE_BONUS_DISTRIBUTE",
-  /** Funds deducted from margin account after a perpetuals funding loss. */
-  TRANSFER_TYPE_PERPETUALS_FUNDING_LOSS = "TRANSFER_TYPE_PERPETUALS_FUNDING_LOSS",
-  /** Funds added to margin account after a perpetuals funding gain. */
-  TRANSFER_TYPE_PERPETUALS_FUNDING_WIN = "TRANSFER_TYPE_PERPETUALS_FUNDING_WIN",
-  /** Funds moved from the vesting account to the vested account once the vesting period is reached. */
-  TRANSFER_TYPE_REWARDS_VESTED = "TRANSFER_TYPE_REWARDS_VESTED",
-  /** Fee referrer reward paid from general account. */
-  TRANSFER_TYPE_FEE_REFERRER_REWARD_PAY = "TRANSFER_TYPE_FEE_REFERRER_REWARD_PAY",
-  /** Fee referrer reward received into general account of the referrer. */
-  TRANSFER_TYPE_FEE_REFERRER_REWARD_DISTRIBUTE = "TRANSFER_TYPE_FEE_REFERRER_REWARD_DISTRIBUTE",
-  /** Funds transferred from general account to meet order margin requirement in isolated margin mode. */
-  TRANSFER_TYPE_ORDER_MARGIN_LOW = "TRANSFER_TYPE_ORDER_MARGIN_LOW",
-  /** Excess order margin amount returned to general account. */
-  TRANSFER_TYPE_ORDER_MARGIN_HIGH = "TRANSFER_TYPE_ORDER_MARGIN_HIGH",
-  /** Transfer from order margin account to margin account due to increase of position. */
-  TRANSFER_TYPE_ISOLATED_MARGIN_LOW = "TRANSFER_TYPE_ISOLATED_MARGIN_LOW",
-  /** Transfer from excess order margin account to general account. */
-  TRANSFER_TYPE_ISOLATED_MARGIN_HIGH = "TRANSFER_TYPE_ISOLATED_MARGIN_HIGH"
-}
+  /** Transfers can occur between parties on Vega, these are the types that indicate why a transfer took place*/
+  export enum TransferType {
+    /** Default value, always invalid */
+    TRANSFER_TYPE_UNSPECIFIED = "TRANSFER_TYPE_UNSPECIFIED",
+    /** Funds deducted after final settlement loss */
+    TRANSFER_TYPE_LOSS = "TRANSFER_TYPE_LOSS",
+    /** Funds added to general account after final settlement gain */
+    TRANSFER_TYPE_WIN = "TRANSFER_TYPE_WIN",
+    /** Funds deducted from margin account after mark to market loss */
+    TRANSFER_TYPE_MTM_LOSS = "TRANSFER_TYPE_MTM_LOSS",
+    /** Funds added to margin account after mark to market gain */
+    TRANSFER_TYPE_MTM_WIN = "TRANSFER_TYPE_MTM_WIN",
+    /** Funds transferred from general account to meet margin requirement */
+    TRANSFER_TYPE_MARGIN_LOW = "TRANSFER_TYPE_MARGIN_LOW",
+    /** Excess margin amount returned to general account */
+    TRANSFER_TYPE_MARGIN_HIGH = "TRANSFER_TYPE_MARGIN_HIGH",
+    /** Margin confiscated from margin account to fulfil closeout */
+    TRANSFER_TYPE_MARGIN_CONFISCATED = "TRANSFER_TYPE_MARGIN_CONFISCATED",
+    /** Maker fee paid from general account */
+    TRANSFER_TYPE_MAKER_FEE_PAY = "TRANSFER_TYPE_MAKER_FEE_PAY",
+    /** Maker fee received into general account */
+    TRANSFER_TYPE_MAKER_FEE_RECEIVE = "TRANSFER_TYPE_MAKER_FEE_RECEIVE",
+    /** Infrastructure fee paid from general account */
+    TRANSFER_TYPE_INFRASTRUCTURE_FEE_PAY = "TRANSFER_TYPE_INFRASTRUCTURE_FEE_PAY",
+    /** Infrastructure fee received into general account */
+    TRANSFER_TYPE_INFRASTRUCTURE_FEE_DISTRIBUTE = "TRANSFER_TYPE_INFRASTRUCTURE_FEE_DISTRIBUTE",
+    /** Liquidity fee paid from general account */
+    TRANSFER_TYPE_LIQUIDITY_FEE_PAY = "TRANSFER_TYPE_LIQUIDITY_FEE_PAY",
+    /** Liquidity fee received into general account */
+    TRANSFER_TYPE_LIQUIDITY_FEE_DISTRIBUTE = "TRANSFER_TYPE_LIQUIDITY_FEE_DISTRIBUTE",
+    /** Bond account funded from general account to meet required bond amount */
+    TRANSFER_TYPE_BOND_LOW = "TRANSFER_TYPE_BOND_LOW",
+    /** Bond returned to general account after liquidity commitment was reduced */
+    TRANSFER_TYPE_BOND_HIGH = "TRANSFER_TYPE_BOND_HIGH",
+    /** Funds withdrawn from general account */
+    TRANSFER_TYPE_WITHDRAW = "TRANSFER_TYPE_WITHDRAW",
+    /** Funds deposited to general account */
+    TRANSFER_TYPE_DEPOSIT = "TRANSFER_TYPE_DEPOSIT",
+    /** Bond account penalised when liquidity commitment not met */
+    TRANSFER_TYPE_BOND_SLASHING = "TRANSFER_TYPE_BOND_SLASHING",
+    /** Reward payout received */
+    TRANSFER_TYPE_REWARD_PAYOUT = "TRANSFER_TYPE_REWARD_PAYOUT",
+    /** Internal Vega network instruction for the collateral engine to move funds from a user's general account into the pending transfers pool */
+    TRANSFER_TYPE_TRANSFER_FUNDS_SEND = "TRANSFER_TYPE_TRANSFER_FUNDS_SEND",
+    /** Internal Vega network instruction for the collateral engine to move funds from the pending transfers pool account into the destination account */
+    TRANSFER_TYPE_TRANSFER_FUNDS_DISTRIBUTE = "TRANSFER_TYPE_TRANSFER_FUNDS_DISTRIBUTE",
+    /** Market-related accounts emptied because market has closed */
+    TRANSFER_TYPE_CLEAR_ACCOUNT = "TRANSFER_TYPE_CLEAR_ACCOUNT",
+    /** Balances restored after network restart */
+    TRANSFER_TYPE_CHECKPOINT_BALANCE_RESTORE = "TRANSFER_TYPE_CHECKPOINT_BALANCE_RESTORE",
+    /** Spot trade delivery */
+    TRANSFER_TYPE_SPOT = "TRANSFER_TYPE_SPOT",
+    /** An internal instruction to transfer a quantity corresponding to an active spot order from a general account into a party holding account. */
+    TRANSFER_TYPE_HOLDING_LOCK = "TRANSFER_TYPE_HOLDING_LOCK",
+    /** An internal instruction to transfer an excess quantity corresponding to an active spot order from a holding account into a party general account. */
+    TRANSFER_TYPE_HOLDING_RELEASE = "TRANSFER_TYPE_HOLDING_RELEASE",
+    /** Insurance pool fraction transfer from parent to successor market. */
+    TRANSFER_TYPE_SUCCESSOR_INSURANCE_FRACTION = "TRANSFER_TYPE_SUCCESSOR_INSURANCE_FRACTION",
+    /** Allocates liquidity fee earnings to each liquidity provider's network controlled liquidity fee account. */
+    TRANSFER_TYPE_LIQUIDITY_FEE_ALLOCATE = "TRANSFER_TYPE_LIQUIDITY_FEE_ALLOCATE",
+    /** Distributes net fee earnings from liquidity provider's fee account to their general account. */
+    TRANSFER_TYPE_LIQUIDITY_FEE_NET_DISTRIBUTE = "TRANSFER_TYPE_LIQUIDITY_FEE_NET_DISTRIBUTE",
+    /** Applies SLA penalty by moving funds from party's bond account to market's insurance pool. */
+    TRANSFER_TYPE_SLA_PENALTY_BOND_APPLY = "TRANSFER_TYPE_SLA_PENALTY_BOND_APPLY",
+    /** Applies SLA penalty by moving funds from the liquidity provider's fee account to market insurance pool. */
+    TRANSFER_TYPE_SLA_PENALTY_LP_FEE_APPLY = "TRANSFER_TYPE_SLA_PENALTY_LP_FEE_APPLY",
+    /** Collects penalties from the liquidity provider's fee account before the fee revenue is paid, and transfers it to the market's bonus distribution account. */
+    TRANSFER_TYPE_LIQUIDITY_FEE_UNPAID_COLLECT = "TRANSFER_TYPE_LIQUIDITY_FEE_UNPAID_COLLECT",
+    /** Distributes performance bonus from market bonus to liquidity provider's general account. */
+    TRANSFER_TYPE_SLA_PERFORMANCE_BONUS_DISTRIBUTE = "TRANSFER_TYPE_SLA_PERFORMANCE_BONUS_DISTRIBUTE",
+    /** Funds deducted from margin account after a perpetuals funding loss. */
+    TRANSFER_TYPE_PERPETUALS_FUNDING_LOSS = "TRANSFER_TYPE_PERPETUALS_FUNDING_LOSS",
+    /** Funds added to margin account after a perpetuals funding gain. */
+    TRANSFER_TYPE_PERPETUALS_FUNDING_WIN = "TRANSFER_TYPE_PERPETUALS_FUNDING_WIN",
+    /** Funds moved from the vesting account to the vested account once the vesting period is reached. */
+    TRANSFER_TYPE_REWARDS_VESTED = "TRANSFER_TYPE_REWARDS_VESTED",
+    /** Fee referrer reward paid from general account. */
+    TRANSFER_TYPE_FEE_REFERRER_REWARD_PAY = "TRANSFER_TYPE_FEE_REFERRER_REWARD_PAY",
+    /** Fee referrer reward received into general account of the referrer. */
+    TRANSFER_TYPE_FEE_REFERRER_REWARD_DISTRIBUTE = "TRANSFER_TYPE_FEE_REFERRER_REWARD_DISTRIBUTE",
+    /** Funds transferred from general account to meet order margin requirement in isolated margin mode. */
+    TRANSFER_TYPE_ORDER_MARGIN_LOW = "TRANSFER_TYPE_ORDER_MARGIN_LOW",
+    /** Excess order margin amount returned to general account. */
+    TRANSFER_TYPE_ORDER_MARGIN_HIGH = "TRANSFER_TYPE_ORDER_MARGIN_HIGH",
+    /** Transfer from order margin account to margin account due to increase of position. */
+    TRANSFER_TYPE_ISOLATED_MARGIN_LOW = "TRANSFER_TYPE_ISOLATED_MARGIN_LOW",
+    /** Transfer from excess order margin account to general account. */
+    TRANSFER_TYPE_ISOLATED_MARGIN_HIGH = "TRANSFER_TYPE_ISOLATED_MARGIN_HIGH",
+  }
 
-/** Transfers can occur between parties on Vega, these are the types that indicate why a transfer took place*/
-export enum TransferTypeNumber {
-  /** Default value, always invalid */
-  TRANSFER_TYPE_UNSPECIFIED = 0,
-  /** Funds deducted after final settlement loss */
-  TRANSFER_TYPE_LOSS = 1,
-  /** Funds added to general account after final settlement gain */
-  TRANSFER_TYPE_WIN = 2,
-  /** Funds deducted from margin account after mark to market loss */
-  TRANSFER_TYPE_MTM_LOSS = 4,
-  /** Funds added to margin account after mark to market gain */
-  TRANSFER_TYPE_MTM_WIN = 5,
-  /** Funds transferred from general account to meet margin requirement */
-  TRANSFER_TYPE_MARGIN_LOW = 6,
-  /** Excess margin amount returned to general account */
-  TRANSFER_TYPE_MARGIN_HIGH = 7,
-  /** Margin confiscated from margin account to fulfil closeout */
-  TRANSFER_TYPE_MARGIN_CONFISCATED = 8,
-  /** Maker fee paid from general account */
-  TRANSFER_TYPE_MAKER_FEE_PAY = 9,
-  /** Maker fee received into general account */
-  TRANSFER_TYPE_MAKER_FEE_RECEIVE = 10,
-  /** Infrastructure fee paid from general account */
-  TRANSFER_TYPE_INFRASTRUCTURE_FEE_PAY = 11,
-  /** Infrastructure fee received into general account */
-  TRANSFER_TYPE_INFRASTRUCTURE_FEE_DISTRIBUTE = 12,
-  /** Liquidity fee paid from general account */
-  TRANSFER_TYPE_LIQUIDITY_FEE_PAY = 13,
-  /** Liquidity fee received into general account */
-  TRANSFER_TYPE_LIQUIDITY_FEE_DISTRIBUTE = 14,
-  /** Bond account funded from general account to meet required bond amount */
-  TRANSFER_TYPE_BOND_LOW = 15,
-  /** Bond returned to general account after liquidity commitment was reduced */
-  TRANSFER_TYPE_BOND_HIGH = 16,
-  /** Funds withdrawn from general account */
-  TRANSFER_TYPE_WITHDRAW = 18,
-  /** Funds deposited to general account */
-  TRANSFER_TYPE_DEPOSIT = 19,
-  /** Bond account penalised when liquidity commitment not met */
-  TRANSFER_TYPE_BOND_SLASHING = 20,
-  /** Reward payout received */
-  TRANSFER_TYPE_REWARD_PAYOUT = 21,
-  /** Internal Vega network instruction for the collateral engine to move funds from a user's general account into the pending transfers pool */
-  TRANSFER_TYPE_TRANSFER_FUNDS_SEND = 22,
-  /** Internal Vega network instruction for the collateral engine to move funds from the pending transfers pool account into the destination account */
-  TRANSFER_TYPE_TRANSFER_FUNDS_DISTRIBUTE = 23,
-  /** Market-related accounts emptied because market has closed */
-  TRANSFER_TYPE_CLEAR_ACCOUNT = 24,
-  /** Balances restored after network restart */
-  TRANSFER_TYPE_CHECKPOINT_BALANCE_RESTORE = 25,
-  /** Spot trade delivery */
-  TRANSFER_TYPE_SPOT = 26,
-  /** An internal instruction to transfer a quantity corresponding to an active spot order from a general account into a party holding account. */
-  TRANSFER_TYPE_HOLDING_LOCK = 27,
-  /** An internal instruction to transfer an excess quantity corresponding to an active spot order from a holding account into a party general account. */
-  TRANSFER_TYPE_HOLDING_RELEASE = 28,
-  /** Insurance pool fraction transfer from parent to successor market. */
-  TRANSFER_TYPE_SUCCESSOR_INSURANCE_FRACTION = 29,
-  /** Allocates liquidity fee earnings to each liquidity provider's network controlled liquidity fee account. */
-  TRANSFER_TYPE_LIQUIDITY_FEE_ALLOCATE = 30,
-  /** Distributes net fee earnings from liquidity provider's fee account to their general account. */
-  TRANSFER_TYPE_LIQUIDITY_FEE_NET_DISTRIBUTE = 31,
-  /** Applies SLA penalty by moving funds from party's bond account to market's insurance pool. */
-  TRANSFER_TYPE_SLA_PENALTY_BOND_APPLY = 32,
-  /** Applies SLA penalty by moving funds from the liquidity provider's fee account to market insurance pool. */
-  TRANSFER_TYPE_SLA_PENALTY_LP_FEE_APPLY = 33,
-  /** Collects penalties from the liquidity provider's fee account before the fee revenue is paid, and transfers it to the market's bonus distribution account. */
-  TRANSFER_TYPE_LIQUIDITY_FEE_UNPAID_COLLECT = 34,
-  /** Distributes performance bonus from market bonus to liquidity provider's general account. */
-  TRANSFER_TYPE_SLA_PERFORMANCE_BONUS_DISTRIBUTE = 35,
-  /** Funds deducted from margin account after a perpetuals funding loss. */
-  TRANSFER_TYPE_PERPETUALS_FUNDING_LOSS = 36,
-  /** Funds added to margin account after a perpetuals funding gain. */
-  TRANSFER_TYPE_PERPETUALS_FUNDING_WIN = 37,
-  /** Funds moved from the vesting account to the vested account once the vesting period is reached. */
-  TRANSFER_TYPE_REWARDS_VESTED = 38,
-  /** Fee referrer reward paid from general account. */
-  TRANSFER_TYPE_FEE_REFERRER_REWARD_PAY = 39,
-  /** Fee referrer reward received into general account of the referrer. */
-  TRANSFER_TYPE_FEE_REFERRER_REWARD_DISTRIBUTE = 44,
-  /** Funds transferred from general account to meet order margin requirement in isolated margin mode. */
-  TRANSFER_TYPE_ORDER_MARGIN_LOW = 45,
-  /** Excess order margin amount returned to general account. */
-  TRANSFER_TYPE_ORDER_MARGIN_HIGH = 46,
-  /** Transfer from order margin account to margin account due to increase of position. */
-  TRANSFER_TYPE_ISOLATED_MARGIN_LOW = 47,
-  /** Transfer from excess order margin account to general account. */
-  TRANSFER_TYPE_ISOLATED_MARGIN_HIGH = 48
-}
+  /** Transfers can occur between parties on Vega, these are the types that indicate why a transfer took place*/
+  export enum TransferTypeNumber {
+    /** Default value, always invalid */
+    TRANSFER_TYPE_UNSPECIFIED = 0,
+    /** Funds deducted after final settlement loss */
+    TRANSFER_TYPE_LOSS = 1,
+    /** Funds added to general account after final settlement gain */
+    TRANSFER_TYPE_WIN = 2,
+    /** Funds deducted from margin account after mark to market loss */
+    TRANSFER_TYPE_MTM_LOSS = 4,
+    /** Funds added to margin account after mark to market gain */
+    TRANSFER_TYPE_MTM_WIN = 5,
+    /** Funds transferred from general account to meet margin requirement */
+    TRANSFER_TYPE_MARGIN_LOW = 6,
+    /** Excess margin amount returned to general account */
+    TRANSFER_TYPE_MARGIN_HIGH = 7,
+    /** Margin confiscated from margin account to fulfil closeout */
+    TRANSFER_TYPE_MARGIN_CONFISCATED = 8,
+    /** Maker fee paid from general account */
+    TRANSFER_TYPE_MAKER_FEE_PAY = 9,
+    /** Maker fee received into general account */
+    TRANSFER_TYPE_MAKER_FEE_RECEIVE = 10,
+    /** Infrastructure fee paid from general account */
+    TRANSFER_TYPE_INFRASTRUCTURE_FEE_PAY = 11,
+    /** Infrastructure fee received into general account */
+    TRANSFER_TYPE_INFRASTRUCTURE_FEE_DISTRIBUTE = 12,
+    /** Liquidity fee paid from general account */
+    TRANSFER_TYPE_LIQUIDITY_FEE_PAY = 13,
+    /** Liquidity fee received into general account */
+    TRANSFER_TYPE_LIQUIDITY_FEE_DISTRIBUTE = 14,
+    /** Bond account funded from general account to meet required bond amount */
+    TRANSFER_TYPE_BOND_LOW = 15,
+    /** Bond returned to general account after liquidity commitment was reduced */
+    TRANSFER_TYPE_BOND_HIGH = 16,
+    /** Funds withdrawn from general account */
+    TRANSFER_TYPE_WITHDRAW = 18,
+    /** Funds deposited to general account */
+    TRANSFER_TYPE_DEPOSIT = 19,
+    /** Bond account penalised when liquidity commitment not met */
+    TRANSFER_TYPE_BOND_SLASHING = 20,
+    /** Reward payout received */
+    TRANSFER_TYPE_REWARD_PAYOUT = 21,
+    /** Internal Vega network instruction for the collateral engine to move funds from a user's general account into the pending transfers pool */
+    TRANSFER_TYPE_TRANSFER_FUNDS_SEND = 22,
+    /** Internal Vega network instruction for the collateral engine to move funds from the pending transfers pool account into the destination account */
+    TRANSFER_TYPE_TRANSFER_FUNDS_DISTRIBUTE = 23,
+    /** Market-related accounts emptied because market has closed */
+    TRANSFER_TYPE_CLEAR_ACCOUNT = 24,
+    /** Balances restored after network restart */
+    TRANSFER_TYPE_CHECKPOINT_BALANCE_RESTORE = 25,
+    /** Spot trade delivery */
+    TRANSFER_TYPE_SPOT = 26,
+    /** An internal instruction to transfer a quantity corresponding to an active spot order from a general account into a party holding account. */
+    TRANSFER_TYPE_HOLDING_LOCK = 27,
+    /** An internal instruction to transfer an excess quantity corresponding to an active spot order from a holding account into a party general account. */
+    TRANSFER_TYPE_HOLDING_RELEASE = 28,
+    /** Insurance pool fraction transfer from parent to successor market. */
+    TRANSFER_TYPE_SUCCESSOR_INSURANCE_FRACTION = 29,
+    /** Allocates liquidity fee earnings to each liquidity provider's network controlled liquidity fee account. */
+    TRANSFER_TYPE_LIQUIDITY_FEE_ALLOCATE = 30,
+    /** Distributes net fee earnings from liquidity provider's fee account to their general account. */
+    TRANSFER_TYPE_LIQUIDITY_FEE_NET_DISTRIBUTE = 31,
+    /** Applies SLA penalty by moving funds from party's bond account to market's insurance pool. */
+    TRANSFER_TYPE_SLA_PENALTY_BOND_APPLY = 32,
+    /** Applies SLA penalty by moving funds from the liquidity provider's fee account to market insurance pool. */
+    TRANSFER_TYPE_SLA_PENALTY_LP_FEE_APPLY = 33,
+    /** Collects penalties from the liquidity provider's fee account before the fee revenue is paid, and transfers it to the market's bonus distribution account. */
+    TRANSFER_TYPE_LIQUIDITY_FEE_UNPAID_COLLECT = 34,
+    /** Distributes performance bonus from market bonus to liquidity provider's general account. */
+    TRANSFER_TYPE_SLA_PERFORMANCE_BONUS_DISTRIBUTE = 35,
+    /** Funds deducted from margin account after a perpetuals funding loss. */
+    TRANSFER_TYPE_PERPETUALS_FUNDING_LOSS = 36,
+    /** Funds added to margin account after a perpetuals funding gain. */
+    TRANSFER_TYPE_PERPETUALS_FUNDING_WIN = 37,
+    /** Funds moved from the vesting account to the vested account once the vesting period is reached. */
+    TRANSFER_TYPE_REWARDS_VESTED = 38,
+    /** Fee referrer reward paid from general account. */
+    TRANSFER_TYPE_FEE_REFERRER_REWARD_PAY = 39,
+    /** Fee referrer reward received into general account of the referrer. */
+    TRANSFER_TYPE_FEE_REFERRER_REWARD_DISTRIBUTE = 44,
+    /** Funds transferred from general account to meet order margin requirement in isolated margin mode. */
+    TRANSFER_TYPE_ORDER_MARGIN_LOW = 45,
+    /** Excess order margin amount returned to general account. */
+    TRANSFER_TYPE_ORDER_MARGIN_HIGH = 46,
+    /** Transfer from order margin account to margin account due to increase of position. */
+    TRANSFER_TYPE_ISOLATED_MARGIN_LOW = 47,
+    /** Transfer from excess order margin account to general account. */
+    TRANSFER_TYPE_ISOLATED_MARGIN_HIGH = 48,
+  }
 
-/** Validation status of the node*/
-export enum ValidatorNodeStatus {
-  /**  */
-  VALIDATOR_NODE_STATUS_UNSPECIFIED = "VALIDATOR_NODE_STATUS_UNSPECIFIED",
-  /** Node is a tendermint validator */
-  VALIDATOR_NODE_STATUS_TENDERMINT = "VALIDATOR_NODE_STATUS_TENDERMINT",
-  /** Node is an ersatz validator */
-  VALIDATOR_NODE_STATUS_ERSATZ = "VALIDATOR_NODE_STATUS_ERSATZ",
-  /** Node is a pending validator */
-  VALIDATOR_NODE_STATUS_PENDING = "VALIDATOR_NODE_STATUS_PENDING"
-}
+  /** Validation status of the node*/
+  export enum ValidatorNodeStatus {
+    /**  */
+    VALIDATOR_NODE_STATUS_UNSPECIFIED = "VALIDATOR_NODE_STATUS_UNSPECIFIED",
+    /** Node is a tendermint validator */
+    VALIDATOR_NODE_STATUS_TENDERMINT = "VALIDATOR_NODE_STATUS_TENDERMINT",
+    /** Node is an ersatz validator */
+    VALIDATOR_NODE_STATUS_ERSATZ = "VALIDATOR_NODE_STATUS_ERSATZ",
+    /** Node is a pending validator */
+    VALIDATOR_NODE_STATUS_PENDING = "VALIDATOR_NODE_STATUS_PENDING",
+  }
 
-/** Validation status of the node*/
-export enum ValidatorNodeStatusNumber {
-  /**  */
-  VALIDATOR_NODE_STATUS_UNSPECIFIED = 0,
-  /** Node is a tendermint validator */
-  VALIDATOR_NODE_STATUS_TENDERMINT = 1,
-  /** Node is an ersatz validator */
-  VALIDATOR_NODE_STATUS_ERSATZ = 2,
-  /** Node is a pending validator */
-  VALIDATOR_NODE_STATUS_PENDING = 3
-}
+  /** Validation status of the node*/
+  export enum ValidatorNodeStatusNumber {
+    /**  */
+    VALIDATOR_NODE_STATUS_UNSPECIFIED = 0,
+    /** Node is a tendermint validator */
+    VALIDATOR_NODE_STATUS_TENDERMINT = 1,
+    /** Node is an ersatz validator */
+    VALIDATOR_NODE_STATUS_ERSATZ = 2,
+    /** Node is a pending validator */
+    VALIDATOR_NODE_STATUS_PENDING = 3,
+  }
 
-/** Status of the withdrawal*/
-export enum WithdrawalStatus {
-  /** Default value, always invalid */
-  STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED",
-  /** Withdrawal is open and being processed by the network */
-  STATUS_OPEN = "STATUS_OPEN",
-  /** Withdrawal have been cancelled */
-  STATUS_REJECTED = "STATUS_REJECTED",
-  /** Withdrawal went through and is fully finalised, the funds are removed from the
+  /** Status of the withdrawal*/
+  export enum WithdrawalStatus {
+    /** Default value, always invalid */
+    STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED",
+    /** Withdrawal is open and being processed by the network */
+    STATUS_OPEN = "STATUS_OPEN",
+    /** Withdrawal have been cancelled */
+    STATUS_REJECTED = "STATUS_REJECTED",
+    /** Withdrawal went through and is fully finalised, the funds are removed from the
   Vega network and are unlocked on the foreign chain bridge, for example, on the Ethereum network */
-  STATUS_FINALIZED = "STATUS_FINALIZED"
-}
+    STATUS_FINALIZED = "STATUS_FINALIZED",
+  }
 
-/** Status of the withdrawal*/
-export enum WithdrawalStatusNumber {
-  /** Default value, always invalid */
-  STATUS_UNSPECIFIED = 0,
-  /** Withdrawal is open and being processed by the network */
-  STATUS_OPEN = 1,
-  /** Withdrawal have been cancelled */
-  STATUS_REJECTED = 2,
-  /** Withdrawal went through and is fully finalised, the funds are removed from the
+  /** Status of the withdrawal*/
+  export enum WithdrawalStatusNumber {
+    /** Default value, always invalid */
+    STATUS_UNSPECIFIED = 0,
+    /** Withdrawal is open and being processed by the network */
+    STATUS_OPEN = 1,
+    /** Withdrawal have been cancelled */
+    STATUS_REJECTED = 2,
+    /** Withdrawal went through and is fully finalised, the funds are removed from the
   Vega network and are unlocked on the foreign chain bridge, for example, on the Ethereum network */
-  STATUS_FINALIZED = 3
-}
-
-export interface Account {
-  id?: string;
-  owner?: string;
-  balance?: string;
-  asset?: string;
-  marketId?: string;
-  type?: vega.AccountType;
-}
-
-export interface AccountDetails {
-  assetId?: string;
-  type?: vega.AccountType;
-  owner?: string;
-  marketId?: string;
-}
-
-export interface ActivityStreakBenefitTier {
-  minimumActivityStreak?: string | number;
-  rewardMultiplier?: string;
-  vestingMultiplier?: string;
-}
-
-export interface ActivityStreakBenefitTiers {
-  tiers?: vega.ActivityStreakBenefitTier[];
-}
-
-export interface AuctionIndicativeState {
-  marketId?: string;
-  indicativePrice?: string;
-  indicativeVolume?: string | number;
-  auctionStart?: string | number;
-  auctionEnd?: string | number;
-}
-
-export interface BenefitTier {
-  minimumRunningNotionalTakerVolume?: string;
-  minimumEpochs?: string;
-  referralRewardFactor?: string;
-  referralDiscountFactor?: string;
-}
-
-export interface Candle {
-  timestamp?: string | number;
-  datetime?: string;
-  high?: string;
-  low?: string;
-  open?: string;
-  close?: string;
-  volume?: string | number;
-  interval?: vega.Interval;
-  notional?: string | number;
-}
-
-export interface CompositePriceSource {
-  priceSource?: string;
-  price?: string;
-  lastUpdated?: string | number;
-}
-
-export interface CompositePriceState {
-  priceSources?: vega.CompositePriceSource[];
-}
-
-export interface Delegation {
-  party?: string;
-  nodeId?: string;
-  amount?: string;
-  epochSeq?: string;
-}
-
-export interface Deposit {
-  id?: string;
-  status?: vega.DepositStatus;
-  partyId?: string;
-  asset?: string;
-  amount?: string;
-  txHash?: string;
-  creditedTimestamp?: string | number;
-  createdTimestamp?: string | number;
-}
-
-export interface DispatchStrategy {
-  assetForMetric?: string;
-  metric?: vega.DispatchMetric;
-  markets?: string[];
-  entityScope?: vega.EntityScope;
-  individualScope?: vega.IndividualScope;
-  teamScope?: string[];
-  nTopPerformers?: string;
-  stakingRequirement?: string;
-  notionalTimeWeightedAveragePositionRequirement?: string;
-  windowLength?: string | number;
-  lockPeriod?: string | number;
-  distributionStrategy?: vega.DistributionStrategy;
-  rankTable?: vega.Rank[];
-  capRewardFeeMultiple?: string;
-  transferInterval?: string | number;
-}
-
-export interface EVMBridgeConfig {
-  networkId?: string;
-  chainId?: string;
-  collateralBridgeContract?: vega.EthereumContractConfig;
-  confirmations?: string | number;
-  multisigControlContract?: vega.EthereumContractConfig;
-  blockTime?: string;
-  name?: string;
-}
-
-export interface EVMBridgeConfigs {
-  configs?: vega.EVMBridgeConfig[];
-}
-
-export interface Epoch {
-  seq?: string | number;
-  timestamps?: vega.EpochTimestamps;
-  validators?: vega.Node[];
-  delegations?: vega.Delegation[];
-}
-
-export interface EpochData {
-  total?: string | number;
-  offline?: string | number;
-  online?: string | number;
-}
-
-export interface EpochParticipation {
-  epoch?: vega.Epoch;
-  offline?: string | number;
-  online?: string | number;
-  totalRewards?: string | number;
-}
-
-export interface EpochRewardSummary {
-  epoch?: string | number;
-  assetId?: string;
-  marketId?: string;
-  rewardType?: string;
-  amount?: string;
-}
-
-export interface EpochTimestamps {
-  startTime?: string | number;
-  expiryTime?: string | number;
-  endTime?: string | number;
-  firstBlock?: string | number;
-  lastBlock?: string | number;
-}
-
-export interface Erc20WithdrawExt {
-  receiverAddress?: string;
-}
-
-export interface ErrorDetail {
-  code?: string | number;
-  message?: string;
-  inner?: string;
-}
-
-export interface EthereumConfig {
-  networkId?: string;
-  chainId?: string;
-  collateralBridgeContract?: vega.EthereumContractConfig;
-  confirmations?: string | number;
-  stakingBridgeContract?: vega.EthereumContractConfig;
-  tokenVestingContract?: vega.EthereumContractConfig;
-  multisigControlContract?: vega.EthereumContractConfig;
-}
-
-export interface EthereumContractConfig {
-  address?: string;
-  deploymentBlockHeight?: string | number;
-}
-
-export interface EthereumL2Config {
-  networkId?: string;
-  chainId?: string;
-  confirmations?: string | number;
-  name?: string;
-  blockInterval?: string | number;
-}
-
-export interface EthereumL2Configs {
-  configs?: vega.EthereumL2Config[];
-}
-
-export interface Fee {
-  makerFee?: string;
-  infrastructureFee?: string;
-  liquidityFee?: string;
-  makerFeeVolumeDiscount?: string;
-  infrastructureFeeVolumeDiscount?: string;
-  liquidityFeeVolumeDiscount?: string;
-  makerFeeReferrerDiscount?: string;
-  infrastructureFeeReferrerDiscount?: string;
-  liquidityFeeReferrerDiscount?: string;
-}
-
-export interface FinancialAmount {
-  amount?: string;
-  asset?: string;
-}
-
-export interface IcebergOrder {
-  peakSize?: string | number;
-  minimumVisibleSize?: string | number;
-  reservedRemaining?: string | number;
-}
-
-export interface KeyValueBundle {
-  key?: string;
-  tolerance?: string;
-  value?: vega.StateVarValue;
-}
-
-export interface LedgerEntry {
-  fromAccount?: vega.AccountDetails;
-  toAccount?: vega.AccountDetails;
-  amount?: string;
-  type?: vega.TransferType;
-  timestamp?: string | number;
-  fromAccountBalance?: string;
-  toAccountBalance?: string;
-  transferId?: string;
-}
-
-export interface LedgerMovement {
-  entries?: vega.LedgerEntry[];
-  balances?: vega.PostTransferBalance[];
-}
-
-export interface LiquidityOrder {
-  reference?: vega.PeggedReference;
-  proportion?: string | number;
-  offset?: string;
-}
-
-export interface LiquidityOrderReference {
-  orderId?: string;
-  liquidityOrder?: vega.LiquidityOrder;
-}
-
-export interface LiquidityProviderFeeShare {
-  party?: string;
-  equityLikeShare?: string;
-  averageEntryValuation?: string;
-  averageScore?: string;
-  virtualStake?: string;
-}
-
-export interface LiquidityProviderSLA {
-  party?: string;
-  currentEpochFractionOfTimeOnBook?: string;
-  lastEpochFractionOfTimeOnBook?: string;
-  lastEpochFeePenalty?: string;
-  lastEpochBondPenalty?: string;
-  hysteresisPeriodFeePenalties?: string[];
-  requiredLiquidity?: string;
-  notionalVolumeBuys?: string;
-  notionalVolumeSells?: string;
-}
-
-export interface LiquidityProvision {
-  id?: string;
-  partyId?: string;
-  createdAt?: string | number;
-  updatedAt?: string | number;
-  marketId?: string;
-  commitmentAmount?: string;
-  fee?: string;
-  sells?: vega.LiquidityOrderReference[];
-  buys?: vega.LiquidityOrderReference[];
-  version?: string | number;
-  status?: vega.LiquidityProvisionStatus;
-  reference?: string;
-}
-
-export interface MarginLevels {
-  maintenanceMargin?: string;
-  searchLevel?: string;
-  initialMargin?: string;
-  collateralReleaseLevel?: string;
-  partyId?: string;
-  marketId?: string;
-  asset?: string;
-  timestamp?: string | number;
-  orderMargin?: string;
-  marginMode?: vega.MarginMode;
-  marginFactor?: string;
-}
-
-export interface MarketData {
-  markPrice?: string;
-  bestBidPrice?: string;
-  bestBidVolume?: string | number;
-  bestOfferPrice?: string;
-  bestOfferVolume?: string | number;
-  bestStaticBidPrice?: string;
-  bestStaticBidVolume?: string | number;
-  bestStaticOfferPrice?: string;
-  bestStaticOfferVolume?: string | number;
-  midPrice?: string;
-  staticMidPrice?: string;
-  market?: string;
-  timestamp?: string | number;
-  openInterest?: string | number;
-  auctionEnd?: string | number;
-  auctionStart?: string | number;
-  indicativePrice?: string;
-  indicativeVolume?: string | number;
-  marketTradingMode?: vega.MarketTradingMode;
-  trigger?: vega.AuctionTrigger;
-  extensionTrigger?: vega.AuctionTrigger;
-  targetStake?: string;
-  suppliedStake?: string;
-  priceMonitoringBounds?: vega.PriceMonitoringBounds[];
-  marketValueProxy?: string;
-  liquidityProviderFeeShare?: vega.LiquidityProviderFeeShare[];
-  marketState?: vega.MarketState;
-  nextMarkToMarket?: string | number;
-  lastTradedPrice?: string;
-  marketGrowth?: string;
-  productData?: vega.ProductData;
-  liquidityProviderSla?: vega.LiquidityProviderSLA[];
-  nextNetworkCloseout?: string | number;
-  markPriceType?: vega.CompositePriceType;
-  markPriceState?: vega.CompositePriceState;
-}
-
-export interface MarketDepth {
-  marketId?: string;
-  buy?: vega.PriceLevel[];
-  sell?: vega.PriceLevel[];
-  sequenceNumber?: string | number;
-}
-
-export interface MarketDepthUpdate {
-  marketId?: string;
-  buy?: vega.PriceLevel[];
-  sell?: vega.PriceLevel[];
-  sequenceNumber?: string | number;
-  previousSequenceNumber?: string | number;
-}
-
-export interface MatrixValue {
-  value?: vega.VectorValue[];
-}
-
-export interface Metadata {
-  key?: string;
-  value?: string;
-}
-
-export interface NetworkLimits {
-  canProposeMarket?: boolean;
-  canProposeAsset?: boolean;
-  proposeMarketEnabled?: boolean;
-  proposeAssetEnabled?: boolean;
-  genesisLoaded?: boolean;
-  proposeMarketEnabledFrom?: string | number;
-  proposeAssetEnabledFrom?: string | number;
-  canProposeSpotMarket?: boolean;
-  canProposePerpetualMarket?: boolean;
-}
-
-export interface NetworkParameter {
-  key?: string;
-  value?: string;
-}
-
-export interface Node {
-  id?: string;
-  pubKey?: string;
-  tmPubKey?: string;
-  ethereumAddress?: string;
-  infoUrl?: string;
-  location?: string;
-  stakedByOperator?: string;
-  stakedByDelegates?: string;
-  stakedTotal?: string;
-  maxIntendedStake?: string;
-  pendingStake?: string;
-  epochData?: vega.EpochData;
-  status?: vega.NodeStatus;
-  delegations?: vega.Delegation[];
-  rewardScore?: vega.RewardScore;
-  rankingScore?: vega.RankingScore;
-  name?: string;
-  avatarUrl?: string;
-}
-
-export interface NodeData {
-  stakedTotal?: string;
-  totalNodes?: string | number;
-  inactiveNodes?: string | number;
-  tendermintNodes?: vega.NodeSet;
-  ersatzNodes?: vega.NodeSet;
-  pendingNodes?: vega.NodeSet;
-  uptime?: string | number;
-}
-
-export interface NodeSet {
-  total?: string | number;
-  inactive?: string | number;
-  promoted?: string[];
-  demoted?: string[];
-  maximum?: string | number;
-}
-
-export interface Order {
-  id?: string;
-  marketId?: string;
-  partyId?: string;
-  side?: vega.Side;
-  price?: string;
-  size?: string | number;
-  remaining?: string | number;
-  timeInForce?: vega.OrderTimeInForce;
-  type?: vega.OrderType;
-  createdAt?: string | number;
-  status?: vega.OrderStatus;
-  expiresAt?: string | number;
-  reference?: string;
-  reason?: vega.OrderError;
-  updatedAt?: string | number;
-  version?: string | number;
-  batchId?: string | number;
-  peggedOrder?: vega.PeggedOrder;
-  liquidityProvisionId?: string;
-  postOnly?: boolean;
-  reduceOnly?: boolean;
-  icebergOrder?: vega.IcebergOrder;
-}
-
-export interface OrderCancellationConfirmation {
-  order?: vega.Order;
-}
-
-export interface OrderConfirmation {
-  order?: vega.Order;
-  trades?: vega.Trade[];
-  passiveOrdersAffected?: vega.Order[];
-}
-
-export interface Party {
-  id?: string;
-  alias?: string;
-  metadata?: vega.Metadata[];
-}
-
-export interface PartyProfile {
-  partyId?: string;
-  alias?: string;
-  metadata?: vega.Metadata[];
-}
-
-export interface PeggedOrder {
-  reference?: vega.PeggedReference;
-  offset?: string;
-}
-
-export interface PerpetualData {
-  fundingPayment?: string;
-  fundingRate?: string;
-  internalTwap?: string;
-  externalTwap?: string;
-  seqNum?: string | number;
-  startTime?: string | number;
-  internalCompositePrice?: string;
-  nextInternalCompositePriceCalc?: string | number;
-  internalCompositePriceType?: vega.CompositePriceType;
-  underlyingIndexPrice?: string;
-  internalCompositePriceState?: vega.CompositePriceState;
-}
-
-export interface Position {
-  marketId?: string;
-  partyId?: string;
-  openVolume?: string | number;
-  realisedPnl?: string;
-  unrealisedPnl?: string;
-  averageEntryPrice?: string;
-  updatedAt?: string | number;
-  lossSocialisationAmount?: string;
-  positionStatus?: vega.PositionStatus;
-}
-
-export interface PositionTrade {
-  volume?: string | number;
-  price?: string;
-}
-
-export interface PostTransferBalance {
-  account?: vega.AccountDetails;
-  balance?: string;
-}
-
-export interface PriceLevel {
-  price?: string;
-  numberOfOrders?: string | number;
-  volume?: string | number;
-}
-
-export interface PriceMonitoringBounds {
-  minValidPrice?: string;
-  maxValidPrice?: string;
-  trigger?: vega.PriceMonitoringTrigger;
-  referencePrice?: string;
-}
-
-export interface ProductData {
-  perpetualData?: vega.PerpetualData;
-}
-
-export interface Rank {
-  startRank?: string | number;
-  shareRatio?: string | number;
-}
-
-export interface RankingScore {
-  stakeScore?: string;
-  performanceScore?: string;
-  previousStatus?: vega.ValidatorNodeStatus;
-  status?: vega.ValidatorNodeStatus;
-  votingPower?: string | number;
-  rankingScore?: string;
-}
-
-export interface ReferralProgram {
-  version?: string | number;
-  id?: string;
-  benefitTiers?: vega.BenefitTier[];
-  endOfProgramTimestamp?: string | number;
-  windowLength?: string | number;
-  stakingTiers?: vega.StakingTier[];
-}
-
-export interface Reward {
-  assetId?: string;
-  partyId?: string;
-  epoch?: string | number;
-  amount?: string;
-  percentageOfTotal?: string;
-  receivedAt?: string | number;
-  marketId?: string;
-  rewardType?: string;
-  lockedUntilEpoch?: string | number;
-  quantumAmount?: string;
-  gameId?: string;
-  teamId?: string;
-}
-
-export interface RewardScore {
-  rawValidatorScore?: string;
-  performanceScore?: string;
-  multisigScore?: string;
-  validatorScore?: string;
-  normalisedScore?: string;
-  validatorStatus?: vega.ValidatorNodeStatus;
-}
-
-export interface RewardSummary {
-  assetId?: string;
-  partyId?: string;
-  amount?: string;
-}
-
-export interface RiskFactor {
-  market?: string;
-  short?: string;
-  long?: string;
-}
-
-export interface ScalarValue {
-  value?: string;
-}
-
-export interface StakingTier {
-  minimumStakedTokens?: string;
-  referralRewardMultiplier?: string;
-}
-
-export interface StateValueProposal {
-  stateVarId?: string;
-  eventId?: string;
-  kvb?: vega.KeyValueBundle[];
-}
-
-export interface StateVarValue {
-  scalarVal?: vega.ScalarValue;
-  vectorVal?: vega.VectorValue;
-  matrixVal?: vega.MatrixValue;
-}
-
-export interface StopOrder {
-  id?: string;
-  ocoLinkId?: string;
-  expiresAt?: string | number;
-  expiryStrategy?: vega.StopOrderExpiryStrategy;
-  triggerDirection?: vega.StopOrderTriggerDirection;
-  status?: vega.StopOrderStatus;
-  createdAt?: string | number;
-  updatedAt?: string | number;
-  orderId?: string;
-  partyId?: string;
-  marketId?: string;
-  rejectionReason?: vega.StopOrderRejectionReason;
-  sizeOverrideSetting?: vega.StopOrderSizeOverrideSetting;
-  sizeOverrideValue?: vega.StopOrderSizeOverrideValue;
-  price?: string;
-  trailingPercentOffset?: string;
-}
-
-export interface StopOrderSizeOverrideValue {
-  percentage?: string;
-}
-
-export interface Trade {
-  id?: string;
-  marketId?: string;
-  price?: string;
-  size?: string | number;
-  buyer?: string;
-  seller?: string;
-  aggressor?: vega.Side;
-  buyOrder?: string;
-  sellOrder?: string;
-  timestamp?: string | number;
-  type?: vega.TradeType;
-  buyerFee?: vega.Fee;
-  sellerFee?: vega.Fee;
-  buyerAuctionBatch?: string | number;
-  sellerAuctionBatch?: string | number;
-  assetPrice?: string;
-}
-
-export interface TradeSet {
-  trades?: vega.Trade[];
-}
-
-export interface Transfer {
-  owner?: string;
-  amount?: vega.FinancialAmount;
-  type?: vega.TransferType;
-  minAmount?: string;
-  marketId?: string;
-}
-
-export interface TransferRequest {
-  fromAccount?: vega.Account[];
-  toAccount?: vega.Account[];
-  amount?: string;
-  minAmount?: string;
-  asset?: string;
-  type?: vega.TransferType;
-}
-
-export interface VectorValue {
-  value?: string[];
-}
-
-export interface VestingBenefitTier {
-  minimumQuantumBalance?: string;
-  rewardMultiplier?: string;
-}
-
-export interface VestingBenefitTiers {
-  tiers?: vega.VestingBenefitTier[];
-}
-
-export interface VolumeBenefitTier {
-  minimumRunningNotionalTakerVolume?: string;
-  volumeDiscountFactor?: string;
-}
-
-export interface VolumeDiscountProgram {
-  version?: string | number;
-  id?: string;
-  benefitTiers?: vega.VolumeBenefitTier[];
-  endOfProgramTimestamp?: string | number;
-  windowLength?: string | number;
-}
-
-export interface WithdrawExt {
-  erc20?: vega.Erc20WithdrawExt;
-}
-
-export interface Withdrawal {
-  id?: string;
-  partyId?: string;
-  amount?: string;
-  asset?: string;
-  status?: vega.WithdrawalStatus;
-  ref?: string;
-  txHash?: string;
-  createdTimestamp?: string | number;
-  withdrawnTimestamp?: string | number;
-  ext?: vega.WithdrawExt;
-}
-
-};
-namespace vega.commands.v1 {;
-
-/** Kind of signature created by a node, for example, allow-listing a new asset, withdrawal etc*/
-export enum NodeSignatureKind {
-  /** Represents an unspecified or missing value from the input. */
-  NODE_SIGNATURE_KIND_UNSPECIFIED = "NODE_SIGNATURE_KIND_UNSPECIFIED",
-  /** Represents a signature for a new asset allow-listing. */
-  NODE_SIGNATURE_KIND_ASSET_NEW = "NODE_SIGNATURE_KIND_ASSET_NEW",
-  /** Represents a signature for an asset withdrawal. */
-  NODE_SIGNATURE_KIND_ASSET_WITHDRAWAL = "NODE_SIGNATURE_KIND_ASSET_WITHDRAWAL",
-  /** Represents a signature for a new signer added to the erc20 multisig contract. */
-  NODE_SIGNATURE_KIND_ERC20_MULTISIG_SIGNER_ADDED = "NODE_SIGNATURE_KIND_ERC20_MULTISIG_SIGNER_ADDED",
-  /** Represents a signature for a signer removed from the erc20 multisig contract. */
-  NODE_SIGNATURE_KIND_ERC20_MULTISIG_SIGNER_REMOVED = "NODE_SIGNATURE_KIND_ERC20_MULTISIG_SIGNER_REMOVED",
-  /** Represents a signature for an asset update allow-listing. */
-  NODE_SIGNATURE_KIND_ASSET_UPDATE = "NODE_SIGNATURE_KIND_ASSET_UPDATE"
-}
-
-/** Kind of signature created by a node, for example, allow-listing a new asset, withdrawal etc*/
-export enum NodeSignatureKindNumber {
-  /** Represents an unspecified or missing value from the input. */
-  NODE_SIGNATURE_KIND_UNSPECIFIED = 0,
-  /** Represents a signature for a new asset allow-listing. */
-  NODE_SIGNATURE_KIND_ASSET_NEW = 1,
-  /** Represents a signature for an asset withdrawal. */
-  NODE_SIGNATURE_KIND_ASSET_WITHDRAWAL = 2,
-  /** Represents a signature for a new signer added to the erc20 multisig contract. */
-  NODE_SIGNATURE_KIND_ERC20_MULTISIG_SIGNER_ADDED = 3,
-  /** Represents a signature for a signer removed from the erc20 multisig contract. */
-  NODE_SIGNATURE_KIND_ERC20_MULTISIG_SIGNER_REMOVED = 4,
-  /** Represents a signature for an asset update allow-listing. */
-  NODE_SIGNATURE_KIND_ASSET_UPDATE = 5
-}
-
-/** */
-export enum NodeVoteType {
-  /** Represents an unspecified or missing value from the input */
-  TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED",
-  /** Node vote for a new stake deposit */
-  TYPE_STAKE_DEPOSITED = "TYPE_STAKE_DEPOSITED",
-  /** Node vote for a new stake removed event */
-  TYPE_STAKE_REMOVED = "TYPE_STAKE_REMOVED",
-  /** Node vote for a new collateral deposit */
-  TYPE_FUNDS_DEPOSITED = "TYPE_FUNDS_DEPOSITED",
-  /** Node vote for a new signer added to the erc20 bridge */
-  TYPE_SIGNER_ADDED = "TYPE_SIGNER_ADDED",
-  /** Node vote for a signer removed from the erc20 bridge */
-  TYPE_SIGNER_REMOVED = "TYPE_SIGNER_REMOVED",
-  /** Node vote for a bridge stopped event */
-  TYPE_BRIDGE_STOPPED = "TYPE_BRIDGE_STOPPED",
-  /** Node vote for a bridge resumed event */
-  TYPE_BRIDGE_RESUMED = "TYPE_BRIDGE_RESUMED",
-  /** Node vote for a newly listed asset */
-  TYPE_ASSET_LISTED = "TYPE_ASSET_LISTED",
-  /** Node vote for an asset limits update */
-  TYPE_LIMITS_UPDATED = "TYPE_LIMITS_UPDATED",
-  /** Node vote to share the total supply of the staking token */
-  TYPE_STAKE_TOTAL_SUPPLY = "TYPE_STAKE_TOTAL_SUPPLY",
-  /** Node vote to update the threshold of the signer set for the multisig contract */
-  TYPE_SIGNER_THRESHOLD_SET = "TYPE_SIGNER_THRESHOLD_SET",
-  /** Node vote to validate a new assert governance proposal */
-  TYPE_GOVERNANCE_VALIDATE_ASSET = "TYPE_GOVERNANCE_VALIDATE_ASSET",
-  /** Node vote for an Ethereum contract call result */
-  TYPE_ETHEREUM_CONTRACT_CALL_RESULT = "TYPE_ETHEREUM_CONTRACT_CALL_RESULT"
-}
-
-/** */
-export enum NodeVoteTypeNumber {
-  /** Represents an unspecified or missing value from the input */
-  TYPE_UNSPECIFIED = 0,
-  /** Node vote for a new stake deposit */
-  TYPE_STAKE_DEPOSITED = 1,
-  /** Node vote for a new stake removed event */
-  TYPE_STAKE_REMOVED = 2,
-  /** Node vote for a new collateral deposit */
-  TYPE_FUNDS_DEPOSITED = 3,
-  /** Node vote for a new signer added to the erc20 bridge */
-  TYPE_SIGNER_ADDED = 4,
-  /** Node vote for a signer removed from the erc20 bridge */
-  TYPE_SIGNER_REMOVED = 5,
-  /** Node vote for a bridge stopped event */
-  TYPE_BRIDGE_STOPPED = 6,
-  /** Node vote for a bridge resumed event */
-  TYPE_BRIDGE_RESUMED = 7,
-  /** Node vote for a newly listed asset */
-  TYPE_ASSET_LISTED = 8,
-  /** Node vote for an asset limits update */
-  TYPE_LIMITS_UPDATED = 9,
-  /** Node vote to share the total supply of the staking token */
-  TYPE_STAKE_TOTAL_SUPPLY = 10,
-  /** Node vote to update the threshold of the signer set for the multisig contract */
-  TYPE_SIGNER_THRESHOLD_SET = 11,
-  /** Node vote to validate a new assert governance proposal */
-  TYPE_GOVERNANCE_VALIDATE_ASSET = 12,
-  /** Node vote for an Ethereum contract call result */
-  TYPE_ETHEREUM_CONTRACT_CALL_RESULT = 13
-}
-
-export interface AnnounceNode {
-  vegaPubKey?: string;
-  ethereumAddress?: string;
-  chainPubKey?: string;
-  infoUrl?: string;
-  country?: string;
-  id?: string;
-  name?: string;
-  avatarUrl?: string;
-  vegaPubKeyIndex?: string | number;
-  fromEpoch?: string | number;
-  ethereumSignature?: vega.commands.v1.Signature;
-  vegaSignature?: vega.commands.v1.Signature;
-  submitterAddress?: string;
-}
-
-export interface ChainEvent {
-  txId?: string;
-  nonce?: string | number;
-  builtin?: vega.BuiltinAssetEvent;
-  erc20?: vega.ERC20Event;
-  stakingEvent?: vega.StakingEvent;
-  erc20Multisig?: vega.ERC20MultiSigEvent;
-  contractCall?: vega.EthContractCallEvent;
-}
-
-export interface EthereumKeyRotateSubmission {
-  targetBlock?: string | number;
-  newAddress?: string;
-  currentAddress?: string;
-  submitterAddress?: string;
-  ethereumSignature?: vega.commands.v1.Signature;
-}
-
-export interface KeyRotateSubmission {
-  newPubKeyIndex?: string | number;
-  targetBlock?: string | number;
-  newPubKey?: string;
-  currentPubKeyHash?: string;
-}
-
-export interface NodeSignature {
-  id?: string;
-  sig?: string;
-  kind?: vega.commands.v1.NodeSignatureKind;
-}
-
-export interface NodeVote {
-  reference?: string;
-  type?: vega.commands.v1.NodeVoteType;
-}
-
-export interface ProtocolUpgradeProposal {
-  upgradeBlockHeight?: string | number;
-  vegaReleaseTag?: string;
-}
-
-export interface StateVariableProposal {
-  proposal?: vega.StateValueProposal;
-}
-
-export interface ValidatorHeartbeat {
-  nodeId?: string;
-  ethereumSignature?: vega.commands.v1.Signature;
-  vegaSignature?: vega.commands.v1.Signature;
-  message?: string;
-}
-
-};
-namespace vega {;
-
-/** */
-export enum AssetStatus {
-  /** Default value, always invalid */
-  STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED",
-  /** Asset is proposed and under vote */
-  STATUS_PROPOSED = "STATUS_PROPOSED",
-  /** Asset has been rejected from governance */
-  STATUS_REJECTED = "STATUS_REJECTED",
-  /** Asset is pending listing from the bridge */
-  STATUS_PENDING_LISTING = "STATUS_PENDING_LISTING",
-  /** Asset is fully usable in the network */
-  STATUS_ENABLED = "STATUS_ENABLED"
-}
-
-/** */
-export enum AssetStatusNumber {
-  /** Default value, always invalid */
-  STATUS_UNSPECIFIED = 0,
-  /** Asset is proposed and under vote */
-  STATUS_PROPOSED = 1,
-  /** Asset has been rejected from governance */
-  STATUS_REJECTED = 2,
-  /** Asset is pending listing from the bridge */
-  STATUS_PENDING_LISTING = 3,
-  /** Asset is fully usable in the network */
-  STATUS_ENABLED = 4
-}
-
-export interface Asset {
-  id?: string;
-  details?: vega.AssetDetails;
-  status?: vega.AssetStatus;
-}
-
-export interface AssetDetails {
-  name?: string;
-  symbol?: string;
-  decimals?: string | number;
-  quantum?: string;
-  builtinAsset?: vega.BuiltinAsset;
-  erc20?: vega.ERC20;
-}
-
-export interface AssetDetailsUpdate {
-  quantum?: string;
-  erc20?: vega.ERC20Update;
-}
-
-export interface BuiltinAsset {
-  maxFaucetAmountMint?: string;
-}
-
-export interface ERC20 {
-  contractAddress?: string;
-  lifetimeLimit?: string;
-  withdrawThreshold?: string;
-  chainId?: string;
-}
-
-export interface ERC20Update {
-  lifetimeLimit?: string;
-  withdrawThreshold?: string;
-}
-
-};
-namespace vega {;
-
-/** Proposal type*/
-export enum GovernanceDataType {
-  /** Single proposal only. In case it has not been specified, for example in older proposals, then this is the default. */
-  TYPE_SINGLE_OR_UNSPECIFIED = "TYPE_SINGLE_OR_UNSPECIFIED",
-  /** Proposal contains a batch of proposals or a proposal that should be treated as part of a batch. */
-  TYPE_BATCH = "TYPE_BATCH"
-}
-
-/** Proposal type*/
-export enum GovernanceDataTypeNumber {
-  /** Single proposal only. In case it has not been specified, for example in older proposals, then this is the default. */
-  TYPE_SINGLE_OR_UNSPECIFIED = 0,
-  /** Proposal contains a batch of proposals or a proposal that should be treated as part of a batch. */
-  TYPE_BATCH = 1
-}
-
-/** */
-export enum GovernanceTransferType {
-  /**  */
-  GOVERNANCE_TRANSFER_TYPE_UNSPECIFIED = "GOVERNANCE_TRANSFER_TYPE_UNSPECIFIED",
-  /**  */
-  GOVERNANCE_TRANSFER_TYPE_ALL_OR_NOTHING = "GOVERNANCE_TRANSFER_TYPE_ALL_OR_NOTHING",
-  /**  */
-  GOVERNANCE_TRANSFER_TYPE_BEST_EFFORT = "GOVERNANCE_TRANSFER_TYPE_BEST_EFFORT"
-}
-
-/** */
-export enum GovernanceTransferTypeNumber {
-  /**  */
-  GOVERNANCE_TRANSFER_TYPE_UNSPECIFIED = 0,
-  /**  */
-  GOVERNANCE_TRANSFER_TYPE_ALL_OR_NOTHING = 1,
-  /**  */
-  GOVERNANCE_TRANSFER_TYPE_BEST_EFFORT = 2
-}
-
-/** */
-export enum MarketStateUpdateType {
-  /** Default value, always invalid */
-  MARKET_STATE_UPDATE_TYPE_UNSPECIFIED = "MARKET_STATE_UPDATE_TYPE_UNSPECIFIED",
-  /** Request to terminate a market via governance */
-  MARKET_STATE_UPDATE_TYPE_TERMINATE = "MARKET_STATE_UPDATE_TYPE_TERMINATE",
-  /** Request to suspend a market via governance */
-  MARKET_STATE_UPDATE_TYPE_SUSPEND = "MARKET_STATE_UPDATE_TYPE_SUSPEND",
-  /** Request to resume a market via governance */
-  MARKET_STATE_UPDATE_TYPE_RESUME = "MARKET_STATE_UPDATE_TYPE_RESUME"
-}
-
-/** */
-export enum MarketStateUpdateTypeNumber {
-  /** Default value, always invalid */
-  MARKET_STATE_UPDATE_TYPE_UNSPECIFIED = 0,
-  /** Request to terminate a market via governance */
-  MARKET_STATE_UPDATE_TYPE_TERMINATE = 1,
-  /** Request to suspend a market via governance */
-  MARKET_STATE_UPDATE_TYPE_SUSPEND = 2,
-  /** Request to resume a market via governance */
-  MARKET_STATE_UPDATE_TYPE_RESUME = 3
-}
-
-/** Proposal state transition:
+    STATUS_FINALIZED = 3,
+  }
+
+  export interface Account {
+    id?: string;
+    owner?: string;
+    balance?: string;
+    asset?: string;
+    marketId?: string;
+    type?: vega.AccountType;
+  }
+
+  export interface AccountDetails {
+    assetId?: string;
+    type?: vega.AccountType;
+    owner?: string;
+    marketId?: string;
+  }
+
+  export interface ActivityStreakBenefitTier {
+    minimumActivityStreak?: string | number;
+    rewardMultiplier?: string;
+    vestingMultiplier?: string;
+  }
+
+  export interface ActivityStreakBenefitTiers {
+    tiers?: vega.ActivityStreakBenefitTier[];
+  }
+
+  export interface AuctionIndicativeState {
+    marketId?: string;
+    indicativePrice?: string;
+    indicativeVolume?: string | number;
+    auctionStart?: string | number;
+    auctionEnd?: string | number;
+  }
+
+  export interface BenefitTier {
+    minimumRunningNotionalTakerVolume?: string;
+    minimumEpochs?: string;
+    referralRewardFactor?: string;
+    referralDiscountFactor?: string;
+  }
+
+  export interface Candle {
+    timestamp?: string | number;
+    datetime?: string;
+    high?: string;
+    low?: string;
+    open?: string;
+    close?: string;
+    volume?: string | number;
+    interval?: vega.Interval;
+    notional?: string | number;
+  }
+
+  export interface CompositePriceSource {
+    priceSource?: string;
+    price?: string;
+    lastUpdated?: string | number;
+  }
+
+  export interface CompositePriceState {
+    priceSources?: vega.CompositePriceSource[];
+  }
+
+  export interface Delegation {
+    party?: string;
+    nodeId?: string;
+    amount?: string;
+    epochSeq?: string;
+  }
+
+  export interface Deposit {
+    id?: string;
+    status?: vega.DepositStatus;
+    partyId?: string;
+    asset?: string;
+    amount?: string;
+    txHash?: string;
+    creditedTimestamp?: string | number;
+    createdTimestamp?: string | number;
+  }
+
+  export interface DispatchStrategy {
+    assetForMetric?: string;
+    metric?: vega.DispatchMetric;
+    markets?: string[];
+    entityScope?: vega.EntityScope;
+    individualScope?: vega.IndividualScope;
+    teamScope?: string[];
+    nTopPerformers?: string;
+    stakingRequirement?: string;
+    notionalTimeWeightedAveragePositionRequirement?: string;
+    windowLength?: string | number;
+    lockPeriod?: string | number;
+    distributionStrategy?: vega.DistributionStrategy;
+    rankTable?: vega.Rank[];
+    capRewardFeeMultiple?: string;
+    transferInterval?: string | number;
+  }
+
+  export interface EVMBridgeConfig {
+    networkId?: string;
+    chainId?: string;
+    collateralBridgeContract?: vega.EthereumContractConfig;
+    confirmations?: string | number;
+    multisigControlContract?: vega.EthereumContractConfig;
+    blockTime?: string;
+    name?: string;
+  }
+
+  export interface EVMBridgeConfigs {
+    configs?: vega.EVMBridgeConfig[];
+  }
+
+  export interface Epoch {
+    seq?: string | number;
+    timestamps?: vega.EpochTimestamps;
+    validators?: vega.Node[];
+    delegations?: vega.Delegation[];
+  }
+
+  export interface EpochData {
+    total?: string | number;
+    offline?: string | number;
+    online?: string | number;
+  }
+
+  export interface EpochParticipation {
+    epoch?: vega.Epoch;
+    offline?: string | number;
+    online?: string | number;
+    totalRewards?: string | number;
+  }
+
+  export interface EpochRewardSummary {
+    epoch?: string | number;
+    assetId?: string;
+    marketId?: string;
+    rewardType?: string;
+    amount?: string;
+  }
+
+  export interface EpochTimestamps {
+    startTime?: string | number;
+    expiryTime?: string | number;
+    endTime?: string | number;
+    firstBlock?: string | number;
+    lastBlock?: string | number;
+  }
+
+  export interface Erc20WithdrawExt {
+    receiverAddress?: string;
+  }
+
+  export interface ErrorDetail {
+    code?: string | number;
+    message?: string;
+    inner?: string;
+  }
+
+  export interface EthereumConfig {
+    networkId?: string;
+    chainId?: string;
+    collateralBridgeContract?: vega.EthereumContractConfig;
+    confirmations?: string | number;
+    stakingBridgeContract?: vega.EthereumContractConfig;
+    tokenVestingContract?: vega.EthereumContractConfig;
+    multisigControlContract?: vega.EthereumContractConfig;
+  }
+
+  export interface EthereumContractConfig {
+    address?: string;
+    deploymentBlockHeight?: string | number;
+  }
+
+  export interface EthereumL2Config {
+    networkId?: string;
+    chainId?: string;
+    confirmations?: string | number;
+    name?: string;
+    blockInterval?: string | number;
+  }
+
+  export interface EthereumL2Configs {
+    configs?: vega.EthereumL2Config[];
+  }
+
+  export interface Fee {
+    makerFee?: string;
+    infrastructureFee?: string;
+    liquidityFee?: string;
+    makerFeeVolumeDiscount?: string;
+    infrastructureFeeVolumeDiscount?: string;
+    liquidityFeeVolumeDiscount?: string;
+    makerFeeReferrerDiscount?: string;
+    infrastructureFeeReferrerDiscount?: string;
+    liquidityFeeReferrerDiscount?: string;
+  }
+
+  export interface FinancialAmount {
+    amount?: string;
+    asset?: string;
+  }
+
+  export interface IcebergOrder {
+    peakSize?: string | number;
+    minimumVisibleSize?: string | number;
+    reservedRemaining?: string | number;
+  }
+
+  export interface KeyValueBundle {
+    key?: string;
+    tolerance?: string;
+    value?: vega.StateVarValue;
+  }
+
+  export interface LedgerEntry {
+    fromAccount?: vega.AccountDetails;
+    toAccount?: vega.AccountDetails;
+    amount?: string;
+    type?: vega.TransferType;
+    timestamp?: string | number;
+    fromAccountBalance?: string;
+    toAccountBalance?: string;
+    transferId?: string;
+  }
+
+  export interface LedgerMovement {
+    entries?: vega.LedgerEntry[];
+    balances?: vega.PostTransferBalance[];
+  }
+
+  export interface LiquidityOrder {
+    reference?: vega.PeggedReference;
+    proportion?: string | number;
+    offset?: string;
+  }
+
+  export interface LiquidityOrderReference {
+    orderId?: string;
+    liquidityOrder?: vega.LiquidityOrder;
+  }
+
+  export interface LiquidityProviderFeeShare {
+    party?: string;
+    equityLikeShare?: string;
+    averageEntryValuation?: string;
+    averageScore?: string;
+    virtualStake?: string;
+  }
+
+  export interface LiquidityProviderSLA {
+    party?: string;
+    currentEpochFractionOfTimeOnBook?: string;
+    lastEpochFractionOfTimeOnBook?: string;
+    lastEpochFeePenalty?: string;
+    lastEpochBondPenalty?: string;
+    hysteresisPeriodFeePenalties?: string[];
+    requiredLiquidity?: string;
+    notionalVolumeBuys?: string;
+    notionalVolumeSells?: string;
+  }
+
+  export interface LiquidityProvision {
+    id?: string;
+    partyId?: string;
+    createdAt?: string | number;
+    updatedAt?: string | number;
+    marketId?: string;
+    commitmentAmount?: string;
+    fee?: string;
+    sells?: vega.LiquidityOrderReference[];
+    buys?: vega.LiquidityOrderReference[];
+    version?: string | number;
+    status?: vega.LiquidityProvisionStatus;
+    reference?: string;
+  }
+
+  export interface MarginLevels {
+    maintenanceMargin?: string;
+    searchLevel?: string;
+    initialMargin?: string;
+    collateralReleaseLevel?: string;
+    partyId?: string;
+    marketId?: string;
+    asset?: string;
+    timestamp?: string | number;
+    orderMargin?: string;
+    marginMode?: vega.MarginMode;
+    marginFactor?: string;
+  }
+
+  export interface MarketData {
+    markPrice?: string;
+    bestBidPrice?: string;
+    bestBidVolume?: string | number;
+    bestOfferPrice?: string;
+    bestOfferVolume?: string | number;
+    bestStaticBidPrice?: string;
+    bestStaticBidVolume?: string | number;
+    bestStaticOfferPrice?: string;
+    bestStaticOfferVolume?: string | number;
+    midPrice?: string;
+    staticMidPrice?: string;
+    market?: string;
+    timestamp?: string | number;
+    openInterest?: string | number;
+    auctionEnd?: string | number;
+    auctionStart?: string | number;
+    indicativePrice?: string;
+    indicativeVolume?: string | number;
+    marketTradingMode?: vega.MarketTradingMode;
+    trigger?: vega.AuctionTrigger;
+    extensionTrigger?: vega.AuctionTrigger;
+    targetStake?: string;
+    suppliedStake?: string;
+    priceMonitoringBounds?: vega.PriceMonitoringBounds[];
+    marketValueProxy?: string;
+    liquidityProviderFeeShare?: vega.LiquidityProviderFeeShare[];
+    marketState?: vega.MarketState;
+    nextMarkToMarket?: string | number;
+    lastTradedPrice?: string;
+    marketGrowth?: string;
+    productData?: vega.ProductData;
+    liquidityProviderSla?: vega.LiquidityProviderSLA[];
+    nextNetworkCloseout?: string | number;
+    markPriceType?: vega.CompositePriceType;
+    markPriceState?: vega.CompositePriceState;
+  }
+
+  export interface MarketDepth {
+    marketId?: string;
+    buy?: vega.PriceLevel[];
+    sell?: vega.PriceLevel[];
+    sequenceNumber?: string | number;
+  }
+
+  export interface MarketDepthUpdate {
+    marketId?: string;
+    buy?: vega.PriceLevel[];
+    sell?: vega.PriceLevel[];
+    sequenceNumber?: string | number;
+    previousSequenceNumber?: string | number;
+  }
+
+  export interface MatrixValue {
+    value?: vega.VectorValue[];
+  }
+
+  export interface Metadata {
+    key?: string;
+    value?: string;
+  }
+
+  export interface NetworkLimits {
+    canProposeMarket?: boolean;
+    canProposeAsset?: boolean;
+    proposeMarketEnabled?: boolean;
+    proposeAssetEnabled?: boolean;
+    genesisLoaded?: boolean;
+    proposeMarketEnabledFrom?: string | number;
+    proposeAssetEnabledFrom?: string | number;
+    canProposeSpotMarket?: boolean;
+    canProposePerpetualMarket?: boolean;
+  }
+
+  export interface NetworkParameter {
+    key?: string;
+    value?: string;
+  }
+
+  export interface Node {
+    id?: string;
+    pubKey?: string;
+    tmPubKey?: string;
+    ethereumAddress?: string;
+    infoUrl?: string;
+    location?: string;
+    stakedByOperator?: string;
+    stakedByDelegates?: string;
+    stakedTotal?: string;
+    maxIntendedStake?: string;
+    pendingStake?: string;
+    epochData?: vega.EpochData;
+    status?: vega.NodeStatus;
+    delegations?: vega.Delegation[];
+    rewardScore?: vega.RewardScore;
+    rankingScore?: vega.RankingScore;
+    name?: string;
+    avatarUrl?: string;
+  }
+
+  export interface NodeData {
+    stakedTotal?: string;
+    totalNodes?: string | number;
+    inactiveNodes?: string | number;
+    tendermintNodes?: vega.NodeSet;
+    ersatzNodes?: vega.NodeSet;
+    pendingNodes?: vega.NodeSet;
+    uptime?: string | number;
+  }
+
+  export interface NodeSet {
+    total?: string | number;
+    inactive?: string | number;
+    promoted?: string[];
+    demoted?: string[];
+    maximum?: string | number;
+  }
+
+  export interface Order {
+    id?: string;
+    marketId?: string;
+    partyId?: string;
+    side?: vega.Side;
+    price?: string;
+    size?: string | number;
+    remaining?: string | number;
+    timeInForce?: vega.OrderTimeInForce;
+    type?: vega.OrderType;
+    createdAt?: string | number;
+    status?: vega.OrderStatus;
+    expiresAt?: string | number;
+    reference?: string;
+    reason?: vega.OrderError;
+    updatedAt?: string | number;
+    version?: string | number;
+    batchId?: string | number;
+    peggedOrder?: vega.PeggedOrder;
+    liquidityProvisionId?: string;
+    postOnly?: boolean;
+    reduceOnly?: boolean;
+    icebergOrder?: vega.IcebergOrder;
+  }
+
+  export interface OrderCancellationConfirmation {
+    order?: vega.Order;
+  }
+
+  export interface OrderConfirmation {
+    order?: vega.Order;
+    trades?: vega.Trade[];
+    passiveOrdersAffected?: vega.Order[];
+  }
+
+  export interface Party {
+    id?: string;
+    alias?: string;
+    metadata?: vega.Metadata[];
+  }
+
+  export interface PartyProfile {
+    partyId?: string;
+    alias?: string;
+    metadata?: vega.Metadata[];
+  }
+
+  export interface PeggedOrder {
+    reference?: vega.PeggedReference;
+    offset?: string;
+  }
+
+  export interface PerpetualData {
+    fundingPayment?: string;
+    fundingRate?: string;
+    internalTwap?: string;
+    externalTwap?: string;
+    seqNum?: string | number;
+    startTime?: string | number;
+    internalCompositePrice?: string;
+    nextInternalCompositePriceCalc?: string | number;
+    internalCompositePriceType?: vega.CompositePriceType;
+    underlyingIndexPrice?: string;
+    internalCompositePriceState?: vega.CompositePriceState;
+  }
+
+  export interface Position {
+    marketId?: string;
+    partyId?: string;
+    openVolume?: string | number;
+    realisedPnl?: string;
+    unrealisedPnl?: string;
+    averageEntryPrice?: string;
+    updatedAt?: string | number;
+    lossSocialisationAmount?: string;
+    positionStatus?: vega.PositionStatus;
+  }
+
+  export interface PositionTrade {
+    volume?: string | number;
+    price?: string;
+  }
+
+  export interface PostTransferBalance {
+    account?: vega.AccountDetails;
+    balance?: string;
+  }
+
+  export interface PriceLevel {
+    price?: string;
+    numberOfOrders?: string | number;
+    volume?: string | number;
+  }
+
+  export interface PriceMonitoringBounds {
+    minValidPrice?: string;
+    maxValidPrice?: string;
+    trigger?: vega.PriceMonitoringTrigger;
+    referencePrice?: string;
+  }
+
+  export interface ProductData {
+    perpetualData?: vega.PerpetualData;
+  }
+
+  export interface Rank {
+    startRank?: string | number;
+    shareRatio?: string | number;
+  }
+
+  export interface RankingScore {
+    stakeScore?: string;
+    performanceScore?: string;
+    previousStatus?: vega.ValidatorNodeStatus;
+    status?: vega.ValidatorNodeStatus;
+    votingPower?: string | number;
+    rankingScore?: string;
+  }
+
+  export interface ReferralProgram {
+    version?: string | number;
+    id?: string;
+    benefitTiers?: vega.BenefitTier[];
+    endOfProgramTimestamp?: string | number;
+    windowLength?: string | number;
+    stakingTiers?: vega.StakingTier[];
+  }
+
+  export interface Reward {
+    assetId?: string;
+    partyId?: string;
+    epoch?: string | number;
+    amount?: string;
+    percentageOfTotal?: string;
+    receivedAt?: string | number;
+    marketId?: string;
+    rewardType?: string;
+    lockedUntilEpoch?: string | number;
+    quantumAmount?: string;
+    gameId?: string;
+    teamId?: string;
+  }
+
+  export interface RewardScore {
+    rawValidatorScore?: string;
+    performanceScore?: string;
+    multisigScore?: string;
+    validatorScore?: string;
+    normalisedScore?: string;
+    validatorStatus?: vega.ValidatorNodeStatus;
+  }
+
+  export interface RewardSummary {
+    assetId?: string;
+    partyId?: string;
+    amount?: string;
+  }
+
+  export interface RiskFactor {
+    market?: string;
+    short?: string;
+    long?: string;
+  }
+
+  export interface ScalarValue {
+    value?: string;
+  }
+
+  export interface StakingTier {
+    minimumStakedTokens?: string;
+    referralRewardMultiplier?: string;
+  }
+
+  export interface StateValueProposal {
+    stateVarId?: string;
+    eventId?: string;
+    kvb?: vega.KeyValueBundle[];
+  }
+
+  export interface StateVarValue {
+    scalarVal?: vega.ScalarValue;
+    vectorVal?: vega.VectorValue;
+    matrixVal?: vega.MatrixValue;
+  }
+
+  export interface StopOrder {
+    id?: string;
+    ocoLinkId?: string;
+    expiresAt?: string | number;
+    expiryStrategy?: vega.StopOrderExpiryStrategy;
+    triggerDirection?: vega.StopOrderTriggerDirection;
+    status?: vega.StopOrderStatus;
+    createdAt?: string | number;
+    updatedAt?: string | number;
+    orderId?: string;
+    partyId?: string;
+    marketId?: string;
+    rejectionReason?: vega.StopOrderRejectionReason;
+    sizeOverrideSetting?: vega.StopOrderSizeOverrideSetting;
+    sizeOverrideValue?: vega.StopOrderSizeOverrideValue;
+    price?: string;
+    trailingPercentOffset?: string;
+  }
+
+  export interface StopOrderSizeOverrideValue {
+    percentage?: string;
+  }
+
+  export interface Trade {
+    id?: string;
+    marketId?: string;
+    price?: string;
+    size?: string | number;
+    buyer?: string;
+    seller?: string;
+    aggressor?: vega.Side;
+    buyOrder?: string;
+    sellOrder?: string;
+    timestamp?: string | number;
+    type?: vega.TradeType;
+    buyerFee?: vega.Fee;
+    sellerFee?: vega.Fee;
+    buyerAuctionBatch?: string | number;
+    sellerAuctionBatch?: string | number;
+    assetPrice?: string;
+  }
+
+  export interface TradeSet {
+    trades?: vega.Trade[];
+  }
+
+  export interface Transfer {
+    owner?: string;
+    amount?: vega.FinancialAmount;
+    type?: vega.TransferType;
+    minAmount?: string;
+    marketId?: string;
+  }
+
+  export interface TransferRequest {
+    fromAccount?: vega.Account[];
+    toAccount?: vega.Account[];
+    amount?: string;
+    minAmount?: string;
+    asset?: string;
+    type?: vega.TransferType;
+  }
+
+  export interface VectorValue {
+    value?: string[];
+  }
+
+  export interface VestingBenefitTier {
+    minimumQuantumBalance?: string;
+    rewardMultiplier?: string;
+  }
+
+  export interface VestingBenefitTiers {
+    tiers?: vega.VestingBenefitTier[];
+  }
+
+  export interface VolumeBenefitTier {
+    minimumRunningNotionalTakerVolume?: string;
+    volumeDiscountFactor?: string;
+  }
+
+  export interface VolumeDiscountProgram {
+    version?: string | number;
+    id?: string;
+    benefitTiers?: vega.VolumeBenefitTier[];
+    endOfProgramTimestamp?: string | number;
+    windowLength?: string | number;
+  }
+
+  export interface WithdrawExt {
+    erc20?: vega.Erc20WithdrawExt;
+  }
+
+  export interface Withdrawal {
+    id?: string;
+    partyId?: string;
+    amount?: string;
+    asset?: string;
+    status?: vega.WithdrawalStatus;
+    ref?: string;
+    txHash?: string;
+    createdTimestamp?: string | number;
+    withdrawnTimestamp?: string | number;
+    ext?: vega.WithdrawExt;
+  }
+}
+namespace vega.commands.v1 {
+  /** Kind of signature created by a node, for example, allow-listing a new asset, withdrawal etc*/
+  export enum NodeSignatureKind {
+    /** Represents an unspecified or missing value from the input. */
+    NODE_SIGNATURE_KIND_UNSPECIFIED = "NODE_SIGNATURE_KIND_UNSPECIFIED",
+    /** Represents a signature for a new asset allow-listing. */
+    NODE_SIGNATURE_KIND_ASSET_NEW = "NODE_SIGNATURE_KIND_ASSET_NEW",
+    /** Represents a signature for an asset withdrawal. */
+    NODE_SIGNATURE_KIND_ASSET_WITHDRAWAL = "NODE_SIGNATURE_KIND_ASSET_WITHDRAWAL",
+    /** Represents a signature for a new signer added to the erc20 multisig contract. */
+    NODE_SIGNATURE_KIND_ERC20_MULTISIG_SIGNER_ADDED = "NODE_SIGNATURE_KIND_ERC20_MULTISIG_SIGNER_ADDED",
+    /** Represents a signature for a signer removed from the erc20 multisig contract. */
+    NODE_SIGNATURE_KIND_ERC20_MULTISIG_SIGNER_REMOVED = "NODE_SIGNATURE_KIND_ERC20_MULTISIG_SIGNER_REMOVED",
+    /** Represents a signature for an asset update allow-listing. */
+    NODE_SIGNATURE_KIND_ASSET_UPDATE = "NODE_SIGNATURE_KIND_ASSET_UPDATE",
+  }
+
+  /** Kind of signature created by a node, for example, allow-listing a new asset, withdrawal etc*/
+  export enum NodeSignatureKindNumber {
+    /** Represents an unspecified or missing value from the input. */
+    NODE_SIGNATURE_KIND_UNSPECIFIED = 0,
+    /** Represents a signature for a new asset allow-listing. */
+    NODE_SIGNATURE_KIND_ASSET_NEW = 1,
+    /** Represents a signature for an asset withdrawal. */
+    NODE_SIGNATURE_KIND_ASSET_WITHDRAWAL = 2,
+    /** Represents a signature for a new signer added to the erc20 multisig contract. */
+    NODE_SIGNATURE_KIND_ERC20_MULTISIG_SIGNER_ADDED = 3,
+    /** Represents a signature for a signer removed from the erc20 multisig contract. */
+    NODE_SIGNATURE_KIND_ERC20_MULTISIG_SIGNER_REMOVED = 4,
+    /** Represents a signature for an asset update allow-listing. */
+    NODE_SIGNATURE_KIND_ASSET_UPDATE = 5,
+  }
+
+  /** */
+  export enum NodeVoteType {
+    /** Represents an unspecified or missing value from the input */
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED",
+    /** Node vote for a new stake deposit */
+    TYPE_STAKE_DEPOSITED = "TYPE_STAKE_DEPOSITED",
+    /** Node vote for a new stake removed event */
+    TYPE_STAKE_REMOVED = "TYPE_STAKE_REMOVED",
+    /** Node vote for a new collateral deposit */
+    TYPE_FUNDS_DEPOSITED = "TYPE_FUNDS_DEPOSITED",
+    /** Node vote for a new signer added to the erc20 bridge */
+    TYPE_SIGNER_ADDED = "TYPE_SIGNER_ADDED",
+    /** Node vote for a signer removed from the erc20 bridge */
+    TYPE_SIGNER_REMOVED = "TYPE_SIGNER_REMOVED",
+    /** Node vote for a bridge stopped event */
+    TYPE_BRIDGE_STOPPED = "TYPE_BRIDGE_STOPPED",
+    /** Node vote for a bridge resumed event */
+    TYPE_BRIDGE_RESUMED = "TYPE_BRIDGE_RESUMED",
+    /** Node vote for a newly listed asset */
+    TYPE_ASSET_LISTED = "TYPE_ASSET_LISTED",
+    /** Node vote for an asset limits update */
+    TYPE_LIMITS_UPDATED = "TYPE_LIMITS_UPDATED",
+    /** Node vote to share the total supply of the staking token */
+    TYPE_STAKE_TOTAL_SUPPLY = "TYPE_STAKE_TOTAL_SUPPLY",
+    /** Node vote to update the threshold of the signer set for the multisig contract */
+    TYPE_SIGNER_THRESHOLD_SET = "TYPE_SIGNER_THRESHOLD_SET",
+    /** Node vote to validate a new assert governance proposal */
+    TYPE_GOVERNANCE_VALIDATE_ASSET = "TYPE_GOVERNANCE_VALIDATE_ASSET",
+    /** Node vote for an Ethereum contract call result */
+    TYPE_ETHEREUM_CONTRACT_CALL_RESULT = "TYPE_ETHEREUM_CONTRACT_CALL_RESULT",
+  }
+
+  /** */
+  export enum NodeVoteTypeNumber {
+    /** Represents an unspecified or missing value from the input */
+    TYPE_UNSPECIFIED = 0,
+    /** Node vote for a new stake deposit */
+    TYPE_STAKE_DEPOSITED = 1,
+    /** Node vote for a new stake removed event */
+    TYPE_STAKE_REMOVED = 2,
+    /** Node vote for a new collateral deposit */
+    TYPE_FUNDS_DEPOSITED = 3,
+    /** Node vote for a new signer added to the erc20 bridge */
+    TYPE_SIGNER_ADDED = 4,
+    /** Node vote for a signer removed from the erc20 bridge */
+    TYPE_SIGNER_REMOVED = 5,
+    /** Node vote for a bridge stopped event */
+    TYPE_BRIDGE_STOPPED = 6,
+    /** Node vote for a bridge resumed event */
+    TYPE_BRIDGE_RESUMED = 7,
+    /** Node vote for a newly listed asset */
+    TYPE_ASSET_LISTED = 8,
+    /** Node vote for an asset limits update */
+    TYPE_LIMITS_UPDATED = 9,
+    /** Node vote to share the total supply of the staking token */
+    TYPE_STAKE_TOTAL_SUPPLY = 10,
+    /** Node vote to update the threshold of the signer set for the multisig contract */
+    TYPE_SIGNER_THRESHOLD_SET = 11,
+    /** Node vote to validate a new assert governance proposal */
+    TYPE_GOVERNANCE_VALIDATE_ASSET = 12,
+    /** Node vote for an Ethereum contract call result */
+    TYPE_ETHEREUM_CONTRACT_CALL_RESULT = 13,
+  }
+
+  export interface AnnounceNode {
+    vegaPubKey?: string;
+    ethereumAddress?: string;
+    chainPubKey?: string;
+    infoUrl?: string;
+    country?: string;
+    id?: string;
+    name?: string;
+    avatarUrl?: string;
+    vegaPubKeyIndex?: string | number;
+    fromEpoch?: string | number;
+    ethereumSignature?: vega.commands.v1.Signature;
+    vegaSignature?: vega.commands.v1.Signature;
+    submitterAddress?: string;
+  }
+
+  export interface ChainEvent {
+    txId?: string;
+    nonce?: string | number;
+    builtin?: vega.BuiltinAssetEvent;
+    erc20?: vega.ERC20Event;
+    stakingEvent?: vega.StakingEvent;
+    erc20Multisig?: vega.ERC20MultiSigEvent;
+    contractCall?: vega.EthContractCallEvent;
+  }
+
+  export interface EthereumKeyRotateSubmission {
+    targetBlock?: string | number;
+    newAddress?: string;
+    currentAddress?: string;
+    submitterAddress?: string;
+    ethereumSignature?: vega.commands.v1.Signature;
+  }
+
+  export interface KeyRotateSubmission {
+    newPubKeyIndex?: string | number;
+    targetBlock?: string | number;
+    newPubKey?: string;
+    currentPubKeyHash?: string;
+  }
+
+  export interface NodeSignature {
+    id?: string;
+    sig?: string;
+    kind?: vega.commands.v1.NodeSignatureKind;
+  }
+
+  export interface NodeVote {
+    reference?: string;
+    type?: vega.commands.v1.NodeVoteType;
+  }
+
+  export interface ProtocolUpgradeProposal {
+    upgradeBlockHeight?: string | number;
+    vegaReleaseTag?: string;
+  }
+
+  export interface StateVariableProposal {
+    proposal?: vega.StateValueProposal;
+  }
+
+  export interface ValidatorHeartbeat {
+    nodeId?: string;
+    ethereumSignature?: vega.commands.v1.Signature;
+    vegaSignature?: vega.commands.v1.Signature;
+    message?: string;
+  }
+}
+namespace vega {
+  /** */
+  export enum AssetStatus {
+    /** Default value, always invalid */
+    STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED",
+    /** Asset is proposed and under vote */
+    STATUS_PROPOSED = "STATUS_PROPOSED",
+    /** Asset has been rejected from governance */
+    STATUS_REJECTED = "STATUS_REJECTED",
+    /** Asset is pending listing from the bridge */
+    STATUS_PENDING_LISTING = "STATUS_PENDING_LISTING",
+    /** Asset is fully usable in the network */
+    STATUS_ENABLED = "STATUS_ENABLED",
+  }
+
+  /** */
+  export enum AssetStatusNumber {
+    /** Default value, always invalid */
+    STATUS_UNSPECIFIED = 0,
+    /** Asset is proposed and under vote */
+    STATUS_PROPOSED = 1,
+    /** Asset has been rejected from governance */
+    STATUS_REJECTED = 2,
+    /** Asset is pending listing from the bridge */
+    STATUS_PENDING_LISTING = 3,
+    /** Asset is fully usable in the network */
+    STATUS_ENABLED = 4,
+  }
+
+  export interface Asset {
+    id?: string;
+    details?: vega.AssetDetails;
+    status?: vega.AssetStatus;
+  }
+
+  export interface AssetDetails {
+    name?: string;
+    symbol?: string;
+    decimals?: string | number;
+    quantum?: string;
+    builtinAsset?: vega.BuiltinAsset;
+    erc20?: vega.ERC20;
+  }
+
+  export interface AssetDetailsUpdate {
+    quantum?: string;
+    erc20?: vega.ERC20Update;
+  }
+
+  export interface BuiltinAsset {
+    maxFaucetAmountMint?: string;
+  }
+
+  export interface ERC20 {
+    contractAddress?: string;
+    lifetimeLimit?: string;
+    withdrawThreshold?: string;
+    chainId?: string;
+  }
+
+  export interface ERC20Update {
+    lifetimeLimit?: string;
+    withdrawThreshold?: string;
+  }
+}
+namespace vega {
+  /** Proposal type*/
+  export enum GovernanceDataType {
+    /** Single proposal only. In case it has not been specified, for example in older proposals, then this is the default. */
+    TYPE_SINGLE_OR_UNSPECIFIED = "TYPE_SINGLE_OR_UNSPECIFIED",
+    /** Proposal contains a batch of proposals or a proposal that should be treated as part of a batch. */
+    TYPE_BATCH = "TYPE_BATCH",
+  }
+
+  /** Proposal type*/
+  export enum GovernanceDataTypeNumber {
+    /** Single proposal only. In case it has not been specified, for example in older proposals, then this is the default. */
+    TYPE_SINGLE_OR_UNSPECIFIED = 0,
+    /** Proposal contains a batch of proposals or a proposal that should be treated as part of a batch. */
+    TYPE_BATCH = 1,
+  }
+
+  /** */
+  export enum GovernanceTransferType {
+    /**  */
+    GOVERNANCE_TRANSFER_TYPE_UNSPECIFIED = "GOVERNANCE_TRANSFER_TYPE_UNSPECIFIED",
+    /**  */
+    GOVERNANCE_TRANSFER_TYPE_ALL_OR_NOTHING = "GOVERNANCE_TRANSFER_TYPE_ALL_OR_NOTHING",
+    /**  */
+    GOVERNANCE_TRANSFER_TYPE_BEST_EFFORT = "GOVERNANCE_TRANSFER_TYPE_BEST_EFFORT",
+  }
+
+  /** */
+  export enum GovernanceTransferTypeNumber {
+    /**  */
+    GOVERNANCE_TRANSFER_TYPE_UNSPECIFIED = 0,
+    /**  */
+    GOVERNANCE_TRANSFER_TYPE_ALL_OR_NOTHING = 1,
+    /**  */
+    GOVERNANCE_TRANSFER_TYPE_BEST_EFFORT = 2,
+  }
+
+  /** */
+  export enum MarketStateUpdateType {
+    /** Default value, always invalid */
+    MARKET_STATE_UPDATE_TYPE_UNSPECIFIED = "MARKET_STATE_UPDATE_TYPE_UNSPECIFIED",
+    /** Request to terminate a market via governance */
+    MARKET_STATE_UPDATE_TYPE_TERMINATE = "MARKET_STATE_UPDATE_TYPE_TERMINATE",
+    /** Request to suspend a market via governance */
+    MARKET_STATE_UPDATE_TYPE_SUSPEND = "MARKET_STATE_UPDATE_TYPE_SUSPEND",
+    /** Request to resume a market via governance */
+    MARKET_STATE_UPDATE_TYPE_RESUME = "MARKET_STATE_UPDATE_TYPE_RESUME",
+  }
+
+  /** */
+  export enum MarketStateUpdateTypeNumber {
+    /** Default value, always invalid */
+    MARKET_STATE_UPDATE_TYPE_UNSPECIFIED = 0,
+    /** Request to terminate a market via governance */
+    MARKET_STATE_UPDATE_TYPE_TERMINATE = 1,
+    /** Request to suspend a market via governance */
+    MARKET_STATE_UPDATE_TYPE_SUSPEND = 2,
+    /** Request to resume a market via governance */
+    MARKET_STATE_UPDATE_TYPE_RESUME = 3,
+  }
+
+  /** Proposal state transition:
 Open ->
   - Passed -> Enacted.
   - Passed -> Failed.
   - Declined
 Rejected
 Proposal can enter Failed state from any other state*/
-export enum ProposalState {
-  /** Default value, always invalid */
-  STATE_UNSPECIFIED = "STATE_UNSPECIFIED",
-  /** Proposal enactment has failed - even though proposal has passed, its execution could not be performed */
-  STATE_FAILED = "STATE_FAILED",
-  /** Proposal is open for voting */
-  STATE_OPEN = "STATE_OPEN",
-  /** Proposal has gained enough support to be executed */
-  STATE_PASSED = "STATE_PASSED",
-  /** Proposal wasn't accepted i.e. proposal terms failed validation due to wrong configuration or failed to meet network requirements. */
-  STATE_REJECTED = "STATE_REJECTED",
-  /** Proposal didn't get enough votes, e.g. either failed to gain required participation or majority level. */
-  STATE_DECLINED = "STATE_DECLINED",
-  /** Proposal enacted. */
-  STATE_ENACTED = "STATE_ENACTED",
-  /** Waiting for node validation of the proposal */
-  STATE_WAITING_FOR_NODE_VOTE = "STATE_WAITING_FOR_NODE_VOTE"
-}
+  export enum ProposalState {
+    /** Default value, always invalid */
+    STATE_UNSPECIFIED = "STATE_UNSPECIFIED",
+    /** Proposal enactment has failed - even though proposal has passed, its execution could not be performed */
+    STATE_FAILED = "STATE_FAILED",
+    /** Proposal is open for voting */
+    STATE_OPEN = "STATE_OPEN",
+    /** Proposal has gained enough support to be executed */
+    STATE_PASSED = "STATE_PASSED",
+    /** Proposal wasn't accepted i.e. proposal terms failed validation due to wrong configuration or failed to meet network requirements. */
+    STATE_REJECTED = "STATE_REJECTED",
+    /** Proposal didn't get enough votes, e.g. either failed to gain required participation or majority level. */
+    STATE_DECLINED = "STATE_DECLINED",
+    /** Proposal enacted. */
+    STATE_ENACTED = "STATE_ENACTED",
+    /** Waiting for node validation of the proposal */
+    STATE_WAITING_FOR_NODE_VOTE = "STATE_WAITING_FOR_NODE_VOTE",
+  }
 
-/** Proposal state transition:
+  /** Proposal state transition:
 Open ->
   - Passed -> Enacted.
   - Passed -> Failed.
   - Declined
 Rejected
 Proposal can enter Failed state from any other state*/
-export enum ProposalStateNumber {
-  /** Default value, always invalid */
-  STATE_UNSPECIFIED = 0,
-  /** Proposal enactment has failed - even though proposal has passed, its execution could not be performed */
-  STATE_FAILED = 1,
-  /** Proposal is open for voting */
-  STATE_OPEN = 2,
-  /** Proposal has gained enough support to be executed */
-  STATE_PASSED = 3,
-  /** Proposal wasn't accepted i.e. proposal terms failed validation due to wrong configuration or failed to meet network requirements. */
-  STATE_REJECTED = 4,
-  /** Proposal didn't get enough votes, e.g. either failed to gain required participation or majority level. */
-  STATE_DECLINED = 5,
-  /** Proposal enacted. */
-  STATE_ENACTED = 6,
-  /** Waiting for node validation of the proposal */
-  STATE_WAITING_FOR_NODE_VOTE = 7
-}
+  export enum ProposalStateNumber {
+    /** Default value, always invalid */
+    STATE_UNSPECIFIED = 0,
+    /** Proposal enactment has failed - even though proposal has passed, its execution could not be performed */
+    STATE_FAILED = 1,
+    /** Proposal is open for voting */
+    STATE_OPEN = 2,
+    /** Proposal has gained enough support to be executed */
+    STATE_PASSED = 3,
+    /** Proposal wasn't accepted i.e. proposal terms failed validation due to wrong configuration or failed to meet network requirements. */
+    STATE_REJECTED = 4,
+    /** Proposal didn't get enough votes, e.g. either failed to gain required participation or majority level. */
+    STATE_DECLINED = 5,
+    /** Proposal enacted. */
+    STATE_ENACTED = 6,
+    /** Waiting for node validation of the proposal */
+    STATE_WAITING_FOR_NODE_VOTE = 7,
+  }
 
-/** List of possible errors that can cause a proposal to be in state rejected or failed*/
-export enum ProposalError {
-  /** Default value */
-  PROPOSAL_ERROR_UNSPECIFIED = "PROPOSAL_ERROR_UNSPECIFIED",
-  /** Specified close time is too early based on network parameters */
-  PROPOSAL_ERROR_CLOSE_TIME_TOO_SOON = "PROPOSAL_ERROR_CLOSE_TIME_TOO_SOON",
-  /** Specified close time is too late based on network parameters */
-  PROPOSAL_ERROR_CLOSE_TIME_TOO_LATE = "PROPOSAL_ERROR_CLOSE_TIME_TOO_LATE",
-  /** Specified enactment time is too early based on network parameters */
-  PROPOSAL_ERROR_ENACT_TIME_TOO_SOON = "PROPOSAL_ERROR_ENACT_TIME_TOO_SOON",
-  /** Specified enactment time is too late based on network parameters */
-  PROPOSAL_ERROR_ENACT_TIME_TOO_LATE = "PROPOSAL_ERROR_ENACT_TIME_TOO_LATE",
-  /** Proposer for this proposal has insufficient tokens */
-  PROPOSAL_ERROR_INSUFFICIENT_TOKENS = "PROPOSAL_ERROR_INSUFFICIENT_TOKENS",
-  /** Instrument quote name and base name were the same */
-  PROPOSAL_ERROR_INVALID_INSTRUMENT_SECURITY = "PROPOSAL_ERROR_INVALID_INSTRUMENT_SECURITY",
-  /** Proposal has no product */
-  PROPOSAL_ERROR_NO_PRODUCT = "PROPOSAL_ERROR_NO_PRODUCT",
-  /** Specified product is not supported */
-  PROPOSAL_ERROR_UNSUPPORTED_PRODUCT = "PROPOSAL_ERROR_UNSUPPORTED_PRODUCT",
-  /** Proposal has no trading mode */
-  PROPOSAL_ERROR_NO_TRADING_MODE = "PROPOSAL_ERROR_NO_TRADING_MODE",
-  /** Proposal has an unsupported trading mode */
-  PROPOSAL_ERROR_UNSUPPORTED_TRADING_MODE = "PROPOSAL_ERROR_UNSUPPORTED_TRADING_MODE",
-  /** Proposal failed node validation */
-  PROPOSAL_ERROR_NODE_VALIDATION_FAILED = "PROPOSAL_ERROR_NODE_VALIDATION_FAILED",
-  /** Field is missing in a builtin asset source */
-  PROPOSAL_ERROR_MISSING_BUILTIN_ASSET_FIELD = "PROPOSAL_ERROR_MISSING_BUILTIN_ASSET_FIELD",
-  /** Contract address is missing in the ERC20 asset source */
-  PROPOSAL_ERROR_MISSING_ERC20_CONTRACT_ADDRESS = "PROPOSAL_ERROR_MISSING_ERC20_CONTRACT_ADDRESS",
-  /** Asset ID is invalid or does not exist on the Vega network */
-  PROPOSAL_ERROR_INVALID_ASSET = "PROPOSAL_ERROR_INVALID_ASSET",
-  /** Proposal terms timestamps are not compatible (Validation < Closing < Enactment) */
-  PROPOSAL_ERROR_INCOMPATIBLE_TIMESTAMPS = "PROPOSAL_ERROR_INCOMPATIBLE_TIMESTAMPS",
-  /** No risk parameters were specified */
-  PROPOSAL_ERROR_NO_RISK_PARAMETERS = "PROPOSAL_ERROR_NO_RISK_PARAMETERS",
-  /** Invalid key in update network parameter proposal */
-  PROPOSAL_ERROR_NETWORK_PARAMETER_INVALID_KEY = "PROPOSAL_ERROR_NETWORK_PARAMETER_INVALID_KEY",
-  /** Invalid value in update network parameter proposal */
-  PROPOSAL_ERROR_NETWORK_PARAMETER_INVALID_VALUE = "PROPOSAL_ERROR_NETWORK_PARAMETER_INVALID_VALUE",
-  /** Validation failed for network parameter proposal */
-  PROPOSAL_ERROR_NETWORK_PARAMETER_VALIDATION_FAILED = "PROPOSAL_ERROR_NETWORK_PARAMETER_VALIDATION_FAILED",
-  /** Opening auction duration is less than the network minimum opening auction time */
-  PROPOSAL_ERROR_OPENING_AUCTION_DURATION_TOO_SMALL = "PROPOSAL_ERROR_OPENING_AUCTION_DURATION_TOO_SMALL",
-  /** Opening auction duration is more than the network minimum opening auction time */
-  PROPOSAL_ERROR_OPENING_AUCTION_DURATION_TOO_LARGE = "PROPOSAL_ERROR_OPENING_AUCTION_DURATION_TOO_LARGE",
-  /** Market proposal market could not be instantiated in execution */
-  PROPOSAL_ERROR_COULD_NOT_INSTANTIATE_MARKET = "PROPOSAL_ERROR_COULD_NOT_INSTANTIATE_MARKET",
-  /** Market proposal market contained invalid product definition */
-  PROPOSAL_ERROR_INVALID_FUTURE_PRODUCT = "PROPOSAL_ERROR_INVALID_FUTURE_PRODUCT",
-  /** Market proposal has invalid risk parameter */
-  PROPOSAL_ERROR_INVALID_RISK_PARAMETER = "PROPOSAL_ERROR_INVALID_RISK_PARAMETER",
-  /** Proposal was declined because vote didn't reach the majority threshold required */
-  PROPOSAL_ERROR_MAJORITY_THRESHOLD_NOT_REACHED = "PROPOSAL_ERROR_MAJORITY_THRESHOLD_NOT_REACHED",
-  /** Proposal declined because the participation threshold was not reached */
-  PROPOSAL_ERROR_PARTICIPATION_THRESHOLD_NOT_REACHED = "PROPOSAL_ERROR_PARTICIPATION_THRESHOLD_NOT_REACHED",
-  /** Asset proposal has invalid asset details */
-  PROPOSAL_ERROR_INVALID_ASSET_DETAILS = "PROPOSAL_ERROR_INVALID_ASSET_DETAILS",
-  /** Proposal is an unknown type */
-  PROPOSAL_ERROR_UNKNOWN_TYPE = "PROPOSAL_ERROR_UNKNOWN_TYPE",
-  /** Proposal has an unknown risk parameter type */
-  PROPOSAL_ERROR_UNKNOWN_RISK_PARAMETER_TYPE = "PROPOSAL_ERROR_UNKNOWN_RISK_PARAMETER_TYPE",
-  /** Validation failed for freeform proposal */
-  PROPOSAL_ERROR_INVALID_FREEFORM = "PROPOSAL_ERROR_INVALID_FREEFORM",
-  /** Party doesn't have enough equity-like share to propose an update on the market
+  /** List of possible errors that can cause a proposal to be in state rejected or failed*/
+  export enum ProposalError {
+    /** Default value */
+    PROPOSAL_ERROR_UNSPECIFIED = "PROPOSAL_ERROR_UNSPECIFIED",
+    /** Specified close time is too early based on network parameters */
+    PROPOSAL_ERROR_CLOSE_TIME_TOO_SOON = "PROPOSAL_ERROR_CLOSE_TIME_TOO_SOON",
+    /** Specified close time is too late based on network parameters */
+    PROPOSAL_ERROR_CLOSE_TIME_TOO_LATE = "PROPOSAL_ERROR_CLOSE_TIME_TOO_LATE",
+    /** Specified enactment time is too early based on network parameters */
+    PROPOSAL_ERROR_ENACT_TIME_TOO_SOON = "PROPOSAL_ERROR_ENACT_TIME_TOO_SOON",
+    /** Specified enactment time is too late based on network parameters */
+    PROPOSAL_ERROR_ENACT_TIME_TOO_LATE = "PROPOSAL_ERROR_ENACT_TIME_TOO_LATE",
+    /** Proposer for this proposal has insufficient tokens */
+    PROPOSAL_ERROR_INSUFFICIENT_TOKENS = "PROPOSAL_ERROR_INSUFFICIENT_TOKENS",
+    /** Instrument quote name and base name were the same */
+    PROPOSAL_ERROR_INVALID_INSTRUMENT_SECURITY = "PROPOSAL_ERROR_INVALID_INSTRUMENT_SECURITY",
+    /** Proposal has no product */
+    PROPOSAL_ERROR_NO_PRODUCT = "PROPOSAL_ERROR_NO_PRODUCT",
+    /** Specified product is not supported */
+    PROPOSAL_ERROR_UNSUPPORTED_PRODUCT = "PROPOSAL_ERROR_UNSUPPORTED_PRODUCT",
+    /** Proposal has no trading mode */
+    PROPOSAL_ERROR_NO_TRADING_MODE = "PROPOSAL_ERROR_NO_TRADING_MODE",
+    /** Proposal has an unsupported trading mode */
+    PROPOSAL_ERROR_UNSUPPORTED_TRADING_MODE = "PROPOSAL_ERROR_UNSUPPORTED_TRADING_MODE",
+    /** Proposal failed node validation */
+    PROPOSAL_ERROR_NODE_VALIDATION_FAILED = "PROPOSAL_ERROR_NODE_VALIDATION_FAILED",
+    /** Field is missing in a builtin asset source */
+    PROPOSAL_ERROR_MISSING_BUILTIN_ASSET_FIELD = "PROPOSAL_ERROR_MISSING_BUILTIN_ASSET_FIELD",
+    /** Contract address is missing in the ERC20 asset source */
+    PROPOSAL_ERROR_MISSING_ERC20_CONTRACT_ADDRESS = "PROPOSAL_ERROR_MISSING_ERC20_CONTRACT_ADDRESS",
+    /** Asset ID is invalid or does not exist on the Vega network */
+    PROPOSAL_ERROR_INVALID_ASSET = "PROPOSAL_ERROR_INVALID_ASSET",
+    /** Proposal terms timestamps are not compatible (Validation < Closing < Enactment) */
+    PROPOSAL_ERROR_INCOMPATIBLE_TIMESTAMPS = "PROPOSAL_ERROR_INCOMPATIBLE_TIMESTAMPS",
+    /** No risk parameters were specified */
+    PROPOSAL_ERROR_NO_RISK_PARAMETERS = "PROPOSAL_ERROR_NO_RISK_PARAMETERS",
+    /** Invalid key in update network parameter proposal */
+    PROPOSAL_ERROR_NETWORK_PARAMETER_INVALID_KEY = "PROPOSAL_ERROR_NETWORK_PARAMETER_INVALID_KEY",
+    /** Invalid value in update network parameter proposal */
+    PROPOSAL_ERROR_NETWORK_PARAMETER_INVALID_VALUE = "PROPOSAL_ERROR_NETWORK_PARAMETER_INVALID_VALUE",
+    /** Validation failed for network parameter proposal */
+    PROPOSAL_ERROR_NETWORK_PARAMETER_VALIDATION_FAILED = "PROPOSAL_ERROR_NETWORK_PARAMETER_VALIDATION_FAILED",
+    /** Opening auction duration is less than the network minimum opening auction time */
+    PROPOSAL_ERROR_OPENING_AUCTION_DURATION_TOO_SMALL = "PROPOSAL_ERROR_OPENING_AUCTION_DURATION_TOO_SMALL",
+    /** Opening auction duration is more than the network minimum opening auction time */
+    PROPOSAL_ERROR_OPENING_AUCTION_DURATION_TOO_LARGE = "PROPOSAL_ERROR_OPENING_AUCTION_DURATION_TOO_LARGE",
+    /** Market proposal market could not be instantiated in execution */
+    PROPOSAL_ERROR_COULD_NOT_INSTANTIATE_MARKET = "PROPOSAL_ERROR_COULD_NOT_INSTANTIATE_MARKET",
+    /** Market proposal market contained invalid product definition */
+    PROPOSAL_ERROR_INVALID_FUTURE_PRODUCT = "PROPOSAL_ERROR_INVALID_FUTURE_PRODUCT",
+    /** Market proposal has invalid risk parameter */
+    PROPOSAL_ERROR_INVALID_RISK_PARAMETER = "PROPOSAL_ERROR_INVALID_RISK_PARAMETER",
+    /** Proposal was declined because vote didn't reach the majority threshold required */
+    PROPOSAL_ERROR_MAJORITY_THRESHOLD_NOT_REACHED = "PROPOSAL_ERROR_MAJORITY_THRESHOLD_NOT_REACHED",
+    /** Proposal declined because the participation threshold was not reached */
+    PROPOSAL_ERROR_PARTICIPATION_THRESHOLD_NOT_REACHED = "PROPOSAL_ERROR_PARTICIPATION_THRESHOLD_NOT_REACHED",
+    /** Asset proposal has invalid asset details */
+    PROPOSAL_ERROR_INVALID_ASSET_DETAILS = "PROPOSAL_ERROR_INVALID_ASSET_DETAILS",
+    /** Proposal is an unknown type */
+    PROPOSAL_ERROR_UNKNOWN_TYPE = "PROPOSAL_ERROR_UNKNOWN_TYPE",
+    /** Proposal has an unknown risk parameter type */
+    PROPOSAL_ERROR_UNKNOWN_RISK_PARAMETER_TYPE = "PROPOSAL_ERROR_UNKNOWN_RISK_PARAMETER_TYPE",
+    /** Validation failed for freeform proposal */
+    PROPOSAL_ERROR_INVALID_FREEFORM = "PROPOSAL_ERROR_INVALID_FREEFORM",
+    /** Party doesn't have enough equity-like share to propose an update on the market
   targeted by the proposal */
-  PROPOSAL_ERROR_INSUFFICIENT_EQUITY_LIKE_SHARE = "PROPOSAL_ERROR_INSUFFICIENT_EQUITY_LIKE_SHARE",
-  /** Market targeted by the proposal does not exist or is not eligible for modification */
-  PROPOSAL_ERROR_INVALID_MARKET = "PROPOSAL_ERROR_INVALID_MARKET",
-  /** Market proposal decimal place is higher than the market settlement asset decimal places */
-  PROPOSAL_ERROR_TOO_MANY_MARKET_DECIMAL_PLACES = "PROPOSAL_ERROR_TOO_MANY_MARKET_DECIMAL_PLACES",
-  /** Market proposal contains too many price monitoring triggers */
-  PROPOSAL_ERROR_TOO_MANY_PRICE_MONITORING_TRIGGERS = "PROPOSAL_ERROR_TOO_MANY_PRICE_MONITORING_TRIGGERS",
-  /** Market proposal contains too many price monitoring triggers */
-  PROPOSAL_ERROR_ERC20_ADDRESS_ALREADY_IN_USE = "PROPOSAL_ERROR_ERC20_ADDRESS_ALREADY_IN_USE",
-  /** LP price range must be larger than 0 */
-  PROPOSAL_ERROR_LP_PRICE_RANGE_NONPOSITIVE = "PROPOSAL_ERROR_LP_PRICE_RANGE_NONPOSITIVE",
-  /** LP price range must not be larger than 100 */
-  PROPOSAL_ERROR_LP_PRICE_RANGE_TOO_LARGE = "PROPOSAL_ERROR_LP_PRICE_RANGE_TOO_LARGE",
-  /** Linear slippage factor is out of range, either negative or too large */
-  PROPOSAL_ERROR_LINEAR_SLIPPAGE_FACTOR_OUT_OF_RANGE = "PROPOSAL_ERROR_LINEAR_SLIPPAGE_FACTOR_OUT_OF_RANGE",
-  /** Quadratic slippage factor is out of range, either negative or too large */
-  PROPOSAL_ERROR_QUADRATIC_SLIPPAGE_FACTOR_OUT_OF_RANGE = "PROPOSAL_ERROR_QUADRATIC_SLIPPAGE_FACTOR_OUT_OF_RANGE",
-  /** Validation failed for spot proposal */
-  PROPOSAL_ERROR_INVALID_SPOT = "PROPOSAL_ERROR_INVALID_SPOT",
-  /** Spot trading not enabled */
-  PROPOSAL_ERROR_SPOT_PRODUCT_DISABLED = "PROPOSAL_ERROR_SPOT_PRODUCT_DISABLED",
-  /** Market proposal is invalid, either invalid insurance pool fraction, or it specifies a parent market that it can't succeed. */
-  PROPOSAL_ERROR_INVALID_SUCCESSOR_MARKET = "PROPOSAL_ERROR_INVALID_SUCCESSOR_MARKET",
-  /** Governance transfer proposal is invalid */
-  PROPOSAL_ERROR_GOVERNANCE_TRANSFER_PROPOSAL_FAILED = "PROPOSAL_ERROR_GOVERNANCE_TRANSFER_PROPOSAL_FAILED",
-  /** Governance transfer proposal failed */
-  PROPOSAL_ERROR_GOVERNANCE_TRANSFER_PROPOSAL_INVALID = "PROPOSAL_ERROR_GOVERNANCE_TRANSFER_PROPOSAL_INVALID",
-  /** Proposal for cancelling transfer is invalid, check proposal ID */
-  PROPOSAL_ERROR_GOVERNANCE_CANCEL_TRANSFER_PROPOSAL_INVALID = "PROPOSAL_ERROR_GOVERNANCE_CANCEL_TRANSFER_PROPOSAL_INVALID",
-  /** Proposal for updating market state is invalid */
-  PROPOSAL_ERROR_INVALID_MARKET_STATE_UPDATE = "PROPOSAL_ERROR_INVALID_MARKET_STATE_UPDATE",
-  /** Liquidity provision SLA parameters are invalid */
-  PROPOSAL_ERROR_INVALID_SLA_PARAMS = "PROPOSAL_ERROR_INVALID_SLA_PARAMS",
-  /** Mandatory liquidity provision SLA parameters are missing */
-  PROPOSAL_ERROR_MISSING_SLA_PARAMS = "PROPOSAL_ERROR_MISSING_SLA_PARAMS",
-  /** Perpetual market proposal contained invalid product definition */
-  PROPOSAL_ERROR_INVALID_PERPETUAL_PRODUCT = "PROPOSAL_ERROR_INVALID_PERPETUAL_PRODUCT",
-  /** Referral program proposal is invalid */
-  PROPOSAL_ERROR_INVALID_REFERRAL_PROGRAM = "PROPOSAL_ERROR_INVALID_REFERRAL_PROGRAM",
-  /** Volume discount program proposal is invalid */
-  PROPOSAL_ERROR_INVALID_VOLUME_DISCOUNT_PROGRAM = "PROPOSAL_ERROR_INVALID_VOLUME_DISCOUNT_PROGRAM",
-  /** One or more proposals in a batch has been rejected */
-  PROPOSAL_ERROR_PROPOSAL_IN_BATCH_REJECTED = "PROPOSAL_ERROR_PROPOSAL_IN_BATCH_REJECTED",
-  /** One or more proposals in a batch has been declined */
-  PROPOSAL_ERROR_PROPOSAL_IN_BATCH_DECLINED = "PROPOSAL_ERROR_PROPOSAL_IN_BATCH_DECLINED",
-  /** Spot market decimal places cannot be greater than the base asset’s decimal places */
-  PROPOSAL_ERROR_INVALID_SIZE_DECIMAL_PLACES = "PROPOSAL_ERROR_INVALID_SIZE_DECIMAL_PLACES"
-}
+    PROPOSAL_ERROR_INSUFFICIENT_EQUITY_LIKE_SHARE = "PROPOSAL_ERROR_INSUFFICIENT_EQUITY_LIKE_SHARE",
+    /** Market targeted by the proposal does not exist or is not eligible for modification */
+    PROPOSAL_ERROR_INVALID_MARKET = "PROPOSAL_ERROR_INVALID_MARKET",
+    /** Market proposal decimal place is higher than the market settlement asset decimal places */
+    PROPOSAL_ERROR_TOO_MANY_MARKET_DECIMAL_PLACES = "PROPOSAL_ERROR_TOO_MANY_MARKET_DECIMAL_PLACES",
+    /** Market proposal contains too many price monitoring triggers */
+    PROPOSAL_ERROR_TOO_MANY_PRICE_MONITORING_TRIGGERS = "PROPOSAL_ERROR_TOO_MANY_PRICE_MONITORING_TRIGGERS",
+    /** Market proposal contains too many price monitoring triggers */
+    PROPOSAL_ERROR_ERC20_ADDRESS_ALREADY_IN_USE = "PROPOSAL_ERROR_ERC20_ADDRESS_ALREADY_IN_USE",
+    /** LP price range must be larger than 0 */
+    PROPOSAL_ERROR_LP_PRICE_RANGE_NONPOSITIVE = "PROPOSAL_ERROR_LP_PRICE_RANGE_NONPOSITIVE",
+    /** LP price range must not be larger than 100 */
+    PROPOSAL_ERROR_LP_PRICE_RANGE_TOO_LARGE = "PROPOSAL_ERROR_LP_PRICE_RANGE_TOO_LARGE",
+    /** Linear slippage factor is out of range, either negative or too large */
+    PROPOSAL_ERROR_LINEAR_SLIPPAGE_FACTOR_OUT_OF_RANGE = "PROPOSAL_ERROR_LINEAR_SLIPPAGE_FACTOR_OUT_OF_RANGE",
+    /** Quadratic slippage factor is out of range, either negative or too large */
+    PROPOSAL_ERROR_QUADRATIC_SLIPPAGE_FACTOR_OUT_OF_RANGE = "PROPOSAL_ERROR_QUADRATIC_SLIPPAGE_FACTOR_OUT_OF_RANGE",
+    /** Validation failed for spot proposal */
+    PROPOSAL_ERROR_INVALID_SPOT = "PROPOSAL_ERROR_INVALID_SPOT",
+    /** Spot trading not enabled */
+    PROPOSAL_ERROR_SPOT_PRODUCT_DISABLED = "PROPOSAL_ERROR_SPOT_PRODUCT_DISABLED",
+    /** Market proposal is invalid, either invalid insurance pool fraction, or it specifies a parent market that it can't succeed. */
+    PROPOSAL_ERROR_INVALID_SUCCESSOR_MARKET = "PROPOSAL_ERROR_INVALID_SUCCESSOR_MARKET",
+    /** Governance transfer proposal is invalid */
+    PROPOSAL_ERROR_GOVERNANCE_TRANSFER_PROPOSAL_FAILED = "PROPOSAL_ERROR_GOVERNANCE_TRANSFER_PROPOSAL_FAILED",
+    /** Governance transfer proposal failed */
+    PROPOSAL_ERROR_GOVERNANCE_TRANSFER_PROPOSAL_INVALID = "PROPOSAL_ERROR_GOVERNANCE_TRANSFER_PROPOSAL_INVALID",
+    /** Proposal for cancelling transfer is invalid, check proposal ID */
+    PROPOSAL_ERROR_GOVERNANCE_CANCEL_TRANSFER_PROPOSAL_INVALID = "PROPOSAL_ERROR_GOVERNANCE_CANCEL_TRANSFER_PROPOSAL_INVALID",
+    /** Proposal for updating market state is invalid */
+    PROPOSAL_ERROR_INVALID_MARKET_STATE_UPDATE = "PROPOSAL_ERROR_INVALID_MARKET_STATE_UPDATE",
+    /** Liquidity provision SLA parameters are invalid */
+    PROPOSAL_ERROR_INVALID_SLA_PARAMS = "PROPOSAL_ERROR_INVALID_SLA_PARAMS",
+    /** Mandatory liquidity provision SLA parameters are missing */
+    PROPOSAL_ERROR_MISSING_SLA_PARAMS = "PROPOSAL_ERROR_MISSING_SLA_PARAMS",
+    /** Perpetual market proposal contained invalid product definition */
+    PROPOSAL_ERROR_INVALID_PERPETUAL_PRODUCT = "PROPOSAL_ERROR_INVALID_PERPETUAL_PRODUCT",
+    /** Referral program proposal is invalid */
+    PROPOSAL_ERROR_INVALID_REFERRAL_PROGRAM = "PROPOSAL_ERROR_INVALID_REFERRAL_PROGRAM",
+    /** Volume discount program proposal is invalid */
+    PROPOSAL_ERROR_INVALID_VOLUME_DISCOUNT_PROGRAM = "PROPOSAL_ERROR_INVALID_VOLUME_DISCOUNT_PROGRAM",
+    /** One or more proposals in a batch has been rejected */
+    PROPOSAL_ERROR_PROPOSAL_IN_BATCH_REJECTED = "PROPOSAL_ERROR_PROPOSAL_IN_BATCH_REJECTED",
+    /** One or more proposals in a batch has been declined */
+    PROPOSAL_ERROR_PROPOSAL_IN_BATCH_DECLINED = "PROPOSAL_ERROR_PROPOSAL_IN_BATCH_DECLINED",
+    /** Spot market decimal places cannot be greater than the base asset’s decimal places */
+    PROPOSAL_ERROR_INVALID_SIZE_DECIMAL_PLACES = "PROPOSAL_ERROR_INVALID_SIZE_DECIMAL_PLACES",
+  }
 
-/** List of possible errors that can cause a proposal to be in state rejected or failed*/
-export enum ProposalErrorNumber {
-  /** Default value */
-  PROPOSAL_ERROR_UNSPECIFIED = 0,
-  /** Specified close time is too early based on network parameters */
-  PROPOSAL_ERROR_CLOSE_TIME_TOO_SOON = 1,
-  /** Specified close time is too late based on network parameters */
-  PROPOSAL_ERROR_CLOSE_TIME_TOO_LATE = 2,
-  /** Specified enactment time is too early based on network parameters */
-  PROPOSAL_ERROR_ENACT_TIME_TOO_SOON = 3,
-  /** Specified enactment time is too late based on network parameters */
-  PROPOSAL_ERROR_ENACT_TIME_TOO_LATE = 4,
-  /** Proposer for this proposal has insufficient tokens */
-  PROPOSAL_ERROR_INSUFFICIENT_TOKENS = 5,
-  /** Instrument quote name and base name were the same */
-  PROPOSAL_ERROR_INVALID_INSTRUMENT_SECURITY = 6,
-  /** Proposal has no product */
-  PROPOSAL_ERROR_NO_PRODUCT = 7,
-  /** Specified product is not supported */
-  PROPOSAL_ERROR_UNSUPPORTED_PRODUCT = 8,
-  /** Proposal has no trading mode */
-  PROPOSAL_ERROR_NO_TRADING_MODE = 11,
-  /** Proposal has an unsupported trading mode */
-  PROPOSAL_ERROR_UNSUPPORTED_TRADING_MODE = 12,
-  /** Proposal failed node validation */
-  PROPOSAL_ERROR_NODE_VALIDATION_FAILED = 13,
-  /** Field is missing in a builtin asset source */
-  PROPOSAL_ERROR_MISSING_BUILTIN_ASSET_FIELD = 14,
-  /** Contract address is missing in the ERC20 asset source */
-  PROPOSAL_ERROR_MISSING_ERC20_CONTRACT_ADDRESS = 15,
-  /** Asset ID is invalid or does not exist on the Vega network */
-  PROPOSAL_ERROR_INVALID_ASSET = 16,
-  /** Proposal terms timestamps are not compatible (Validation < Closing < Enactment) */
-  PROPOSAL_ERROR_INCOMPATIBLE_TIMESTAMPS = 17,
-  /** No risk parameters were specified */
-  PROPOSAL_ERROR_NO_RISK_PARAMETERS = 18,
-  /** Invalid key in update network parameter proposal */
-  PROPOSAL_ERROR_NETWORK_PARAMETER_INVALID_KEY = 19,
-  /** Invalid value in update network parameter proposal */
-  PROPOSAL_ERROR_NETWORK_PARAMETER_INVALID_VALUE = 20,
-  /** Validation failed for network parameter proposal */
-  PROPOSAL_ERROR_NETWORK_PARAMETER_VALIDATION_FAILED = 21,
-  /** Opening auction duration is less than the network minimum opening auction time */
-  PROPOSAL_ERROR_OPENING_AUCTION_DURATION_TOO_SMALL = 22,
-  /** Opening auction duration is more than the network minimum opening auction time */
-  PROPOSAL_ERROR_OPENING_AUCTION_DURATION_TOO_LARGE = 23,
-  /** Market proposal market could not be instantiated in execution */
-  PROPOSAL_ERROR_COULD_NOT_INSTANTIATE_MARKET = 25,
-  /** Market proposal market contained invalid product definition */
-  PROPOSAL_ERROR_INVALID_FUTURE_PRODUCT = 26,
-  /** Market proposal has invalid risk parameter */
-  PROPOSAL_ERROR_INVALID_RISK_PARAMETER = 30,
-  /** Proposal was declined because vote didn't reach the majority threshold required */
-  PROPOSAL_ERROR_MAJORITY_THRESHOLD_NOT_REACHED = 31,
-  /** Proposal declined because the participation threshold was not reached */
-  PROPOSAL_ERROR_PARTICIPATION_THRESHOLD_NOT_REACHED = 32,
-  /** Asset proposal has invalid asset details */
-  PROPOSAL_ERROR_INVALID_ASSET_DETAILS = 33,
-  /** Proposal is an unknown type */
-  PROPOSAL_ERROR_UNKNOWN_TYPE = 34,
-  /** Proposal has an unknown risk parameter type */
-  PROPOSAL_ERROR_UNKNOWN_RISK_PARAMETER_TYPE = 35,
-  /** Validation failed for freeform proposal */
-  PROPOSAL_ERROR_INVALID_FREEFORM = 36,
-  /** Party doesn't have enough equity-like share to propose an update on the market
+  /** List of possible errors that can cause a proposal to be in state rejected or failed*/
+  export enum ProposalErrorNumber {
+    /** Default value */
+    PROPOSAL_ERROR_UNSPECIFIED = 0,
+    /** Specified close time is too early based on network parameters */
+    PROPOSAL_ERROR_CLOSE_TIME_TOO_SOON = 1,
+    /** Specified close time is too late based on network parameters */
+    PROPOSAL_ERROR_CLOSE_TIME_TOO_LATE = 2,
+    /** Specified enactment time is too early based on network parameters */
+    PROPOSAL_ERROR_ENACT_TIME_TOO_SOON = 3,
+    /** Specified enactment time is too late based on network parameters */
+    PROPOSAL_ERROR_ENACT_TIME_TOO_LATE = 4,
+    /** Proposer for this proposal has insufficient tokens */
+    PROPOSAL_ERROR_INSUFFICIENT_TOKENS = 5,
+    /** Instrument quote name and base name were the same */
+    PROPOSAL_ERROR_INVALID_INSTRUMENT_SECURITY = 6,
+    /** Proposal has no product */
+    PROPOSAL_ERROR_NO_PRODUCT = 7,
+    /** Specified product is not supported */
+    PROPOSAL_ERROR_UNSUPPORTED_PRODUCT = 8,
+    /** Proposal has no trading mode */
+    PROPOSAL_ERROR_NO_TRADING_MODE = 11,
+    /** Proposal has an unsupported trading mode */
+    PROPOSAL_ERROR_UNSUPPORTED_TRADING_MODE = 12,
+    /** Proposal failed node validation */
+    PROPOSAL_ERROR_NODE_VALIDATION_FAILED = 13,
+    /** Field is missing in a builtin asset source */
+    PROPOSAL_ERROR_MISSING_BUILTIN_ASSET_FIELD = 14,
+    /** Contract address is missing in the ERC20 asset source */
+    PROPOSAL_ERROR_MISSING_ERC20_CONTRACT_ADDRESS = 15,
+    /** Asset ID is invalid or does not exist on the Vega network */
+    PROPOSAL_ERROR_INVALID_ASSET = 16,
+    /** Proposal terms timestamps are not compatible (Validation < Closing < Enactment) */
+    PROPOSAL_ERROR_INCOMPATIBLE_TIMESTAMPS = 17,
+    /** No risk parameters were specified */
+    PROPOSAL_ERROR_NO_RISK_PARAMETERS = 18,
+    /** Invalid key in update network parameter proposal */
+    PROPOSAL_ERROR_NETWORK_PARAMETER_INVALID_KEY = 19,
+    /** Invalid value in update network parameter proposal */
+    PROPOSAL_ERROR_NETWORK_PARAMETER_INVALID_VALUE = 20,
+    /** Validation failed for network parameter proposal */
+    PROPOSAL_ERROR_NETWORK_PARAMETER_VALIDATION_FAILED = 21,
+    /** Opening auction duration is less than the network minimum opening auction time */
+    PROPOSAL_ERROR_OPENING_AUCTION_DURATION_TOO_SMALL = 22,
+    /** Opening auction duration is more than the network minimum opening auction time */
+    PROPOSAL_ERROR_OPENING_AUCTION_DURATION_TOO_LARGE = 23,
+    /** Market proposal market could not be instantiated in execution */
+    PROPOSAL_ERROR_COULD_NOT_INSTANTIATE_MARKET = 25,
+    /** Market proposal market contained invalid product definition */
+    PROPOSAL_ERROR_INVALID_FUTURE_PRODUCT = 26,
+    /** Market proposal has invalid risk parameter */
+    PROPOSAL_ERROR_INVALID_RISK_PARAMETER = 30,
+    /** Proposal was declined because vote didn't reach the majority threshold required */
+    PROPOSAL_ERROR_MAJORITY_THRESHOLD_NOT_REACHED = 31,
+    /** Proposal declined because the participation threshold was not reached */
+    PROPOSAL_ERROR_PARTICIPATION_THRESHOLD_NOT_REACHED = 32,
+    /** Asset proposal has invalid asset details */
+    PROPOSAL_ERROR_INVALID_ASSET_DETAILS = 33,
+    /** Proposal is an unknown type */
+    PROPOSAL_ERROR_UNKNOWN_TYPE = 34,
+    /** Proposal has an unknown risk parameter type */
+    PROPOSAL_ERROR_UNKNOWN_RISK_PARAMETER_TYPE = 35,
+    /** Validation failed for freeform proposal */
+    PROPOSAL_ERROR_INVALID_FREEFORM = 36,
+    /** Party doesn't have enough equity-like share to propose an update on the market
   targeted by the proposal */
-  PROPOSAL_ERROR_INSUFFICIENT_EQUITY_LIKE_SHARE = 37,
-  /** Market targeted by the proposal does not exist or is not eligible for modification */
-  PROPOSAL_ERROR_INVALID_MARKET = 38,
-  /** Market proposal decimal place is higher than the market settlement asset decimal places */
-  PROPOSAL_ERROR_TOO_MANY_MARKET_DECIMAL_PLACES = 39,
-  /** Market proposal contains too many price monitoring triggers */
-  PROPOSAL_ERROR_TOO_MANY_PRICE_MONITORING_TRIGGERS = 40,
-  /** Market proposal contains too many price monitoring triggers */
-  PROPOSAL_ERROR_ERC20_ADDRESS_ALREADY_IN_USE = 41,
-  /** LP price range must be larger than 0 */
-  PROPOSAL_ERROR_LP_PRICE_RANGE_NONPOSITIVE = 42,
-  /** LP price range must not be larger than 100 */
-  PROPOSAL_ERROR_LP_PRICE_RANGE_TOO_LARGE = 43,
-  /** Linear slippage factor is out of range, either negative or too large */
-  PROPOSAL_ERROR_LINEAR_SLIPPAGE_FACTOR_OUT_OF_RANGE = 44,
-  /** Quadratic slippage factor is out of range, either negative or too large */
-  PROPOSAL_ERROR_QUADRATIC_SLIPPAGE_FACTOR_OUT_OF_RANGE = 45,
-  /** Validation failed for spot proposal */
-  PROPOSAL_ERROR_INVALID_SPOT = 46,
-  /** Spot trading not enabled */
-  PROPOSAL_ERROR_SPOT_PRODUCT_DISABLED = 47,
-  /** Market proposal is invalid, either invalid insurance pool fraction, or it specifies a parent market that it can't succeed. */
-  PROPOSAL_ERROR_INVALID_SUCCESSOR_MARKET = 48,
-  /** Governance transfer proposal is invalid */
-  PROPOSAL_ERROR_GOVERNANCE_TRANSFER_PROPOSAL_FAILED = 49,
-  /** Governance transfer proposal failed */
-  PROPOSAL_ERROR_GOVERNANCE_TRANSFER_PROPOSAL_INVALID = 50,
-  /** Proposal for cancelling transfer is invalid, check proposal ID */
-  PROPOSAL_ERROR_GOVERNANCE_CANCEL_TRANSFER_PROPOSAL_INVALID = 51,
-  /** Proposal for updating market state is invalid */
-  PROPOSAL_ERROR_INVALID_MARKET_STATE_UPDATE = 52,
-  /** Liquidity provision SLA parameters are invalid */
-  PROPOSAL_ERROR_INVALID_SLA_PARAMS = 53,
-  /** Mandatory liquidity provision SLA parameters are missing */
-  PROPOSAL_ERROR_MISSING_SLA_PARAMS = 54,
-  /** Perpetual market proposal contained invalid product definition */
-  PROPOSAL_ERROR_INVALID_PERPETUAL_PRODUCT = 55,
-  /** Referral program proposal is invalid */
-  PROPOSAL_ERROR_INVALID_REFERRAL_PROGRAM = 56,
-  /** Volume discount program proposal is invalid */
-  PROPOSAL_ERROR_INVALID_VOLUME_DISCOUNT_PROGRAM = 57,
-  /** One or more proposals in a batch has been rejected */
-  PROPOSAL_ERROR_PROPOSAL_IN_BATCH_REJECTED = 58,
-  /** One or more proposals in a batch has been declined */
-  PROPOSAL_ERROR_PROPOSAL_IN_BATCH_DECLINED = 59,
-  /** Spot market decimal places cannot be greater than the base asset’s decimal places */
-  PROPOSAL_ERROR_INVALID_SIZE_DECIMAL_PLACES = 60
-}
-
-/** Vote value*/
-export enum VoteValue {
-  /** Default value, always invalid */
-  VALUE_UNSPECIFIED = "VALUE_UNSPECIFIED",
-  /** Vote against the proposal */
-  VALUE_NO = "VALUE_NO",
-  /** Vote in favour of the proposal */
-  VALUE_YES = "VALUE_YES"
-}
-
-/** Vote value*/
-export enum VoteValueNumber {
-  /** Default value, always invalid */
-  VALUE_UNSPECIFIED = 0,
-  /** Vote against the proposal */
-  VALUE_NO = 1,
-  /** Vote in favour of the proposal */
-  VALUE_YES = 2
-}
-
-export interface BatchProposalTerms {
-  closingTimestamp?: string | number;
-  proposalParams?: vega.ProposalParameters;
-  changes?: vega.BatchProposalTermsChange[];
-}
-
-export interface BatchProposalTermsChange {
-  enactmentTimestamp?: string | number;
-  validationTimestamp?: string | number;
-  updateMarket?: vega.UpdateMarket;
-  newMarket?: vega.NewMarket;
-  updateNetworkParameter?: vega.UpdateNetworkParameter;
-  newFreeform?: vega.NewFreeform;
-  updateAsset?: vega.UpdateAsset;
-  newSpotMarket?: vega.NewSpotMarket;
-  updateSpotMarket?: vega.UpdateSpotMarket;
-  newTransfer?: vega.NewTransfer;
-  cancelTransfer?: vega.CancelTransfer;
-  updateMarketState?: vega.UpdateMarketState;
-  updateReferralProgram?: vega.UpdateReferralProgram;
-  updateVolumeDiscountProgram?: vega.UpdateVolumeDiscountProgram;
-  newAsset?: vega.NewAsset;
-}
-
-export interface CancelTransfer {
-  changes?: vega.CancelTransferConfiguration;
-}
-
-export interface CancelTransferConfiguration {
-  transferId?: string;
-}
-
-export interface FutureProduct {
-  settlementAsset?: string;
-  quoteName?: string;
-  dataSourceSpecForSettlementData?: vega.DataSourceDefinition;
-  dataSourceSpecForTradingTermination?: vega.DataSourceDefinition;
-  dataSourceSpecBinding?: vega.DataSourceSpecToFutureBinding;
-}
-
-export interface GovernanceData {
-  proposal?: vega.Proposal;
-  yes?: vega.Vote[];
-  no?: vega.Vote[];
-  yesParty?: vega.GovernanceDataYesPartyEntry[];
-  noParty?: vega.GovernanceDataNoPartyEntry[];
-  proposalType?: vega.GovernanceDataType;
-  proposals?: vega.Proposal[];
-}
-
-export interface GovernanceDataNoPartyEntry {
-  key?: string;
-  value?: vega.Vote;
-}
-
-export interface GovernanceDataYesPartyEntry {
-  key?: string;
-  value?: vega.Vote;
-}
-
-export interface InstrumentConfiguration {
-  name?: string;
-  code?: string;
-  future?: vega.FutureProduct;
-  spot?: vega.SpotProduct;
-  perpetual?: vega.PerpetualProduct;
-}
-
-export interface NewAsset {
-  changes?: vega.AssetDetails;
-}
-
-export interface NewFreeform {}
-
-export interface NewMarket {
-  changes?: vega.NewMarketConfiguration;
-}
-
-export interface NewMarketConfiguration {
-  instrument?: vega.InstrumentConfiguration;
-  decimalPlaces?: string | number;
-  metadata?: string[];
-  priceMonitoringParameters?: vega.PriceMonitoringParameters;
-  liquidityMonitoringParameters?: vega.LiquidityMonitoringParameters;
-  simple?: vega.SimpleModelParams;
-  logNormal?: vega.LogNormalRiskModel;
-  positionDecimalPlaces?: string | number;
-  lpPriceRange?: string;
-  linearSlippageFactor?: string;
-  quadraticSlippageFactor?: string;
-  successor?: vega.SuccessorConfiguration;
-  liquiditySlaParameters?: vega.LiquiditySLAParameters;
-  liquidityFeeSettings?: vega.LiquidityFeeSettings;
-  liquidationStrategy?: vega.LiquidationStrategy;
-  markPriceConfiguration?: vega.CompositePriceConfiguration;
-  tickSize?: string;
-}
-
-export interface NewSpotMarket {
-  changes?: vega.NewSpotMarketConfiguration;
-}
-
-export interface NewSpotMarketConfiguration {
-  instrument?: vega.InstrumentConfiguration;
-  priceDecimalPlaces?: string | number;
-  metadata?: string[];
-  priceMonitoringParameters?: vega.PriceMonitoringParameters;
-  targetStakeParameters?: vega.TargetStakeParameters;
-  simple?: vega.SimpleModelParams;
-  logNormal?: vega.LogNormalRiskModel;
-  sizeDecimalPlaces?: string | number;
-  slaParams?: vega.LiquiditySLAParameters;
-  liquidityFeeSettings?: vega.LiquidityFeeSettings;
-  tickSize?: string;
-}
-
-export interface NewTransfer {
-  changes?: vega.NewTransferConfiguration;
-}
-
-export interface NewTransferConfiguration {
-  sourceType?: vega.AccountType;
-  source?: string;
-  transferType?: vega.GovernanceTransferType;
-  amount?: string;
-  asset?: string;
-  fractionOfBalance?: string;
-  destinationType?: vega.AccountType;
-  destination?: string;
-  oneOff?: vega.OneOffTransfer;
-  recurring?: vega.RecurringTransfer;
-}
-
-export interface OneOffTransfer {
-  deliverOn?: string | number;
-}
-
-export interface PerpetualProduct {
-  settlementAsset?: string;
-  quoteName?: string;
-  marginFundingFactor?: string;
-  interestRate?: string;
-  clampLowerBound?: string;
-  clampUpperBound?: string;
-  dataSourceSpecForSettlementSchedule?: vega.DataSourceDefinition;
-  dataSourceSpecForSettlementData?: vega.DataSourceDefinition;
-  dataSourceSpecBinding?: vega.DataSourceSpecToPerpetualBinding;
-  fundingRateScalingFactor?: string;
-  fundingRateLowerBound?: string;
-  fundingRateUpperBound?: string;
-  internalCompositePriceConfiguration?: vega.CompositePriceConfiguration;
-}
-
-export interface Proposal {
-  id?: string;
-  reference?: string;
-  partyId?: string;
-  state?: vega.ProposalState;
-  timestamp?: string | number;
-  terms?: vega.ProposalTerms;
-  reason?: vega.ProposalError;
-  errorDetails?: string;
-  rationale?: vega.ProposalRationale;
-  requiredParticipation?: string;
-  requiredMajority?: string;
-  requiredLiquidityProviderParticipation?: string;
-  requiredLiquidityProviderMajority?: string;
-  batchTerms?: vega.BatchProposalTerms;
-  batchId?: string;
-}
-
-export interface ProposalParameters {
-  minClose?: string | number;
-  maxClose?: string | number;
-  minEnact?: string | number;
-  maxEnact?: string | number;
-  requiredParticipation?: string;
-  requiredMajority?: string;
-  minProposerBalance?: string;
-  minVoterBalance?: string;
-  requiredParticipationLp?: string;
-  requiredMajorityLp?: string;
-  minEquityLikeShare?: string;
-}
-
-export interface ProposalRationale {
-  description?: string;
-  title?: string;
-}
-
-export interface ProposalTerms {
-  closingTimestamp?: string | number;
-  enactmentTimestamp?: string | number;
-  validationTimestamp?: string | number;
-  updateMarket?: vega.UpdateMarket;
-  newMarket?: vega.NewMarket;
-  updateNetworkParameter?: vega.UpdateNetworkParameter;
-  newAsset?: vega.NewAsset;
-  newFreeform?: vega.NewFreeform;
-  updateAsset?: vega.UpdateAsset;
-  newSpotMarket?: vega.NewSpotMarket;
-  updateSpotMarket?: vega.UpdateSpotMarket;
-  newTransfer?: vega.NewTransfer;
-  cancelTransfer?: vega.CancelTransfer;
-  updateMarketState?: vega.UpdateMarketState;
-  updateReferralProgram?: vega.UpdateReferralProgram;
-  updateVolumeDiscountProgram?: vega.UpdateVolumeDiscountProgram;
-}
-
-export interface RecurringTransfer {
-  startEpoch?: string | number;
-  endEpoch?: string | number;
-  dispatchStrategy?: vega.DispatchStrategy;
-}
-
-export interface ReferralProgramChanges {
-  benefitTiers?: vega.BenefitTier[];
-  endOfProgramTimestamp?: string | number;
-  windowLength?: string | number;
-  stakingTiers?: vega.StakingTier[];
-}
-
-export interface SpotProduct {
-  baseAsset?: string;
-  quoteAsset?: string;
-}
-
-export interface SuccessorConfiguration {
-  parentMarketId?: string;
-  insurancePoolFraction?: string;
-}
-
-export interface UpdateAsset {
-  assetId?: string;
-  changes?: vega.AssetDetailsUpdate;
-}
-
-export interface UpdateFutureProduct {
-  quoteName?: string;
-  dataSourceSpecForSettlementData?: vega.DataSourceDefinition;
-  dataSourceSpecForTradingTermination?: vega.DataSourceDefinition;
-  dataSourceSpecBinding?: vega.DataSourceSpecToFutureBinding;
-}
-
-export interface UpdateInstrumentConfiguration {
-  code?: string;
-  name?: string;
-  future?: vega.UpdateFutureProduct;
-  perpetual?: vega.UpdatePerpetualProduct;
-}
-
-export interface UpdateMarket {
-  marketId?: string;
-  changes?: vega.UpdateMarketConfiguration;
-}
-
-export interface UpdateMarketConfiguration {
-  instrument?: vega.UpdateInstrumentConfiguration;
-  metadata?: string[];
-  priceMonitoringParameters?: vega.PriceMonitoringParameters;
-  liquidityMonitoringParameters?: vega.LiquidityMonitoringParameters;
-  simple?: vega.SimpleModelParams;
-  logNormal?: vega.LogNormalRiskModel;
-  lpPriceRange?: string;
-  linearSlippageFactor?: string;
-  quadraticSlippageFactor?: string;
-  liquiditySlaParameters?: vega.LiquiditySLAParameters;
-  liquidityFeeSettings?: vega.LiquidityFeeSettings;
-  liquidationStrategy?: vega.LiquidationStrategy;
-  markPriceConfiguration?: vega.CompositePriceConfiguration;
-  tickSize?: string;
-}
-
-export interface UpdateMarketState {
-  changes?: vega.UpdateMarketStateConfiguration;
-}
-
-export interface UpdateMarketStateConfiguration {
-  marketId?: string;
-  updateType?: vega.MarketStateUpdateType;
-  price?: string;
-}
-
-export interface UpdateNetworkParameter {
-  changes?: vega.NetworkParameter;
-}
-
-export interface UpdatePerpetualProduct {
-  quoteName?: string;
-  marginFundingFactor?: string;
-  interestRate?: string;
-  clampLowerBound?: string;
-  clampUpperBound?: string;
-  dataSourceSpecForSettlementSchedule?: vega.DataSourceDefinition;
-  dataSourceSpecForSettlementData?: vega.DataSourceDefinition;
-  dataSourceSpecBinding?: vega.DataSourceSpecToPerpetualBinding;
-  fundingRateScalingFactor?: string;
-  fundingRateLowerBound?: string;
-  fundingRateUpperBound?: string;
-  internalCompositePriceConfiguration?: vega.CompositePriceConfiguration;
-}
-
-export interface UpdateReferralProgram {
-  changes?: vega.ReferralProgramChanges;
-}
-
-export interface UpdateSpotInstrumentConfiguration {
-  code?: string;
-  name?: string;
-}
-
-export interface UpdateSpotMarket {
-  marketId?: string;
-  changes?: vega.UpdateSpotMarketConfiguration;
-}
-
-export interface UpdateSpotMarketConfiguration {
-  metadata?: string[];
-  priceMonitoringParameters?: vega.PriceMonitoringParameters;
-  targetStakeParameters?: vega.TargetStakeParameters;
-  simple?: vega.SimpleModelParams;
-  logNormal?: vega.LogNormalRiskModel;
-  slaParams?: vega.LiquiditySLAParameters;
-  liquidityFeeSettings?: vega.LiquidityFeeSettings;
-  tickSize?: string;
-  instrument?: vega.UpdateSpotInstrumentConfiguration;
-}
-
-export interface UpdateVolumeDiscountProgram {
-  changes?: vega.VolumeDiscountProgramChanges;
-}
-
-export interface VolumeDiscountProgramChanges {
-  benefitTiers?: vega.VolumeBenefitTier[];
-  endOfProgramTimestamp?: string | number;
-  windowLength?: string | number;
-}
-
-export interface Vote {
-  partyId?: string;
-  value?: vega.VoteValue;
-  proposalId?: string;
-  timestamp?: string | number;
-  totalGovernanceTokenBalance?: string;
-  totalGovernanceTokenWeight?: string;
-  totalEquityLikeShareWeight?: string;
-  elsPerMarket?: vega.VoteELSPair[];
-}
-
-export interface VoteELSPair {
-  marketId?: string;
-  els?: string;
-}
-
-};
-namespace vega.commands.v1 {;
-
-/** */
-export enum UndelegateSubmissionMethod {
-  /**  */
-  METHOD_UNSPECIFIED = "METHOD_UNSPECIFIED",
-  /** Undelegate straight away, losing all rewards for the current epoch. */
-  METHOD_NOW = "METHOD_NOW",
-  /** Undelegate at the end of an epoch, retaining all rewards for the current epoch. */
-  METHOD_AT_END_OF_EPOCH = "METHOD_AT_END_OF_EPOCH"
-}
-
-/** */
-export enum UndelegateSubmissionMethodNumber {
-  /**  */
-  METHOD_UNSPECIFIED = 0,
-  /** Undelegate straight away, losing all rewards for the current epoch. */
-  METHOD_NOW = 1,
-  /** Undelegate at the end of an epoch, retaining all rewards for the current epoch. */
-  METHOD_AT_END_OF_EPOCH = 2
-}
-
-/** */
-export enum UpdateMarginModeMode {
-  /** Never valid. */
-  MODE_UNSPECIFIED = "MODE_UNSPECIFIED",
-  /** Cross margin mode - margin is dynamically acquired and released as a position is marked to market */
-  MODE_CROSS_MARGIN = "MODE_CROSS_MARGIN",
-  /** Isolated margin mode - margin for any newly opened position volume is transferred to the margin account when the trade is executed */
-  MODE_ISOLATED_MARGIN = "MODE_ISOLATED_MARGIN"
-}
-
-/** */
-export enum UpdateMarginModeModeNumber {
-  /** Never valid. */
-  MODE_UNSPECIFIED = 0,
-  /** Cross margin mode - margin is dynamically acquired and released as a position is marked to market */
-  MODE_CROSS_MARGIN = 1,
-  /** Isolated margin mode - margin for any newly opened position volume is transferred to the margin account when the trade is executed */
-  MODE_ISOLATED_MARGIN = 2
-}
-
-export interface ApplyReferralCode {
-  id?: string;
-}
-
-export interface BatchMarketInstructions {
-  cancellations?: vega.commands.v1.OrderCancellation[];
-  amendments?: vega.commands.v1.OrderAmendment[];
-  submissions?: vega.commands.v1.OrderSubmission[];
-  stopOrdersCancellation?: vega.commands.v1.StopOrdersCancellation[];
-  stopOrdersSubmission?: vega.commands.v1.StopOrdersSubmission[];
-  updateMarginMode?: vega.commands.v1.UpdateMarginMode[];
-}
-
-export interface BatchProposalSubmission {
-  reference?: string;
-  terms?: vega.commands.v1.BatchProposalSubmissionTerms;
-  rationale?: vega.ProposalRationale;
-}
-
-export interface BatchProposalSubmissionTerms {
-  closingTimestamp?: string | number;
-  changes?: vega.BatchProposalTermsChange[];
-}
-
-export interface CancelTransfer {
-  transferId?: string;
-}
-
-export interface CreateReferralSet {
-  isTeam?: boolean;
-  team?: vega.commands.v1.CreateReferralSetTeam;
-}
-
-export interface CreateReferralSetTeam {
-  name?: string;
-  teamUrl?: string;
-  avatarUrl?: string;
-  closed?: boolean;
-  allowList?: string[];
-}
-
-export interface DelegateSubmission {
-  nodeId?: string;
-  amount?: string;
-}
-
-export interface IcebergOpts {
-  peakSize?: string | number;
-  minimumVisibleSize?: string | number;
-}
-
-export interface IssueSignatures {
-  submitter?: string;
-  kind?: vega.commands.v1.NodeSignatureKind;
-  validatorNodeId?: string;
-  chainId?: string;
-}
-
-export interface JoinTeam {
-  id?: string;
-}
-
-export interface LiquidityProvisionAmendment {
-  marketId?: string;
-  commitmentAmount?: string;
-  fee?: string;
-  reference?: string;
-}
-
-export interface LiquidityProvisionCancellation {
-  marketId?: string;
-}
-
-export interface LiquidityProvisionSubmission {
-  marketId?: string;
-  commitmentAmount?: string;
-  fee?: string;
-  reference?: string;
-}
-
-export interface OneOffTransfer {
-  deliverOn?: string | number;
-}
-
-export interface OrderAmendment {
-  orderId?: string;
-  marketId?: string;
-  price?: string;
-  sizeDelta?: string | number;
-  expiresAt?: string | number;
-  timeInForce?: vega.OrderTimeInForce;
-  peggedOffset?: string;
-  peggedReference?: vega.PeggedReference;
-  size?: string | number;
-}
-
-export interface OrderCancellation {
-  orderId?: string;
-  marketId?: string;
-}
-
-export interface OrderSubmission {
-  marketId?: string;
-  price?: string;
-  size?: string | number;
-  side?: vega.Side;
-  timeInForce?: vega.OrderTimeInForce;
-  expiresAt?: string | number;
-  type?: vega.OrderType;
-  reference?: string;
-  peggedOrder?: vega.PeggedOrder;
-  postOnly?: boolean;
-  reduceOnly?: boolean;
-  icebergOpts?: vega.commands.v1.IcebergOpts;
-}
-
-export interface ProposalSubmission {
-  reference?: string;
-  terms?: vega.ProposalTerms;
-  rationale?: vega.ProposalRationale;
-}
-
-export interface RecurringTransfer {
-  startEpoch?: string | number;
-  endEpoch?: string | number;
-  factor?: string;
-  dispatchStrategy?: vega.DispatchStrategy;
-}
-
-export interface StopOrderSetup {
-  orderSubmission?: vega.commands.v1.OrderSubmission;
-  expiresAt?: string | number;
-  expiryStrategy?: vega.StopOrderExpiryStrategy;
-  sizeOverrideSetting?: vega.StopOrderSizeOverrideSetting;
-  sizeOverrideValue?: vega.StopOrderSizeOverrideValue;
-  price?: string;
-  trailingPercentOffset?: string;
-}
-
-export interface StopOrdersCancellation {
-  marketId?: string;
-  stopOrderId?: string;
-}
-
-export interface StopOrdersSubmission {
-  risesAbove?: vega.commands.v1.StopOrderSetup;
-  fallsBelow?: vega.commands.v1.StopOrderSetup;
-}
-
-export interface Transfer {
-  fromAccountType?: vega.AccountType;
-  to?: string;
-  toAccountType?: vega.AccountType;
-  asset?: string;
-  amount?: string;
-  reference?: string;
-  oneOff?: vega.commands.v1.OneOffTransfer;
-  recurring?: vega.commands.v1.RecurringTransfer;
-}
-
-export interface UndelegateSubmission {
-  nodeId?: string;
-  amount?: string;
-  method?: vega.commands.v1.UndelegateSubmissionMethod;
-}
-
-export interface UpdateMarginMode {
-  marketId?: string;
-  mode?: vega.commands.v1.UpdateMarginModeMode;
-  marginFactor?: string;
-}
-
-export interface UpdatePartyProfile {
-  alias?: string;
-  metadata?: vega.Metadata[];
-}
-
-export interface UpdateReferralSet {
-  id?: string;
-  isTeam?: boolean;
-  team?: vega.commands.v1.UpdateReferralSetTeam;
-}
-
-export interface UpdateReferralSetTeam {
-  name?: string;
-  teamUrl?: string;
-  avatarUrl?: string;
-  closed?: boolean;
-  allowList?: string[];
-}
-
-export interface VoteSubmission {
-  proposalId?: string;
-  value?: vega.VoteValue;
-}
-
-export interface WithdrawSubmission {
-  amount?: string;
-  asset?: string;
-  ext?: vega.WithdrawExt;
-}
-
-};
-namespace vega.commands.v1 {;
-
-/** Supported oracle sources*/
-export enum OracleDataSubmissionOracleSource {
-  /** Default value */
-  ORACLE_SOURCE_UNSPECIFIED = "ORACLE_SOURCE_UNSPECIFIED",
-  /** Specifies that the payload will be base64 encoded JSON conforming to the Open Oracle standard. */
-  ORACLE_SOURCE_OPEN_ORACLE = "ORACLE_SOURCE_OPEN_ORACLE",
-  /** Specifies that the payload will be base64 encoded JSON, but does not specify the shape of the data. */
-  ORACLE_SOURCE_JSON = "ORACLE_SOURCE_JSON",
-  /** Specifies that the payload will be base64 encoded JSON conforming to the ETH standard. */
-  ORACLE_SOURCE_ETHEREUM = "ORACLE_SOURCE_ETHEREUM"
-}
-
-/** Supported oracle sources*/
-export enum OracleDataSubmissionOracleSourceNumber {
-  /** Default value */
-  ORACLE_SOURCE_UNSPECIFIED = 0,
-  /** Specifies that the payload will be base64 encoded JSON conforming to the Open Oracle standard. */
-  ORACLE_SOURCE_OPEN_ORACLE = 1,
-  /** Specifies that the payload will be base64 encoded JSON, but does not specify the shape of the data. */
-  ORACLE_SOURCE_JSON = 2,
-  /** Specifies that the payload will be base64 encoded JSON conforming to the ETH standard. */
-  ORACLE_SOURCE_ETHEREUM = 3
-}
-
-export interface OracleDataSubmission {
-  source?: vega.commands.v1.OracleDataSubmissionOracleSource;
-  payload?: string;
-}
-
-};
-namespace vega.commands.v1 {;
-
-/** Transaction versions to maintain backwards compatibility of transaction formats.*/
-export enum TxVersion {
-  /** Transaction version is unspecified. */
-  TX_VERSION_UNSPECIFIED = "TX_VERSION_UNSPECIFIED",
-  /** Transaction requires the addition of a proof-of-work calculation. */
-  TX_VERSION_V2 = "TX_VERSION_V2",
-  /** Transaction input data contains a prepended chain ID to prevent use of a single transaction across multiple networks. */
-  TX_VERSION_V3 = "TX_VERSION_V3"
-}
-
-/** Transaction versions to maintain backwards compatibility of transaction formats.*/
-export enum TxVersionNumber {
-  /** Transaction version is unspecified. */
-  TX_VERSION_UNSPECIFIED = 0,
-  /** Transaction requires the addition of a proof-of-work calculation. */
-  TX_VERSION_V2 = 2,
-  /** Transaction input data contains a prepended chain ID to prevent use of a single transaction across multiple networks. */
-  TX_VERSION_V3 = 3
-}
-
-export interface InputData {
-  nonce?: string | number;
-  blockHeight?: string | number;
-  orderSubmission?: vega.commands.v1.OrderSubmission;
-  orderCancellation?: vega.commands.v1.OrderCancellation;
-  orderAmendment?: vega.commands.v1.OrderAmendment;
-  withdrawSubmission?: vega.commands.v1.WithdrawSubmission;
-  proposalSubmission?: vega.commands.v1.ProposalSubmission;
-  voteSubmission?: vega.commands.v1.VoteSubmission;
-  liquidityProvisionSubmission?: vega.commands.v1.LiquidityProvisionSubmission;
-  delegateSubmission?: vega.commands.v1.DelegateSubmission;
-  undelegateSubmission?: vega.commands.v1.UndelegateSubmission;
-  liquidityProvisionCancellation?: vega.commands.v1.LiquidityProvisionCancellation;
-  liquidityProvisionAmendment?: vega.commands.v1.LiquidityProvisionAmendment;
-  transfer?: vega.commands.v1.Transfer;
-  cancelTransfer?: vega.commands.v1.CancelTransfer;
-  announceNode?: vega.commands.v1.AnnounceNode;
-  batchMarketInstructions?: vega.commands.v1.BatchMarketInstructions;
-  stopOrdersSubmission?: vega.commands.v1.StopOrdersSubmission;
-  stopOrdersCancellation?: vega.commands.v1.StopOrdersCancellation;
-  createReferralSet?: vega.commands.v1.CreateReferralSet;
-  updateReferralSet?: vega.commands.v1.UpdateReferralSet;
-  applyReferralCode?: vega.commands.v1.ApplyReferralCode;
-  updateMarginMode?: vega.commands.v1.UpdateMarginMode;
-  joinTeam?: vega.commands.v1.JoinTeam;
-  batchProposalSubmission?: vega.commands.v1.BatchProposalSubmission;
-  updatePartyProfile?: vega.commands.v1.UpdatePartyProfile;
-  nodeVote?: vega.commands.v1.NodeVote;
-  nodeSignature?: vega.commands.v1.NodeSignature;
-  chainEvent?: vega.commands.v1.ChainEvent;
-  keyRotateSubmission?: vega.commands.v1.KeyRotateSubmission;
-  stateVariableProposal?: vega.commands.v1.StateVariableProposal;
-  validatorHeartbeat?: vega.commands.v1.ValidatorHeartbeat;
-  ethereumKeyRotateSubmission?: vega.commands.v1.EthereumKeyRotateSubmission;
-  protocolUpgradeProposal?: vega.commands.v1.ProtocolUpgradeProposal;
-  issueSignatures?: vega.commands.v1.IssueSignatures;
-  oracleDataSubmission?: vega.commands.v1.OracleDataSubmission;
-}
-
-export interface ProofOfWork {
-  tid?: string;
-  nonce?: string | number;
-}
-
-export interface Transaction {
-  inputData?: string;
-  signature?: vega.commands.v1.Signature;
-  address?: string;
-  pubKey?: string;
-  version?: vega.commands.v1.TxVersion;
-  pow?: vega.commands.v1.ProofOfWork;
-}
-
-};
-namespace blockexplorer.api.v1 {;
-
-export interface GetTransactionRequest {
-  hash?: string;
-}
-
-export interface GetTransactionResponse {
-  transaction?: blockexplorer.api.v1.Transaction;
-}
-
-export interface InfoRequest {}
-
-export interface InfoResponse {
-  version?: string;
-  commitHash?: string;
-}
-
-export interface ListTransactionsRequest {
-  before?: string;
-  after?: string;
-  filters?: blockexplorer.api.v1.ListTransactionsRequestFiltersEntry[];
-  cmdTypes?: string[];
-  excludeCmdTypes?: string[];
-  parties?: string[];
-  first?: string | number;
-  last?: string | number;
-}
-
-export interface ListTransactionsRequestFiltersEntry {
-  key?: string;
-  value?: string;
-}
-
-export interface ListTransactionsResponse {
-  transactions?: blockexplorer.api.v1.Transaction[];
-}
-
-export interface Transaction {
-  block?: string | number;
-  index?: string | number;
-  hash?: string;
-  submitter?: string;
-  type?: string;
-  code?: string | number;
-  cursor?: string;
-  command?: vega.commands.v1.InputData;
-  signature?: vega.commands.v1.Signature;
-  error?: string;
-  createdAt?: string;
-  version?: vega.commands.v1.TxVersion;
-  pow?: vega.commands.v1.ProofOfWork;
-}
-
-};
-namespace vega {;
-
-export interface OracleData {
-  externalData?: vega.data.v1.ExternalData;
-}
-
-export interface OracleSpec {
-  externalDataSourceSpec?: vega.ExternalDataSourceSpec;
-}
-
-};
-namespace vega.events.v1 {;
-
-/** Bus event type is used to specify a type of event
+    PROPOSAL_ERROR_INSUFFICIENT_EQUITY_LIKE_SHARE = 37,
+    /** Market targeted by the proposal does not exist or is not eligible for modification */
+    PROPOSAL_ERROR_INVALID_MARKET = 38,
+    /** Market proposal decimal place is higher than the market settlement asset decimal places */
+    PROPOSAL_ERROR_TOO_MANY_MARKET_DECIMAL_PLACES = 39,
+    /** Market proposal contains too many price monitoring triggers */
+    PROPOSAL_ERROR_TOO_MANY_PRICE_MONITORING_TRIGGERS = 40,
+    /** Market proposal contains too many price monitoring triggers */
+    PROPOSAL_ERROR_ERC20_ADDRESS_ALREADY_IN_USE = 41,
+    /** LP price range must be larger than 0 */
+    PROPOSAL_ERROR_LP_PRICE_RANGE_NONPOSITIVE = 42,
+    /** LP price range must not be larger than 100 */
+    PROPOSAL_ERROR_LP_PRICE_RANGE_TOO_LARGE = 43,
+    /** Linear slippage factor is out of range, either negative or too large */
+    PROPOSAL_ERROR_LINEAR_SLIPPAGE_FACTOR_OUT_OF_RANGE = 44,
+    /** Quadratic slippage factor is out of range, either negative or too large */
+    PROPOSAL_ERROR_QUADRATIC_SLIPPAGE_FACTOR_OUT_OF_RANGE = 45,
+    /** Validation failed for spot proposal */
+    PROPOSAL_ERROR_INVALID_SPOT = 46,
+    /** Spot trading not enabled */
+    PROPOSAL_ERROR_SPOT_PRODUCT_DISABLED = 47,
+    /** Market proposal is invalid, either invalid insurance pool fraction, or it specifies a parent market that it can't succeed. */
+    PROPOSAL_ERROR_INVALID_SUCCESSOR_MARKET = 48,
+    /** Governance transfer proposal is invalid */
+    PROPOSAL_ERROR_GOVERNANCE_TRANSFER_PROPOSAL_FAILED = 49,
+    /** Governance transfer proposal failed */
+    PROPOSAL_ERROR_GOVERNANCE_TRANSFER_PROPOSAL_INVALID = 50,
+    /** Proposal for cancelling transfer is invalid, check proposal ID */
+    PROPOSAL_ERROR_GOVERNANCE_CANCEL_TRANSFER_PROPOSAL_INVALID = 51,
+    /** Proposal for updating market state is invalid */
+    PROPOSAL_ERROR_INVALID_MARKET_STATE_UPDATE = 52,
+    /** Liquidity provision SLA parameters are invalid */
+    PROPOSAL_ERROR_INVALID_SLA_PARAMS = 53,
+    /** Mandatory liquidity provision SLA parameters are missing */
+    PROPOSAL_ERROR_MISSING_SLA_PARAMS = 54,
+    /** Perpetual market proposal contained invalid product definition */
+    PROPOSAL_ERROR_INVALID_PERPETUAL_PRODUCT = 55,
+    /** Referral program proposal is invalid */
+    PROPOSAL_ERROR_INVALID_REFERRAL_PROGRAM = 56,
+    /** Volume discount program proposal is invalid */
+    PROPOSAL_ERROR_INVALID_VOLUME_DISCOUNT_PROGRAM = 57,
+    /** One or more proposals in a batch has been rejected */
+    PROPOSAL_ERROR_PROPOSAL_IN_BATCH_REJECTED = 58,
+    /** One or more proposals in a batch has been declined */
+    PROPOSAL_ERROR_PROPOSAL_IN_BATCH_DECLINED = 59,
+    /** Spot market decimal places cannot be greater than the base asset’s decimal places */
+    PROPOSAL_ERROR_INVALID_SIZE_DECIMAL_PLACES = 60,
+  }
+
+  /** Vote value*/
+  export enum VoteValue {
+    /** Default value, always invalid */
+    VALUE_UNSPECIFIED = "VALUE_UNSPECIFIED",
+    /** Vote against the proposal */
+    VALUE_NO = "VALUE_NO",
+    /** Vote in favour of the proposal */
+    VALUE_YES = "VALUE_YES",
+  }
+
+  /** Vote value*/
+  export enum VoteValueNumber {
+    /** Default value, always invalid */
+    VALUE_UNSPECIFIED = 0,
+    /** Vote against the proposal */
+    VALUE_NO = 1,
+    /** Vote in favour of the proposal */
+    VALUE_YES = 2,
+  }
+
+  export interface BatchProposalTerms {
+    closingTimestamp?: string | number;
+    proposalParams?: vega.ProposalParameters;
+    changes?: vega.BatchProposalTermsChange[];
+  }
+
+  export interface BatchProposalTermsChange {
+    enactmentTimestamp?: string | number;
+    validationTimestamp?: string | number;
+    updateMarket?: vega.UpdateMarket;
+    newMarket?: vega.NewMarket;
+    updateNetworkParameter?: vega.UpdateNetworkParameter;
+    newFreeform?: vega.NewFreeform;
+    updateAsset?: vega.UpdateAsset;
+    newSpotMarket?: vega.NewSpotMarket;
+    updateSpotMarket?: vega.UpdateSpotMarket;
+    newTransfer?: vega.NewTransfer;
+    cancelTransfer?: vega.CancelTransfer;
+    updateMarketState?: vega.UpdateMarketState;
+    updateReferralProgram?: vega.UpdateReferralProgram;
+    updateVolumeDiscountProgram?: vega.UpdateVolumeDiscountProgram;
+    newAsset?: vega.NewAsset;
+  }
+
+  export interface CancelTransfer {
+    changes?: vega.CancelTransferConfiguration;
+  }
+
+  export interface CancelTransferConfiguration {
+    transferId?: string;
+  }
+
+  export interface FutureProduct {
+    settlementAsset?: string;
+    quoteName?: string;
+    dataSourceSpecForSettlementData?: vega.DataSourceDefinition;
+    dataSourceSpecForTradingTermination?: vega.DataSourceDefinition;
+    dataSourceSpecBinding?: vega.DataSourceSpecToFutureBinding;
+  }
+
+  export interface GovernanceData {
+    proposal?: vega.Proposal;
+    yes?: vega.Vote[];
+    no?: vega.Vote[];
+    yesParty?: vega.GovernanceDataYesPartyEntry[];
+    noParty?: vega.GovernanceDataNoPartyEntry[];
+    proposalType?: vega.GovernanceDataType;
+    proposals?: vega.Proposal[];
+  }
+
+  export interface GovernanceDataNoPartyEntry {
+    key?: string;
+    value?: vega.Vote;
+  }
+
+  export interface GovernanceDataYesPartyEntry {
+    key?: string;
+    value?: vega.Vote;
+  }
+
+  export interface InstrumentConfiguration {
+    name?: string;
+    code?: string;
+    future?: vega.FutureProduct;
+    spot?: vega.SpotProduct;
+    perpetual?: vega.PerpetualProduct;
+  }
+
+  export interface NewAsset {
+    changes?: vega.AssetDetails;
+  }
+
+  export interface NewFreeform {}
+
+  export interface NewMarket {
+    changes?: vega.NewMarketConfiguration;
+  }
+
+  export interface NewMarketConfiguration {
+    instrument?: vega.InstrumentConfiguration;
+    decimalPlaces?: string | number;
+    metadata?: string[];
+    priceMonitoringParameters?: vega.PriceMonitoringParameters;
+    liquidityMonitoringParameters?: vega.LiquidityMonitoringParameters;
+    simple?: vega.SimpleModelParams;
+    logNormal?: vega.LogNormalRiskModel;
+    positionDecimalPlaces?: string | number;
+    lpPriceRange?: string;
+    linearSlippageFactor?: string;
+    quadraticSlippageFactor?: string;
+    successor?: vega.SuccessorConfiguration;
+    liquiditySlaParameters?: vega.LiquiditySLAParameters;
+    liquidityFeeSettings?: vega.LiquidityFeeSettings;
+    liquidationStrategy?: vega.LiquidationStrategy;
+    markPriceConfiguration?: vega.CompositePriceConfiguration;
+    tickSize?: string;
+  }
+
+  export interface NewSpotMarket {
+    changes?: vega.NewSpotMarketConfiguration;
+  }
+
+  export interface NewSpotMarketConfiguration {
+    instrument?: vega.InstrumentConfiguration;
+    priceDecimalPlaces?: string | number;
+    metadata?: string[];
+    priceMonitoringParameters?: vega.PriceMonitoringParameters;
+    targetStakeParameters?: vega.TargetStakeParameters;
+    simple?: vega.SimpleModelParams;
+    logNormal?: vega.LogNormalRiskModel;
+    sizeDecimalPlaces?: string | number;
+    slaParams?: vega.LiquiditySLAParameters;
+    liquidityFeeSettings?: vega.LiquidityFeeSettings;
+    tickSize?: string;
+  }
+
+  export interface NewTransfer {
+    changes?: vega.NewTransferConfiguration;
+  }
+
+  export interface NewTransferConfiguration {
+    sourceType?: vega.AccountType;
+    source?: string;
+    transferType?: vega.GovernanceTransferType;
+    amount?: string;
+    asset?: string;
+    fractionOfBalance?: string;
+    destinationType?: vega.AccountType;
+    destination?: string;
+    oneOff?: vega.OneOffTransfer;
+    recurring?: vega.RecurringTransfer;
+  }
+
+  export interface OneOffTransfer {
+    deliverOn?: string | number;
+  }
+
+  export interface PerpetualProduct {
+    settlementAsset?: string;
+    quoteName?: string;
+    marginFundingFactor?: string;
+    interestRate?: string;
+    clampLowerBound?: string;
+    clampUpperBound?: string;
+    dataSourceSpecForSettlementSchedule?: vega.DataSourceDefinition;
+    dataSourceSpecForSettlementData?: vega.DataSourceDefinition;
+    dataSourceSpecBinding?: vega.DataSourceSpecToPerpetualBinding;
+    fundingRateScalingFactor?: string;
+    fundingRateLowerBound?: string;
+    fundingRateUpperBound?: string;
+    internalCompositePriceConfiguration?: vega.CompositePriceConfiguration;
+  }
+
+  export interface Proposal {
+    id?: string;
+    reference?: string;
+    partyId?: string;
+    state?: vega.ProposalState;
+    timestamp?: string | number;
+    terms?: vega.ProposalTerms;
+    reason?: vega.ProposalError;
+    errorDetails?: string;
+    rationale?: vega.ProposalRationale;
+    requiredParticipation?: string;
+    requiredMajority?: string;
+    requiredLiquidityProviderParticipation?: string;
+    requiredLiquidityProviderMajority?: string;
+    batchTerms?: vega.BatchProposalTerms;
+    batchId?: string;
+  }
+
+  export interface ProposalParameters {
+    minClose?: string | number;
+    maxClose?: string | number;
+    minEnact?: string | number;
+    maxEnact?: string | number;
+    requiredParticipation?: string;
+    requiredMajority?: string;
+    minProposerBalance?: string;
+    minVoterBalance?: string;
+    requiredParticipationLp?: string;
+    requiredMajorityLp?: string;
+    minEquityLikeShare?: string;
+  }
+
+  export interface ProposalRationale {
+    description?: string;
+    title?: string;
+  }
+
+  export interface ProposalTerms {
+    closingTimestamp?: string | number;
+    enactmentTimestamp?: string | number;
+    validationTimestamp?: string | number;
+    updateMarket?: vega.UpdateMarket;
+    newMarket?: vega.NewMarket;
+    updateNetworkParameter?: vega.UpdateNetworkParameter;
+    newAsset?: vega.NewAsset;
+    newFreeform?: vega.NewFreeform;
+    updateAsset?: vega.UpdateAsset;
+    newSpotMarket?: vega.NewSpotMarket;
+    updateSpotMarket?: vega.UpdateSpotMarket;
+    newTransfer?: vega.NewTransfer;
+    cancelTransfer?: vega.CancelTransfer;
+    updateMarketState?: vega.UpdateMarketState;
+    updateReferralProgram?: vega.UpdateReferralProgram;
+    updateVolumeDiscountProgram?: vega.UpdateVolumeDiscountProgram;
+  }
+
+  export interface RecurringTransfer {
+    startEpoch?: string | number;
+    endEpoch?: string | number;
+    dispatchStrategy?: vega.DispatchStrategy;
+  }
+
+  export interface ReferralProgramChanges {
+    benefitTiers?: vega.BenefitTier[];
+    endOfProgramTimestamp?: string | number;
+    windowLength?: string | number;
+    stakingTiers?: vega.StakingTier[];
+  }
+
+  export interface SpotProduct {
+    baseAsset?: string;
+    quoteAsset?: string;
+  }
+
+  export interface SuccessorConfiguration {
+    parentMarketId?: string;
+    insurancePoolFraction?: string;
+  }
+
+  export interface UpdateAsset {
+    assetId?: string;
+    changes?: vega.AssetDetailsUpdate;
+  }
+
+  export interface UpdateFutureProduct {
+    quoteName?: string;
+    dataSourceSpecForSettlementData?: vega.DataSourceDefinition;
+    dataSourceSpecForTradingTermination?: vega.DataSourceDefinition;
+    dataSourceSpecBinding?: vega.DataSourceSpecToFutureBinding;
+  }
+
+  export interface UpdateInstrumentConfiguration {
+    code?: string;
+    name?: string;
+    future?: vega.UpdateFutureProduct;
+    perpetual?: vega.UpdatePerpetualProduct;
+  }
+
+  export interface UpdateMarket {
+    marketId?: string;
+    changes?: vega.UpdateMarketConfiguration;
+  }
+
+  export interface UpdateMarketConfiguration {
+    instrument?: vega.UpdateInstrumentConfiguration;
+    metadata?: string[];
+    priceMonitoringParameters?: vega.PriceMonitoringParameters;
+    liquidityMonitoringParameters?: vega.LiquidityMonitoringParameters;
+    simple?: vega.SimpleModelParams;
+    logNormal?: vega.LogNormalRiskModel;
+    lpPriceRange?: string;
+    linearSlippageFactor?: string;
+    quadraticSlippageFactor?: string;
+    liquiditySlaParameters?: vega.LiquiditySLAParameters;
+    liquidityFeeSettings?: vega.LiquidityFeeSettings;
+    liquidationStrategy?: vega.LiquidationStrategy;
+    markPriceConfiguration?: vega.CompositePriceConfiguration;
+    tickSize?: string;
+  }
+
+  export interface UpdateMarketState {
+    changes?: vega.UpdateMarketStateConfiguration;
+  }
+
+  export interface UpdateMarketStateConfiguration {
+    marketId?: string;
+    updateType?: vega.MarketStateUpdateType;
+    price?: string;
+  }
+
+  export interface UpdateNetworkParameter {
+    changes?: vega.NetworkParameter;
+  }
+
+  export interface UpdatePerpetualProduct {
+    quoteName?: string;
+    marginFundingFactor?: string;
+    interestRate?: string;
+    clampLowerBound?: string;
+    clampUpperBound?: string;
+    dataSourceSpecForSettlementSchedule?: vega.DataSourceDefinition;
+    dataSourceSpecForSettlementData?: vega.DataSourceDefinition;
+    dataSourceSpecBinding?: vega.DataSourceSpecToPerpetualBinding;
+    fundingRateScalingFactor?: string;
+    fundingRateLowerBound?: string;
+    fundingRateUpperBound?: string;
+    internalCompositePriceConfiguration?: vega.CompositePriceConfiguration;
+  }
+
+  export interface UpdateReferralProgram {
+    changes?: vega.ReferralProgramChanges;
+  }
+
+  export interface UpdateSpotInstrumentConfiguration {
+    code?: string;
+    name?: string;
+  }
+
+  export interface UpdateSpotMarket {
+    marketId?: string;
+    changes?: vega.UpdateSpotMarketConfiguration;
+  }
+
+  export interface UpdateSpotMarketConfiguration {
+    metadata?: string[];
+    priceMonitoringParameters?: vega.PriceMonitoringParameters;
+    targetStakeParameters?: vega.TargetStakeParameters;
+    simple?: vega.SimpleModelParams;
+    logNormal?: vega.LogNormalRiskModel;
+    slaParams?: vega.LiquiditySLAParameters;
+    liquidityFeeSettings?: vega.LiquidityFeeSettings;
+    tickSize?: string;
+    instrument?: vega.UpdateSpotInstrumentConfiguration;
+  }
+
+  export interface UpdateVolumeDiscountProgram {
+    changes?: vega.VolumeDiscountProgramChanges;
+  }
+
+  export interface VolumeDiscountProgramChanges {
+    benefitTiers?: vega.VolumeBenefitTier[];
+    endOfProgramTimestamp?: string | number;
+    windowLength?: string | number;
+  }
+
+  export interface Vote {
+    partyId?: string;
+    value?: vega.VoteValue;
+    proposalId?: string;
+    timestamp?: string | number;
+    totalGovernanceTokenBalance?: string;
+    totalGovernanceTokenWeight?: string;
+    totalEquityLikeShareWeight?: string;
+    elsPerMarket?: vega.VoteELSPair[];
+  }
+
+  export interface VoteELSPair {
+    marketId?: string;
+    els?: string;
+  }
+}
+namespace vega.commands.v1 {
+  /** */
+  export enum UndelegateSubmissionMethod {
+    /**  */
+    METHOD_UNSPECIFIED = "METHOD_UNSPECIFIED",
+    /** Undelegate straight away, losing all rewards for the current epoch. */
+    METHOD_NOW = "METHOD_NOW",
+    /** Undelegate at the end of an epoch, retaining all rewards for the current epoch. */
+    METHOD_AT_END_OF_EPOCH = "METHOD_AT_END_OF_EPOCH",
+  }
+
+  /** */
+  export enum UndelegateSubmissionMethodNumber {
+    /**  */
+    METHOD_UNSPECIFIED = 0,
+    /** Undelegate straight away, losing all rewards for the current epoch. */
+    METHOD_NOW = 1,
+    /** Undelegate at the end of an epoch, retaining all rewards for the current epoch. */
+    METHOD_AT_END_OF_EPOCH = 2,
+  }
+
+  /** */
+  export enum UpdateMarginModeMode {
+    /** Never valid. */
+    MODE_UNSPECIFIED = "MODE_UNSPECIFIED",
+    /** Cross margin mode - margin is dynamically acquired and released as a position is marked to market */
+    MODE_CROSS_MARGIN = "MODE_CROSS_MARGIN",
+    /** Isolated margin mode - margin for any newly opened position volume is transferred to the margin account when the trade is executed */
+    MODE_ISOLATED_MARGIN = "MODE_ISOLATED_MARGIN",
+  }
+
+  /** */
+  export enum UpdateMarginModeModeNumber {
+    /** Never valid. */
+    MODE_UNSPECIFIED = 0,
+    /** Cross margin mode - margin is dynamically acquired and released as a position is marked to market */
+    MODE_CROSS_MARGIN = 1,
+    /** Isolated margin mode - margin for any newly opened position volume is transferred to the margin account when the trade is executed */
+    MODE_ISOLATED_MARGIN = 2,
+  }
+
+  export interface ApplyReferralCode {
+    id?: string;
+  }
+
+  export interface BatchMarketInstructions {
+    cancellations?: vega.commands.v1.OrderCancellation[];
+    amendments?: vega.commands.v1.OrderAmendment[];
+    submissions?: vega.commands.v1.OrderSubmission[];
+    stopOrdersCancellation?: vega.commands.v1.StopOrdersCancellation[];
+    stopOrdersSubmission?: vega.commands.v1.StopOrdersSubmission[];
+    updateMarginMode?: vega.commands.v1.UpdateMarginMode[];
+  }
+
+  export interface BatchProposalSubmission {
+    reference?: string;
+    terms?: vega.commands.v1.BatchProposalSubmissionTerms;
+    rationale?: vega.ProposalRationale;
+  }
+
+  export interface BatchProposalSubmissionTerms {
+    closingTimestamp?: string | number;
+    changes?: vega.BatchProposalTermsChange[];
+  }
+
+  export interface CancelTransfer {
+    transferId?: string;
+  }
+
+  export interface CreateReferralSet {
+    isTeam?: boolean;
+    team?: vega.commands.v1.CreateReferralSetTeam;
+  }
+
+  export interface CreateReferralSetTeam {
+    name?: string;
+    teamUrl?: string;
+    avatarUrl?: string;
+    closed?: boolean;
+    allowList?: string[];
+  }
+
+  export interface DelegateSubmission {
+    nodeId?: string;
+    amount?: string;
+  }
+
+  export interface IcebergOpts {
+    peakSize?: string | number;
+    minimumVisibleSize?: string | number;
+  }
+
+  export interface IssueSignatures {
+    submitter?: string;
+    kind?: vega.commands.v1.NodeSignatureKind;
+    validatorNodeId?: string;
+    chainId?: string;
+  }
+
+  export interface JoinTeam {
+    id?: string;
+  }
+
+  export interface LiquidityProvisionAmendment {
+    marketId?: string;
+    commitmentAmount?: string;
+    fee?: string;
+    reference?: string;
+  }
+
+  export interface LiquidityProvisionCancellation {
+    marketId?: string;
+  }
+
+  export interface LiquidityProvisionSubmission {
+    marketId?: string;
+    commitmentAmount?: string;
+    fee?: string;
+    reference?: string;
+  }
+
+  export interface OneOffTransfer {
+    deliverOn?: string | number;
+  }
+
+  export interface OrderAmendment {
+    orderId?: string;
+    marketId?: string;
+    price?: string;
+    sizeDelta?: string | number;
+    expiresAt?: string | number;
+    timeInForce?: vega.OrderTimeInForce;
+    peggedOffset?: string;
+    peggedReference?: vega.PeggedReference;
+    size?: string | number;
+  }
+
+  export interface OrderCancellation {
+    orderId?: string;
+    marketId?: string;
+  }
+
+  export interface OrderSubmission {
+    marketId?: string;
+    price?: string;
+    size?: string | number;
+    side?: vega.Side;
+    timeInForce?: vega.OrderTimeInForce;
+    expiresAt?: string | number;
+    type?: vega.OrderType;
+    reference?: string;
+    peggedOrder?: vega.PeggedOrder;
+    postOnly?: boolean;
+    reduceOnly?: boolean;
+    icebergOpts?: vega.commands.v1.IcebergOpts;
+  }
+
+  export interface ProposalSubmission {
+    reference?: string;
+    terms?: vega.ProposalTerms;
+    rationale?: vega.ProposalRationale;
+  }
+
+  export interface RecurringTransfer {
+    startEpoch?: string | number;
+    endEpoch?: string | number;
+    factor?: string;
+    dispatchStrategy?: vega.DispatchStrategy;
+  }
+
+  export interface StopOrderSetup {
+    orderSubmission?: vega.commands.v1.OrderSubmission;
+    expiresAt?: string | number;
+    expiryStrategy?: vega.StopOrderExpiryStrategy;
+    sizeOverrideSetting?: vega.StopOrderSizeOverrideSetting;
+    sizeOverrideValue?: vega.StopOrderSizeOverrideValue;
+    price?: string;
+    trailingPercentOffset?: string;
+  }
+
+  export interface StopOrdersCancellation {
+    marketId?: string;
+    stopOrderId?: string;
+  }
+
+  export interface StopOrdersSubmission {
+    risesAbove?: vega.commands.v1.StopOrderSetup;
+    fallsBelow?: vega.commands.v1.StopOrderSetup;
+  }
+
+  export interface Transfer {
+    fromAccountType?: vega.AccountType;
+    to?: string;
+    toAccountType?: vega.AccountType;
+    asset?: string;
+    amount?: string;
+    reference?: string;
+    oneOff?: vega.commands.v1.OneOffTransfer;
+    recurring?: vega.commands.v1.RecurringTransfer;
+  }
+
+  export interface UndelegateSubmission {
+    nodeId?: string;
+    amount?: string;
+    method?: vega.commands.v1.UndelegateSubmissionMethod;
+  }
+
+  export interface UpdateMarginMode {
+    marketId?: string;
+    mode?: vega.commands.v1.UpdateMarginModeMode;
+    marginFactor?: string;
+  }
+
+  export interface UpdatePartyProfile {
+    alias?: string;
+    metadata?: vega.Metadata[];
+  }
+
+  export interface UpdateReferralSet {
+    id?: string;
+    isTeam?: boolean;
+    team?: vega.commands.v1.UpdateReferralSetTeam;
+  }
+
+  export interface UpdateReferralSetTeam {
+    name?: string;
+    teamUrl?: string;
+    avatarUrl?: string;
+    closed?: boolean;
+    allowList?: string[];
+  }
+
+  export interface VoteSubmission {
+    proposalId?: string;
+    value?: vega.VoteValue;
+  }
+
+  export interface WithdrawSubmission {
+    amount?: string;
+    asset?: string;
+    ext?: vega.WithdrawExt;
+  }
+}
+namespace vega.commands.v1 {
+  /** Supported oracle sources*/
+  export enum OracleDataSubmissionOracleSource {
+    /** Default value */
+    ORACLE_SOURCE_UNSPECIFIED = "ORACLE_SOURCE_UNSPECIFIED",
+    /** Specifies that the payload will be base64 encoded JSON conforming to the Open Oracle standard. */
+    ORACLE_SOURCE_OPEN_ORACLE = "ORACLE_SOURCE_OPEN_ORACLE",
+    /** Specifies that the payload will be base64 encoded JSON, but does not specify the shape of the data. */
+    ORACLE_SOURCE_JSON = "ORACLE_SOURCE_JSON",
+    /** Specifies that the payload will be base64 encoded JSON conforming to the ETH standard. */
+    ORACLE_SOURCE_ETHEREUM = "ORACLE_SOURCE_ETHEREUM",
+  }
+
+  /** Supported oracle sources*/
+  export enum OracleDataSubmissionOracleSourceNumber {
+    /** Default value */
+    ORACLE_SOURCE_UNSPECIFIED = 0,
+    /** Specifies that the payload will be base64 encoded JSON conforming to the Open Oracle standard. */
+    ORACLE_SOURCE_OPEN_ORACLE = 1,
+    /** Specifies that the payload will be base64 encoded JSON, but does not specify the shape of the data. */
+    ORACLE_SOURCE_JSON = 2,
+    /** Specifies that the payload will be base64 encoded JSON conforming to the ETH standard. */
+    ORACLE_SOURCE_ETHEREUM = 3,
+  }
+
+  export interface OracleDataSubmission {
+    source?: vega.commands.v1.OracleDataSubmissionOracleSource;
+    payload?: string;
+  }
+}
+namespace vega.commands.v1 {
+  /** Transaction versions to maintain backwards compatibility of transaction formats.*/
+  export enum TxVersion {
+    /** Transaction version is unspecified. */
+    TX_VERSION_UNSPECIFIED = "TX_VERSION_UNSPECIFIED",
+    /** Transaction requires the addition of a proof-of-work calculation. */
+    TX_VERSION_V2 = "TX_VERSION_V2",
+    /** Transaction input data contains a prepended chain ID to prevent use of a single transaction across multiple networks. */
+    TX_VERSION_V3 = "TX_VERSION_V3",
+  }
+
+  /** Transaction versions to maintain backwards compatibility of transaction formats.*/
+  export enum TxVersionNumber {
+    /** Transaction version is unspecified. */
+    TX_VERSION_UNSPECIFIED = 0,
+    /** Transaction requires the addition of a proof-of-work calculation. */
+    TX_VERSION_V2 = 2,
+    /** Transaction input data contains a prepended chain ID to prevent use of a single transaction across multiple networks. */
+    TX_VERSION_V3 = 3,
+  }
+
+  export interface InputData {
+    nonce?: string | number;
+    blockHeight?: string | number;
+    orderSubmission?: vega.commands.v1.OrderSubmission;
+    orderCancellation?: vega.commands.v1.OrderCancellation;
+    orderAmendment?: vega.commands.v1.OrderAmendment;
+    withdrawSubmission?: vega.commands.v1.WithdrawSubmission;
+    proposalSubmission?: vega.commands.v1.ProposalSubmission;
+    voteSubmission?: vega.commands.v1.VoteSubmission;
+    liquidityProvisionSubmission?: vega.commands.v1.LiquidityProvisionSubmission;
+    delegateSubmission?: vega.commands.v1.DelegateSubmission;
+    undelegateSubmission?: vega.commands.v1.UndelegateSubmission;
+    liquidityProvisionCancellation?: vega.commands.v1.LiquidityProvisionCancellation;
+    liquidityProvisionAmendment?: vega.commands.v1.LiquidityProvisionAmendment;
+    transfer?: vega.commands.v1.Transfer;
+    cancelTransfer?: vega.commands.v1.CancelTransfer;
+    announceNode?: vega.commands.v1.AnnounceNode;
+    batchMarketInstructions?: vega.commands.v1.BatchMarketInstructions;
+    stopOrdersSubmission?: vega.commands.v1.StopOrdersSubmission;
+    stopOrdersCancellation?: vega.commands.v1.StopOrdersCancellation;
+    createReferralSet?: vega.commands.v1.CreateReferralSet;
+    updateReferralSet?: vega.commands.v1.UpdateReferralSet;
+    applyReferralCode?: vega.commands.v1.ApplyReferralCode;
+    updateMarginMode?: vega.commands.v1.UpdateMarginMode;
+    joinTeam?: vega.commands.v1.JoinTeam;
+    batchProposalSubmission?: vega.commands.v1.BatchProposalSubmission;
+    updatePartyProfile?: vega.commands.v1.UpdatePartyProfile;
+    nodeVote?: vega.commands.v1.NodeVote;
+    nodeSignature?: vega.commands.v1.NodeSignature;
+    chainEvent?: vega.commands.v1.ChainEvent;
+    keyRotateSubmission?: vega.commands.v1.KeyRotateSubmission;
+    stateVariableProposal?: vega.commands.v1.StateVariableProposal;
+    validatorHeartbeat?: vega.commands.v1.ValidatorHeartbeat;
+    ethereumKeyRotateSubmission?: vega.commands.v1.EthereumKeyRotateSubmission;
+    protocolUpgradeProposal?: vega.commands.v1.ProtocolUpgradeProposal;
+    issueSignatures?: vega.commands.v1.IssueSignatures;
+    oracleDataSubmission?: vega.commands.v1.OracleDataSubmission;
+  }
+
+  export interface ProofOfWork {
+    tid?: string;
+    nonce?: string | number;
+  }
+
+  export interface Transaction {
+    inputData?: string;
+    signature?: vega.commands.v1.Signature;
+    address?: string;
+    pubKey?: string;
+    version?: vega.commands.v1.TxVersion;
+    pow?: vega.commands.v1.ProofOfWork;
+  }
+}
+namespace blockexplorer.api.v1 {
+  export interface GetTransactionRequest {
+    hash?: string;
+  }
+
+  export interface GetTransactionResponse {
+    transaction?: blockexplorer.api.v1.Transaction;
+  }
+
+  export interface InfoRequest {}
+
+  export interface InfoResponse {
+    version?: string;
+    commitHash?: string;
+  }
+
+  export interface ListTransactionsRequest {
+    before?: string;
+    after?: string;
+    filters?: blockexplorer.api.v1.ListTransactionsRequestFiltersEntry[];
+    cmdTypes?: string[];
+    excludeCmdTypes?: string[];
+    parties?: string[];
+    first?: string | number;
+    last?: string | number;
+  }
+
+  export interface ListTransactionsRequestFiltersEntry {
+    key?: string;
+    value?: string;
+  }
+
+  export interface ListTransactionsResponse {
+    transactions?: blockexplorer.api.v1.Transaction[];
+  }
+
+  export interface Transaction {
+    block?: string | number;
+    index?: string | number;
+    hash?: string;
+    submitter?: string;
+    type?: string;
+    code?: string | number;
+    cursor?: string;
+    command?: vega.commands.v1.InputData;
+    signature?: vega.commands.v1.Signature;
+    error?: string;
+    createdAt?: string;
+    version?: vega.commands.v1.TxVersion;
+    pow?: vega.commands.v1.ProofOfWork;
+  }
+}
+namespace vega {
+  export interface OracleData {
+    externalData?: vega.data.v1.ExternalData;
+  }
+
+  export interface OracleSpec {
+    externalDataSourceSpec?: vega.ExternalDataSourceSpec;
+  }
+}
+namespace vega.events.v1 {
+  /** Bus event type is used to specify a type of event
 It has 2 styles of event:
 Single values (e.g. BUS_EVENT_TYPE_ORDER) where they represent one data item
 Group values (e.g. BUS_EVENT_TYPE_AUCTION) where they represent a group of data items*/
-export enum BusEventType {
-  /** Default value, always invalid */
-  BUS_EVENT_TYPE_UNSPECIFIED = "BUS_EVENT_TYPE_UNSPECIFIED",
-  /** Events of ALL event types, used when filtering stream from event bus */
-  BUS_EVENT_TYPE_ALL = "BUS_EVENT_TYPE_ALL",
-  /** Event for blockchain time updates */
-  BUS_EVENT_TYPE_TIME_UPDATE = "BUS_EVENT_TYPE_TIME_UPDATE",
-  /** Event for when a transfer happens internally, contains the transfer information */
-  BUS_EVENT_TYPE_LEDGER_MOVEMENTS = "BUS_EVENT_TYPE_LEDGER_MOVEMENTS",
-  /** Event indicating position resolution has occurred */
-  BUS_EVENT_TYPE_POSITION_RESOLUTION = "BUS_EVENT_TYPE_POSITION_RESOLUTION",
-  /** Event for order updates, both new and existing orders */
-  BUS_EVENT_TYPE_ORDER = "BUS_EVENT_TYPE_ORDER",
-  /** Event for account updates */
-  BUS_EVENT_TYPE_ACCOUNT = "BUS_EVENT_TYPE_ACCOUNT",
-  /** Event for party updates */
-  BUS_EVENT_TYPE_PARTY = "BUS_EVENT_TYPE_PARTY",
-  /** Event indicating a new trade has occurred */
-  BUS_EVENT_TYPE_TRADE = "BUS_EVENT_TYPE_TRADE",
-  /** Event indicating margin levels have changed for a party */
-  BUS_EVENT_TYPE_MARGIN_LEVELS = "BUS_EVENT_TYPE_MARGIN_LEVELS",
-  /** Event for proposal updates (for governance) */
-  BUS_EVENT_TYPE_PROPOSAL = "BUS_EVENT_TYPE_PROPOSAL",
-  /** Event indicating a new vote has occurred (for governance) */
-  BUS_EVENT_TYPE_VOTE = "BUS_EVENT_TYPE_VOTE",
-  /** Event for market data updates */
-  BUS_EVENT_TYPE_MARKET_DATA = "BUS_EVENT_TYPE_MARKET_DATA",
-  /** Event for a new signature for a Vega node */
-  BUS_EVENT_TYPE_NODE_SIGNATURE = "BUS_EVENT_TYPE_NODE_SIGNATURE",
-  /** Event indicating loss socialisation occurred for a party */
-  BUS_EVENT_TYPE_LOSS_SOCIALIZATION = "BUS_EVENT_TYPE_LOSS_SOCIALIZATION",
-  /** Event for when a position is being settled */
-  BUS_EVENT_TYPE_SETTLE_POSITION = "BUS_EVENT_TYPE_SETTLE_POSITION",
-  /** Event for when a position is distressed */
-  BUS_EVENT_TYPE_SETTLE_DISTRESSED = "BUS_EVENT_TYPE_SETTLE_DISTRESSED",
-  /** Event indicating a new market was created */
-  BUS_EVENT_TYPE_MARKET_CREATED = "BUS_EVENT_TYPE_MARKET_CREATED",
-  /** Event for when an asset is added to Vega */
-  BUS_EVENT_TYPE_ASSET = "BUS_EVENT_TYPE_ASSET",
-  /** Event indicating a market tick event */
-  BUS_EVENT_TYPE_MARKET_TICK = "BUS_EVENT_TYPE_MARKET_TICK",
-  /** Event for when a withdrawal occurs */
-  BUS_EVENT_TYPE_WITHDRAWAL = "BUS_EVENT_TYPE_WITHDRAWAL",
-  /** Event for when a deposit occurs */
-  BUS_EVENT_TYPE_DEPOSIT = "BUS_EVENT_TYPE_DEPOSIT",
-  /** Event indicating a change in auction state, for example starting or ending an auction */
-  BUS_EVENT_TYPE_AUCTION = "BUS_EVENT_TYPE_AUCTION",
-  /** Event indicating a risk factor has been updated */
-  BUS_EVENT_TYPE_RISK_FACTOR = "BUS_EVENT_TYPE_RISK_FACTOR",
-  /** Event indicating a network parameter has been added or updated */
-  BUS_EVENT_TYPE_NETWORK_PARAMETER = "BUS_EVENT_TYPE_NETWORK_PARAMETER",
-  /** Event indicating a liquidity provision has been created or updated */
-  BUS_EVENT_TYPE_LIQUIDITY_PROVISION = "BUS_EVENT_TYPE_LIQUIDITY_PROVISION",
-  /** Event indicating a new market was created */
-  BUS_EVENT_TYPE_MARKET_UPDATED = "BUS_EVENT_TYPE_MARKET_UPDATED",
-  /** Event indicating an oracle spec has been created or updated */
-  BUS_EVENT_TYPE_ORACLE_SPEC = "BUS_EVENT_TYPE_ORACLE_SPEC",
-  /** Event indicating that an oracle data has been broadcast */
-  BUS_EVENT_TYPE_ORACLE_DATA = "BUS_EVENT_TYPE_ORACLE_DATA",
-  /** Event indicating that an delegation balance of a party to a node for current epoch has changed */
-  BUS_EVENT_TYPE_DELEGATION_BALANCE = "BUS_EVENT_TYPE_DELEGATION_BALANCE",
-  /** Event indicating the validator score for the given epoch */
-  BUS_EVENT_TYPE_VALIDATOR_SCORE = "BUS_EVENT_TYPE_VALIDATOR_SCORE",
-  /** Event indicating the start or end of an epoch */
-  BUS_EVENT_TYPE_EPOCH_UPDATE = "BUS_EVENT_TYPE_EPOCH_UPDATE",
-  /** Event indicating that validator node has been updated */
-  BUS_EVENT_TYPE_VALIDATOR_UPDATE = "BUS_EVENT_TYPE_VALIDATOR_UPDATE",
-  /** Event indicating a new staking event have been processed by the network */
-  BUS_EVENT_TYPE_STAKE_LINKING = "BUS_EVENT_TYPE_STAKE_LINKING",
-  /** Event indicating the payout of a reward has been initiated */
-  BUS_EVENT_TYPE_REWARD_PAYOUT_EVENT = "BUS_EVENT_TYPE_REWARD_PAYOUT_EVENT",
-  /** Event indicating a new checkpoint was created */
-  BUS_EVENT_TYPE_CHECKPOINT = "BUS_EVENT_TYPE_CHECKPOINT",
-  /** Event indicating stream is starting */
-  BUS_EVENT_TYPE_STREAM_START = "BUS_EVENT_TYPE_STREAM_START",
-  /** Event indicating key rotation took place */
-  BUS_EVENT_TYPE_KEY_ROTATION = "BUS_EVENT_TYPE_KEY_ROTATION",
-  /** Event indicating state transitions in state variable consensus */
-  BUS_EVENT_TYPE_STATE_VAR = "BUS_EVENT_TYPE_STATE_VAR",
-  /** Event indicating network limits set or updated */
-  BUS_EVENT_TYPE_NETWORK_LIMITS = "BUS_EVENT_TYPE_NETWORK_LIMITS",
-  /** Event indicating a update for a transfer */
-  BUS_EVENT_TYPE_TRANSFER = "BUS_EVENT_TYPE_TRANSFER",
-  /** Event indicating the ranking of validator and their status in Vega */
-  BUS_EVENT_TYPE_VALIDATOR_RANKING = "BUS_EVENT_TYPE_VALIDATOR_RANKING",
-  /** Event indicating a new multi sig signer event have been processed */
-  BUS_EVENT_TYPE_ERC20_MULTI_SIG_SIGNER_EVENT = "BUS_EVENT_TYPE_ERC20_MULTI_SIG_SIGNER_EVENT",
-  /** Event indicating the erc20 multi sig threshold have been updated */
-  BUS_EVENT_TYPE_ERC20_MULTI_SIG_SET_THRESHOLD = "BUS_EVENT_TYPE_ERC20_MULTI_SIG_SET_THRESHOLD",
-  /** Event indicating a new signer has been added to the ERC-20 multisig */
-  BUS_EVENT_TYPE_ERC20_MULTI_SIG_SIGNER_ADDED = "BUS_EVENT_TYPE_ERC20_MULTI_SIG_SIGNER_ADDED",
-  /** Event indicating a signer has been removed from the ERC-20 multisig */
-  BUS_EVENT_TYPE_ERC20_MULTI_SIG_SIGNER_REMOVED = "BUS_EVENT_TYPE_ERC20_MULTI_SIG_SIGNER_REMOVED",
-  /** Event indicating that a party's position has changed */
-  BUS_EVENT_TYPE_POSITION_STATE = "BUS_EVENT_TYPE_POSITION_STATE",
-  /** Event indicating Ethereum key rotation took place */
-  BUS_EVENT_TYPE_ETHEREUM_KEY_ROTATION = "BUS_EVENT_TYPE_ETHEREUM_KEY_ROTATION",
-  /** Event indicating protocol upgrade proposal updates */
-  BUS_EVENT_TYPE_PROTOCOL_UPGRADE_PROPOSAL = "BUS_EVENT_TYPE_PROTOCOL_UPGRADE_PROPOSAL",
-  /** Event indicating the core is starting to process a new block */
-  BUS_EVENT_TYPE_BEGIN_BLOCK = "BUS_EVENT_TYPE_BEGIN_BLOCK",
-  /** Event indicating the core finished to process a block */
-  BUS_EVENT_TYPE_END_BLOCK = "BUS_EVENT_TYPE_END_BLOCK",
-  /** Event indicating the core is starting a protocol upgrade */
-  BUS_EVENT_TYPE_PROTOCOL_UPGRADE_STARTED = "BUS_EVENT_TYPE_PROTOCOL_UPGRADE_STARTED",
-  /** Event indicating the market has stopped and settled */
-  BUS_EVENT_TYPE_SETTLE_MARKET = "BUS_EVENT_TYPE_SETTLE_MARKET",
-  /** Event indicating the result of a transaction processed by the network */
-  BUS_EVENT_TYPE_TRANSACTION_RESULT = "BUS_EVENT_TYPE_TRANSACTION_RESULT",
-  /** Event indicating a snapshot was taken at this block height */
-  BUS_EVENT_TYPE_SNAPSHOT_TAKEN = "BUS_EVENT_TYPE_SNAPSHOT_TAKEN",
-  /** Event data node uses to notify that it is ready to upgrade */
-  BUS_EVENT_TYPE_PROTOCOL_UPGRADE_DATA_NODE_READY = "BUS_EVENT_TYPE_PROTOCOL_UPGRADE_DATA_NODE_READY",
-  /** Event indicating parties had orders closed because they were distressed, but were not closed out. */
-  BUS_EVENT_TYPE_DISTRESSED_ORDERS_CLOSED = "BUS_EVENT_TYPE_DISTRESSED_ORDERS_CLOSED",
-  /** Event indicating parties had orders closed because they were distressed, but were not closed out. */
-  BUS_EVENT_TYPE_EXPIRED_ORDERS = "BUS_EVENT_TYPE_EXPIRED_ORDERS",
-  /** Event indicating parties have become, or were, distressed but still have an active position. */
-  BUS_EVENT_TYPE_DISTRESSED_POSITIONS = "BUS_EVENT_TYPE_DISTRESSED_POSITIONS",
-  /** Event indicating a spot liquidity provision has been created or updated. */
-  BUS_EVENT_TYPE_SPOT_LIQUIDITY_PROVISION = "BUS_EVENT_TYPE_SPOT_LIQUIDITY_PROVISION",
-  /** Event indicating a stop order has been submitted or updated. */
-  BUS_EVENT_TYPE_STOP_ORDER = "BUS_EVENT_TYPE_STOP_ORDER",
-  /** Event indicating the start or end of a funding period. */
-  BUS_EVENT_TYPE_FUNDING_PERIOD = "BUS_EVENT_TYPE_FUNDING_PERIOD",
-  /** Event indicating a data point for a funding period has been received. */
-  BUS_EVENT_TYPE_FUNDING_PERIOD_DATA_POINT = "BUS_EVENT_TYPE_FUNDING_PERIOD_DATA_POINT",
-  /** Event indicating a team has been created. */
-  BUS_EVENT_TYPE_TEAM_CREATED = "BUS_EVENT_TYPE_TEAM_CREATED",
-  /** Event indicating a team has been updated. */
-  BUS_EVENT_TYPE_TEAM_UPDATED = "BUS_EVENT_TYPE_TEAM_UPDATED",
-  /** Event indicating a referee switched team. */
-  BUS_EVENT_TYPE_REFEREE_SWITCHED_TEAM = "BUS_EVENT_TYPE_REFEREE_SWITCHED_TEAM",
-  /** Event indicating a referee joined a team. */
-  BUS_EVENT_TYPE_REFEREE_JOINED_TEAM = "BUS_EVENT_TYPE_REFEREE_JOINED_TEAM",
-  /** Event indicating a referral program started. */
-  BUS_EVENT_TYPE_REFERRAL_PROGRAM_STARTED = "BUS_EVENT_TYPE_REFERRAL_PROGRAM_STARTED",
-  /** Event indicating a referral program has been updated. */
-  BUS_EVENT_TYPE_REFERRAL_PROGRAM_UPDATED = "BUS_EVENT_TYPE_REFERRAL_PROGRAM_UPDATED",
-  /** Event indicating a referral program ended. */
-  BUS_EVENT_TYPE_REFERRAL_PROGRAM_ENDED = "BUS_EVENT_TYPE_REFERRAL_PROGRAM_ENDED",
-  /** Event indicating a set has been created. */
-  BUS_EVENT_TYPE_REFERRAL_SET_CREATED = "BUS_EVENT_TYPE_REFERRAL_SET_CREATED",
-  /** Event indicating a referee joined a set. */
-  BUS_EVENT_TYPE_REFEREE_JOINED_REFERRAL_SET = "BUS_EVENT_TYPE_REFEREE_JOINED_REFERRAL_SET",
-  /** Event indicating the updated activity streak for a party */
-  BUS_EVENT_TYPE_PARTY_ACTIVITY_STREAK = "BUS_EVENT_TYPE_PARTY_ACTIVITY_STREAK",
-  /** Event indicating a volume discount program started. */
-  BUS_EVENT_TYPE_VOLUME_DISCOUNT_PROGRAM_STARTED = "BUS_EVENT_TYPE_VOLUME_DISCOUNT_PROGRAM_STARTED",
-  /** Event indicating a volume discount program has been updated. */
-  BUS_EVENT_TYPE_VOLUME_DISCOUNT_PROGRAM_UPDATED = "BUS_EVENT_TYPE_VOLUME_DISCOUNT_PROGRAM_UPDATED",
-  /** Event indicating a volume discount program ended. */
-  BUS_EVENT_TYPE_VOLUME_DISCOUNT_PROGRAM_ENDED = "BUS_EVENT_TYPE_VOLUME_DISCOUNT_PROGRAM_ENDED",
-  /** Event indicating the updated statistics for a referral set. */
-  BUS_EVENT_TYPE_REFERRAL_SET_STATS_UPDATED = "BUS_EVENT_TYPE_REFERRAL_SET_STATS_UPDATED",
-  /** Event indicating the updated statistics for the vesting program. */
-  BUS_EVENT_TYPE_VESTING_STATS_UPDATED = "BUS_EVENT_TYPE_VESTING_STATS_UPDATED",
-  /** Event indicating the updated statistics for the volume discount. */
-  BUS_EVENT_TYPE_VOLUME_DISCOUNT_STATS_UPDATED = "BUS_EVENT_TYPE_VOLUME_DISCOUNT_STATS_UPDATED",
-  /** Event indicating the fees statistics per market at end of epoch */
-  BUS_EVENT_TYPE_FEES_STATS_UPDATED = "BUS_EVENT_TYPE_FEES_STATS_UPDATED",
-  /** Event indicating a funding period has ended and resulted in funding payment transfers. */
-  BUS_EVENT_TYPE_FUNDING_PAYMENTS = "BUS_EVENT_TYPE_FUNDING_PAYMENTS",
-  /** Event used to report the updated paid liquidity fee statistics for the market at the end of the epoch */
-  BUS_EVENT_TYPE_PAID_LIQUIDITY_FEES_STATS_UPDATED = "BUS_EVENT_TYPE_PAID_LIQUIDITY_FEES_STATS_UPDATED",
-  /** Event used to report the summary of vesting and locked balances at the end of the epoch */
-  BUS_EVENT_TYPE_VESTING_SUMMARY = "BUS_EVENT_TYPE_VESTING_SUMMARY",
-  /** Event used to link ledger entries to the transfer that triggered the fees being collected. */
-  BUS_EVENT_TYPE_TRANSFER_FEES_PAID = "BUS_EVENT_TYPE_TRANSFER_FEES_PAID",
-  /** Event indicating that a party's available transfer fee discount has changed, per asset. */
-  BUS_EVENT_TYPE_TRANSFER_FEES_DISCOUNT_UPDATED = "BUS_EVENT_TYPE_TRANSFER_FEES_DISCOUNT_UPDATED",
-  /** Event indicating that a party updated their margin mode on a market. */
-  BUS_EVENT_TYPE_PARTY_MARGIN_MODE_UPDATED = "BUS_EVENT_TYPE_PARTY_MARGIN_MODE_UPDATED",
-  /** Event indicating that a party updated their profile. */
-  BUS_EVENT_TYPE_PARTY_PROFILE_UPDATED = "BUS_EVENT_TYPE_PARTY_PROFILE_UPDATED",
-  /** Event indicating that teams' statistics have been updated. */
-  BUS_EVENT_TYPE_TEAMS_STATS_UPDATED = "BUS_EVENT_TYPE_TEAMS_STATS_UPDATED",
-  /** Event indicating time weighted notional position has been updated. */
-  BUS_EVENT_TYPE_TIME_WEIGHTED_NOTIONAL_POSITION_UPDATED = "BUS_EVENT_TYPE_TIME_WEIGHTED_NOTIONAL_POSITION_UPDATED",
-  /** Event containing the IDs of orders cancelled by a party on a market. */
-  BUS_EVENT_TYPE_CANCELLED_ORDERS = "BUS_EVENT_TYPE_CANCELLED_ORDERS",
-  /** Event indicating a market related event, for example when a market opens */
-  BUS_EVENT_TYPE_MARKET = "BUS_EVENT_TYPE_MARKET",
-  /** Event used to report failed transactions back to a user, this is excluded from the ALL type */
-  BUS_EVENT_TYPE_TX_ERROR = "BUS_EVENT_TYPE_TX_ERROR"
-}
+  export enum BusEventType {
+    /** Default value, always invalid */
+    BUS_EVENT_TYPE_UNSPECIFIED = "BUS_EVENT_TYPE_UNSPECIFIED",
+    /** Events of ALL event types, used when filtering stream from event bus */
+    BUS_EVENT_TYPE_ALL = "BUS_EVENT_TYPE_ALL",
+    /** Event for blockchain time updates */
+    BUS_EVENT_TYPE_TIME_UPDATE = "BUS_EVENT_TYPE_TIME_UPDATE",
+    /** Event for when a transfer happens internally, contains the transfer information */
+    BUS_EVENT_TYPE_LEDGER_MOVEMENTS = "BUS_EVENT_TYPE_LEDGER_MOVEMENTS",
+    /** Event indicating position resolution has occurred */
+    BUS_EVENT_TYPE_POSITION_RESOLUTION = "BUS_EVENT_TYPE_POSITION_RESOLUTION",
+    /** Event for order updates, both new and existing orders */
+    BUS_EVENT_TYPE_ORDER = "BUS_EVENT_TYPE_ORDER",
+    /** Event for account updates */
+    BUS_EVENT_TYPE_ACCOUNT = "BUS_EVENT_TYPE_ACCOUNT",
+    /** Event for party updates */
+    BUS_EVENT_TYPE_PARTY = "BUS_EVENT_TYPE_PARTY",
+    /** Event indicating a new trade has occurred */
+    BUS_EVENT_TYPE_TRADE = "BUS_EVENT_TYPE_TRADE",
+    /** Event indicating margin levels have changed for a party */
+    BUS_EVENT_TYPE_MARGIN_LEVELS = "BUS_EVENT_TYPE_MARGIN_LEVELS",
+    /** Event for proposal updates (for governance) */
+    BUS_EVENT_TYPE_PROPOSAL = "BUS_EVENT_TYPE_PROPOSAL",
+    /** Event indicating a new vote has occurred (for governance) */
+    BUS_EVENT_TYPE_VOTE = "BUS_EVENT_TYPE_VOTE",
+    /** Event for market data updates */
+    BUS_EVENT_TYPE_MARKET_DATA = "BUS_EVENT_TYPE_MARKET_DATA",
+    /** Event for a new signature for a Vega node */
+    BUS_EVENT_TYPE_NODE_SIGNATURE = "BUS_EVENT_TYPE_NODE_SIGNATURE",
+    /** Event indicating loss socialisation occurred for a party */
+    BUS_EVENT_TYPE_LOSS_SOCIALIZATION = "BUS_EVENT_TYPE_LOSS_SOCIALIZATION",
+    /** Event for when a position is being settled */
+    BUS_EVENT_TYPE_SETTLE_POSITION = "BUS_EVENT_TYPE_SETTLE_POSITION",
+    /** Event for when a position is distressed */
+    BUS_EVENT_TYPE_SETTLE_DISTRESSED = "BUS_EVENT_TYPE_SETTLE_DISTRESSED",
+    /** Event indicating a new market was created */
+    BUS_EVENT_TYPE_MARKET_CREATED = "BUS_EVENT_TYPE_MARKET_CREATED",
+    /** Event for when an asset is added to Vega */
+    BUS_EVENT_TYPE_ASSET = "BUS_EVENT_TYPE_ASSET",
+    /** Event indicating a market tick event */
+    BUS_EVENT_TYPE_MARKET_TICK = "BUS_EVENT_TYPE_MARKET_TICK",
+    /** Event for when a withdrawal occurs */
+    BUS_EVENT_TYPE_WITHDRAWAL = "BUS_EVENT_TYPE_WITHDRAWAL",
+    /** Event for when a deposit occurs */
+    BUS_EVENT_TYPE_DEPOSIT = "BUS_EVENT_TYPE_DEPOSIT",
+    /** Event indicating a change in auction state, for example starting or ending an auction */
+    BUS_EVENT_TYPE_AUCTION = "BUS_EVENT_TYPE_AUCTION",
+    /** Event indicating a risk factor has been updated */
+    BUS_EVENT_TYPE_RISK_FACTOR = "BUS_EVENT_TYPE_RISK_FACTOR",
+    /** Event indicating a network parameter has been added or updated */
+    BUS_EVENT_TYPE_NETWORK_PARAMETER = "BUS_EVENT_TYPE_NETWORK_PARAMETER",
+    /** Event indicating a liquidity provision has been created or updated */
+    BUS_EVENT_TYPE_LIQUIDITY_PROVISION = "BUS_EVENT_TYPE_LIQUIDITY_PROVISION",
+    /** Event indicating a new market was created */
+    BUS_EVENT_TYPE_MARKET_UPDATED = "BUS_EVENT_TYPE_MARKET_UPDATED",
+    /** Event indicating an oracle spec has been created or updated */
+    BUS_EVENT_TYPE_ORACLE_SPEC = "BUS_EVENT_TYPE_ORACLE_SPEC",
+    /** Event indicating that an oracle data has been broadcast */
+    BUS_EVENT_TYPE_ORACLE_DATA = "BUS_EVENT_TYPE_ORACLE_DATA",
+    /** Event indicating that an delegation balance of a party to a node for current epoch has changed */
+    BUS_EVENT_TYPE_DELEGATION_BALANCE = "BUS_EVENT_TYPE_DELEGATION_BALANCE",
+    /** Event indicating the validator score for the given epoch */
+    BUS_EVENT_TYPE_VALIDATOR_SCORE = "BUS_EVENT_TYPE_VALIDATOR_SCORE",
+    /** Event indicating the start or end of an epoch */
+    BUS_EVENT_TYPE_EPOCH_UPDATE = "BUS_EVENT_TYPE_EPOCH_UPDATE",
+    /** Event indicating that validator node has been updated */
+    BUS_EVENT_TYPE_VALIDATOR_UPDATE = "BUS_EVENT_TYPE_VALIDATOR_UPDATE",
+    /** Event indicating a new staking event have been processed by the network */
+    BUS_EVENT_TYPE_STAKE_LINKING = "BUS_EVENT_TYPE_STAKE_LINKING",
+    /** Event indicating the payout of a reward has been initiated */
+    BUS_EVENT_TYPE_REWARD_PAYOUT_EVENT = "BUS_EVENT_TYPE_REWARD_PAYOUT_EVENT",
+    /** Event indicating a new checkpoint was created */
+    BUS_EVENT_TYPE_CHECKPOINT = "BUS_EVENT_TYPE_CHECKPOINT",
+    /** Event indicating stream is starting */
+    BUS_EVENT_TYPE_STREAM_START = "BUS_EVENT_TYPE_STREAM_START",
+    /** Event indicating key rotation took place */
+    BUS_EVENT_TYPE_KEY_ROTATION = "BUS_EVENT_TYPE_KEY_ROTATION",
+    /** Event indicating state transitions in state variable consensus */
+    BUS_EVENT_TYPE_STATE_VAR = "BUS_EVENT_TYPE_STATE_VAR",
+    /** Event indicating network limits set or updated */
+    BUS_EVENT_TYPE_NETWORK_LIMITS = "BUS_EVENT_TYPE_NETWORK_LIMITS",
+    /** Event indicating a update for a transfer */
+    BUS_EVENT_TYPE_TRANSFER = "BUS_EVENT_TYPE_TRANSFER",
+    /** Event indicating the ranking of validator and their status in Vega */
+    BUS_EVENT_TYPE_VALIDATOR_RANKING = "BUS_EVENT_TYPE_VALIDATOR_RANKING",
+    /** Event indicating a new multi sig signer event have been processed */
+    BUS_EVENT_TYPE_ERC20_MULTI_SIG_SIGNER_EVENT = "BUS_EVENT_TYPE_ERC20_MULTI_SIG_SIGNER_EVENT",
+    /** Event indicating the erc20 multi sig threshold have been updated */
+    BUS_EVENT_TYPE_ERC20_MULTI_SIG_SET_THRESHOLD = "BUS_EVENT_TYPE_ERC20_MULTI_SIG_SET_THRESHOLD",
+    /** Event indicating a new signer has been added to the ERC-20 multisig */
+    BUS_EVENT_TYPE_ERC20_MULTI_SIG_SIGNER_ADDED = "BUS_EVENT_TYPE_ERC20_MULTI_SIG_SIGNER_ADDED",
+    /** Event indicating a signer has been removed from the ERC-20 multisig */
+    BUS_EVENT_TYPE_ERC20_MULTI_SIG_SIGNER_REMOVED = "BUS_EVENT_TYPE_ERC20_MULTI_SIG_SIGNER_REMOVED",
+    /** Event indicating that a party's position has changed */
+    BUS_EVENT_TYPE_POSITION_STATE = "BUS_EVENT_TYPE_POSITION_STATE",
+    /** Event indicating Ethereum key rotation took place */
+    BUS_EVENT_TYPE_ETHEREUM_KEY_ROTATION = "BUS_EVENT_TYPE_ETHEREUM_KEY_ROTATION",
+    /** Event indicating protocol upgrade proposal updates */
+    BUS_EVENT_TYPE_PROTOCOL_UPGRADE_PROPOSAL = "BUS_EVENT_TYPE_PROTOCOL_UPGRADE_PROPOSAL",
+    /** Event indicating the core is starting to process a new block */
+    BUS_EVENT_TYPE_BEGIN_BLOCK = "BUS_EVENT_TYPE_BEGIN_BLOCK",
+    /** Event indicating the core finished to process a block */
+    BUS_EVENT_TYPE_END_BLOCK = "BUS_EVENT_TYPE_END_BLOCK",
+    /** Event indicating the core is starting a protocol upgrade */
+    BUS_EVENT_TYPE_PROTOCOL_UPGRADE_STARTED = "BUS_EVENT_TYPE_PROTOCOL_UPGRADE_STARTED",
+    /** Event indicating the market has stopped and settled */
+    BUS_EVENT_TYPE_SETTLE_MARKET = "BUS_EVENT_TYPE_SETTLE_MARKET",
+    /** Event indicating the result of a transaction processed by the network */
+    BUS_EVENT_TYPE_TRANSACTION_RESULT = "BUS_EVENT_TYPE_TRANSACTION_RESULT",
+    /** Event indicating a snapshot was taken at this block height */
+    BUS_EVENT_TYPE_SNAPSHOT_TAKEN = "BUS_EVENT_TYPE_SNAPSHOT_TAKEN",
+    /** Event data node uses to notify that it is ready to upgrade */
+    BUS_EVENT_TYPE_PROTOCOL_UPGRADE_DATA_NODE_READY = "BUS_EVENT_TYPE_PROTOCOL_UPGRADE_DATA_NODE_READY",
+    /** Event indicating parties had orders closed because they were distressed, but were not closed out. */
+    BUS_EVENT_TYPE_DISTRESSED_ORDERS_CLOSED = "BUS_EVENT_TYPE_DISTRESSED_ORDERS_CLOSED",
+    /** Event indicating parties had orders closed because they were distressed, but were not closed out. */
+    BUS_EVENT_TYPE_EXPIRED_ORDERS = "BUS_EVENT_TYPE_EXPIRED_ORDERS",
+    /** Event indicating parties have become, or were, distressed but still have an active position. */
+    BUS_EVENT_TYPE_DISTRESSED_POSITIONS = "BUS_EVENT_TYPE_DISTRESSED_POSITIONS",
+    /** Event indicating a spot liquidity provision has been created or updated. */
+    BUS_EVENT_TYPE_SPOT_LIQUIDITY_PROVISION = "BUS_EVENT_TYPE_SPOT_LIQUIDITY_PROVISION",
+    /** Event indicating a stop order has been submitted or updated. */
+    BUS_EVENT_TYPE_STOP_ORDER = "BUS_EVENT_TYPE_STOP_ORDER",
+    /** Event indicating the start or end of a funding period. */
+    BUS_EVENT_TYPE_FUNDING_PERIOD = "BUS_EVENT_TYPE_FUNDING_PERIOD",
+    /** Event indicating a data point for a funding period has been received. */
+    BUS_EVENT_TYPE_FUNDING_PERIOD_DATA_POINT = "BUS_EVENT_TYPE_FUNDING_PERIOD_DATA_POINT",
+    /** Event indicating a team has been created. */
+    BUS_EVENT_TYPE_TEAM_CREATED = "BUS_EVENT_TYPE_TEAM_CREATED",
+    /** Event indicating a team has been updated. */
+    BUS_EVENT_TYPE_TEAM_UPDATED = "BUS_EVENT_TYPE_TEAM_UPDATED",
+    /** Event indicating a referee switched team. */
+    BUS_EVENT_TYPE_REFEREE_SWITCHED_TEAM = "BUS_EVENT_TYPE_REFEREE_SWITCHED_TEAM",
+    /** Event indicating a referee joined a team. */
+    BUS_EVENT_TYPE_REFEREE_JOINED_TEAM = "BUS_EVENT_TYPE_REFEREE_JOINED_TEAM",
+    /** Event indicating a referral program started. */
+    BUS_EVENT_TYPE_REFERRAL_PROGRAM_STARTED = "BUS_EVENT_TYPE_REFERRAL_PROGRAM_STARTED",
+    /** Event indicating a referral program has been updated. */
+    BUS_EVENT_TYPE_REFERRAL_PROGRAM_UPDATED = "BUS_EVENT_TYPE_REFERRAL_PROGRAM_UPDATED",
+    /** Event indicating a referral program ended. */
+    BUS_EVENT_TYPE_REFERRAL_PROGRAM_ENDED = "BUS_EVENT_TYPE_REFERRAL_PROGRAM_ENDED",
+    /** Event indicating a set has been created. */
+    BUS_EVENT_TYPE_REFERRAL_SET_CREATED = "BUS_EVENT_TYPE_REFERRAL_SET_CREATED",
+    /** Event indicating a referee joined a set. */
+    BUS_EVENT_TYPE_REFEREE_JOINED_REFERRAL_SET = "BUS_EVENT_TYPE_REFEREE_JOINED_REFERRAL_SET",
+    /** Event indicating the updated activity streak for a party */
+    BUS_EVENT_TYPE_PARTY_ACTIVITY_STREAK = "BUS_EVENT_TYPE_PARTY_ACTIVITY_STREAK",
+    /** Event indicating a volume discount program started. */
+    BUS_EVENT_TYPE_VOLUME_DISCOUNT_PROGRAM_STARTED = "BUS_EVENT_TYPE_VOLUME_DISCOUNT_PROGRAM_STARTED",
+    /** Event indicating a volume discount program has been updated. */
+    BUS_EVENT_TYPE_VOLUME_DISCOUNT_PROGRAM_UPDATED = "BUS_EVENT_TYPE_VOLUME_DISCOUNT_PROGRAM_UPDATED",
+    /** Event indicating a volume discount program ended. */
+    BUS_EVENT_TYPE_VOLUME_DISCOUNT_PROGRAM_ENDED = "BUS_EVENT_TYPE_VOLUME_DISCOUNT_PROGRAM_ENDED",
+    /** Event indicating the updated statistics for a referral set. */
+    BUS_EVENT_TYPE_REFERRAL_SET_STATS_UPDATED = "BUS_EVENT_TYPE_REFERRAL_SET_STATS_UPDATED",
+    /** Event indicating the updated statistics for the vesting program. */
+    BUS_EVENT_TYPE_VESTING_STATS_UPDATED = "BUS_EVENT_TYPE_VESTING_STATS_UPDATED",
+    /** Event indicating the updated statistics for the volume discount. */
+    BUS_EVENT_TYPE_VOLUME_DISCOUNT_STATS_UPDATED = "BUS_EVENT_TYPE_VOLUME_DISCOUNT_STATS_UPDATED",
+    /** Event indicating the fees statistics per market at end of epoch */
+    BUS_EVENT_TYPE_FEES_STATS_UPDATED = "BUS_EVENT_TYPE_FEES_STATS_UPDATED",
+    /** Event indicating a funding period has ended and resulted in funding payment transfers. */
+    BUS_EVENT_TYPE_FUNDING_PAYMENTS = "BUS_EVENT_TYPE_FUNDING_PAYMENTS",
+    /** Event used to report the updated paid liquidity fee statistics for the market at the end of the epoch */
+    BUS_EVENT_TYPE_PAID_LIQUIDITY_FEES_STATS_UPDATED = "BUS_EVENT_TYPE_PAID_LIQUIDITY_FEES_STATS_UPDATED",
+    /** Event used to report the summary of vesting and locked balances at the end of the epoch */
+    BUS_EVENT_TYPE_VESTING_SUMMARY = "BUS_EVENT_TYPE_VESTING_SUMMARY",
+    /** Event used to link ledger entries to the transfer that triggered the fees being collected. */
+    BUS_EVENT_TYPE_TRANSFER_FEES_PAID = "BUS_EVENT_TYPE_TRANSFER_FEES_PAID",
+    /** Event indicating that a party's available transfer fee discount has changed, per asset. */
+    BUS_EVENT_TYPE_TRANSFER_FEES_DISCOUNT_UPDATED = "BUS_EVENT_TYPE_TRANSFER_FEES_DISCOUNT_UPDATED",
+    /** Event indicating that a party updated their margin mode on a market. */
+    BUS_EVENT_TYPE_PARTY_MARGIN_MODE_UPDATED = "BUS_EVENT_TYPE_PARTY_MARGIN_MODE_UPDATED",
+    /** Event indicating that a party updated their profile. */
+    BUS_EVENT_TYPE_PARTY_PROFILE_UPDATED = "BUS_EVENT_TYPE_PARTY_PROFILE_UPDATED",
+    /** Event indicating that teams' statistics have been updated. */
+    BUS_EVENT_TYPE_TEAMS_STATS_UPDATED = "BUS_EVENT_TYPE_TEAMS_STATS_UPDATED",
+    /** Event indicating time weighted notional position has been updated. */
+    BUS_EVENT_TYPE_TIME_WEIGHTED_NOTIONAL_POSITION_UPDATED = "BUS_EVENT_TYPE_TIME_WEIGHTED_NOTIONAL_POSITION_UPDATED",
+    /** Event containing the IDs of orders cancelled by a party on a market. */
+    BUS_EVENT_TYPE_CANCELLED_ORDERS = "BUS_EVENT_TYPE_CANCELLED_ORDERS",
+    /** Event indicating a market related event, for example when a market opens */
+    BUS_EVENT_TYPE_MARKET = "BUS_EVENT_TYPE_MARKET",
+    /** Event used to report failed transactions back to a user, this is excluded from the ALL type */
+    BUS_EVENT_TYPE_TX_ERROR = "BUS_EVENT_TYPE_TX_ERROR",
+  }
 
-/** Bus event type is used to specify a type of event
+  /** Bus event type is used to specify a type of event
 It has 2 styles of event:
 Single values (e.g. BUS_EVENT_TYPE_ORDER) where they represent one data item
 Group values (e.g. BUS_EVENT_TYPE_AUCTION) where they represent a group of data items*/
-export enum BusEventTypeNumber {
-  /** Default value, always invalid */
-  BUS_EVENT_TYPE_UNSPECIFIED = 0,
-  /** Events of ALL event types, used when filtering stream from event bus */
-  BUS_EVENT_TYPE_ALL = 1,
-  /** Event for blockchain time updates */
-  BUS_EVENT_TYPE_TIME_UPDATE = 2,
-  /** Event for when a transfer happens internally, contains the transfer information */
-  BUS_EVENT_TYPE_LEDGER_MOVEMENTS = 3,
-  /** Event indicating position resolution has occurred */
-  BUS_EVENT_TYPE_POSITION_RESOLUTION = 4,
-  /** Event for order updates, both new and existing orders */
-  BUS_EVENT_TYPE_ORDER = 5,
-  /** Event for account updates */
-  BUS_EVENT_TYPE_ACCOUNT = 6,
-  /** Event for party updates */
-  BUS_EVENT_TYPE_PARTY = 7,
-  /** Event indicating a new trade has occurred */
-  BUS_EVENT_TYPE_TRADE = 8,
-  /** Event indicating margin levels have changed for a party */
-  BUS_EVENT_TYPE_MARGIN_LEVELS = 9,
-  /** Event for proposal updates (for governance) */
-  BUS_EVENT_TYPE_PROPOSAL = 10,
-  /** Event indicating a new vote has occurred (for governance) */
-  BUS_EVENT_TYPE_VOTE = 11,
-  /** Event for market data updates */
-  BUS_EVENT_TYPE_MARKET_DATA = 12,
-  /** Event for a new signature for a Vega node */
-  BUS_EVENT_TYPE_NODE_SIGNATURE = 13,
-  /** Event indicating loss socialisation occurred for a party */
-  BUS_EVENT_TYPE_LOSS_SOCIALIZATION = 14,
-  /** Event for when a position is being settled */
-  BUS_EVENT_TYPE_SETTLE_POSITION = 15,
-  /** Event for when a position is distressed */
-  BUS_EVENT_TYPE_SETTLE_DISTRESSED = 16,
-  /** Event indicating a new market was created */
-  BUS_EVENT_TYPE_MARKET_CREATED = 17,
-  /** Event for when an asset is added to Vega */
-  BUS_EVENT_TYPE_ASSET = 18,
-  /** Event indicating a market tick event */
-  BUS_EVENT_TYPE_MARKET_TICK = 19,
-  /** Event for when a withdrawal occurs */
-  BUS_EVENT_TYPE_WITHDRAWAL = 20,
-  /** Event for when a deposit occurs */
-  BUS_EVENT_TYPE_DEPOSIT = 21,
-  /** Event indicating a change in auction state, for example starting or ending an auction */
-  BUS_EVENT_TYPE_AUCTION = 22,
-  /** Event indicating a risk factor has been updated */
-  BUS_EVENT_TYPE_RISK_FACTOR = 23,
-  /** Event indicating a network parameter has been added or updated */
-  BUS_EVENT_TYPE_NETWORK_PARAMETER = 24,
-  /** Event indicating a liquidity provision has been created or updated */
-  BUS_EVENT_TYPE_LIQUIDITY_PROVISION = 25,
-  /** Event indicating a new market was created */
-  BUS_EVENT_TYPE_MARKET_UPDATED = 26,
-  /** Event indicating an oracle spec has been created or updated */
-  BUS_EVENT_TYPE_ORACLE_SPEC = 27,
-  /** Event indicating that an oracle data has been broadcast */
-  BUS_EVENT_TYPE_ORACLE_DATA = 28,
-  /** Event indicating that an delegation balance of a party to a node for current epoch has changed */
-  BUS_EVENT_TYPE_DELEGATION_BALANCE = 29,
-  /** Event indicating the validator score for the given epoch */
-  BUS_EVENT_TYPE_VALIDATOR_SCORE = 30,
-  /** Event indicating the start or end of an epoch */
-  BUS_EVENT_TYPE_EPOCH_UPDATE = 31,
-  /** Event indicating that validator node has been updated */
-  BUS_EVENT_TYPE_VALIDATOR_UPDATE = 32,
-  /** Event indicating a new staking event have been processed by the network */
-  BUS_EVENT_TYPE_STAKE_LINKING = 33,
-  /** Event indicating the payout of a reward has been initiated */
-  BUS_EVENT_TYPE_REWARD_PAYOUT_EVENT = 34,
-  /** Event indicating a new checkpoint was created */
-  BUS_EVENT_TYPE_CHECKPOINT = 35,
-  /** Event indicating stream is starting */
-  BUS_EVENT_TYPE_STREAM_START = 36,
-  /** Event indicating key rotation took place */
-  BUS_EVENT_TYPE_KEY_ROTATION = 37,
-  /** Event indicating state transitions in state variable consensus */
-  BUS_EVENT_TYPE_STATE_VAR = 38,
-  /** Event indicating network limits set or updated */
-  BUS_EVENT_TYPE_NETWORK_LIMITS = 39,
-  /** Event indicating a update for a transfer */
-  BUS_EVENT_TYPE_TRANSFER = 40,
-  /** Event indicating the ranking of validator and their status in Vega */
-  BUS_EVENT_TYPE_VALIDATOR_RANKING = 41,
-  /** Event indicating a new multi sig signer event have been processed */
-  BUS_EVENT_TYPE_ERC20_MULTI_SIG_SIGNER_EVENT = 42,
-  /** Event indicating the erc20 multi sig threshold have been updated */
-  BUS_EVENT_TYPE_ERC20_MULTI_SIG_SET_THRESHOLD = 43,
-  /** Event indicating a new signer has been added to the ERC-20 multisig */
-  BUS_EVENT_TYPE_ERC20_MULTI_SIG_SIGNER_ADDED = 44,
-  /** Event indicating a signer has been removed from the ERC-20 multisig */
-  BUS_EVENT_TYPE_ERC20_MULTI_SIG_SIGNER_REMOVED = 45,
-  /** Event indicating that a party's position has changed */
-  BUS_EVENT_TYPE_POSITION_STATE = 46,
-  /** Event indicating Ethereum key rotation took place */
-  BUS_EVENT_TYPE_ETHEREUM_KEY_ROTATION = 47,
-  /** Event indicating protocol upgrade proposal updates */
-  BUS_EVENT_TYPE_PROTOCOL_UPGRADE_PROPOSAL = 48,
-  /** Event indicating the core is starting to process a new block */
-  BUS_EVENT_TYPE_BEGIN_BLOCK = 49,
-  /** Event indicating the core finished to process a block */
-  BUS_EVENT_TYPE_END_BLOCK = 50,
-  /** Event indicating the core is starting a protocol upgrade */
-  BUS_EVENT_TYPE_PROTOCOL_UPGRADE_STARTED = 51,
-  /** Event indicating the market has stopped and settled */
-  BUS_EVENT_TYPE_SETTLE_MARKET = 52,
-  /** Event indicating the result of a transaction processed by the network */
-  BUS_EVENT_TYPE_TRANSACTION_RESULT = 53,
-  /** Event indicating a snapshot was taken at this block height */
-  BUS_EVENT_TYPE_SNAPSHOT_TAKEN = 54,
-  /** Event data node uses to notify that it is ready to upgrade */
-  BUS_EVENT_TYPE_PROTOCOL_UPGRADE_DATA_NODE_READY = 55,
-  /** Event indicating parties had orders closed because they were distressed, but were not closed out. */
-  BUS_EVENT_TYPE_DISTRESSED_ORDERS_CLOSED = 56,
-  /** Event indicating parties had orders closed because they were distressed, but were not closed out. */
-  BUS_EVENT_TYPE_EXPIRED_ORDERS = 57,
-  /** Event indicating parties have become, or were, distressed but still have an active position. */
-  BUS_EVENT_TYPE_DISTRESSED_POSITIONS = 58,
-  /** Event indicating a spot liquidity provision has been created or updated. */
-  BUS_EVENT_TYPE_SPOT_LIQUIDITY_PROVISION = 59,
-  /** Event indicating a stop order has been submitted or updated. */
-  BUS_EVENT_TYPE_STOP_ORDER = 60,
-  /** Event indicating the start or end of a funding period. */
-  BUS_EVENT_TYPE_FUNDING_PERIOD = 61,
-  /** Event indicating a data point for a funding period has been received. */
-  BUS_EVENT_TYPE_FUNDING_PERIOD_DATA_POINT = 62,
-  /** Event indicating a team has been created. */
-  BUS_EVENT_TYPE_TEAM_CREATED = 63,
-  /** Event indicating a team has been updated. */
-  BUS_EVENT_TYPE_TEAM_UPDATED = 64,
-  /** Event indicating a referee switched team. */
-  BUS_EVENT_TYPE_REFEREE_SWITCHED_TEAM = 65,
-  /** Event indicating a referee joined a team. */
-  BUS_EVENT_TYPE_REFEREE_JOINED_TEAM = 66,
-  /** Event indicating a referral program started. */
-  BUS_EVENT_TYPE_REFERRAL_PROGRAM_STARTED = 67,
-  /** Event indicating a referral program has been updated. */
-  BUS_EVENT_TYPE_REFERRAL_PROGRAM_UPDATED = 68,
-  /** Event indicating a referral program ended. */
-  BUS_EVENT_TYPE_REFERRAL_PROGRAM_ENDED = 69,
-  /** Event indicating a set has been created. */
-  BUS_EVENT_TYPE_REFERRAL_SET_CREATED = 70,
-  /** Event indicating a referee joined a set. */
-  BUS_EVENT_TYPE_REFEREE_JOINED_REFERRAL_SET = 71,
-  /** Event indicating the updated activity streak for a party */
-  BUS_EVENT_TYPE_PARTY_ACTIVITY_STREAK = 72,
-  /** Event indicating a volume discount program started. */
-  BUS_EVENT_TYPE_VOLUME_DISCOUNT_PROGRAM_STARTED = 73,
-  /** Event indicating a volume discount program has been updated. */
-  BUS_EVENT_TYPE_VOLUME_DISCOUNT_PROGRAM_UPDATED = 74,
-  /** Event indicating a volume discount program ended. */
-  BUS_EVENT_TYPE_VOLUME_DISCOUNT_PROGRAM_ENDED = 75,
-  /** Event indicating the updated statistics for a referral set. */
-  BUS_EVENT_TYPE_REFERRAL_SET_STATS_UPDATED = 76,
-  /** Event indicating the updated statistics for the vesting program. */
-  BUS_EVENT_TYPE_VESTING_STATS_UPDATED = 77,
-  /** Event indicating the updated statistics for the volume discount. */
-  BUS_EVENT_TYPE_VOLUME_DISCOUNT_STATS_UPDATED = 78,
-  /** Event indicating the fees statistics per market at end of epoch */
-  BUS_EVENT_TYPE_FEES_STATS_UPDATED = 79,
-  /** Event indicating a funding period has ended and resulted in funding payment transfers. */
-  BUS_EVENT_TYPE_FUNDING_PAYMENTS = 80,
-  /** Event used to report the updated paid liquidity fee statistics for the market at the end of the epoch */
-  BUS_EVENT_TYPE_PAID_LIQUIDITY_FEES_STATS_UPDATED = 81,
-  /** Event used to report the summary of vesting and locked balances at the end of the epoch */
-  BUS_EVENT_TYPE_VESTING_SUMMARY = 82,
-  /** Event used to link ledger entries to the transfer that triggered the fees being collected. */
-  BUS_EVENT_TYPE_TRANSFER_FEES_PAID = 83,
-  /** Event indicating that a party's available transfer fee discount has changed, per asset. */
-  BUS_EVENT_TYPE_TRANSFER_FEES_DISCOUNT_UPDATED = 84,
-  /** Event indicating that a party updated their margin mode on a market. */
-  BUS_EVENT_TYPE_PARTY_MARGIN_MODE_UPDATED = 85,
-  /** Event indicating that a party updated their profile. */
-  BUS_EVENT_TYPE_PARTY_PROFILE_UPDATED = 86,
-  /** Event indicating that teams' statistics have been updated. */
-  BUS_EVENT_TYPE_TEAMS_STATS_UPDATED = 87,
-  /** Event indicating time weighted notional position has been updated. */
-  BUS_EVENT_TYPE_TIME_WEIGHTED_NOTIONAL_POSITION_UPDATED = 88,
-  /** Event containing the IDs of orders cancelled by a party on a market. */
-  BUS_EVENT_TYPE_CANCELLED_ORDERS = 89,
-  /** Event indicating a market related event, for example when a market opens */
-  BUS_EVENT_TYPE_MARKET = 101,
-  /** Event used to report failed transactions back to a user, this is excluded from the ALL type */
-  BUS_EVENT_TYPE_TX_ERROR = 201
-}
+  export enum BusEventTypeNumber {
+    /** Default value, always invalid */
+    BUS_EVENT_TYPE_UNSPECIFIED = 0,
+    /** Events of ALL event types, used when filtering stream from event bus */
+    BUS_EVENT_TYPE_ALL = 1,
+    /** Event for blockchain time updates */
+    BUS_EVENT_TYPE_TIME_UPDATE = 2,
+    /** Event for when a transfer happens internally, contains the transfer information */
+    BUS_EVENT_TYPE_LEDGER_MOVEMENTS = 3,
+    /** Event indicating position resolution has occurred */
+    BUS_EVENT_TYPE_POSITION_RESOLUTION = 4,
+    /** Event for order updates, both new and existing orders */
+    BUS_EVENT_TYPE_ORDER = 5,
+    /** Event for account updates */
+    BUS_EVENT_TYPE_ACCOUNT = 6,
+    /** Event for party updates */
+    BUS_EVENT_TYPE_PARTY = 7,
+    /** Event indicating a new trade has occurred */
+    BUS_EVENT_TYPE_TRADE = 8,
+    /** Event indicating margin levels have changed for a party */
+    BUS_EVENT_TYPE_MARGIN_LEVELS = 9,
+    /** Event for proposal updates (for governance) */
+    BUS_EVENT_TYPE_PROPOSAL = 10,
+    /** Event indicating a new vote has occurred (for governance) */
+    BUS_EVENT_TYPE_VOTE = 11,
+    /** Event for market data updates */
+    BUS_EVENT_TYPE_MARKET_DATA = 12,
+    /** Event for a new signature for a Vega node */
+    BUS_EVENT_TYPE_NODE_SIGNATURE = 13,
+    /** Event indicating loss socialisation occurred for a party */
+    BUS_EVENT_TYPE_LOSS_SOCIALIZATION = 14,
+    /** Event for when a position is being settled */
+    BUS_EVENT_TYPE_SETTLE_POSITION = 15,
+    /** Event for when a position is distressed */
+    BUS_EVENT_TYPE_SETTLE_DISTRESSED = 16,
+    /** Event indicating a new market was created */
+    BUS_EVENT_TYPE_MARKET_CREATED = 17,
+    /** Event for when an asset is added to Vega */
+    BUS_EVENT_TYPE_ASSET = 18,
+    /** Event indicating a market tick event */
+    BUS_EVENT_TYPE_MARKET_TICK = 19,
+    /** Event for when a withdrawal occurs */
+    BUS_EVENT_TYPE_WITHDRAWAL = 20,
+    /** Event for when a deposit occurs */
+    BUS_EVENT_TYPE_DEPOSIT = 21,
+    /** Event indicating a change in auction state, for example starting or ending an auction */
+    BUS_EVENT_TYPE_AUCTION = 22,
+    /** Event indicating a risk factor has been updated */
+    BUS_EVENT_TYPE_RISK_FACTOR = 23,
+    /** Event indicating a network parameter has been added or updated */
+    BUS_EVENT_TYPE_NETWORK_PARAMETER = 24,
+    /** Event indicating a liquidity provision has been created or updated */
+    BUS_EVENT_TYPE_LIQUIDITY_PROVISION = 25,
+    /** Event indicating a new market was created */
+    BUS_EVENT_TYPE_MARKET_UPDATED = 26,
+    /** Event indicating an oracle spec has been created or updated */
+    BUS_EVENT_TYPE_ORACLE_SPEC = 27,
+    /** Event indicating that an oracle data has been broadcast */
+    BUS_EVENT_TYPE_ORACLE_DATA = 28,
+    /** Event indicating that an delegation balance of a party to a node for current epoch has changed */
+    BUS_EVENT_TYPE_DELEGATION_BALANCE = 29,
+    /** Event indicating the validator score for the given epoch */
+    BUS_EVENT_TYPE_VALIDATOR_SCORE = 30,
+    /** Event indicating the start or end of an epoch */
+    BUS_EVENT_TYPE_EPOCH_UPDATE = 31,
+    /** Event indicating that validator node has been updated */
+    BUS_EVENT_TYPE_VALIDATOR_UPDATE = 32,
+    /** Event indicating a new staking event have been processed by the network */
+    BUS_EVENT_TYPE_STAKE_LINKING = 33,
+    /** Event indicating the payout of a reward has been initiated */
+    BUS_EVENT_TYPE_REWARD_PAYOUT_EVENT = 34,
+    /** Event indicating a new checkpoint was created */
+    BUS_EVENT_TYPE_CHECKPOINT = 35,
+    /** Event indicating stream is starting */
+    BUS_EVENT_TYPE_STREAM_START = 36,
+    /** Event indicating key rotation took place */
+    BUS_EVENT_TYPE_KEY_ROTATION = 37,
+    /** Event indicating state transitions in state variable consensus */
+    BUS_EVENT_TYPE_STATE_VAR = 38,
+    /** Event indicating network limits set or updated */
+    BUS_EVENT_TYPE_NETWORK_LIMITS = 39,
+    /** Event indicating a update for a transfer */
+    BUS_EVENT_TYPE_TRANSFER = 40,
+    /** Event indicating the ranking of validator and their status in Vega */
+    BUS_EVENT_TYPE_VALIDATOR_RANKING = 41,
+    /** Event indicating a new multi sig signer event have been processed */
+    BUS_EVENT_TYPE_ERC20_MULTI_SIG_SIGNER_EVENT = 42,
+    /** Event indicating the erc20 multi sig threshold have been updated */
+    BUS_EVENT_TYPE_ERC20_MULTI_SIG_SET_THRESHOLD = 43,
+    /** Event indicating a new signer has been added to the ERC-20 multisig */
+    BUS_EVENT_TYPE_ERC20_MULTI_SIG_SIGNER_ADDED = 44,
+    /** Event indicating a signer has been removed from the ERC-20 multisig */
+    BUS_EVENT_TYPE_ERC20_MULTI_SIG_SIGNER_REMOVED = 45,
+    /** Event indicating that a party's position has changed */
+    BUS_EVENT_TYPE_POSITION_STATE = 46,
+    /** Event indicating Ethereum key rotation took place */
+    BUS_EVENT_TYPE_ETHEREUM_KEY_ROTATION = 47,
+    /** Event indicating protocol upgrade proposal updates */
+    BUS_EVENT_TYPE_PROTOCOL_UPGRADE_PROPOSAL = 48,
+    /** Event indicating the core is starting to process a new block */
+    BUS_EVENT_TYPE_BEGIN_BLOCK = 49,
+    /** Event indicating the core finished to process a block */
+    BUS_EVENT_TYPE_END_BLOCK = 50,
+    /** Event indicating the core is starting a protocol upgrade */
+    BUS_EVENT_TYPE_PROTOCOL_UPGRADE_STARTED = 51,
+    /** Event indicating the market has stopped and settled */
+    BUS_EVENT_TYPE_SETTLE_MARKET = 52,
+    /** Event indicating the result of a transaction processed by the network */
+    BUS_EVENT_TYPE_TRANSACTION_RESULT = 53,
+    /** Event indicating a snapshot was taken at this block height */
+    BUS_EVENT_TYPE_SNAPSHOT_TAKEN = 54,
+    /** Event data node uses to notify that it is ready to upgrade */
+    BUS_EVENT_TYPE_PROTOCOL_UPGRADE_DATA_NODE_READY = 55,
+    /** Event indicating parties had orders closed because they were distressed, but were not closed out. */
+    BUS_EVENT_TYPE_DISTRESSED_ORDERS_CLOSED = 56,
+    /** Event indicating parties had orders closed because they were distressed, but were not closed out. */
+    BUS_EVENT_TYPE_EXPIRED_ORDERS = 57,
+    /** Event indicating parties have become, or were, distressed but still have an active position. */
+    BUS_EVENT_TYPE_DISTRESSED_POSITIONS = 58,
+    /** Event indicating a spot liquidity provision has been created or updated. */
+    BUS_EVENT_TYPE_SPOT_LIQUIDITY_PROVISION = 59,
+    /** Event indicating a stop order has been submitted or updated. */
+    BUS_EVENT_TYPE_STOP_ORDER = 60,
+    /** Event indicating the start or end of a funding period. */
+    BUS_EVENT_TYPE_FUNDING_PERIOD = 61,
+    /** Event indicating a data point for a funding period has been received. */
+    BUS_EVENT_TYPE_FUNDING_PERIOD_DATA_POINT = 62,
+    /** Event indicating a team has been created. */
+    BUS_EVENT_TYPE_TEAM_CREATED = 63,
+    /** Event indicating a team has been updated. */
+    BUS_EVENT_TYPE_TEAM_UPDATED = 64,
+    /** Event indicating a referee switched team. */
+    BUS_EVENT_TYPE_REFEREE_SWITCHED_TEAM = 65,
+    /** Event indicating a referee joined a team. */
+    BUS_EVENT_TYPE_REFEREE_JOINED_TEAM = 66,
+    /** Event indicating a referral program started. */
+    BUS_EVENT_TYPE_REFERRAL_PROGRAM_STARTED = 67,
+    /** Event indicating a referral program has been updated. */
+    BUS_EVENT_TYPE_REFERRAL_PROGRAM_UPDATED = 68,
+    /** Event indicating a referral program ended. */
+    BUS_EVENT_TYPE_REFERRAL_PROGRAM_ENDED = 69,
+    /** Event indicating a set has been created. */
+    BUS_EVENT_TYPE_REFERRAL_SET_CREATED = 70,
+    /** Event indicating a referee joined a set. */
+    BUS_EVENT_TYPE_REFEREE_JOINED_REFERRAL_SET = 71,
+    /** Event indicating the updated activity streak for a party */
+    BUS_EVENT_TYPE_PARTY_ACTIVITY_STREAK = 72,
+    /** Event indicating a volume discount program started. */
+    BUS_EVENT_TYPE_VOLUME_DISCOUNT_PROGRAM_STARTED = 73,
+    /** Event indicating a volume discount program has been updated. */
+    BUS_EVENT_TYPE_VOLUME_DISCOUNT_PROGRAM_UPDATED = 74,
+    /** Event indicating a volume discount program ended. */
+    BUS_EVENT_TYPE_VOLUME_DISCOUNT_PROGRAM_ENDED = 75,
+    /** Event indicating the updated statistics for a referral set. */
+    BUS_EVENT_TYPE_REFERRAL_SET_STATS_UPDATED = 76,
+    /** Event indicating the updated statistics for the vesting program. */
+    BUS_EVENT_TYPE_VESTING_STATS_UPDATED = 77,
+    /** Event indicating the updated statistics for the volume discount. */
+    BUS_EVENT_TYPE_VOLUME_DISCOUNT_STATS_UPDATED = 78,
+    /** Event indicating the fees statistics per market at end of epoch */
+    BUS_EVENT_TYPE_FEES_STATS_UPDATED = 79,
+    /** Event indicating a funding period has ended and resulted in funding payment transfers. */
+    BUS_EVENT_TYPE_FUNDING_PAYMENTS = 80,
+    /** Event used to report the updated paid liquidity fee statistics for the market at the end of the epoch */
+    BUS_EVENT_TYPE_PAID_LIQUIDITY_FEES_STATS_UPDATED = 81,
+    /** Event used to report the summary of vesting and locked balances at the end of the epoch */
+    BUS_EVENT_TYPE_VESTING_SUMMARY = 82,
+    /** Event used to link ledger entries to the transfer that triggered the fees being collected. */
+    BUS_EVENT_TYPE_TRANSFER_FEES_PAID = 83,
+    /** Event indicating that a party's available transfer fee discount has changed, per asset. */
+    BUS_EVENT_TYPE_TRANSFER_FEES_DISCOUNT_UPDATED = 84,
+    /** Event indicating that a party updated their margin mode on a market. */
+    BUS_EVENT_TYPE_PARTY_MARGIN_MODE_UPDATED = 85,
+    /** Event indicating that a party updated their profile. */
+    BUS_EVENT_TYPE_PARTY_PROFILE_UPDATED = 86,
+    /** Event indicating that teams' statistics have been updated. */
+    BUS_EVENT_TYPE_TEAMS_STATS_UPDATED = 87,
+    /** Event indicating time weighted notional position has been updated. */
+    BUS_EVENT_TYPE_TIME_WEIGHTED_NOTIONAL_POSITION_UPDATED = 88,
+    /** Event containing the IDs of orders cancelled by a party on a market. */
+    BUS_EVENT_TYPE_CANCELLED_ORDERS = 89,
+    /** Event indicating a market related event, for example when a market opens */
+    BUS_EVENT_TYPE_MARKET = 101,
+    /** Event used to report failed transactions back to a user, this is excluded from the ALL type */
+    BUS_EVENT_TYPE_TX_ERROR = 201,
+  }
 
-/** */
-export enum ERC20MultiSigSignerEventType {
-  /**  */
-  TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED",
-  /**  */
-  TYPE_ADDED = "TYPE_ADDED",
-  /**  */
-  TYPE_REMOVED = "TYPE_REMOVED"
-}
+  /** */
+  export enum ERC20MultiSigSignerEventType {
+    /**  */
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED",
+    /**  */
+    TYPE_ADDED = "TYPE_ADDED",
+    /**  */
+    TYPE_REMOVED = "TYPE_REMOVED",
+  }
 
-/** */
-export enum ERC20MultiSigSignerEventTypeNumber {
-  /**  */
-  TYPE_UNSPECIFIED = 0,
-  /**  */
-  TYPE_ADDED = 1,
-  /**  */
-  TYPE_REMOVED = 2
-}
+  /** */
+  export enum ERC20MultiSigSignerEventTypeNumber {
+    /**  */
+    TYPE_UNSPECIFIED = 0,
+    /**  */
+    TYPE_ADDED = 1,
+    /**  */
+    TYPE_REMOVED = 2,
+  }
 
-/** */
-export enum FundingPeriodDataPointSource {
-  /** Default value */
-  SOURCE_UNSPECIFIED = "SOURCE_UNSPECIFIED",
-  /** Data point is from an external data source, such as an oracle, and represents the spot price of the underlying asset. */
-  SOURCE_EXTERNAL = "SOURCE_EXTERNAL",
-  /** Data point from within Vega such as the mark price after performing mark-to-market. */
-  SOURCE_INTERNAL = "SOURCE_INTERNAL"
-}
+  /** */
+  export enum FundingPeriodDataPointSource {
+    /** Default value */
+    SOURCE_UNSPECIFIED = "SOURCE_UNSPECIFIED",
+    /** Data point is from an external data source, such as an oracle, and represents the spot price of the underlying asset. */
+    SOURCE_EXTERNAL = "SOURCE_EXTERNAL",
+    /** Data point from within Vega such as the mark price after performing mark-to-market. */
+    SOURCE_INTERNAL = "SOURCE_INTERNAL",
+  }
 
-/** */
-export enum FundingPeriodDataPointSourceNumber {
-  /** Default value */
-  SOURCE_UNSPECIFIED = 0,
-  /** Data point is from an external data source, such as an oracle, and represents the spot price of the underlying asset. */
-  SOURCE_EXTERNAL = 1,
-  /** Data point from within Vega such as the mark price after performing mark-to-market. */
-  SOURCE_INTERNAL = 2
-}
+  /** */
+  export enum FundingPeriodDataPointSourceNumber {
+    /** Default value */
+    SOURCE_UNSPECIFIED = 0,
+    /** Data point is from an external data source, such as an oracle, and represents the spot price of the underlying asset. */
+    SOURCE_EXTERNAL = 1,
+    /** Data point from within Vega such as the mark price after performing mark-to-market. */
+    SOURCE_INTERNAL = 2,
+  }
 
-/** */
-export enum ProtocolUpgradeProposalStatus {
-  /**  */
-  PROTOCOL_UPGRADE_PROPOSAL_STATUS_UNSPECIFIED = "PROTOCOL_UPGRADE_PROPOSAL_STATUS_UNSPECIFIED",
-  /** The proposal is pending */
-  PROTOCOL_UPGRADE_PROPOSAL_STATUS_PENDING = "PROTOCOL_UPGRADE_PROPOSAL_STATUS_PENDING",
-  /** The proposal is approved */
-  PROTOCOL_UPGRADE_PROPOSAL_STATUS_APPROVED = "PROTOCOL_UPGRADE_PROPOSAL_STATUS_APPROVED",
-  /** The proposal is rejected */
-  PROTOCOL_UPGRADE_PROPOSAL_STATUS_REJECTED = "PROTOCOL_UPGRADE_PROPOSAL_STATUS_REJECTED"
-}
+  /** */
+  export enum ProtocolUpgradeProposalStatus {
+    /**  */
+    PROTOCOL_UPGRADE_PROPOSAL_STATUS_UNSPECIFIED = "PROTOCOL_UPGRADE_PROPOSAL_STATUS_UNSPECIFIED",
+    /** The proposal is pending */
+    PROTOCOL_UPGRADE_PROPOSAL_STATUS_PENDING = "PROTOCOL_UPGRADE_PROPOSAL_STATUS_PENDING",
+    /** The proposal is approved */
+    PROTOCOL_UPGRADE_PROPOSAL_STATUS_APPROVED = "PROTOCOL_UPGRADE_PROPOSAL_STATUS_APPROVED",
+    /** The proposal is rejected */
+    PROTOCOL_UPGRADE_PROPOSAL_STATUS_REJECTED = "PROTOCOL_UPGRADE_PROPOSAL_STATUS_REJECTED",
+  }
 
-/** */
-export enum ProtocolUpgradeProposalStatusNumber {
-  /**  */
-  PROTOCOL_UPGRADE_PROPOSAL_STATUS_UNSPECIFIED = 0,
-  /** The proposal is pending */
-  PROTOCOL_UPGRADE_PROPOSAL_STATUS_PENDING = 1,
-  /** The proposal is approved */
-  PROTOCOL_UPGRADE_PROPOSAL_STATUS_APPROVED = 2,
-  /** The proposal is rejected */
-  PROTOCOL_UPGRADE_PROPOSAL_STATUS_REJECTED = 3
-}
+  /** */
+  export enum ProtocolUpgradeProposalStatusNumber {
+    /**  */
+    PROTOCOL_UPGRADE_PROPOSAL_STATUS_UNSPECIFIED = 0,
+    /** The proposal is pending */
+    PROTOCOL_UPGRADE_PROPOSAL_STATUS_PENDING = 1,
+    /** The proposal is approved */
+    PROTOCOL_UPGRADE_PROPOSAL_STATUS_APPROVED = 2,
+    /** The proposal is rejected */
+    PROTOCOL_UPGRADE_PROPOSAL_STATUS_REJECTED = 3,
+  }
 
-/** */
-export enum StakeLinkingStatus {
-  /** Default value */
-  STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED",
-  /** Indicates an event waiting for confirmation from the Vega network */
-  STATUS_PENDING = "STATUS_PENDING",
-  /** Indicates an event accepted by the Vega network */
-  STATUS_ACCEPTED = "STATUS_ACCEPTED",
-  /** Indicates an event rejected by the Vega network */
-  STATUS_REJECTED = "STATUS_REJECTED"
-}
+  /** */
+  export enum StakeLinkingStatus {
+    /** Default value */
+    STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED",
+    /** Indicates an event waiting for confirmation from the Vega network */
+    STATUS_PENDING = "STATUS_PENDING",
+    /** Indicates an event accepted by the Vega network */
+    STATUS_ACCEPTED = "STATUS_ACCEPTED",
+    /** Indicates an event rejected by the Vega network */
+    STATUS_REJECTED = "STATUS_REJECTED",
+  }
 
-/** */
-export enum StakeLinkingStatusNumber {
-  /** Default value */
-  STATUS_UNSPECIFIED = 0,
-  /** Indicates an event waiting for confirmation from the Vega network */
-  STATUS_PENDING = 1,
-  /** Indicates an event accepted by the Vega network */
-  STATUS_ACCEPTED = 2,
-  /** Indicates an event rejected by the Vega network */
-  STATUS_REJECTED = 3
-}
+  /** */
+  export enum StakeLinkingStatusNumber {
+    /** Default value */
+    STATUS_UNSPECIFIED = 0,
+    /** Indicates an event waiting for confirmation from the Vega network */
+    STATUS_PENDING = 1,
+    /** Indicates an event accepted by the Vega network */
+    STATUS_ACCEPTED = 2,
+    /** Indicates an event rejected by the Vega network */
+    STATUS_REJECTED = 3,
+  }
 
-/** */
-export enum StakeLinkingType {
-  /** Default value */
-  TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED",
-  /** Indicate of a stake deposit instruction */
-  TYPE_LINK = "TYPE_LINK",
-  /** Indicate of a stake remove instruction */
-  TYPE_UNLINK = "TYPE_UNLINK"
-}
+  /** */
+  export enum StakeLinkingType {
+    /** Default value */
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED",
+    /** Indicate of a stake deposit instruction */
+    TYPE_LINK = "TYPE_LINK",
+    /** Indicate of a stake remove instruction */
+    TYPE_UNLINK = "TYPE_UNLINK",
+  }
 
-/** */
-export enum StakeLinkingTypeNumber {
-  /** Default value */
-  TYPE_UNSPECIFIED = 0,
-  /** Indicate of a stake deposit instruction */
-  TYPE_LINK = 1,
-  /** Indicate of a stake remove instruction */
-  TYPE_UNLINK = 2
-}
+  /** */
+  export enum StakeLinkingTypeNumber {
+    /** Default value */
+    TYPE_UNSPECIFIED = 0,
+    /** Indicate of a stake deposit instruction */
+    TYPE_LINK = 1,
+    /** Indicate of a stake remove instruction */
+    TYPE_UNLINK = 2,
+  }
 
-/** */
-export enum TransferStatus {
-  /** Default value */
-  STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED",
-  /** Indicates a transfer still being processed */
-  STATUS_PENDING = "STATUS_PENDING",
-  /** Indicates a transfer accepted by the Vega network */
-  STATUS_DONE = "STATUS_DONE",
-  /** Indicates a transfer rejected by the Vega network */
-  STATUS_REJECTED = "STATUS_REJECTED",
-  /** Indicates a transfer stopped by the Vega network
+  /** */
+  export enum TransferStatus {
+    /** Default value */
+    STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED",
+    /** Indicates a transfer still being processed */
+    STATUS_PENDING = "STATUS_PENDING",
+    /** Indicates a transfer accepted by the Vega network */
+    STATUS_DONE = "STATUS_DONE",
+    /** Indicates a transfer rejected by the Vega network */
+    STATUS_REJECTED = "STATUS_REJECTED",
+    /** Indicates a transfer stopped by the Vega network
   e.g: no funds left to cover the transfer */
-  STATUS_STOPPED = "STATUS_STOPPED",
-  /** Indicates a transfer cancelled by the user */
-  STATUS_CANCELLED = "STATUS_CANCELLED"
-}
+    STATUS_STOPPED = "STATUS_STOPPED",
+    /** Indicates a transfer cancelled by the user */
+    STATUS_CANCELLED = "STATUS_CANCELLED",
+  }
 
-/** */
-export enum TransferStatusNumber {
-  /** Default value */
-  STATUS_UNSPECIFIED = 0,
-  /** Indicates a transfer still being processed */
-  STATUS_PENDING = 1,
-  /** Indicates a transfer accepted by the Vega network */
-  STATUS_DONE = 2,
-  /** Indicates a transfer rejected by the Vega network */
-  STATUS_REJECTED = 3,
-  /** Indicates a transfer stopped by the Vega network
+  /** */
+  export enum TransferStatusNumber {
+    /** Default value */
+    STATUS_UNSPECIFIED = 0,
+    /** Indicates a transfer still being processed */
+    STATUS_PENDING = 1,
+    /** Indicates a transfer accepted by the Vega network */
+    STATUS_DONE = 2,
+    /** Indicates a transfer rejected by the Vega network */
+    STATUS_REJECTED = 3,
+    /** Indicates a transfer stopped by the Vega network
   e.g: no funds left to cover the transfer */
-  STATUS_STOPPED = 4,
-  /** Indicates a transfer cancelled by the user */
-  STATUS_CANCELLED = 5
-}
-
-export interface AuctionEvent {
-  marketId?: string;
-  openingAuction?: boolean;
-  leave?: boolean;
-  start?: string | number;
-  end?: string | number;
-  trigger?: vega.AuctionTrigger;
-  extensionTrigger?: vega.AuctionTrigger;
-}
-
-export interface BeginBlock {
-  height?: string | number;
-  timestamp?: string | number;
-  hash?: string;
-}
-
-export interface BusEvent {
-  id?: string;
-  block?: string;
-  type?: vega.events.v1.BusEventType;
-  timeUpdate?: vega.events.v1.TimeUpdate;
-  ledgerMovements?: vega.events.v1.LedgerMovements;
-  positionResolution?: vega.events.v1.PositionResolution;
-  order?: vega.Order;
-  account?: vega.Account;
-  party?: vega.Party;
-  trade?: vega.Trade;
-  marginLevels?: vega.MarginLevels;
-  proposal?: vega.Proposal;
-  vote?: vega.Vote;
-  marketData?: vega.MarketData;
-  nodeSignature?: vega.commands.v1.NodeSignature;
-  lossSocialization?: vega.events.v1.LossSocialization;
-  settlePosition?: vega.events.v1.SettlePosition;
-  settleDistressed?: vega.events.v1.SettleDistressed;
-  marketCreated?: vega.Market;
-  asset?: vega.Asset;
-  marketTick?: vega.events.v1.MarketTick;
-  withdrawal?: vega.Withdrawal;
-  deposit?: vega.Deposit;
-  auction?: vega.events.v1.AuctionEvent;
-  riskFactor?: vega.RiskFactor;
-  networkParameter?: vega.NetworkParameter;
-  liquidityProvision?: vega.LiquidityProvision;
-  marketUpdated?: vega.Market;
-  oracleSpec?: vega.OracleSpec;
-  oracleData?: vega.OracleData;
-  delegationBalance?: vega.events.v1.DelegationBalanceEvent;
-  validatorScore?: vega.events.v1.ValidatorScoreEvent;
-  epochEvent?: vega.events.v1.EpochEvent;
-  validatorUpdate?: vega.events.v1.ValidatorUpdate;
-  stakeLinking?: vega.events.v1.StakeLinking;
-  rewardPayout?: vega.events.v1.RewardPayoutEvent;
-  checkpoint?: vega.events.v1.CheckpointEvent;
-  keyRotation?: vega.events.v1.KeyRotation;
-  stateVar?: vega.events.v1.StateVar;
-  networkLimits?: vega.NetworkLimits;
-  transfer?: vega.events.v1.Transfer;
-  rankingEvent?: vega.events.v1.ValidatorRankingEvent;
-  erc20MultisigSignerEvent?: vega.events.v1.ERC20MultiSigSignerEvent;
-  erc20MultisigSetThresholdEvent?: vega.events.v1.ERC20MultiSigThresholdSetEvent;
-  erc20MultisigSignerAdded?: vega.events.v1.ERC20MultiSigSignerAdded;
-  erc20MultisigSignerRemoved?: vega.events.v1.ERC20MultiSigSignerRemoved;
-  positionStateEvent?: vega.events.v1.PositionStateEvent;
-  ethereumKeyRotation?: vega.events.v1.EthereumKeyRotation;
-  protocolUpgradeEvent?: vega.events.v1.ProtocolUpgradeEvent;
-  beginBlock?: vega.events.v1.BeginBlock;
-  endBlock?: vega.events.v1.EndBlock;
-  protocolUpgradeStarted?: vega.events.v1.ProtocolUpgradeStarted;
-  settleMarket?: vega.events.v1.SettleMarket;
-  transactionResult?: vega.events.v1.TransactionResult;
-  coreSnapshotEvent?: vega.events.v1.CoreSnapshotData;
-  protocolUpgradeDataNodeReady?: vega.events.v1.ProtocolUpgradeDataNodeReady;
-  distressedOrders?: vega.events.v1.DistressedOrders;
-  expiredOrders?: vega.events.v1.ExpiredOrders;
-  distressedPositions?: vega.events.v1.DistressedPositions;
-  stopOrder?: vega.events.v1.StopOrderEvent;
-  fundingPeriod?: vega.events.v1.FundingPeriod;
-  fundingPeriodDataPoint?: vega.events.v1.FundingPeriodDataPoint;
-  teamCreated?: vega.events.v1.TeamCreated;
-  teamUpdated?: vega.events.v1.TeamUpdated;
-  refereeSwitchedTeam?: vega.events.v1.RefereeSwitchedTeam;
-  refereeJoinedTeam?: vega.events.v1.RefereeJoinedTeam;
-  referralProgramStarted?: vega.events.v1.ReferralProgramStarted;
-  referralProgramUpdated?: vega.events.v1.ReferralProgramUpdated;
-  referralProgramEnded?: vega.events.v1.ReferralProgramEnded;
-  referralSetCreated?: vega.events.v1.ReferralSetCreated;
-  refereeJoinedReferralSet?: vega.events.v1.RefereeJoinedReferralSet;
-  partyActivityStreak?: vega.events.v1.PartyActivityStreak;
-  volumeDiscountProgramStarted?: vega.events.v1.VolumeDiscountProgramStarted;
-  volumeDiscountProgramUpdated?: vega.events.v1.VolumeDiscountProgramUpdated;
-  volumeDiscountProgramEnded?: vega.events.v1.VolumeDiscountProgramEnded;
-  referralSetStatsUpdated?: vega.events.v1.ReferralSetStatsUpdated;
-  vestingStatsUpdated?: vega.events.v1.VestingStatsUpdated;
-  volumeDiscountStatsUpdated?: vega.events.v1.VolumeDiscountStatsUpdated;
-  feesStats?: vega.events.v1.FeesStats;
-  fundingPayments?: vega.events.v1.FundingPayments;
-  paidLiquidityFeesStats?: vega.events.v1.PaidLiquidityFeesStats;
-  vestingBalancesSummary?: vega.events.v1.VestingBalancesSummary;
-  transferFees?: vega.events.v1.TransferFees;
-  transferFeesDiscount?: vega.events.v1.TransferFeesDiscount;
-  partyMarginModeUpdated?: vega.events.v1.PartyMarginModeUpdated;
-  partyProfileUpdated?: vega.events.v1.PartyProfileUpdated;
-  teamsStatsUpdated?: vega.events.v1.TeamsStatsUpdated;
-  timeWeightedNotionalPositionUpdated?: vega.events.v1.TimeWeightedNotionalPositionUpdated;
-  cancelledOrders?: vega.events.v1.CancelledOrders;
-  market?: vega.events.v1.MarketEvent;
-  txErrEvent?: vega.events.v1.TxErrorEvent;
-  version?: string | number;
-  chainId?: string;
-  txHash?: string;
-}
-
-export interface CancelledOrders {
-  marketId?: string;
-  partyId?: string;
-  orderIds?: string[];
-}
-
-export interface CheckpointEvent {
-  hash?: string;
-  blockHash?: string;
-  blockHeight?: string | number;
-}
-
-export interface CoreSnapshotData {
-  blockHeight?: string | number;
-  blockHash?: string;
-  coreVersion?: string;
-  protocolUpgradeBlock?: boolean;
-}
-
-export interface DelegationBalanceEvent {
-  party?: string;
-  nodeId?: string;
-  amount?: string;
-  epochSeq?: string;
-}
-
-export interface DistressedOrders {
-  marketId?: string;
-  parties?: string[];
-}
-
-export interface DistressedPositions {
-  marketId?: string;
-  distressedParties?: string[];
-  safeParties?: string[];
-}
-
-export interface ERC20MultiSigSignerAdded {
-  signatureId?: string;
-  validatorId?: string;
-  timestamp?: string | number;
-  newSigner?: string;
-  submitter?: string;
-  nonce?: string;
-  epochSeq?: string;
-  chainId?: string;
-}
-
-export interface ERC20MultiSigSignerEvent {
-  id?: string;
-  type?: vega.events.v1.ERC20MultiSigSignerEventType;
-  signer?: string;
-  nonce?: string;
-  blockTime?: string | number;
-  txHash?: string;
-  logIndex?: string | number;
-  blockNumber?: string | number;
-  chainId?: string;
-}
-
-export interface ERC20MultiSigSignerRemoved {
-  signatureSubmitters?: vega.events.v1.ERC20MultiSigSignerRemovedSubmitter[];
-  validatorId?: string;
-  timestamp?: string | number;
-  oldSigner?: string;
-  nonce?: string;
-  epochSeq?: string;
-  chainId?: string;
-}
-
-export interface ERC20MultiSigSignerRemovedSubmitter {
-  signatureId?: string;
-  submitter?: string;
-}
-
-export interface ERC20MultiSigThresholdSetEvent {
-  id?: string;
-  newThreshold?: string | number;
-  nonce?: string;
-  blockTime?: string | number;
-  txHash?: string;
-  logIndex?: string | number;
-  blockNumber?: string | number;
-  chainId?: string;
-}
-
-export interface EndBlock {
-  height?: string | number;
-}
-
-export interface EpochEvent {
-  seq?: string | number;
-  action?: vega.EpochAction;
-  startTime?: string | number;
-  expireTime?: string | number;
-  endTime?: string | number;
-}
-
-export interface EthereumKeyRotation {
-  nodeId?: string;
-  oldAddress?: string;
-  newAddress?: string;
-  blockHeight?: string | number;
-}
-
-export interface ExpiredOrders {
-  marketId?: string;
-  orderIds?: string[];
-}
-
-export interface FeesStats {
-  market?: string;
-  asset?: string;
-  epochSeq?: string | number;
-  totalRewardsReceived?: vega.events.v1.PartyAmount[];
-  referrerRewardsGenerated?: vega.events.v1.ReferrerRewardsGenerated[];
-  refereesDiscountApplied?: vega.events.v1.PartyAmount[];
-  volumeDiscountApplied?: vega.events.v1.PartyAmount[];
-  totalMakerFeesReceived?: vega.events.v1.PartyAmount[];
-  makerFeesGenerated?: vega.events.v1.MakerFeesGenerated[];
-  totalFeesPaidAndReceived?: vega.events.v1.PartyAmount[];
-}
-
-export interface FundingPayment {
-  partyId?: string;
-  amount?: string;
-}
-
-export interface FundingPayments {
-  marketId?: string;
-  seq?: string | number;
-  payments?: vega.events.v1.FundingPayment[];
-}
-
-export interface FundingPeriod {
-  marketId?: string;
-  seq?: string | number;
-  start?: string | number;
-  end?: string | number;
-  fundingPayment?: string;
-  fundingRate?: string;
-  internalTwap?: string;
-  externalTwap?: string;
-}
-
-export interface FundingPeriodDataPoint {
-  marketId?: string;
-  seq?: string | number;
-  dataPointType?: vega.events.v1.FundingPeriodDataPointSource;
-  price?: string;
-  timestamp?: string | number;
-  twap?: string;
-}
-
-export interface KeyRotation {
-  nodeId?: string;
-  oldPubKey?: string;
-  newPubKey?: string;
-  blockHeight?: string | number;
-}
-
-export interface LedgerMovements {
-  ledgerMovements?: vega.LedgerMovement[];
-}
-
-export interface LossSocialization {
-  marketId?: string;
-  partyId?: string;
-  amount?: string;
-}
-
-export interface MakerFeesGenerated {
-  taker?: string;
-  makerFeesPaid?: vega.events.v1.PartyAmount[];
-}
-
-export interface MarketEvent {
-  marketId?: string;
-  payload?: string;
-}
-
-export interface MarketTick {
-  id?: string;
-  time?: string | number;
-}
-
-export interface OneOffGovernanceTransfer {
-  deliverOn?: string | number;
-}
-
-export interface OneOffTransfer {
-  deliverOn?: string | number;
-}
-
-export interface PaidLiquidityFeesStats {
-  market?: string;
-  asset?: string;
-  epochSeq?: string | number;
-  totalFeesPaid?: string;
-  feesPaidPerParty?: vega.events.v1.PartyAmount[];
-}
-
-export interface PartyActivityStreak {
-  party?: string;
-  activeFor?: string | number;
-  inactiveFor?: string | number;
-  isActive?: boolean;
-  rewardDistributionActivityMultiplier?: string;
-  rewardVestingActivityMultiplier?: string;
-  epoch?: string | number;
-  tradedVolume?: string;
-  openVolume?: string;
-}
-
-export interface PartyAmount {
-  party?: string;
-  amount?: string;
-  quantumAmount?: string;
-}
-
-export interface PartyLockedBalance {
-  asset?: string;
-  untilEpoch?: string | number;
-  balance?: string;
-}
-
-export interface PartyMarginModeUpdated {
-  marketId?: string;
-  partyId?: string;
-  marginMode?: vega.MarginMode;
-  marginFactor?: string;
-  minTheoreticalMarginFactor?: string;
-  maxTheoreticalLeverage?: string;
-  atEpoch?: string | number;
-}
-
-export interface PartyProfileUpdated {
-  updatedProfile?: vega.PartyProfile;
-}
-
-export interface PartyVestingBalance {
-  asset?: string;
-  balance?: string;
-}
-
-export interface PartyVestingStats {
-  partyId?: string;
-  rewardBonusMultiplier?: string;
-  quantumBalance?: string;
-}
-
-export interface PartyVestingSummary {
-  party?: string;
-  partyLockedBalances?: vega.events.v1.PartyLockedBalance[];
-  partyVestingBalances?: vega.events.v1.PartyVestingBalance[];
-}
-
-export interface PartyVolumeDiscountStats {
-  partyId?: string;
-  discountFactor?: string;
-  runningVolume?: string;
-}
-
-export interface PositionResolution {
-  marketId?: string;
-  distressed?: string | number;
-  closed?: string | number;
-  markPrice?: string;
-}
-
-export interface PositionStateEvent {
-  partyId?: string;
-  marketId?: string;
-  size?: string | number;
-  potentialBuys?: string | number;
-  potentialSells?: string | number;
-  vwBuyPrice?: string;
-  vwSellPrice?: string;
-}
-
-export interface ProtocolUpgradeDataNodeReady {
-  lastBlockHeight?: string | number;
-}
-
-export interface ProtocolUpgradeEvent {
-  upgradeBlockHeight?: string | number;
-  vegaReleaseTag?: string;
-  approvers?: string[];
-  status?: vega.events.v1.ProtocolUpgradeProposalStatus;
-}
-
-export interface ProtocolUpgradeStarted {
-  lastBlockHeight?: string | number;
-}
-
-export interface RecurringGovernanceTransfer {
-  startEpoch?: string | number;
-  endEpoch?: string | number;
-  dispatchStrategy?: vega.DispatchStrategy;
-}
-
-export interface RecurringTransfer {
-  startEpoch?: string | number;
-  endEpoch?: string | number;
-  factor?: string;
-  dispatchStrategy?: vega.DispatchStrategy;
-}
-
-export interface RefereeJoinedReferralSet {
-  setId?: string;
-  referee?: string;
-  joinedAt?: string | number;
-  atEpoch?: string | number;
-}
-
-export interface RefereeJoinedTeam {
-  teamId?: string;
-  referee?: string;
-  joinedAt?: string | number;
-  atEpoch?: string | number;
-}
-
-export interface RefereeStats {
-  partyId?: string;
-  discountFactor?: string;
-  epochNotionalTakerVolume?: string;
-}
-
-export interface RefereeSwitchedTeam {
-  fromTeamId?: string;
-  toTeamId?: string;
-  referee?: string;
-  switchedAt?: string | number;
-  atEpoch?: string | number;
-}
-
-export interface ReferralProgramEnded {
-  version?: string | number;
-  id?: string;
-  endedAt?: string | number;
-  atEpoch?: string | number;
-}
-
-export interface ReferralProgramStarted {
-  program?: vega.ReferralProgram;
-  startedAt?: string | number;
-  atEpoch?: string | number;
-}
-
-export interface ReferralProgramUpdated {
-  program?: vega.ReferralProgram;
-  updatedAt?: string | number;
-  atEpoch?: string | number;
-}
-
-export interface ReferralSetCreated {
-  setId?: string;
-  referrer?: string;
-  createdAt?: string | number;
-  updatedAt?: string | number;
-}
-
-export interface ReferralSetStatsUpdated {
-  setId?: string;
-  atEpoch?: string | number;
-  referralSetRunningNotionalTakerVolume?: string;
-  refereesStats?: vega.events.v1.RefereeStats[];
-  rewardFactor?: string;
-  rewardsMultiplier?: string;
-  rewardsFactorMultiplier?: string;
-  wasEligible?: boolean;
-  referrerTakerVolume?: string;
-}
-
-export interface ReferrerRewardsGenerated {
-  referrer?: string;
-  generatedReward?: vega.events.v1.PartyAmount[];
-}
-
-export interface RewardPayoutEvent {
-  party?: string;
-  epochSeq?: string;
-  asset?: string;
-  amount?: string;
-  percentOfTotalReward?: string;
-  timestamp?: string | number;
-  rewardType?: string;
-  lockedUntilEpoch?: string;
-  quantumAmount?: string;
-  gameId?: string;
-}
-
-export interface SettleDistressed {
-  marketId?: string;
-  partyId?: string;
-  margin?: string;
-  price?: string;
-}
-
-export interface SettleMarket {
-  marketId?: string;
-  price?: string;
-  positionFactor?: string;
-}
-
-export interface SettlePosition {
-  marketId?: string;
-  partyId?: string;
-  price?: string;
-  tradeSettlements?: vega.events.v1.TradeSettlement[];
-  positionFactor?: string;
-}
-
-export interface StakeLinking {
-  id?: string;
-  type?: vega.events.v1.StakeLinkingType;
-  ts?: string | number;
-  party?: string;
-  amount?: string;
-  status?: vega.events.v1.StakeLinkingStatus;
-  finalizedAt?: string | number;
-  txHash?: string;
-  blockHeight?: string | number;
-  blockTime?: string | number;
-  logIndex?: string | number;
-  ethereumAddress?: string;
-}
-
-export interface StateVar {
-  id?: string;
-  eventId?: string;
-  state?: string;
-}
-
-export interface StopOrderEvent {
-  submission?: vega.commands.v1.OrderSubmission;
-  stopOrder?: vega.StopOrder;
-}
-
-export interface StreamStartEvent {
-  chainId?: string;
-}
-
-export interface TeamCreated {
-  teamId?: string;
-  referrer?: string;
-  name?: string;
-  teamUrl?: string;
-  avatarUrl?: string;
-  createdAt?: string | number;
-  closed?: boolean;
-  atEpoch?: string | number;
-  allowList?: string[];
-}
-
-export interface TeamMemberStats {
-  partyId?: string;
-  notionalVolume?: string;
-}
-
-export interface TeamStats {
-  teamId?: string;
-  membersStats?: vega.events.v1.TeamMemberStats[];
-}
-
-export interface TeamUpdated {
-  teamId?: string;
-  name?: string;
-  teamUrl?: string;
-  avatarUrl?: string;
-  closed?: boolean;
-  allowList?: string[];
-}
-
-export interface TeamsStatsUpdated {
-  atEpoch?: string | number;
-  stats?: vega.events.v1.TeamStats[];
-}
-
-export interface TimeUpdate {
-  timestamp?: string | number;
-}
-
-export interface TimeWeightedNotionalPositionUpdated {
-  epochSeq?: string | number;
-  asset?: string;
-  party?: string;
-  gameId?: string;
-  timeWeightedNotionalPosition?: string;
-}
-
-export interface TradeSettlement {
-  size?: string | number;
-  price?: string;
-  marketPrice?: string;
-}
-
-export interface TransactionResult {
-  partyId?: string;
-  status?: boolean;
-  hash?: string;
-  orderSubmission?: vega.commands.v1.OrderSubmission;
-  orderAmendment?: vega.commands.v1.OrderAmendment;
-  orderCancellation?: vega.commands.v1.OrderCancellation;
-  proposal?: vega.commands.v1.ProposalSubmission;
-  voteSubmission?: vega.commands.v1.VoteSubmission;
-  liquidityProvisionSubmission?: vega.commands.v1.LiquidityProvisionSubmission;
-  withdrawSubmission?: vega.commands.v1.WithdrawSubmission;
-  delegateSubmission?: vega.commands.v1.DelegateSubmission;
-  undelegateSubmission?: vega.commands.v1.UndelegateSubmission;
-  liquidityProvisionCancellation?: vega.commands.v1.LiquidityProvisionCancellation;
-  liquidityProvisionAmendment?: vega.commands.v1.LiquidityProvisionAmendment;
-  transfer?: vega.commands.v1.Transfer;
-  cancelTransfer?: vega.commands.v1.CancelTransfer;
-  announceNode?: vega.commands.v1.AnnounceNode;
-  oracleDataSubmission?: vega.commands.v1.OracleDataSubmission;
-  protocolUpgradeProposal?: vega.commands.v1.ProtocolUpgradeProposal;
-  issueSignatures?: vega.commands.v1.IssueSignatures;
-  batchMarketInstructions?: vega.commands.v1.BatchMarketInstructions;
-  keyRotateSubmission?: vega.commands.v1.KeyRotateSubmission;
-  ethereumKeyRotateSubmission?: vega.commands.v1.EthereumKeyRotateSubmission;
-  stopOrdersSubmission?: vega.commands.v1.StopOrdersSubmission;
-  stopOrdersCancellation?: vega.commands.v1.StopOrdersCancellation;
-  createReferralSet?: vega.commands.v1.CreateReferralSet;
-  updateReferralSet?: vega.commands.v1.UpdateReferralSet;
-  applyReferralCode?: vega.commands.v1.ApplyReferralCode;
-  updateMarginMode?: vega.commands.v1.UpdateMarginMode;
-  joinTeam?: vega.commands.v1.JoinTeam;
-  batchProposal?: vega.commands.v1.BatchProposalSubmission;
-  updatePartyProfile?: vega.commands.v1.UpdatePartyProfile;
-  success?: vega.events.v1.TransactionResultSuccessDetails;
-  failure?: vega.events.v1.TransactionResultFailureDetails;
-}
-
-export interface TransactionResultFailureDetails {
-  error?: string;
-}
-
-export interface TransactionResultSuccessDetails {}
-
-export interface Transfer {
-  id?: string;
-  from?: string;
-  fromAccountType?: vega.AccountType;
-  to?: string;
-  toAccountType?: vega.AccountType;
-  asset?: string;
-  amount?: string;
-  reference?: string;
-  status?: vega.events.v1.TransferStatus;
-  timestamp?: string | number;
-  reason?: string;
-  gameId?: string;
-  oneOff?: vega.events.v1.OneOffTransfer;
-  recurring?: vega.events.v1.RecurringTransfer;
-  oneOffGovernance?: vega.events.v1.OneOffGovernanceTransfer;
-  recurringGovernance?: vega.events.v1.RecurringGovernanceTransfer;
-}
-
-export interface TransferFees {
-  transferId?: string;
-  amount?: string;
-  epoch?: string | number;
-  discountApplied?: string;
-}
-
-export interface TransferFeesDiscount {
-  party?: string;
-  asset?: string;
-  amount?: string;
-  epoch?: string | number;
-}
-
-export interface TxErrorEvent {
-  partyId?: string;
-  errMsg?: string;
-  orderSubmission?: vega.commands.v1.OrderSubmission;
-  orderAmendment?: vega.commands.v1.OrderAmendment;
-  orderCancellation?: vega.commands.v1.OrderCancellation;
-  proposal?: vega.commands.v1.ProposalSubmission;
-  voteSubmission?: vega.commands.v1.VoteSubmission;
-  liquidityProvisionSubmission?: vega.commands.v1.LiquidityProvisionSubmission;
-  withdrawSubmission?: vega.commands.v1.WithdrawSubmission;
-  delegateSubmission?: vega.commands.v1.DelegateSubmission;
-  undelegateSubmission?: vega.commands.v1.UndelegateSubmission;
-  liquidityProvisionCancellation?: vega.commands.v1.LiquidityProvisionCancellation;
-  liquidityProvisionAmendment?: vega.commands.v1.LiquidityProvisionAmendment;
-  transfer?: vega.commands.v1.Transfer;
-  cancelTransfer?: vega.commands.v1.CancelTransfer;
-  announceNode?: vega.commands.v1.AnnounceNode;
-  oracleDataSubmission?: vega.commands.v1.OracleDataSubmission;
-  protocolUpgradeProposal?: vega.commands.v1.ProtocolUpgradeProposal;
-  issueSignatures?: vega.commands.v1.IssueSignatures;
-  batchMarketInstructions?: vega.commands.v1.BatchMarketInstructions;
-}
-
-export interface ValidatorRankingEvent {
-  nodeId?: string;
-  stakeScore?: string;
-  performanceScore?: string;
-  rankingScore?: string;
-  previousStatus?: string;
-  nextStatus?: string;
-  epochSeq?: string;
-  tmVotingPower?: string | number;
-}
-
-export interface ValidatorScoreEvent {
-  nodeId?: string;
-  epochSeq?: string;
-  validatorScore?: string;
-  normalisedScore?: string;
-  validatorPerformance?: string;
-  rawValidatorScore?: string;
-  validatorStatus?: string;
-  multisigScore?: string;
-}
-
-export interface ValidatorUpdate {
-  nodeId?: string;
-  vegaPubKey?: string;
-  ethereumAddress?: string;
-  tmPubKey?: string;
-  infoUrl?: string;
-  country?: string;
-  name?: string;
-  avatarUrl?: string;
-  vegaPubKeyIndex?: string | number;
-  added?: boolean;
-  fromEpoch?: string | number;
-  submitterAddress?: string;
-  epochSeq?: string | number;
-}
-
-export interface VestingBalancesSummary {
-  epochSeq?: string | number;
-  partiesVestingSummary?: vega.events.v1.PartyVestingSummary[];
-}
-
-export interface VestingStatsUpdated {
-  atEpoch?: string | number;
-  stats?: vega.events.v1.PartyVestingStats[];
-}
-
-export interface VolumeDiscountProgramEnded {
-  version?: string | number;
-  id?: string;
-  endedAt?: string | number;
-  atEpoch?: string | number;
-}
-
-export interface VolumeDiscountProgramStarted {
-  program?: vega.VolumeDiscountProgram;
-  startedAt?: string | number;
-  atEpoch?: string | number;
-}
-
-export interface VolumeDiscountProgramUpdated {
-  program?: vega.VolumeDiscountProgram;
-  updatedAt?: string | number;
-  atEpoch?: string | number;
-}
-
-export interface VolumeDiscountStatsUpdated {
-  atEpoch?: string | number;
-  stats?: vega.events.v1.PartyVolumeDiscountStats[];
-}
-
-};
-namespace datanode.api.v2 {;
-
-/** List of the properties of an account, used for grouping*/
-export enum AccountField {
-  /**  */
-  ACCOUNT_FIELD_UNSPECIFIED = "ACCOUNT_FIELD_UNSPECIFIED",
-  /**  */
-  ACCOUNT_FIELD_ID = "ACCOUNT_FIELD_ID",
-  /**  */
-  ACCOUNT_FIELD_PARTY_ID = "ACCOUNT_FIELD_PARTY_ID",
-  /**  */
-  ACCOUNT_FIELD_ASSET_ID = "ACCOUNT_FIELD_ASSET_ID",
-  /**  */
-  ACCOUNT_FIELD_MARKET_ID = "ACCOUNT_FIELD_MARKET_ID",
-  /**  */
-  ACCOUNT_FIELD_TYPE = "ACCOUNT_FIELD_TYPE"
-}
-
-/** List of the properties of an account, used for grouping*/
-export enum AccountFieldNumber {
-  /**  */
-  ACCOUNT_FIELD_UNSPECIFIED = 0,
-  /**  */
-  ACCOUNT_FIELD_ID = 1,
-  /**  */
-  ACCOUNT_FIELD_PARTY_ID = 2,
-  /**  */
-  ACCOUNT_FIELD_ASSET_ID = 3,
-  /**  */
-  ACCOUNT_FIELD_MARKET_ID = 4,
-  /**  */
-  ACCOUNT_FIELD_TYPE = 5
-}
-
-/** List of fields for a ledger entry*/
-export enum LedgerEntryField {
-  /**  */
-  LEDGER_ENTRY_FIELD_UNSPECIFIED = "LEDGER_ENTRY_FIELD_UNSPECIFIED",
-  /**  */
-  LEDGER_ENTRY_FIELD_ACCOUNT_FROM_ID = "LEDGER_ENTRY_FIELD_ACCOUNT_FROM_ID",
-  /**  */
-  LEDGER_ENTRY_FIELD_ACCOUNT_TO_ID = "LEDGER_ENTRY_FIELD_ACCOUNT_TO_ID",
-  /**  */
-  LEDGER_ENTRY_FIELD_TRANSFER_TYPE = "LEDGER_ENTRY_FIELD_TRANSFER_TYPE"
-}
-
-/** List of fields for a ledger entry*/
-export enum LedgerEntryFieldNumber {
-  /**  */
-  LEDGER_ENTRY_FIELD_UNSPECIFIED = 0,
-  /**  */
-  LEDGER_ENTRY_FIELD_ACCOUNT_FROM_ID = 1,
-  /**  */
-  LEDGER_ENTRY_FIELD_ACCOUNT_TO_ID = 2,
-  /**  */
-  LEDGER_ENTRY_FIELD_TRANSFER_TYPE = 3
-}
-
-/** Filter for the types of governance proposals to view*/
-export enum ListGovernanceDataRequestType {
-  /**  */
-  TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED",
-  /** List all proposals */
-  TYPE_ALL = "TYPE_ALL",
-  /** List new market proposals */
-  TYPE_NEW_MARKET = "TYPE_NEW_MARKET",
-  /** List update market proposals */
-  TYPE_UPDATE_MARKET = "TYPE_UPDATE_MARKET",
-  /** List change Vega network parameter proposals */
-  TYPE_NETWORK_PARAMETERS = "TYPE_NETWORK_PARAMETERS",
-  /** New asset proposals */
-  TYPE_NEW_ASSET = "TYPE_NEW_ASSET",
-  /** Proposals for creating a new free form proposal */
-  TYPE_NEW_FREE_FORM = "TYPE_NEW_FREE_FORM",
-  /** Update asset proposals */
-  TYPE_UPDATE_ASSET = "TYPE_UPDATE_ASSET",
-  /** Propose a new spot market */
-  TYPE_NEW_SPOT_MARKET = "TYPE_NEW_SPOT_MARKET",
-  /** Update an existing spot market */
-  TYPE_UPDATE_SPOT_MARKET = "TYPE_UPDATE_SPOT_MARKET",
-  /** Propose a new transfer */
-  TYPE_NEW_TRANSFER = "TYPE_NEW_TRANSFER",
-  /** Proposal to cancel a transfer */
-  TYPE_CANCEL_TRANSFER = "TYPE_CANCEL_TRANSFER",
-  /** Proposal for updating the state of a market */
-  TYPE_UPDATE_MARKET_STATE = "TYPE_UPDATE_MARKET_STATE",
-  /** Proposal to update the referral program */
-  TYPE_UPDATE_REFERRAL_PROGRAM = "TYPE_UPDATE_REFERRAL_PROGRAM",
-  /** Proposal to update the volume discount program */
-  TYPE_UPDATE_VOLUME_DISCOUNT_PROGRAM = "TYPE_UPDATE_VOLUME_DISCOUNT_PROGRAM"
-}
-
-/** Filter for the types of governance proposals to view*/
-export enum ListGovernanceDataRequestTypeNumber {
-  /**  */
-  TYPE_UNSPECIFIED = 0,
-  /** List all proposals */
-  TYPE_ALL = 1,
-  /** List new market proposals */
-  TYPE_NEW_MARKET = 2,
-  /** List update market proposals */
-  TYPE_UPDATE_MARKET = 3,
-  /** List change Vega network parameter proposals */
-  TYPE_NETWORK_PARAMETERS = 4,
-  /** New asset proposals */
-  TYPE_NEW_ASSET = 5,
-  /** Proposals for creating a new free form proposal */
-  TYPE_NEW_FREE_FORM = 6,
-  /** Update asset proposals */
-  TYPE_UPDATE_ASSET = 7,
-  /** Propose a new spot market */
-  TYPE_NEW_SPOT_MARKET = 8,
-  /** Update an existing spot market */
-  TYPE_UPDATE_SPOT_MARKET = 9,
-  /** Propose a new transfer */
-  TYPE_NEW_TRANSFER = 10,
-  /** Proposal to cancel a transfer */
-  TYPE_CANCEL_TRANSFER = 11,
-  /** Proposal for updating the state of a market */
-  TYPE_UPDATE_MARKET_STATE = 12,
-  /** Proposal to update the referral program */
-  TYPE_UPDATE_REFERRAL_PROGRAM = 13,
-  /** Proposal to update the volume discount program */
-  TYPE_UPDATE_VOLUME_DISCOUNT_PROGRAM = 14
-}
-
-/** Defines the types of a dispatch strategy's scope the API can filter on.*/
-export enum ListTransfersRequestScope {
-  /**  */
-  SCOPE_UNSPECIFIED = "SCOPE_UNSPECIFIED",
-  /** Matches transfers that have dispatch strategy scope of individual set. */
-  SCOPE_INDIVIDUAL = "SCOPE_INDIVIDUAL",
-  /** Matches transfers that have dispatch strategy scope of team set. */
-  SCOPE_TEAM = "SCOPE_TEAM"
-}
-
-/** Defines the types of a dispatch strategy's scope the API can filter on.*/
-export enum ListTransfersRequestScopeNumber {
-  /**  */
-  SCOPE_UNSPECIFIED = 0,
-  /** Matches transfers that have dispatch strategy scope of individual set. */
-  SCOPE_INDIVIDUAL = 1,
-  /** Matches transfers that have dispatch strategy scope of team set. */
-  SCOPE_TEAM = 2
-}
-
-/** */
-export enum Table {
-  /**  */
-  TABLE_UNSPECIFIED = "TABLE_UNSPECIFIED",
-  /**  */
-  TABLE_BALANCES = "TABLE_BALANCES",
-  /**  */
-  TABLE_CHECKPOINTS = "TABLE_CHECKPOINTS",
-  /**  */
-  TABLE_DELEGATIONS = "TABLE_DELEGATIONS",
-  /**  */
-  TABLE_LEDGER = "TABLE_LEDGER",
-  /**  */
-  TABLE_ORDERS = "TABLE_ORDERS",
-  /**  */
-  TABLE_TRADES = "TABLE_TRADES",
-  /**  */
-  TABLE_MARKET_DATA = "TABLE_MARKET_DATA",
-  /**  */
-  TABLE_MARGIN_LEVELS = "TABLE_MARGIN_LEVELS",
-  /**  */
-  TABLE_POSITIONS = "TABLE_POSITIONS",
-  /**  */
-  TABLE_LIQUIDITY_PROVISIONS = "TABLE_LIQUIDITY_PROVISIONS",
-  /**  */
-  TABLE_MARKETS = "TABLE_MARKETS",
-  /**  */
-  TABLE_DEPOSITS = "TABLE_DEPOSITS",
-  /**  */
-  TABLE_WITHDRAWALS = "TABLE_WITHDRAWALS",
-  /**  */
-  TABLE_BLOCKS = "TABLE_BLOCKS",
-  /**  */
-  TABLE_REWARDS = "TABLE_REWARDS"
-}
-
-/** */
-export enum TableNumber {
-  /**  */
-  TABLE_UNSPECIFIED = 0,
-  /**  */
-  TABLE_BALANCES = 1,
-  /**  */
-  TABLE_CHECKPOINTS = 2,
-  /**  */
-  TABLE_DELEGATIONS = 3,
-  /**  */
-  TABLE_LEDGER = 4,
-  /**  */
-  TABLE_ORDERS = 5,
-  /**  */
-  TABLE_TRADES = 6,
-  /**  */
-  TABLE_MARKET_DATA = 7,
-  /**  */
-  TABLE_MARGIN_LEVELS = 8,
-  /**  */
-  TABLE_POSITIONS = 9,
-  /**  */
-  TABLE_LIQUIDITY_PROVISIONS = 10,
-  /**  */
-  TABLE_MARKETS = 11,
-  /**  */
-  TABLE_DEPOSITS = 12,
-  /**  */
-  TABLE_WITHDRAWALS = 13,
-  /**  */
-  TABLE_BLOCKS = 14,
-  /**  */
-  TABLE_REWARDS = 15
-}
-
-/** Direction of a transfer*/
-export enum TransferDirection {
-  /**  */
-  TRANSFER_DIRECTION_UNSPECIFIED = "TRANSFER_DIRECTION_UNSPECIFIED",
-  /**  */
-  TRANSFER_DIRECTION_TRANSFER_FROM = "TRANSFER_DIRECTION_TRANSFER_FROM",
-  /**  */
-  TRANSFER_DIRECTION_TRANSFER_TO = "TRANSFER_DIRECTION_TRANSFER_TO",
-  /**  */
-  TRANSFER_DIRECTION_TRANSFER_TO_OR_FROM = "TRANSFER_DIRECTION_TRANSFER_TO_OR_FROM"
-}
-
-/** Direction of a transfer*/
-export enum TransferDirectionNumber {
-  /**  */
-  TRANSFER_DIRECTION_UNSPECIFIED = 0,
-  /**  */
-  TRANSFER_DIRECTION_TRANSFER_FROM = 1,
-  /**  */
-  TRANSFER_DIRECTION_TRANSFER_TO = 2,
-  /**  */
-  TRANSFER_DIRECTION_TRANSFER_TO_OR_FROM = 3
-}
-
-export interface AccountBalance {
-  owner?: string;
-  balance?: string;
-  asset?: string;
-  marketId?: string;
-  type?: vega.AccountType;
-}
-
-export interface AccountEdge {
-  node?: datanode.api.v2.AccountBalance;
-  cursor?: string;
-}
-
-export interface AccountFilter {
-  assetId?: string;
-  partyIds?: string[];
-  marketIds?: string[];
-  accountTypes?: vega.AccountType[];
-}
-
-export interface AccountSnapshotPage {
-  accounts?: datanode.api.v2.AccountBalance[];
-  lastPage?: boolean;
-}
-
-export interface AccountUpdates {
-  accounts?: datanode.api.v2.AccountBalance[];
-}
-
-export interface AccountsConnection {
-  edges?: datanode.api.v2.AccountEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface AggregatedBalance {
-  timestamp?: string | number;
-  balance?: string;
-  partyId?: string;
-  assetId?: string;
-  marketId?: string;
-  accountType?: vega.AccountType;
-}
-
-export interface AggregatedBalanceConnection {
-  edges?: datanode.api.v2.AggregatedBalanceEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface AggregatedBalanceEdge {
-  node?: datanode.api.v2.AggregatedBalance;
-  cursor?: string;
-}
-
-export interface AggregatedLedgerEntriesConnection {
-  edges?: datanode.api.v2.AggregatedLedgerEntriesEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface AggregatedLedgerEntriesEdge {
-  node?: datanode.api.v2.AggregatedLedgerEntry;
-  cursor?: string;
-}
-
-export interface AggregatedLedgerEntry {
-  timestamp?: string | number;
-  quantity?: string;
-  transferType?: vega.TransferType;
-  assetId?: string;
-  fromAccountType?: vega.AccountType;
-  toAccountType?: vega.AccountType;
-  fromAccountPartyId?: string;
-  toAccountPartyId?: string;
-  fromAccountMarketId?: string;
-  toAccountMarketId?: string;
-  fromAccountBalance?: string;
-  toAccountBalance?: string;
-  transferId?: string;
-}
-
-export interface AssetEdge {
-  node?: vega.Asset;
-  cursor?: string;
-}
-
-export interface AssetsConnection {
-  edges?: datanode.api.v2.AssetEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface Candle {
-  start?: string | number;
-  lastUpdate?: string | number;
-  high?: string;
-  low?: string;
-  open?: string;
-  close?: string;
-  volume?: string | number;
-  notional?: string | number;
-}
-
-export interface CandleDataConnection {
-  edges?: datanode.api.v2.CandleEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface CandleEdge {
-  node?: datanode.api.v2.Candle;
-  cursor?: string;
-}
-
-export interface Checkpoint {
-  hash?: string;
-  blockHash?: string;
-  atBlock?: string | number;
-}
-
-export interface CheckpointEdge {
-  node?: datanode.api.v2.Checkpoint;
-  cursor?: string;
-}
-
-export interface CheckpointsConnection {
-  edges?: datanode.api.v2.CheckpointEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface CollateralIncreaseEstimate {
-  worstCase?: string;
-  bestCase?: string;
-}
-
-export interface CoreSnapshotConnection {
-  edges?: datanode.api.v2.CoreSnapshotEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface CoreSnapshotEdge {
-  node?: vega.events.v1.CoreSnapshotData;
-  cursor?: string;
-}
-
-export interface DateRange {
-  startTimestamp?: string | number;
-  endTimestamp?: string | number;
-}
-
-export interface DelegationEdge {
-  node?: vega.Delegation;
-  cursor?: string;
-}
-
-export interface DelegationsConnection {
-  edges?: datanode.api.v2.DelegationEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface DepositEdge {
-  node?: vega.Deposit;
-  cursor?: string;
-}
-
-export interface DepositsConnection {
-  edges?: datanode.api.v2.DepositEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface ERC20MultiSigSignerAddedBundle {
-  newSigner?: string;
-  submitter?: string;
-  nonce?: string;
-  timestamp?: string | number;
-  signatures?: string;
-  epochSeq?: string;
-  chainId?: string;
-}
-
-export interface ERC20MultiSigSignerAddedBundleEdge {
-  node?: datanode.api.v2.ERC20MultiSigSignerAddedBundle;
-  cursor?: string;
-}
-
-export interface ERC20MultiSigSignerAddedConnection {
-  edges?: datanode.api.v2.ERC20MultiSigSignerAddedBundleEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface ERC20MultiSigSignerAddedEdge {
-  node?: vega.events.v1.ERC20MultiSigSignerAdded;
-  cursor?: string;
-}
-
-export interface ERC20MultiSigSignerRemovedBundle {
-  oldSigner?: string;
-  submitter?: string;
-  nonce?: string;
-  timestamp?: string | number;
-  signatures?: string;
-  epochSeq?: string;
-  chainId?: string;
-}
-
-export interface ERC20MultiSigSignerRemovedBundleEdge {
-  node?: datanode.api.v2.ERC20MultiSigSignerRemovedBundle;
-  cursor?: string;
-}
-
-export interface ERC20MultiSigSignerRemovedConnection {
-  edges?: datanode.api.v2.ERC20MultiSigSignerRemovedBundleEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface ERC20MultiSigSignerRemovedEdge {
-  node?: vega.events.v1.ERC20MultiSigSignerRemoved;
-  cursor?: string;
-}
-
-export interface EpochRewardSummaryConnection {
-  edges?: datanode.api.v2.EpochRewardSummaryEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface EpochRewardSummaryEdge {
-  node?: vega.EpochRewardSummary;
-  cursor?: string;
-}
-
-export interface EstimateFeeRequest {
-  marketId?: string;
-  price?: string;
-  size?: string | number;
-}
-
-export interface EstimateFeeResponse {
-  fee?: vega.Fee;
-}
-
-export interface EstimateMarginRequest {
-  marketId?: string;
-  partyId?: string;
-  side?: vega.Side;
-  type?: vega.OrderType;
-  size?: string | number;
-  price?: string;
-}
-
-export interface EstimateMarginResponse {
-  marginLevels?: vega.MarginLevels;
-}
-
-export interface EstimatePositionRequest {
-  marketId?: string;
-  openVolume?: string | number;
-  averageEntryPrice?: string;
-  orders?: datanode.api.v2.OrderInfo[];
-  marginAccountBalance?: string;
-  generalAccountBalance?: string;
-  orderMarginAccountBalance?: string;
-  marginMode?: vega.MarginMode;
-  marginFactor?: string;
-  includeRequiredPositionMarginInAvailableCollateral?: boolean;
-  scaleLiquidationPriceToMarketDecimals?: boolean;
-}
-
-export interface EstimatePositionResponse {
-  margin?: datanode.api.v2.MarginEstimate;
-  collateralIncreaseEstimate?: datanode.api.v2.CollateralIncreaseEstimate;
-  liquidation?: datanode.api.v2.LiquidationEstimate;
-}
-
-export interface EstimateTransferFeeRequest {
-  fromAccount?: string;
-  fromAccountType?: vega.AccountType;
-  toAccount?: string;
-  amount?: string;
-  assetId?: string;
-}
-
-export interface EstimateTransferFeeResponse {
-  fee?: string;
-  discount?: string;
-}
-
-export interface EthereumKeyRotationEdge {
-  node?: vega.events.v1.EthereumKeyRotation;
-  cursor?: string;
-}
-
-export interface EthereumKeyRotationsConnection {
-  edges?: datanode.api.v2.EthereumKeyRotationEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface ExportLedgerEntriesRequest {
-  partyId?: string;
-  assetId?: string;
-  dateRange?: datanode.api.v2.DateRange;
-}
-
-export interface ExportNetworkHistoryRequest {
-  fromBlock?: string | number;
-  toBlock?: string | number;
-  table?: datanode.api.v2.Table;
-}
-
-export interface FeesStatsForParty {
-  assetId?: string;
-  totalRewardsReceived?: string;
-  refereesDiscountApplied?: string;
-  volumeDiscountApplied?: string;
-  totalMakerFeesReceived?: string;
-}
-
-export interface FundingPayment {
-  partyId?: string;
-  marketId?: string;
-  fundingPeriodSeq?: string | number;
-  timestamp?: string | number;
-  amount?: string;
-}
-
-export interface FundingPaymentConnection {
-  edges?: datanode.api.v2.FundingPaymentEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface FundingPaymentEdge {
-  node?: datanode.api.v2.FundingPayment;
-  cursor?: string;
-}
-
-export interface FundingPeriodConnection {
-  edges?: datanode.api.v2.FundingPeriodEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface FundingPeriodDataPointConnection {
-  edges?: datanode.api.v2.FundingPeriodDataPointEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface FundingPeriodDataPointEdge {
-  node?: vega.events.v1.FundingPeriodDataPoint;
-  cursor?: string;
-}
-
-export interface FundingPeriodEdge {
-  node?: vega.events.v1.FundingPeriod;
-  cursor?: string;
-}
-
-export interface Game {
-  id?: string;
-  epoch?: string | number;
-  participants?: string | number;
-  team?: datanode.api.v2.TeamGameEntities;
-  individual?: datanode.api.v2.IndividualGameEntities;
-  rewardAssetId?: string;
-}
-
-export interface GameEdge {
-  node?: datanode.api.v2.Game;
-  cursor?: string;
-}
-
-export interface GamesConnection {
-  edges?: datanode.api.v2.GameEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface GetActiveNetworkHistoryPeerAddressesRequest {}
-
-export interface GetActiveNetworkHistoryPeerAddressesResponse {
-  ipAddresses?: string[];
-}
-
-export interface GetAssetRequest {
-  assetId?: string;
-}
-
-export interface GetAssetResponse {
-  asset?: vega.Asset;
-}
-
-export interface GetBalanceHistoryRequest {
-  filter?: datanode.api.v2.AccountFilter;
-  groupBy?: datanode.api.v2.AccountField[];
-  pagination?: datanode.api.v2.Pagination;
-  dateRange?: datanode.api.v2.DateRange;
-}
-
-export interface GetBalanceHistoryResponse {
-  balances?: datanode.api.v2.AggregatedBalanceConnection;
-}
-
-export interface GetCurrentReferralProgramRequest {}
-
-export interface GetCurrentReferralProgramResponse {
-  currentReferralProgram?: datanode.api.v2.ReferralProgram;
-}
-
-export interface GetCurrentVolumeDiscountProgramRequest {}
-
-export interface GetCurrentVolumeDiscountProgramResponse {
-  currentVolumeDiscountProgram?: datanode.api.v2.VolumeDiscountProgram;
-}
-
-export interface GetDepositRequest {
-  id?: string;
-}
-
-export interface GetDepositResponse {
-  deposit?: vega.Deposit;
-}
-
-export interface GetERC20ListAssetBundleRequest {
-  assetId?: string;
-}
-
-export interface GetERC20ListAssetBundleResponse {
-  assetSource?: string;
-  vegaAssetId?: string;
-  nonce?: string;
-  signatures?: string;
-}
-
-export interface GetERC20SetAssetLimitsBundleRequest {
-  proposalId?: string;
-}
-
-export interface GetERC20SetAssetLimitsBundleResponse {
-  assetSource?: string;
-  vegaAssetId?: string;
-  nonce?: string;
-  lifetimeLimit?: string;
-  threshold?: string;
-  signatures?: string;
-}
-
-export interface GetERC20WithdrawalApprovalRequest {
-  withdrawalId?: string;
-}
-
-export interface GetERC20WithdrawalApprovalResponse {
-  assetSource?: string;
-  amount?: string;
-  nonce?: string;
-  signatures?: string;
-  targetAddress?: string;
-  creation?: string | number;
-  sourceChainId?: string;
-}
-
-export interface GetEpochRequest {
-  id?: string | number;
-  block?: string | number;
-}
-
-export interface GetEpochResponse {
-  epoch?: vega.Epoch;
-}
-
-export interface GetFeesStatsForPartyRequest {
-  partyId?: string;
-  assetId?: string;
-  fromEpoch?: string | number;
-  toEpoch?: string | number;
-}
-
-export interface GetFeesStatsForPartyResponse {
-  feesStatsForParty?: datanode.api.v2.FeesStatsForParty[];
-}
-
-export interface GetFeesStatsRequest {
-  marketId?: string;
-  assetId?: string;
-  epochSeq?: string | number;
-  partyId?: string;
-}
-
-export interface GetFeesStatsResponse {
-  feesStats?: vega.events.v1.FeesStats;
-}
-
-export interface GetGovernanceDataRequest {
-  proposalId?: string;
-  reference?: string;
-}
-
-export interface GetGovernanceDataResponse {
-  data?: vega.GovernanceData;
-}
-
-export interface GetLastTradeRequest {
-  marketId?: string;
-}
-
-export interface GetLastTradeResponse {
-  trade?: vega.Trade;
-}
-
-export interface GetLatestMarketDataRequest {
-  marketId?: string;
-}
-
-export interface GetLatestMarketDataResponse {
-  marketData?: vega.MarketData;
-}
-
-export interface GetLatestMarketDepthRequest {
-  marketId?: string;
-  maxDepth?: string | number;
-}
-
-export interface GetLatestMarketDepthResponse {
-  marketId?: string;
-  buy?: vega.PriceLevel[];
-  sell?: vega.PriceLevel[];
-  lastTrade?: vega.Trade;
-  sequenceNumber?: string | number;
-}
-
-export interface GetMarketDataHistoryByIDRequest {
-  marketId?: string;
-  startTimestamp?: string | number;
-  endTimestamp?: string | number;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface GetMarketDataHistoryByIDResponse {
-  marketData?: datanode.api.v2.MarketDataConnection;
-}
-
-export interface GetMarketRequest {
-  marketId?: string;
-}
-
-export interface GetMarketResponse {
-  market?: vega.Market;
-}
-
-export interface GetMostRecentNetworkHistorySegmentRequest {}
-
-export interface GetMostRecentNetworkHistorySegmentResponse {
-  segment?: datanode.api.v2.HistorySegment;
-  swarmKeySeed?: string;
-}
-
-export interface GetNetworkDataRequest {}
-
-export interface GetNetworkDataResponse {
-  nodeData?: vega.NodeData;
-}
-
-export interface GetNetworkHistoryBootstrapPeersRequest {}
-
-export interface GetNetworkHistoryBootstrapPeersResponse {
-  bootstrapPeers?: string[];
-}
-
-export interface GetNetworkHistoryStatusRequest {}
-
-export interface GetNetworkHistoryStatusResponse {
-  ipfsAddress?: string;
-  swarmKey?: string;
-  swarmKeySeed?: string;
-  connectedPeers?: string[];
-}
-
-export interface GetNetworkLimitsRequest {}
-
-export interface GetNetworkLimitsResponse {
-  limits?: vega.NetworkLimits;
-}
-
-export interface GetNetworkParameterRequest {
-  key?: string;
-}
-
-export interface GetNetworkParameterResponse {
-  networkParameter?: vega.NetworkParameter;
-}
-
-export interface GetNodeRequest {
-  id?: string;
-}
-
-export interface GetNodeResponse {
-  node?: vega.Node;
-}
-
-export interface GetOracleSpecRequest {
-  oracleSpecId?: string;
-}
-
-export interface GetOracleSpecResponse {
-  oracleSpec?: vega.OracleSpec;
-}
-
-export interface GetOrderRequest {
-  orderId?: string;
-  version?: string | number;
-}
-
-export interface GetOrderResponse {
-  order?: vega.Order;
-}
-
-export interface GetPartyActivityStreakRequest {
-  partyId?: string;
-  epoch?: string | number;
-}
-
-export interface GetPartyActivityStreakResponse {
-  activityStreak?: vega.events.v1.PartyActivityStreak;
-}
-
-export interface GetPartyRequest {
-  partyId?: string;
-}
-
-export interface GetPartyResponse {
-  party?: vega.Party;
-}
-
-export interface GetPartyVestingStatsRequest {
-  partyId?: string;
-}
-
-export interface GetPartyVestingStatsResponse {
-  partyId?: string;
-  rewardBonusMultiplier?: string;
-  epochSeq?: string | number;
-  quantumBalance?: string;
-}
-
-export interface GetProtocolUpgradeStatusRequest {}
-
-export interface GetProtocolUpgradeStatusResponse {
-  ready?: boolean;
-}
-
-export interface GetReferralSetStatsRequest {
-  referralSetId?: string;
-  atEpoch?: string | number;
-  referee?: string;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface GetReferralSetStatsResponse {
-  stats?: datanode.api.v2.ReferralSetStatsConnection;
-}
-
-export interface GetRiskFactorsRequest {
-  marketId?: string;
-}
-
-export interface GetRiskFactorsResponse {
-  riskFactor?: vega.RiskFactor;
-}
-
-export interface GetStakeRequest {
-  partyId?: string;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface GetStakeResponse {
-  currentStakeAvailable?: string;
-  stakeLinkings?: datanode.api.v2.StakesConnection;
-}
-
-export interface GetStopOrderRequest {
-  orderId?: string;
-}
-
-export interface GetStopOrderResponse {
-  order?: vega.events.v1.StopOrderEvent;
-}
-
-export interface GetTimeWeightedNotionalPositionRequest {
-  assetId?: string;
-  partyId?: string;
-  gameId?: string;
-  atEpoch?: string | number;
-}
-
-export interface GetTimeWeightedNotionalPositionResponse {
-  timeWeightedNotionalPosition?: datanode.api.v2.TimeWeightedNotionalPosition;
-}
-
-export interface GetTotalTransferFeeDiscountRequest {
-  partyId?: string;
-  assetId?: string;
-}
-
-export interface GetTotalTransferFeeDiscountResponse {
-  totalDiscount?: string;
-}
-
-export interface GetTransferRequest {
-  transferId?: string;
-}
-
-export interface GetTransferResponse {
-  transferNode?: datanode.api.v2.TransferNode;
-}
-
-export interface GetVegaTimeRequest {}
-
-export interface GetVegaTimeResponse {
-  timestamp?: string | number;
-}
-
-export interface GetVestingBalancesSummaryRequest {
-  partyId?: string;
-  assetId?: string;
-}
-
-export interface GetVestingBalancesSummaryResponse {
-  partyId?: string;
-  epochSeq?: string | number;
-  lockedBalances?: vega.events.v1.PartyLockedBalance[];
-  vestingBalances?: vega.events.v1.PartyVestingBalance[];
-}
-
-export interface GetVolumeDiscountStatsRequest {
-  atEpoch?: string | number;
-  partyId?: string;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface GetVolumeDiscountStatsResponse {
-  stats?: datanode.api.v2.VolumeDiscountStatsConnection;
-}
-
-export interface GetWithdrawalRequest {
-  id?: string;
-}
-
-export interface GetWithdrawalResponse {
-  withdrawal?: vega.Withdrawal;
-}
-
-export interface GovernanceDataConnection {
-  edges?: datanode.api.v2.GovernanceDataEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface GovernanceDataEdge {
-  node?: vega.GovernanceData;
-  cursor?: string;
-}
-
-export interface HistorySegment {
-  fromHeight?: string | number;
-  toHeight?: string | number;
-  historySegmentId?: string;
-  previousHistorySegmentId?: string;
-  databaseVersion?: string | number;
-  chainId?: string;
-}
-
-export interface IndividualGameEntities {
-  individual?: datanode.api.v2.IndividualGameEntity[];
-}
-
-export interface IndividualGameEntity {
-  individual?: string;
-  rank?: string | number;
-  volume?: string;
-  rewardMetric?: vega.DispatchMetric;
-  rewardEarned?: string;
-  totalRewardsEarned?: string;
-  rewardEarnedQuantum?: string;
-  totalRewardsEarnedQuantum?: string;
-}
-
-export interface InfoRequest {}
-
-export interface InfoResponse {
-  version?: string;
-  commitHash?: string;
-}
-
-export interface IntervalToCandleId {
-  interval?: string;
-  candleId?: string;
-}
-
-export interface KeyRotationConnection {
-  edges?: datanode.api.v2.KeyRotationEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface KeyRotationEdge {
-  node?: vega.events.v1.KeyRotation;
-  cursor?: string;
-}
-
-export interface LedgerEntryFilter {
-  closeOnAccountFilters?: boolean;
-  fromAccountFilter?: datanode.api.v2.AccountFilter;
-  toAccountFilter?: datanode.api.v2.AccountFilter;
-  transferTypes?: vega.TransferType[];
-  transferId?: string;
-}
-
-export interface LiquidationEstimate {
-  worstCase?: datanode.api.v2.LiquidationPrice;
-  bestCase?: datanode.api.v2.LiquidationPrice;
-}
-
-export interface LiquidationPrice {
-  openVolumeOnly?: string;
-  includingBuyOrders?: string;
-  includingSellOrders?: string;
-}
-
-export interface LiquidityProvider {
-  partyId?: string;
-  marketId?: string;
-  feeShare?: vega.LiquidityProviderFeeShare;
-  sla?: vega.LiquidityProviderSLA;
-}
-
-export interface LiquidityProviderConnection {
-  edges?: datanode.api.v2.LiquidityProviderEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface LiquidityProviderEdge {
-  node?: datanode.api.v2.LiquidityProvider;
-  cursor?: string;
-}
-
-export interface LiquidityProvision {
-  current?: vega.LiquidityProvision;
-  pending?: vega.LiquidityProvision;
-}
-
-export interface LiquidityProvisionWithPendingEdge {
-  node?: datanode.api.v2.LiquidityProvision;
-  cursor?: string;
-}
-
-export interface LiquidityProvisionsConnection {
-  edges?: datanode.api.v2.LiquidityProvisionsEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface LiquidityProvisionsEdge {
-  node?: vega.LiquidityProvision;
-  cursor?: string;
-}
-
-export interface LiquidityProvisionsWithPendingConnection {
-  edges?: datanode.api.v2.LiquidityProvisionWithPendingEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface ListAccountsRequest {
-  filter?: datanode.api.v2.AccountFilter;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListAccountsResponse {
-  accounts?: datanode.api.v2.AccountsConnection;
-}
-
-export interface ListAllLiquidityProvisionsRequest {
-  marketId?: string;
-  partyId?: string;
-  reference?: string;
-  live?: boolean;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListAllLiquidityProvisionsResponse {
-  liquidityProvisions?: datanode.api.v2.LiquidityProvisionsWithPendingConnection;
-}
-
-export interface ListAllNetworkHistorySegmentsRequest {}
-
-export interface ListAllNetworkHistorySegmentsResponse {
-  segments?: datanode.api.v2.HistorySegment[];
-}
-
-export interface ListAllPositionsRequest {
-  filter?: datanode.api.v2.PositionsFilter;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListAllPositionsResponse {
-  positions?: datanode.api.v2.PositionConnection;
-}
-
-export interface ListAssetsRequest {
-  assetId?: string;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListAssetsResponse {
-  assets?: datanode.api.v2.AssetsConnection;
-}
-
-export interface ListBalanceChangesRequest {
-  filter?: datanode.api.v2.AccountFilter;
-  pagination?: datanode.api.v2.Pagination;
-  dateRange?: datanode.api.v2.DateRange;
-}
-
-export interface ListBalanceChangesResponse {
-  balances?: datanode.api.v2.AggregatedBalanceConnection;
-}
-
-export interface ListCandleDataRequest {
-  candleId?: string;
-  fromTimestamp?: string | number;
-  toTimestamp?: string | number;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListCandleDataResponse {
-  candles?: datanode.api.v2.CandleDataConnection;
-}
-
-export interface ListCandleIntervalsRequest {
-  marketId?: string;
-}
-
-export interface ListCandleIntervalsResponse {
-  intervalToCandleId?: datanode.api.v2.IntervalToCandleId[];
-}
-
-export interface ListCheckpointsRequest {
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListCheckpointsResponse {
-  checkpoints?: datanode.api.v2.CheckpointsConnection;
-}
-
-export interface ListCoreSnapshotsRequest {
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListCoreSnapshotsResponse {
-  coreSnapshots?: datanode.api.v2.CoreSnapshotConnection;
-}
-
-export interface ListDelegationsRequest {
-  partyId?: string;
-  nodeId?: string;
-  epochId?: string;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListDelegationsResponse {
-  delegations?: datanode.api.v2.DelegationsConnection;
-}
-
-export interface ListDepositsRequest {
-  partyId?: string;
-  pagination?: datanode.api.v2.Pagination;
-  dateRange?: datanode.api.v2.DateRange;
-}
-
-export interface ListDepositsResponse {
-  deposits?: datanode.api.v2.DepositsConnection;
-}
-
-export interface ListERC20MultiSigSignerAddedBundlesRequest {
-  nodeId?: string;
-  submitter?: string;
-  epochSeq?: string;
-  pagination?: datanode.api.v2.Pagination;
-  chainId?: string;
-}
-
-export interface ListERC20MultiSigSignerAddedBundlesResponse {
-  bundles?: datanode.api.v2.ERC20MultiSigSignerAddedConnection;
-}
-
-export interface ListERC20MultiSigSignerRemovedBundlesRequest {
-  nodeId?: string;
-  submitter?: string;
-  epochSeq?: string;
-  pagination?: datanode.api.v2.Pagination;
-  chainId?: string;
-}
-
-export interface ListERC20MultiSigSignerRemovedBundlesResponse {
-  bundles?: datanode.api.v2.ERC20MultiSigSignerRemovedConnection;
-}
-
-export interface ListEntitiesRequest {
-  transactionHash?: string;
-}
-
-export interface ListEntitiesResponse {
-  accounts?: vega.Account[];
-  orders?: vega.Order[];
-  positions?: vega.Position[];
-  ledgerEntries?: vega.LedgerEntry[];
-  balanceChanges?: datanode.api.v2.AccountBalance[];
-  transfers?: vega.events.v1.Transfer[];
-  votes?: vega.Vote[];
-  erc20MultiSigSignerAddedBundles?: datanode.api.v2.ERC20MultiSigSignerAddedBundle[];
-  erc20MultiSigSignerRemovedBundles?: datanode.api.v2.ERC20MultiSigSignerRemovedBundle[];
-  trades?: vega.Trade[];
-  oracleSpecs?: vega.OracleSpec[];
-  oracleData?: vega.OracleData[];
-  markets?: vega.Market[];
-  parties?: vega.Party[];
-  marginLevels?: vega.MarginLevels[];
-  rewards?: vega.Reward[];
-  deposits?: vega.Deposit[];
-  withdrawals?: vega.Withdrawal[];
-  assets?: vega.Asset[];
-  liquidityProvisions?: vega.LiquidityProvision[];
-  proposals?: vega.Proposal[];
-  delegations?: vega.Delegation[];
-  nodes?: datanode.api.v2.NodeBasic[];
-  nodeSignatures?: vega.commands.v1.NodeSignature[];
-  networkParameters?: vega.NetworkParameter[];
-  keyRotations?: vega.events.v1.KeyRotation[];
-  ethereumKeyRotations?: vega.events.v1.EthereumKeyRotation[];
-  protocolUpgradeProposals?: vega.events.v1.ProtocolUpgradeEvent[];
-}
-
-export interface ListEpochRewardSummariesRequest {
-  filter?: datanode.api.v2.RewardSummaryFilter;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListEpochRewardSummariesResponse {
-  summaries?: datanode.api.v2.EpochRewardSummaryConnection;
-}
-
-export interface ListEthereumKeyRotationsRequest {
-  nodeId?: string;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListEthereumKeyRotationsResponse {
-  keyRotations?: datanode.api.v2.EthereumKeyRotationsConnection;
-}
-
-export interface ListFundingPaymentsRequest {
-  partyId?: string;
-  marketId?: string;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListFundingPaymentsResponse {
-  fundingPayments?: datanode.api.v2.FundingPaymentConnection;
-}
-
-export interface ListFundingPeriodDataPointsRequest {
-  marketId?: string;
-  dateRange?: datanode.api.v2.DateRange;
-  source?: vega.events.v1.FundingPeriodDataPointSource;
-  seq?: string | number;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListFundingPeriodDataPointsResponse {
-  fundingPeriodDataPoints?: datanode.api.v2.FundingPeriodDataPointConnection;
-}
-
-export interface ListFundingPeriodsRequest {
-  marketId?: string;
-  dateRange?: datanode.api.v2.DateRange;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListFundingPeriodsResponse {
-  fundingPeriods?: datanode.api.v2.FundingPeriodConnection;
-}
-
-export interface ListGamesRequest {
-  gameId?: string;
-  epochFrom?: string | number;
-  epochTo?: string | number;
-  entityScope?: vega.EntityScope;
-  pagination?: datanode.api.v2.Pagination;
-  teamId?: string;
-  partyId?: string;
-}
-
-export interface ListGamesResponse {
-  games?: datanode.api.v2.GamesConnection;
-}
-
-export interface ListGovernanceDataRequest {
-  proposalState?: vega.ProposalState;
-  proposalType?: datanode.api.v2.ListGovernanceDataRequestType;
-  proposerPartyId?: string;
-  proposalReference?: string;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListGovernanceDataResponse {
-  connection?: datanode.api.v2.GovernanceDataConnection;
-}
-
-export interface ListKeyRotationsRequest {
-  nodeId?: string;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListKeyRotationsResponse {
-  rotations?: datanode.api.v2.KeyRotationConnection;
-}
-
-export interface ListLatestMarketDataRequest {}
-
-export interface ListLatestMarketDataResponse {
-  marketsData?: vega.MarketData[];
-}
-
-export interface ListLedgerEntriesRequest {
-  filter?: datanode.api.v2.LedgerEntryFilter;
-  pagination?: datanode.api.v2.Pagination;
-  dateRange?: datanode.api.v2.DateRange;
-}
-
-export interface ListLedgerEntriesResponse {
-  ledgerEntries?: datanode.api.v2.AggregatedLedgerEntriesConnection;
-}
-
-export interface ListLiquidityProvidersRequest {
-  marketId?: string;
-  partyId?: string;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListLiquidityProvidersResponse {
-  liquidityProviders?: datanode.api.v2.LiquidityProviderConnection;
-}
-
-export interface ListLiquidityProvisionsRequest {
-  marketId?: string;
-  partyId?: string;
-  reference?: string;
-  live?: boolean;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListLiquidityProvisionsResponse {
-  liquidityProvisions?: datanode.api.v2.LiquidityProvisionsConnection;
-}
-
-export interface ListMarginLevelsRequest {
-  partyId?: string;
-  marketId?: string;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListMarginLevelsResponse {
-  marginLevels?: datanode.api.v2.MarginConnection;
-}
-
-export interface ListMarketsRequest {
-  pagination?: datanode.api.v2.Pagination;
-  includeSettled?: boolean;
-}
-
-export interface ListMarketsResponse {
-  markets?: datanode.api.v2.MarketConnection;
-}
-
-export interface ListNetworkParametersRequest {
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListNetworkParametersResponse {
-  networkParameters?: datanode.api.v2.NetworkParameterConnection;
-}
-
-export interface ListNodeSignaturesRequest {
-  id?: string;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListNodeSignaturesResponse {
-  signatures?: datanode.api.v2.NodeSignaturesConnection;
-}
-
-export interface ListNodesRequest {
-  epochSeq?: string | number;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListNodesResponse {
-  nodes?: datanode.api.v2.NodesConnection;
-}
-
-export interface ListOracleDataRequest {
-  oracleSpecId?: string;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListOracleDataResponse {
-  oracleData?: datanode.api.v2.OracleDataConnection;
-}
-
-export interface ListOracleSpecsRequest {
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListOracleSpecsResponse {
-  oracleSpecs?: datanode.api.v2.OracleSpecsConnection;
-}
-
-export interface ListOrderVersionsRequest {
-  orderId?: string;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListOrderVersionsResponse {
-  orders?: datanode.api.v2.OrderConnection;
-}
-
-export interface ListOrdersRequest {
-  pagination?: datanode.api.v2.Pagination;
-  filter?: datanode.api.v2.OrderFilter;
-}
-
-export interface ListOrdersResponse {
-  orders?: datanode.api.v2.OrderConnection;
-}
-
-export interface ListPaidLiquidityFeesRequest {
-  marketId?: string;
-  assetId?: string;
-  epochSeq?: string | number;
-  partyIds?: string[];
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListPaidLiquidityFeesResponse {
-  paidLiquidityFees?: datanode.api.v2.PaidLiquidityFeesConnection;
-}
-
-export interface ListPartiesProfilesRequest {
-  parties?: string[];
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListPartiesProfilesResponse {
-  profiles?: datanode.api.v2.PartiesProfilesConnection;
-}
-
-export interface ListPartiesRequest {
-  partyId?: string;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListPartiesResponse {
-  parties?: datanode.api.v2.PartyConnection;
-}
-
-export interface ListPartyMarginModesRequest {
-  marketId?: string;
-  partyId?: string;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListPartyMarginModesResponse {
-  partyMarginModes?: datanode.api.v2.PartyMarginModesConnection;
-}
-
-export interface ListPositionsRequest {
-  partyId?: string;
-  marketId?: string;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListPositionsResponse {
-  positions?: datanode.api.v2.PositionConnection;
-}
-
-export interface ListProtocolUpgradeProposalsRequest {
-  status?: vega.events.v1.ProtocolUpgradeProposalStatus;
-  approvedBy?: string;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListProtocolUpgradeProposalsResponse {
-  protocolUpgradeProposals?: datanode.api.v2.ProtocolUpgradeProposalConnection;
-}
-
-export interface ListReferralSetRefereesRequest {
-  referralSetId?: string;
-  pagination?: datanode.api.v2.Pagination;
-  referrer?: string;
-  referee?: string;
-  aggregationEpochs?: string | number;
-}
-
-export interface ListReferralSetRefereesResponse {
-  referralSetReferees?: datanode.api.v2.ReferralSetRefereeConnection;
-}
-
-export interface ListReferralSetsRequest {
-  referralSetId?: string;
-  pagination?: datanode.api.v2.Pagination;
-  referrer?: string;
-  referee?: string;
-}
-
-export interface ListReferralSetsResponse {
-  referralSets?: datanode.api.v2.ReferralSetConnection;
-}
-
-export interface ListRewardSummariesRequest {
-  partyId?: string;
-  assetId?: string;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListRewardSummariesResponse {
-  summaries?: vega.RewardSummary[];
-}
-
-export interface ListRewardsRequest {
-  partyId?: string;
-  assetId?: string;
-  pagination?: datanode.api.v2.Pagination;
-  fromEpoch?: string | number;
-  toEpoch?: string | number;
-  teamId?: string;
-  gameId?: string;
-}
-
-export interface ListRewardsResponse {
-  rewards?: datanode.api.v2.RewardsConnection;
-}
-
-export interface ListStopOrdersRequest {
-  pagination?: datanode.api.v2.Pagination;
-  filter?: datanode.api.v2.StopOrderFilter;
-}
-
-export interface ListStopOrdersResponse {
-  orders?: datanode.api.v2.StopOrderConnection;
-}
-
-export interface ListSuccessorMarketsRequest {
-  marketId?: string;
-  includeFullHistory?: boolean;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListSuccessorMarketsResponse {
-  successorMarkets?: datanode.api.v2.SuccessorMarketConnection;
-}
-
-export interface ListTeamMembersStatisticsRequest {
-  teamId?: string;
-  partyId?: string;
-  aggregationEpochs?: string | number;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListTeamMembersStatisticsResponse {
-  statistics?: datanode.api.v2.TeamMembersStatisticsConnection;
-}
-
-export interface ListTeamRefereeHistoryRequest {
-  referee?: string;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListTeamRefereeHistoryResponse {
-  teamRefereeHistory?: datanode.api.v2.TeamRefereeHistoryConnection;
-}
-
-export interface ListTeamRefereesRequest {
-  teamId?: string;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListTeamRefereesResponse {
-  teamReferees?: datanode.api.v2.TeamRefereeConnection;
-}
-
-export interface ListTeamsRequest {
-  teamId?: string;
-  partyId?: string;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListTeamsResponse {
-  teams?: datanode.api.v2.TeamConnection;
-}
-
-export interface ListTeamsStatisticsRequest {
-  teamId?: string;
-  aggregationEpochs?: string | number;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListTeamsStatisticsResponse {
-  statistics?: datanode.api.v2.TeamsStatisticsConnection;
-}
-
-export interface ListTradesRequest {
-  marketIds?: string[];
-  orderIds?: string[];
-  partyIds?: string[];
-  pagination?: datanode.api.v2.Pagination;
-  dateRange?: datanode.api.v2.DateRange;
-}
-
-export interface ListTradesResponse {
-  trades?: datanode.api.v2.TradeConnection;
-}
-
-export interface ListTransfersRequest {
-  pubkey?: string;
-  direction?: datanode.api.v2.TransferDirection;
-  pagination?: datanode.api.v2.Pagination;
-  isReward?: boolean;
-  fromEpoch?: string | number;
-  toEpoch?: string | number;
-  status?: vega.events.v1.TransferStatus;
-  scope?: datanode.api.v2.ListTransfersRequestScope;
-  gameId?: string;
-  fromAccountType?: vega.AccountType;
-  toAccountType?: vega.AccountType;
-}
-
-export interface ListTransfersResponse {
-  transfers?: datanode.api.v2.TransferConnection;
-}
-
-export interface ListVotesRequest {
-  partyId?: string;
-  proposalId?: string;
-  pagination?: datanode.api.v2.Pagination;
-}
-
-export interface ListVotesResponse {
-  votes?: datanode.api.v2.VoteConnection;
-}
-
-export interface ListWithdrawalsRequest {
-  partyId?: string;
-  pagination?: datanode.api.v2.Pagination;
-  dateRange?: datanode.api.v2.DateRange;
-}
-
-export interface ListWithdrawalsResponse {
-  withdrawals?: datanode.api.v2.WithdrawalsConnection;
-}
-
-export interface MarginConnection {
-  edges?: datanode.api.v2.MarginEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface MarginEdge {
-  node?: vega.MarginLevels;
-  cursor?: string;
-}
-
-export interface MarginEstimate {
-  worstCase?: vega.MarginLevels;
-  bestCase?: vega.MarginLevels;
-}
-
-export interface MarketConnection {
-  edges?: datanode.api.v2.MarketEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface MarketDataConnection {
-  edges?: datanode.api.v2.MarketDataEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface MarketDataEdge {
-  node?: vega.MarketData;
-  cursor?: string;
-}
-
-export interface MarketEdge {
-  node?: vega.Market;
-  cursor?: string;
-}
-
-export interface NetworkParameterConnection {
-  edges?: datanode.api.v2.NetworkParameterEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface NetworkParameterEdge {
-  node?: vega.NetworkParameter;
-  cursor?: string;
-}
-
-export interface NodeBasic {
-  id?: string;
-  pubKey?: string;
-  tmPubKey?: string;
-  ethereumAddress?: string;
-  infoUrl?: string;
-  location?: string;
-  status?: vega.NodeStatus;
-  name?: string;
-  avatarUrl?: string;
-}
-
-export interface NodeEdge {
-  node?: vega.Node;
-  cursor?: string;
-}
-
-export interface NodeSignatureEdge {
-  node?: vega.commands.v1.NodeSignature;
-  cursor?: string;
-}
-
-export interface NodeSignaturesConnection {
-  edges?: datanode.api.v2.NodeSignatureEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface NodesConnection {
-  edges?: datanode.api.v2.NodeEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface ObserveAccountsRequest {
-  marketId?: string;
-  partyId?: string;
-  asset?: string;
-  type?: vega.AccountType;
-}
-
-export interface ObserveAccountsResponse {
-  snapshot?: datanode.api.v2.AccountSnapshotPage;
-  updates?: datanode.api.v2.AccountUpdates;
-}
-
-export interface ObserveCandleDataRequest {
-  candleId?: string;
-}
-
-export interface ObserveCandleDataResponse {
-  candle?: datanode.api.v2.Candle;
-}
-
-export interface ObserveDelegationsRequest {
-  partyId?: string;
-  nodeId?: string;
-}
-
-export interface ObserveDelegationsResponse {
-  delegation?: vega.Delegation;
-}
-
-export interface ObserveEventBusRequest {
-  type?: vega.events.v1.BusEventType[];
-  marketId?: string;
-  partyId?: string;
-  batchSize?: string | number;
-}
-
-export interface ObserveEventBusResponse {
-  events?: vega.events.v1.BusEvent[];
-}
-
-export interface ObserveGovernanceRequest {
-  partyId?: string;
-}
-
-export interface ObserveGovernanceResponse {
-  data?: vega.GovernanceData;
-}
-
-export interface ObserveLedgerMovementsRequest {}
-
-export interface ObserveLedgerMovementsResponse {
-  ledgerMovement?: vega.LedgerMovement;
-}
-
-export interface ObserveLiquidityProvisionsRequest {
-  marketId?: string;
-  partyId?: string;
-}
-
-export interface ObserveLiquidityProvisionsResponse {
-  liquidityProvisions?: vega.LiquidityProvision[];
-}
-
-export interface ObserveMarginLevelsRequest {
-  partyId?: string;
-  marketId?: string;
-}
-
-export interface ObserveMarginLevelsResponse {
-  marginLevels?: vega.MarginLevels;
-}
-
-export interface ObserveMarketsDataRequest {
-  marketIds?: string[];
-}
-
-export interface ObserveMarketsDataResponse {
-  marketData?: vega.MarketData[];
-}
-
-export interface ObserveMarketsDepthRequest {
-  marketIds?: string[];
-}
-
-export interface ObserveMarketsDepthResponse {
-  marketDepth?: vega.MarketDepth[];
-}
-
-export interface ObserveMarketsDepthUpdatesRequest {
-  marketIds?: string[];
-}
-
-export interface ObserveMarketsDepthUpdatesResponse {
-  update?: vega.MarketDepthUpdate[];
-}
-
-export interface ObserveOrdersRequest {
-  marketIds?: string[];
-  partyIds?: string[];
-  excludeLiquidity?: boolean;
-}
-
-export interface ObserveOrdersResponse {
-  snapshot?: datanode.api.v2.OrderSnapshotPage;
-  updates?: datanode.api.v2.OrderUpdates;
-}
-
-export interface ObservePositionsRequest {
-  partyId?: string;
-  marketId?: string;
-}
-
-export interface ObservePositionsResponse {
-  snapshot?: datanode.api.v2.PositionSnapshotPage;
-  updates?: datanode.api.v2.PositionUpdates;
-}
-
-export interface ObserveRewardsRequest {
-  assetId?: string;
-  partyId?: string;
-}
-
-export interface ObserveRewardsResponse {
-  reward?: vega.Reward;
-}
-
-export interface ObserveTradesRequest {
-  marketIds?: string[];
-  partyIds?: string[];
-}
-
-export interface ObserveTradesResponse {
-  trades?: vega.Trade[];
-}
-
-export interface ObserveTransactionResultsRequest {
-  partyIds?: string[];
-  hashes?: string[];
-  status?: boolean;
-}
-
-export interface ObserveTransactionResultsResponse {
-  transactionResults?: vega.events.v1.TransactionResult[];
-}
-
-export interface ObserveVotesRequest {
-  partyId?: string;
-  proposalId?: string;
-}
-
-export interface ObserveVotesResponse {
-  vote?: vega.Vote;
-}
-
-export interface OracleDataConnection {
-  edges?: datanode.api.v2.OracleDataEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface OracleDataEdge {
-  node?: vega.OracleData;
-  cursor?: string;
-}
-
-export interface OracleSpecEdge {
-  node?: vega.OracleSpec;
-  cursor?: string;
-}
-
-export interface OracleSpecsConnection {
-  edges?: datanode.api.v2.OracleSpecEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface OrderConnection {
-  edges?: datanode.api.v2.OrderEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface OrderEdge {
-  node?: vega.Order;
-  cursor?: string;
-}
-
-export interface OrderFilter {
-  statuses?: vega.OrderStatus[];
-  types?: vega.OrderType[];
-  timeInForces?: vega.OrderTimeInForce[];
-  excludeLiquidity?: boolean;
-  partyIds?: string[];
-  marketIds?: string[];
-  reference?: string;
-  dateRange?: datanode.api.v2.DateRange;
-  liveOnly?: boolean;
-}
-
-export interface OrderInfo {
-  side?: vega.Side;
-  price?: string;
-  remaining?: string | number;
-  isMarketOrder?: boolean;
-}
-
-export interface OrderSnapshotPage {
-  orders?: vega.Order[];
-  lastPage?: boolean;
-}
-
-export interface OrderUpdates {
-  orders?: vega.Order[];
-}
-
-export interface PageInfo {
-  hasNextPage?: boolean;
-  hasPreviousPage?: boolean;
-  startCursor?: string;
-  endCursor?: string;
-}
-
-export interface Pagination {
-  first?: string | number;
-  after?: string;
-  last?: string | number;
-  before?: string;
-  newestFirst?: boolean;
-}
-
-export interface PaidLiquidityFeesConnection {
-  edges?: datanode.api.v2.PaidLiquidityFeesEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface PaidLiquidityFeesEdge {
-  node?: vega.events.v1.PaidLiquidityFeesStats;
-  cursor?: string;
-}
-
-export interface PartiesProfilesConnection {
-  edges?: datanode.api.v2.PartyProfileEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface PartyConnection {
-  edges?: datanode.api.v2.PartyEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface PartyEdge {
-  node?: vega.Party;
-  cursor?: string;
-}
-
-export interface PartyMarginMode {
-  marketId?: string;
-  partyId?: string;
-  marginMode?: vega.MarginMode;
-  marginFactor?: string;
-  minTheoreticalMarginFactor?: string;
-  maxTheoreticalLeverage?: string;
-  atEpoch?: string | number;
-}
-
-export interface PartyMarginModeEdge {
-  node?: datanode.api.v2.PartyMarginMode;
-  cursor?: string;
-}
-
-export interface PartyMarginModesConnection {
-  edges?: datanode.api.v2.PartyMarginModeEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface PartyProfileEdge {
-  node?: vega.PartyProfile;
-  cursor?: string;
-}
-
-export interface PingRequest {}
-export interface PingResponse {}
-
-export interface PositionConnection {
-  edges?: datanode.api.v2.PositionEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface PositionEdge {
-  node?: vega.Position;
-  cursor?: string;
-}
-
-export interface PositionSnapshotPage {
-  positions?: vega.Position[];
-  lastPage?: boolean;
-}
-
-export interface PositionUpdates {
-  positions?: vega.Position[];
-}
-
-export interface PositionsFilter {
-  partyIds?: string[];
-  marketIds?: string[];
-}
-
-export interface ProtocolUpgradeProposalConnection {
-  edges?: datanode.api.v2.ProtocolUpgradeProposalEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface ProtocolUpgradeProposalEdge {
-  node?: vega.events.v1.ProtocolUpgradeEvent;
-  cursor?: string;
-}
-
-export interface QuantumRewardsPerEpoch {
-  epoch?: string | number;
-  totalQuantumRewards?: string;
-}
-
-export interface QuantumVolumesPerEpoch {
-  epoch?: string | number;
-  totalQuantumVolumes?: string;
-}
-
-export interface ReferralProgram {
-  version?: string | number;
-  id?: string;
-  benefitTiers?: vega.BenefitTier[];
-  endOfProgramTimestamp?: string | number;
-  windowLength?: string | number;
-  stakingTiers?: vega.StakingTier[];
-  endedAt?: string | number;
-}
-
-export interface ReferralSet {
-  id?: string;
-  referrer?: string;
-  createdAt?: string | number;
-  updatedAt?: string | number;
-  totalMembers?: string | number;
-}
-
-export interface ReferralSetConnection {
-  edges?: datanode.api.v2.ReferralSetEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface ReferralSetEdge {
-  node?: datanode.api.v2.ReferralSet;
-  cursor?: string;
-}
-
-export interface ReferralSetReferee {
-  referralSetId?: string;
-  referee?: string;
-  joinedAt?: string | number;
-  atEpoch?: string | number;
-  totalRefereeNotionalTakerVolume?: string;
-  totalRefereeGeneratedRewards?: string;
-}
-
-export interface ReferralSetRefereeConnection {
-  edges?: datanode.api.v2.ReferralSetRefereeEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface ReferralSetRefereeEdge {
-  node?: datanode.api.v2.ReferralSetReferee;
-  cursor?: string;
-}
-
-export interface ReferralSetStats {
-  atEpoch?: string | number;
-  referralSetRunningNotionalTakerVolume?: string;
-  partyId?: string;
-  discountFactor?: string;
-  rewardFactor?: string;
-  epochNotionalTakerVolume?: string;
-  rewardsMultiplier?: string;
-  rewardsFactorMultiplier?: string;
-  wasEligible?: boolean;
-  referrerTakerVolume?: string;
-}
-
-export interface ReferralSetStatsConnection {
-  edges?: datanode.api.v2.ReferralSetStatsEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface ReferralSetStatsEdge {
-  node?: datanode.api.v2.ReferralSetStats;
-  cursor?: string;
-}
-
-export interface RewardEdge {
-  node?: vega.Reward;
-  cursor?: string;
-}
-
-export interface RewardSummaryFilter {
-  assetIds?: string[];
-  marketIds?: string[];
-  fromEpoch?: string | number;
-  toEpoch?: string | number;
-}
-
-export interface RewardsConnection {
-  edges?: datanode.api.v2.RewardEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface StakeLinkingEdge {
-  node?: vega.events.v1.StakeLinking;
-  cursor?: string;
-}
-
-export interface StakesConnection {
-  edges?: datanode.api.v2.StakeLinkingEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface StopOrderConnection {
-  edges?: datanode.api.v2.StopOrderEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface StopOrderEdge {
-  node?: vega.events.v1.StopOrderEvent;
-  cursor?: string;
-}
-
-export interface StopOrderFilter {
-  statuses?: vega.StopOrderStatus[];
-  expiryStrategies?: vega.StopOrderExpiryStrategy[];
-  dateRange?: datanode.api.v2.DateRange;
-  partyIds?: string[];
-  marketIds?: string[];
-  liveOnly?: boolean;
-}
-
-export interface SuccessorMarket {
-  market?: vega.Market;
-  proposals?: vega.GovernanceData[];
-}
-
-export interface SuccessorMarketConnection {
-  edges?: datanode.api.v2.SuccessorMarketEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface SuccessorMarketEdge {
-  node?: datanode.api.v2.SuccessorMarket;
-  cursor?: string;
-}
-
-export interface Team {
-  teamId?: string;
-  referrer?: string;
-  name?: string;
-  teamUrl?: string;
-  avatarUrl?: string;
-  createdAt?: string | number;
-  closed?: boolean;
-  createdAtEpoch?: string | number;
-  allowList?: string[];
-  totalMembers?: string | number;
-}
-
-export interface TeamConnection {
-  edges?: datanode.api.v2.TeamEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface TeamEdge {
-  node?: datanode.api.v2.Team;
-  cursor?: string;
-}
-
-export interface TeamGameEntities {
-  team?: datanode.api.v2.TeamGameEntity[];
-}
-
-export interface TeamGameEntity {
-  team?: datanode.api.v2.TeamGameParticipation;
-  rank?: string | number;
-  volume?: string;
-  rewardMetric?: vega.DispatchMetric;
-  rewardEarned?: string;
-  totalRewardsEarned?: string;
-  rewardEarnedQuantum?: string;
-  totalRewardsEarnedQuantum?: string;
-}
-
-export interface TeamGameParticipation {
-  teamId?: string;
-  membersParticipating?: datanode.api.v2.IndividualGameEntity[];
-}
-
-export interface TeamMemberStatistics {
-  partyId?: string;
-  totalQuantumVolume?: string;
-  totalQuantumRewards?: string;
-  quantumRewards?: datanode.api.v2.QuantumRewardsPerEpoch[];
-  totalGamesPlayed?: string | number;
-  gamesPlayed?: string[];
-  quantumVolumes?: datanode.api.v2.QuantumVolumesPerEpoch[];
-}
-
-export interface TeamMemberStatisticsEdge {
-  node?: datanode.api.v2.TeamMemberStatistics;
-  cursor?: string;
-}
-
-export interface TeamMembersStatisticsConnection {
-  edges?: datanode.api.v2.TeamMemberStatisticsEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface TeamReferee {
-  teamId?: string;
-  referee?: string;
-  joinedAt?: string | number;
-  joinedAtEpoch?: string | number;
-}
-
-export interface TeamRefereeConnection {
-  edges?: datanode.api.v2.TeamRefereeEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface TeamRefereeEdge {
-  node?: datanode.api.v2.TeamReferee;
-  cursor?: string;
-}
-
-export interface TeamRefereeHistory {
-  teamId?: string;
-  joinedAt?: string | number;
-  joinedAtEpoch?: string | number;
-}
-
-export interface TeamRefereeHistoryConnection {
-  edges?: datanode.api.v2.TeamRefereeHistoryEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface TeamRefereeHistoryEdge {
-  node?: datanode.api.v2.TeamRefereeHistory;
-  cursor?: string;
-}
-
-export interface TeamStatistics {
-  teamId?: string;
-  totalQuantumVolume?: string;
-  totalQuantumRewards?: string;
-  quantumRewards?: datanode.api.v2.QuantumRewardsPerEpoch[];
-  totalGamesPlayed?: string | number;
-  gamesPlayed?: string[];
-  quantumVolumes?: datanode.api.v2.QuantumVolumesPerEpoch[];
-}
-
-export interface TeamStatisticsEdge {
-  node?: datanode.api.v2.TeamStatistics;
-  cursor?: string;
-}
-
-export interface TeamsStatisticsConnection {
-  edges?: datanode.api.v2.TeamStatisticsEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface TimeWeightedNotionalPosition {
-  assetId?: string;
-  partyId?: string;
-  gameId?: string;
-  atEpoch?: string | number;
-  timeWeightedNotionalPosition?: string;
-  lastUpdated?: string | number;
-}
-
-export interface TradeConnection {
-  edges?: datanode.api.v2.TradeEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface TradeEdge {
-  node?: vega.Trade;
-  cursor?: string;
-}
-
-export interface TransferConnection {
-  edges?: datanode.api.v2.TransferEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface TransferEdge {
-  node?: datanode.api.v2.TransferNode;
-  cursor?: string;
-}
-
-export interface TransferNode {
-  transfer?: vega.events.v1.Transfer;
-  fees?: vega.events.v1.TransferFees[];
-}
-
-export interface VolumeDiscountProgram {
-  version?: string | number;
-  id?: string;
-  benefitTiers?: vega.VolumeBenefitTier[];
-  endOfProgramTimestamp?: string | number;
-  windowLength?: string | number;
-  endedAt?: string | number;
-}
-
-export interface VolumeDiscountStats {
-  atEpoch?: string | number;
-  partyId?: string;
-  discountFactor?: string;
-  runningVolume?: string;
-}
-
-export interface VolumeDiscountStatsConnection {
-  edges?: datanode.api.v2.VolumeDiscountStatsEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface VolumeDiscountStatsEdge {
-  node?: datanode.api.v2.VolumeDiscountStats;
-  cursor?: string;
-}
-
-export interface VoteConnection {
-  edges?: datanode.api.v2.VoteEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-export interface VoteEdge {
-  node?: vega.Vote;
-  cursor?: string;
-}
-
-export interface WithdrawalEdge {
-  node?: vega.Withdrawal;
-  cursor?: string;
-}
-
-export interface WithdrawalsConnection {
-  edges?: datanode.api.v2.WithdrawalEdge[];
-  pageInfo?: datanode.api.v2.PageInfo;
-}
-
-};
-namespace vega.api.v1 {;
-
-/** Blockchain transaction type*/
-export enum SubmitRawTransactionRequestType {
-  /**  */
-  TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED",
-  /** Transaction will be submitted without waiting for response */
-  TYPE_ASYNC = "TYPE_ASYNC",
-  /** Transaction will be submitted, and blocking until the
+    STATUS_STOPPED = 4,
+    /** Indicates a transfer cancelled by the user */
+    STATUS_CANCELLED = 5,
+  }
+
+  export interface AuctionEvent {
+    marketId?: string;
+    openingAuction?: boolean;
+    leave?: boolean;
+    start?: string | number;
+    end?: string | number;
+    trigger?: vega.AuctionTrigger;
+    extensionTrigger?: vega.AuctionTrigger;
+  }
+
+  export interface BeginBlock {
+    height?: string | number;
+    timestamp?: string | number;
+    hash?: string;
+  }
+
+  export interface BusEvent {
+    id?: string;
+    block?: string;
+    type?: vega.events.v1.BusEventType;
+    timeUpdate?: vega.events.v1.TimeUpdate;
+    ledgerMovements?: vega.events.v1.LedgerMovements;
+    positionResolution?: vega.events.v1.PositionResolution;
+    order?: vega.Order;
+    account?: vega.Account;
+    party?: vega.Party;
+    trade?: vega.Trade;
+    marginLevels?: vega.MarginLevels;
+    proposal?: vega.Proposal;
+    vote?: vega.Vote;
+    marketData?: vega.MarketData;
+    nodeSignature?: vega.commands.v1.NodeSignature;
+    lossSocialization?: vega.events.v1.LossSocialization;
+    settlePosition?: vega.events.v1.SettlePosition;
+    settleDistressed?: vega.events.v1.SettleDistressed;
+    marketCreated?: vega.Market;
+    asset?: vega.Asset;
+    marketTick?: vega.events.v1.MarketTick;
+    withdrawal?: vega.Withdrawal;
+    deposit?: vega.Deposit;
+    auction?: vega.events.v1.AuctionEvent;
+    riskFactor?: vega.RiskFactor;
+    networkParameter?: vega.NetworkParameter;
+    liquidityProvision?: vega.LiquidityProvision;
+    marketUpdated?: vega.Market;
+    oracleSpec?: vega.OracleSpec;
+    oracleData?: vega.OracleData;
+    delegationBalance?: vega.events.v1.DelegationBalanceEvent;
+    validatorScore?: vega.events.v1.ValidatorScoreEvent;
+    epochEvent?: vega.events.v1.EpochEvent;
+    validatorUpdate?: vega.events.v1.ValidatorUpdate;
+    stakeLinking?: vega.events.v1.StakeLinking;
+    rewardPayout?: vega.events.v1.RewardPayoutEvent;
+    checkpoint?: vega.events.v1.CheckpointEvent;
+    keyRotation?: vega.events.v1.KeyRotation;
+    stateVar?: vega.events.v1.StateVar;
+    networkLimits?: vega.NetworkLimits;
+    transfer?: vega.events.v1.Transfer;
+    rankingEvent?: vega.events.v1.ValidatorRankingEvent;
+    erc20MultisigSignerEvent?: vega.events.v1.ERC20MultiSigSignerEvent;
+    erc20MultisigSetThresholdEvent?: vega.events.v1.ERC20MultiSigThresholdSetEvent;
+    erc20MultisigSignerAdded?: vega.events.v1.ERC20MultiSigSignerAdded;
+    erc20MultisigSignerRemoved?: vega.events.v1.ERC20MultiSigSignerRemoved;
+    positionStateEvent?: vega.events.v1.PositionStateEvent;
+    ethereumKeyRotation?: vega.events.v1.EthereumKeyRotation;
+    protocolUpgradeEvent?: vega.events.v1.ProtocolUpgradeEvent;
+    beginBlock?: vega.events.v1.BeginBlock;
+    endBlock?: vega.events.v1.EndBlock;
+    protocolUpgradeStarted?: vega.events.v1.ProtocolUpgradeStarted;
+    settleMarket?: vega.events.v1.SettleMarket;
+    transactionResult?: vega.events.v1.TransactionResult;
+    coreSnapshotEvent?: vega.events.v1.CoreSnapshotData;
+    protocolUpgradeDataNodeReady?: vega.events.v1.ProtocolUpgradeDataNodeReady;
+    distressedOrders?: vega.events.v1.DistressedOrders;
+    expiredOrders?: vega.events.v1.ExpiredOrders;
+    distressedPositions?: vega.events.v1.DistressedPositions;
+    stopOrder?: vega.events.v1.StopOrderEvent;
+    fundingPeriod?: vega.events.v1.FundingPeriod;
+    fundingPeriodDataPoint?: vega.events.v1.FundingPeriodDataPoint;
+    teamCreated?: vega.events.v1.TeamCreated;
+    teamUpdated?: vega.events.v1.TeamUpdated;
+    refereeSwitchedTeam?: vega.events.v1.RefereeSwitchedTeam;
+    refereeJoinedTeam?: vega.events.v1.RefereeJoinedTeam;
+    referralProgramStarted?: vega.events.v1.ReferralProgramStarted;
+    referralProgramUpdated?: vega.events.v1.ReferralProgramUpdated;
+    referralProgramEnded?: vega.events.v1.ReferralProgramEnded;
+    referralSetCreated?: vega.events.v1.ReferralSetCreated;
+    refereeJoinedReferralSet?: vega.events.v1.RefereeJoinedReferralSet;
+    partyActivityStreak?: vega.events.v1.PartyActivityStreak;
+    volumeDiscountProgramStarted?: vega.events.v1.VolumeDiscountProgramStarted;
+    volumeDiscountProgramUpdated?: vega.events.v1.VolumeDiscountProgramUpdated;
+    volumeDiscountProgramEnded?: vega.events.v1.VolumeDiscountProgramEnded;
+    referralSetStatsUpdated?: vega.events.v1.ReferralSetStatsUpdated;
+    vestingStatsUpdated?: vega.events.v1.VestingStatsUpdated;
+    volumeDiscountStatsUpdated?: vega.events.v1.VolumeDiscountStatsUpdated;
+    feesStats?: vega.events.v1.FeesStats;
+    fundingPayments?: vega.events.v1.FundingPayments;
+    paidLiquidityFeesStats?: vega.events.v1.PaidLiquidityFeesStats;
+    vestingBalancesSummary?: vega.events.v1.VestingBalancesSummary;
+    transferFees?: vega.events.v1.TransferFees;
+    transferFeesDiscount?: vega.events.v1.TransferFeesDiscount;
+    partyMarginModeUpdated?: vega.events.v1.PartyMarginModeUpdated;
+    partyProfileUpdated?: vega.events.v1.PartyProfileUpdated;
+    teamsStatsUpdated?: vega.events.v1.TeamsStatsUpdated;
+    timeWeightedNotionalPositionUpdated?: vega.events.v1.TimeWeightedNotionalPositionUpdated;
+    cancelledOrders?: vega.events.v1.CancelledOrders;
+    market?: vega.events.v1.MarketEvent;
+    txErrEvent?: vega.events.v1.TxErrorEvent;
+    version?: string | number;
+    chainId?: string;
+    txHash?: string;
+  }
+
+  export interface CancelledOrders {
+    marketId?: string;
+    partyId?: string;
+    orderIds?: string[];
+  }
+
+  export interface CheckpointEvent {
+    hash?: string;
+    blockHash?: string;
+    blockHeight?: string | number;
+  }
+
+  export interface CoreSnapshotData {
+    blockHeight?: string | number;
+    blockHash?: string;
+    coreVersion?: string;
+    protocolUpgradeBlock?: boolean;
+  }
+
+  export interface DelegationBalanceEvent {
+    party?: string;
+    nodeId?: string;
+    amount?: string;
+    epochSeq?: string;
+  }
+
+  export interface DistressedOrders {
+    marketId?: string;
+    parties?: string[];
+  }
+
+  export interface DistressedPositions {
+    marketId?: string;
+    distressedParties?: string[];
+    safeParties?: string[];
+  }
+
+  export interface ERC20MultiSigSignerAdded {
+    signatureId?: string;
+    validatorId?: string;
+    timestamp?: string | number;
+    newSigner?: string;
+    submitter?: string;
+    nonce?: string;
+    epochSeq?: string;
+    chainId?: string;
+  }
+
+  export interface ERC20MultiSigSignerEvent {
+    id?: string;
+    type?: vega.events.v1.ERC20MultiSigSignerEventType;
+    signer?: string;
+    nonce?: string;
+    blockTime?: string | number;
+    txHash?: string;
+    logIndex?: string | number;
+    blockNumber?: string | number;
+    chainId?: string;
+  }
+
+  export interface ERC20MultiSigSignerRemoved {
+    signatureSubmitters?: vega.events.v1.ERC20MultiSigSignerRemovedSubmitter[];
+    validatorId?: string;
+    timestamp?: string | number;
+    oldSigner?: string;
+    nonce?: string;
+    epochSeq?: string;
+    chainId?: string;
+  }
+
+  export interface ERC20MultiSigSignerRemovedSubmitter {
+    signatureId?: string;
+    submitter?: string;
+  }
+
+  export interface ERC20MultiSigThresholdSetEvent {
+    id?: string;
+    newThreshold?: string | number;
+    nonce?: string;
+    blockTime?: string | number;
+    txHash?: string;
+    logIndex?: string | number;
+    blockNumber?: string | number;
+    chainId?: string;
+  }
+
+  export interface EndBlock {
+    height?: string | number;
+  }
+
+  export interface EpochEvent {
+    seq?: string | number;
+    action?: vega.EpochAction;
+    startTime?: string | number;
+    expireTime?: string | number;
+    endTime?: string | number;
+  }
+
+  export interface EthereumKeyRotation {
+    nodeId?: string;
+    oldAddress?: string;
+    newAddress?: string;
+    blockHeight?: string | number;
+  }
+
+  export interface ExpiredOrders {
+    marketId?: string;
+    orderIds?: string[];
+  }
+
+  export interface FeesStats {
+    market?: string;
+    asset?: string;
+    epochSeq?: string | number;
+    totalRewardsReceived?: vega.events.v1.PartyAmount[];
+    referrerRewardsGenerated?: vega.events.v1.ReferrerRewardsGenerated[];
+    refereesDiscountApplied?: vega.events.v1.PartyAmount[];
+    volumeDiscountApplied?: vega.events.v1.PartyAmount[];
+    totalMakerFeesReceived?: vega.events.v1.PartyAmount[];
+    makerFeesGenerated?: vega.events.v1.MakerFeesGenerated[];
+    totalFeesPaidAndReceived?: vega.events.v1.PartyAmount[];
+  }
+
+  export interface FundingPayment {
+    partyId?: string;
+    amount?: string;
+  }
+
+  export interface FundingPayments {
+    marketId?: string;
+    seq?: string | number;
+    payments?: vega.events.v1.FundingPayment[];
+  }
+
+  export interface FundingPeriod {
+    marketId?: string;
+    seq?: string | number;
+    start?: string | number;
+    end?: string | number;
+    fundingPayment?: string;
+    fundingRate?: string;
+    internalTwap?: string;
+    externalTwap?: string;
+  }
+
+  export interface FundingPeriodDataPoint {
+    marketId?: string;
+    seq?: string | number;
+    dataPointType?: vega.events.v1.FundingPeriodDataPointSource;
+    price?: string;
+    timestamp?: string | number;
+    twap?: string;
+  }
+
+  export interface KeyRotation {
+    nodeId?: string;
+    oldPubKey?: string;
+    newPubKey?: string;
+    blockHeight?: string | number;
+  }
+
+  export interface LedgerMovements {
+    ledgerMovements?: vega.LedgerMovement[];
+  }
+
+  export interface LossSocialization {
+    marketId?: string;
+    partyId?: string;
+    amount?: string;
+  }
+
+  export interface MakerFeesGenerated {
+    taker?: string;
+    makerFeesPaid?: vega.events.v1.PartyAmount[];
+  }
+
+  export interface MarketEvent {
+    marketId?: string;
+    payload?: string;
+  }
+
+  export interface MarketTick {
+    id?: string;
+    time?: string | number;
+  }
+
+  export interface OneOffGovernanceTransfer {
+    deliverOn?: string | number;
+  }
+
+  export interface OneOffTransfer {
+    deliverOn?: string | number;
+  }
+
+  export interface PaidLiquidityFeesStats {
+    market?: string;
+    asset?: string;
+    epochSeq?: string | number;
+    totalFeesPaid?: string;
+    feesPaidPerParty?: vega.events.v1.PartyAmount[];
+  }
+
+  export interface PartyActivityStreak {
+    party?: string;
+    activeFor?: string | number;
+    inactiveFor?: string | number;
+    isActive?: boolean;
+    rewardDistributionActivityMultiplier?: string;
+    rewardVestingActivityMultiplier?: string;
+    epoch?: string | number;
+    tradedVolume?: string;
+    openVolume?: string;
+  }
+
+  export interface PartyAmount {
+    party?: string;
+    amount?: string;
+    quantumAmount?: string;
+  }
+
+  export interface PartyLockedBalance {
+    asset?: string;
+    untilEpoch?: string | number;
+    balance?: string;
+  }
+
+  export interface PartyMarginModeUpdated {
+    marketId?: string;
+    partyId?: string;
+    marginMode?: vega.MarginMode;
+    marginFactor?: string;
+    minTheoreticalMarginFactor?: string;
+    maxTheoreticalLeverage?: string;
+    atEpoch?: string | number;
+  }
+
+  export interface PartyProfileUpdated {
+    updatedProfile?: vega.PartyProfile;
+  }
+
+  export interface PartyVestingBalance {
+    asset?: string;
+    balance?: string;
+  }
+
+  export interface PartyVestingStats {
+    partyId?: string;
+    rewardBonusMultiplier?: string;
+    quantumBalance?: string;
+  }
+
+  export interface PartyVestingSummary {
+    party?: string;
+    partyLockedBalances?: vega.events.v1.PartyLockedBalance[];
+    partyVestingBalances?: vega.events.v1.PartyVestingBalance[];
+  }
+
+  export interface PartyVolumeDiscountStats {
+    partyId?: string;
+    discountFactor?: string;
+    runningVolume?: string;
+  }
+
+  export interface PositionResolution {
+    marketId?: string;
+    distressed?: string | number;
+    closed?: string | number;
+    markPrice?: string;
+  }
+
+  export interface PositionStateEvent {
+    partyId?: string;
+    marketId?: string;
+    size?: string | number;
+    potentialBuys?: string | number;
+    potentialSells?: string | number;
+    vwBuyPrice?: string;
+    vwSellPrice?: string;
+  }
+
+  export interface ProtocolUpgradeDataNodeReady {
+    lastBlockHeight?: string | number;
+  }
+
+  export interface ProtocolUpgradeEvent {
+    upgradeBlockHeight?: string | number;
+    vegaReleaseTag?: string;
+    approvers?: string[];
+    status?: vega.events.v1.ProtocolUpgradeProposalStatus;
+  }
+
+  export interface ProtocolUpgradeStarted {
+    lastBlockHeight?: string | number;
+  }
+
+  export interface RecurringGovernanceTransfer {
+    startEpoch?: string | number;
+    endEpoch?: string | number;
+    dispatchStrategy?: vega.DispatchStrategy;
+  }
+
+  export interface RecurringTransfer {
+    startEpoch?: string | number;
+    endEpoch?: string | number;
+    factor?: string;
+    dispatchStrategy?: vega.DispatchStrategy;
+  }
+
+  export interface RefereeJoinedReferralSet {
+    setId?: string;
+    referee?: string;
+    joinedAt?: string | number;
+    atEpoch?: string | number;
+  }
+
+  export interface RefereeJoinedTeam {
+    teamId?: string;
+    referee?: string;
+    joinedAt?: string | number;
+    atEpoch?: string | number;
+  }
+
+  export interface RefereeStats {
+    partyId?: string;
+    discountFactor?: string;
+    epochNotionalTakerVolume?: string;
+  }
+
+  export interface RefereeSwitchedTeam {
+    fromTeamId?: string;
+    toTeamId?: string;
+    referee?: string;
+    switchedAt?: string | number;
+    atEpoch?: string | number;
+  }
+
+  export interface ReferralProgramEnded {
+    version?: string | number;
+    id?: string;
+    endedAt?: string | number;
+    atEpoch?: string | number;
+  }
+
+  export interface ReferralProgramStarted {
+    program?: vega.ReferralProgram;
+    startedAt?: string | number;
+    atEpoch?: string | number;
+  }
+
+  export interface ReferralProgramUpdated {
+    program?: vega.ReferralProgram;
+    updatedAt?: string | number;
+    atEpoch?: string | number;
+  }
+
+  export interface ReferralSetCreated {
+    setId?: string;
+    referrer?: string;
+    createdAt?: string | number;
+    updatedAt?: string | number;
+  }
+
+  export interface ReferralSetStatsUpdated {
+    setId?: string;
+    atEpoch?: string | number;
+    referralSetRunningNotionalTakerVolume?: string;
+    refereesStats?: vega.events.v1.RefereeStats[];
+    rewardFactor?: string;
+    rewardsMultiplier?: string;
+    rewardsFactorMultiplier?: string;
+    wasEligible?: boolean;
+    referrerTakerVolume?: string;
+  }
+
+  export interface ReferrerRewardsGenerated {
+    referrer?: string;
+    generatedReward?: vega.events.v1.PartyAmount[];
+  }
+
+  export interface RewardPayoutEvent {
+    party?: string;
+    epochSeq?: string;
+    asset?: string;
+    amount?: string;
+    percentOfTotalReward?: string;
+    timestamp?: string | number;
+    rewardType?: string;
+    lockedUntilEpoch?: string;
+    quantumAmount?: string;
+    gameId?: string;
+  }
+
+  export interface SettleDistressed {
+    marketId?: string;
+    partyId?: string;
+    margin?: string;
+    price?: string;
+  }
+
+  export interface SettleMarket {
+    marketId?: string;
+    price?: string;
+    positionFactor?: string;
+  }
+
+  export interface SettlePosition {
+    marketId?: string;
+    partyId?: string;
+    price?: string;
+    tradeSettlements?: vega.events.v1.TradeSettlement[];
+    positionFactor?: string;
+  }
+
+  export interface StakeLinking {
+    id?: string;
+    type?: vega.events.v1.StakeLinkingType;
+    ts?: string | number;
+    party?: string;
+    amount?: string;
+    status?: vega.events.v1.StakeLinkingStatus;
+    finalizedAt?: string | number;
+    txHash?: string;
+    blockHeight?: string | number;
+    blockTime?: string | number;
+    logIndex?: string | number;
+    ethereumAddress?: string;
+  }
+
+  export interface StateVar {
+    id?: string;
+    eventId?: string;
+    state?: string;
+  }
+
+  export interface StopOrderEvent {
+    submission?: vega.commands.v1.OrderSubmission;
+    stopOrder?: vega.StopOrder;
+  }
+
+  export interface StreamStartEvent {
+    chainId?: string;
+  }
+
+  export interface TeamCreated {
+    teamId?: string;
+    referrer?: string;
+    name?: string;
+    teamUrl?: string;
+    avatarUrl?: string;
+    createdAt?: string | number;
+    closed?: boolean;
+    atEpoch?: string | number;
+    allowList?: string[];
+  }
+
+  export interface TeamMemberStats {
+    partyId?: string;
+    notionalVolume?: string;
+  }
+
+  export interface TeamStats {
+    teamId?: string;
+    membersStats?: vega.events.v1.TeamMemberStats[];
+  }
+
+  export interface TeamUpdated {
+    teamId?: string;
+    name?: string;
+    teamUrl?: string;
+    avatarUrl?: string;
+    closed?: boolean;
+    allowList?: string[];
+  }
+
+  export interface TeamsStatsUpdated {
+    atEpoch?: string | number;
+    stats?: vega.events.v1.TeamStats[];
+  }
+
+  export interface TimeUpdate {
+    timestamp?: string | number;
+  }
+
+  export interface TimeWeightedNotionalPositionUpdated {
+    epochSeq?: string | number;
+    asset?: string;
+    party?: string;
+    gameId?: string;
+    timeWeightedNotionalPosition?: string;
+  }
+
+  export interface TradeSettlement {
+    size?: string | number;
+    price?: string;
+    marketPrice?: string;
+  }
+
+  export interface TransactionResult {
+    partyId?: string;
+    status?: boolean;
+    hash?: string;
+    orderSubmission?: vega.commands.v1.OrderSubmission;
+    orderAmendment?: vega.commands.v1.OrderAmendment;
+    orderCancellation?: vega.commands.v1.OrderCancellation;
+    proposal?: vega.commands.v1.ProposalSubmission;
+    voteSubmission?: vega.commands.v1.VoteSubmission;
+    liquidityProvisionSubmission?: vega.commands.v1.LiquidityProvisionSubmission;
+    withdrawSubmission?: vega.commands.v1.WithdrawSubmission;
+    delegateSubmission?: vega.commands.v1.DelegateSubmission;
+    undelegateSubmission?: vega.commands.v1.UndelegateSubmission;
+    liquidityProvisionCancellation?: vega.commands.v1.LiquidityProvisionCancellation;
+    liquidityProvisionAmendment?: vega.commands.v1.LiquidityProvisionAmendment;
+    transfer?: vega.commands.v1.Transfer;
+    cancelTransfer?: vega.commands.v1.CancelTransfer;
+    announceNode?: vega.commands.v1.AnnounceNode;
+    oracleDataSubmission?: vega.commands.v1.OracleDataSubmission;
+    protocolUpgradeProposal?: vega.commands.v1.ProtocolUpgradeProposal;
+    issueSignatures?: vega.commands.v1.IssueSignatures;
+    batchMarketInstructions?: vega.commands.v1.BatchMarketInstructions;
+    keyRotateSubmission?: vega.commands.v1.KeyRotateSubmission;
+    ethereumKeyRotateSubmission?: vega.commands.v1.EthereumKeyRotateSubmission;
+    stopOrdersSubmission?: vega.commands.v1.StopOrdersSubmission;
+    stopOrdersCancellation?: vega.commands.v1.StopOrdersCancellation;
+    createReferralSet?: vega.commands.v1.CreateReferralSet;
+    updateReferralSet?: vega.commands.v1.UpdateReferralSet;
+    applyReferralCode?: vega.commands.v1.ApplyReferralCode;
+    updateMarginMode?: vega.commands.v1.UpdateMarginMode;
+    joinTeam?: vega.commands.v1.JoinTeam;
+    batchProposal?: vega.commands.v1.BatchProposalSubmission;
+    updatePartyProfile?: vega.commands.v1.UpdatePartyProfile;
+    success?: vega.events.v1.TransactionResultSuccessDetails;
+    failure?: vega.events.v1.TransactionResultFailureDetails;
+  }
+
+  export interface TransactionResultFailureDetails {
+    error?: string;
+  }
+
+  export interface TransactionResultSuccessDetails {}
+
+  export interface Transfer {
+    id?: string;
+    from?: string;
+    fromAccountType?: vega.AccountType;
+    to?: string;
+    toAccountType?: vega.AccountType;
+    asset?: string;
+    amount?: string;
+    reference?: string;
+    status?: vega.events.v1.TransferStatus;
+    timestamp?: string | number;
+    reason?: string;
+    gameId?: string;
+    oneOff?: vega.events.v1.OneOffTransfer;
+    recurring?: vega.events.v1.RecurringTransfer;
+    oneOffGovernance?: vega.events.v1.OneOffGovernanceTransfer;
+    recurringGovernance?: vega.events.v1.RecurringGovernanceTransfer;
+  }
+
+  export interface TransferFees {
+    transferId?: string;
+    amount?: string;
+    epoch?: string | number;
+    discountApplied?: string;
+  }
+
+  export interface TransferFeesDiscount {
+    party?: string;
+    asset?: string;
+    amount?: string;
+    epoch?: string | number;
+  }
+
+  export interface TxErrorEvent {
+    partyId?: string;
+    errMsg?: string;
+    orderSubmission?: vega.commands.v1.OrderSubmission;
+    orderAmendment?: vega.commands.v1.OrderAmendment;
+    orderCancellation?: vega.commands.v1.OrderCancellation;
+    proposal?: vega.commands.v1.ProposalSubmission;
+    voteSubmission?: vega.commands.v1.VoteSubmission;
+    liquidityProvisionSubmission?: vega.commands.v1.LiquidityProvisionSubmission;
+    withdrawSubmission?: vega.commands.v1.WithdrawSubmission;
+    delegateSubmission?: vega.commands.v1.DelegateSubmission;
+    undelegateSubmission?: vega.commands.v1.UndelegateSubmission;
+    liquidityProvisionCancellation?: vega.commands.v1.LiquidityProvisionCancellation;
+    liquidityProvisionAmendment?: vega.commands.v1.LiquidityProvisionAmendment;
+    transfer?: vega.commands.v1.Transfer;
+    cancelTransfer?: vega.commands.v1.CancelTransfer;
+    announceNode?: vega.commands.v1.AnnounceNode;
+    oracleDataSubmission?: vega.commands.v1.OracleDataSubmission;
+    protocolUpgradeProposal?: vega.commands.v1.ProtocolUpgradeProposal;
+    issueSignatures?: vega.commands.v1.IssueSignatures;
+    batchMarketInstructions?: vega.commands.v1.BatchMarketInstructions;
+  }
+
+  export interface ValidatorRankingEvent {
+    nodeId?: string;
+    stakeScore?: string;
+    performanceScore?: string;
+    rankingScore?: string;
+    previousStatus?: string;
+    nextStatus?: string;
+    epochSeq?: string;
+    tmVotingPower?: string | number;
+  }
+
+  export interface ValidatorScoreEvent {
+    nodeId?: string;
+    epochSeq?: string;
+    validatorScore?: string;
+    normalisedScore?: string;
+    validatorPerformance?: string;
+    rawValidatorScore?: string;
+    validatorStatus?: string;
+    multisigScore?: string;
+  }
+
+  export interface ValidatorUpdate {
+    nodeId?: string;
+    vegaPubKey?: string;
+    ethereumAddress?: string;
+    tmPubKey?: string;
+    infoUrl?: string;
+    country?: string;
+    name?: string;
+    avatarUrl?: string;
+    vegaPubKeyIndex?: string | number;
+    added?: boolean;
+    fromEpoch?: string | number;
+    submitterAddress?: string;
+    epochSeq?: string | number;
+  }
+
+  export interface VestingBalancesSummary {
+    epochSeq?: string | number;
+    partiesVestingSummary?: vega.events.v1.PartyVestingSummary[];
+  }
+
+  export interface VestingStatsUpdated {
+    atEpoch?: string | number;
+    stats?: vega.events.v1.PartyVestingStats[];
+  }
+
+  export interface VolumeDiscountProgramEnded {
+    version?: string | number;
+    id?: string;
+    endedAt?: string | number;
+    atEpoch?: string | number;
+  }
+
+  export interface VolumeDiscountProgramStarted {
+    program?: vega.VolumeDiscountProgram;
+    startedAt?: string | number;
+    atEpoch?: string | number;
+  }
+
+  export interface VolumeDiscountProgramUpdated {
+    program?: vega.VolumeDiscountProgram;
+    updatedAt?: string | number;
+    atEpoch?: string | number;
+  }
+
+  export interface VolumeDiscountStatsUpdated {
+    atEpoch?: string | number;
+    stats?: vega.events.v1.PartyVolumeDiscountStats[];
+  }
+}
+namespace datanode.api.v2 {
+  /** List of the properties of an account, used for grouping*/
+  export enum AccountField {
+    /**  */
+    ACCOUNT_FIELD_UNSPECIFIED = "ACCOUNT_FIELD_UNSPECIFIED",
+    /**  */
+    ACCOUNT_FIELD_ID = "ACCOUNT_FIELD_ID",
+    /**  */
+    ACCOUNT_FIELD_PARTY_ID = "ACCOUNT_FIELD_PARTY_ID",
+    /**  */
+    ACCOUNT_FIELD_ASSET_ID = "ACCOUNT_FIELD_ASSET_ID",
+    /**  */
+    ACCOUNT_FIELD_MARKET_ID = "ACCOUNT_FIELD_MARKET_ID",
+    /**  */
+    ACCOUNT_FIELD_TYPE = "ACCOUNT_FIELD_TYPE",
+  }
+
+  /** List of the properties of an account, used for grouping*/
+  export enum AccountFieldNumber {
+    /**  */
+    ACCOUNT_FIELD_UNSPECIFIED = 0,
+    /**  */
+    ACCOUNT_FIELD_ID = 1,
+    /**  */
+    ACCOUNT_FIELD_PARTY_ID = 2,
+    /**  */
+    ACCOUNT_FIELD_ASSET_ID = 3,
+    /**  */
+    ACCOUNT_FIELD_MARKET_ID = 4,
+    /**  */
+    ACCOUNT_FIELD_TYPE = 5,
+  }
+
+  /** List of fields for a ledger entry*/
+  export enum LedgerEntryField {
+    /**  */
+    LEDGER_ENTRY_FIELD_UNSPECIFIED = "LEDGER_ENTRY_FIELD_UNSPECIFIED",
+    /**  */
+    LEDGER_ENTRY_FIELD_ACCOUNT_FROM_ID = "LEDGER_ENTRY_FIELD_ACCOUNT_FROM_ID",
+    /**  */
+    LEDGER_ENTRY_FIELD_ACCOUNT_TO_ID = "LEDGER_ENTRY_FIELD_ACCOUNT_TO_ID",
+    /**  */
+    LEDGER_ENTRY_FIELD_TRANSFER_TYPE = "LEDGER_ENTRY_FIELD_TRANSFER_TYPE",
+  }
+
+  /** List of fields for a ledger entry*/
+  export enum LedgerEntryFieldNumber {
+    /**  */
+    LEDGER_ENTRY_FIELD_UNSPECIFIED = 0,
+    /**  */
+    LEDGER_ENTRY_FIELD_ACCOUNT_FROM_ID = 1,
+    /**  */
+    LEDGER_ENTRY_FIELD_ACCOUNT_TO_ID = 2,
+    /**  */
+    LEDGER_ENTRY_FIELD_TRANSFER_TYPE = 3,
+  }
+
+  /** Filter for the types of governance proposals to view*/
+  export enum ListGovernanceDataRequestType {
+    /**  */
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED",
+    /** List all proposals */
+    TYPE_ALL = "TYPE_ALL",
+    /** List new market proposals */
+    TYPE_NEW_MARKET = "TYPE_NEW_MARKET",
+    /** List update market proposals */
+    TYPE_UPDATE_MARKET = "TYPE_UPDATE_MARKET",
+    /** List change Vega network parameter proposals */
+    TYPE_NETWORK_PARAMETERS = "TYPE_NETWORK_PARAMETERS",
+    /** New asset proposals */
+    TYPE_NEW_ASSET = "TYPE_NEW_ASSET",
+    /** Proposals for creating a new free form proposal */
+    TYPE_NEW_FREE_FORM = "TYPE_NEW_FREE_FORM",
+    /** Update asset proposals */
+    TYPE_UPDATE_ASSET = "TYPE_UPDATE_ASSET",
+    /** Propose a new spot market */
+    TYPE_NEW_SPOT_MARKET = "TYPE_NEW_SPOT_MARKET",
+    /** Update an existing spot market */
+    TYPE_UPDATE_SPOT_MARKET = "TYPE_UPDATE_SPOT_MARKET",
+    /** Propose a new transfer */
+    TYPE_NEW_TRANSFER = "TYPE_NEW_TRANSFER",
+    /** Proposal to cancel a transfer */
+    TYPE_CANCEL_TRANSFER = "TYPE_CANCEL_TRANSFER",
+    /** Proposal for updating the state of a market */
+    TYPE_UPDATE_MARKET_STATE = "TYPE_UPDATE_MARKET_STATE",
+    /** Proposal to update the referral program */
+    TYPE_UPDATE_REFERRAL_PROGRAM = "TYPE_UPDATE_REFERRAL_PROGRAM",
+    /** Proposal to update the volume discount program */
+    TYPE_UPDATE_VOLUME_DISCOUNT_PROGRAM = "TYPE_UPDATE_VOLUME_DISCOUNT_PROGRAM",
+  }
+
+  /** Filter for the types of governance proposals to view*/
+  export enum ListGovernanceDataRequestTypeNumber {
+    /**  */
+    TYPE_UNSPECIFIED = 0,
+    /** List all proposals */
+    TYPE_ALL = 1,
+    /** List new market proposals */
+    TYPE_NEW_MARKET = 2,
+    /** List update market proposals */
+    TYPE_UPDATE_MARKET = 3,
+    /** List change Vega network parameter proposals */
+    TYPE_NETWORK_PARAMETERS = 4,
+    /** New asset proposals */
+    TYPE_NEW_ASSET = 5,
+    /** Proposals for creating a new free form proposal */
+    TYPE_NEW_FREE_FORM = 6,
+    /** Update asset proposals */
+    TYPE_UPDATE_ASSET = 7,
+    /** Propose a new spot market */
+    TYPE_NEW_SPOT_MARKET = 8,
+    /** Update an existing spot market */
+    TYPE_UPDATE_SPOT_MARKET = 9,
+    /** Propose a new transfer */
+    TYPE_NEW_TRANSFER = 10,
+    /** Proposal to cancel a transfer */
+    TYPE_CANCEL_TRANSFER = 11,
+    /** Proposal for updating the state of a market */
+    TYPE_UPDATE_MARKET_STATE = 12,
+    /** Proposal to update the referral program */
+    TYPE_UPDATE_REFERRAL_PROGRAM = 13,
+    /** Proposal to update the volume discount program */
+    TYPE_UPDATE_VOLUME_DISCOUNT_PROGRAM = 14,
+  }
+
+  /** Defines the types of a dispatch strategy's scope the API can filter on.*/
+  export enum ListTransfersRequestScope {
+    /**  */
+    SCOPE_UNSPECIFIED = "SCOPE_UNSPECIFIED",
+    /** Matches transfers that have dispatch strategy scope of individual set. */
+    SCOPE_INDIVIDUAL = "SCOPE_INDIVIDUAL",
+    /** Matches transfers that have dispatch strategy scope of team set. */
+    SCOPE_TEAM = "SCOPE_TEAM",
+  }
+
+  /** Defines the types of a dispatch strategy's scope the API can filter on.*/
+  export enum ListTransfersRequestScopeNumber {
+    /**  */
+    SCOPE_UNSPECIFIED = 0,
+    /** Matches transfers that have dispatch strategy scope of individual set. */
+    SCOPE_INDIVIDUAL = 1,
+    /** Matches transfers that have dispatch strategy scope of team set. */
+    SCOPE_TEAM = 2,
+  }
+
+  /** */
+  export enum Table {
+    /**  */
+    TABLE_UNSPECIFIED = "TABLE_UNSPECIFIED",
+    /**  */
+    TABLE_BALANCES = "TABLE_BALANCES",
+    /**  */
+    TABLE_CHECKPOINTS = "TABLE_CHECKPOINTS",
+    /**  */
+    TABLE_DELEGATIONS = "TABLE_DELEGATIONS",
+    /**  */
+    TABLE_LEDGER = "TABLE_LEDGER",
+    /**  */
+    TABLE_ORDERS = "TABLE_ORDERS",
+    /**  */
+    TABLE_TRADES = "TABLE_TRADES",
+    /**  */
+    TABLE_MARKET_DATA = "TABLE_MARKET_DATA",
+    /**  */
+    TABLE_MARGIN_LEVELS = "TABLE_MARGIN_LEVELS",
+    /**  */
+    TABLE_POSITIONS = "TABLE_POSITIONS",
+    /**  */
+    TABLE_LIQUIDITY_PROVISIONS = "TABLE_LIQUIDITY_PROVISIONS",
+    /**  */
+    TABLE_MARKETS = "TABLE_MARKETS",
+    /**  */
+    TABLE_DEPOSITS = "TABLE_DEPOSITS",
+    /**  */
+    TABLE_WITHDRAWALS = "TABLE_WITHDRAWALS",
+    /**  */
+    TABLE_BLOCKS = "TABLE_BLOCKS",
+    /**  */
+    TABLE_REWARDS = "TABLE_REWARDS",
+  }
+
+  /** */
+  export enum TableNumber {
+    /**  */
+    TABLE_UNSPECIFIED = 0,
+    /**  */
+    TABLE_BALANCES = 1,
+    /**  */
+    TABLE_CHECKPOINTS = 2,
+    /**  */
+    TABLE_DELEGATIONS = 3,
+    /**  */
+    TABLE_LEDGER = 4,
+    /**  */
+    TABLE_ORDERS = 5,
+    /**  */
+    TABLE_TRADES = 6,
+    /**  */
+    TABLE_MARKET_DATA = 7,
+    /**  */
+    TABLE_MARGIN_LEVELS = 8,
+    /**  */
+    TABLE_POSITIONS = 9,
+    /**  */
+    TABLE_LIQUIDITY_PROVISIONS = 10,
+    /**  */
+    TABLE_MARKETS = 11,
+    /**  */
+    TABLE_DEPOSITS = 12,
+    /**  */
+    TABLE_WITHDRAWALS = 13,
+    /**  */
+    TABLE_BLOCKS = 14,
+    /**  */
+    TABLE_REWARDS = 15,
+  }
+
+  /** Direction of a transfer*/
+  export enum TransferDirection {
+    /**  */
+    TRANSFER_DIRECTION_UNSPECIFIED = "TRANSFER_DIRECTION_UNSPECIFIED",
+    /**  */
+    TRANSFER_DIRECTION_TRANSFER_FROM = "TRANSFER_DIRECTION_TRANSFER_FROM",
+    /**  */
+    TRANSFER_DIRECTION_TRANSFER_TO = "TRANSFER_DIRECTION_TRANSFER_TO",
+    /**  */
+    TRANSFER_DIRECTION_TRANSFER_TO_OR_FROM = "TRANSFER_DIRECTION_TRANSFER_TO_OR_FROM",
+  }
+
+  /** Direction of a transfer*/
+  export enum TransferDirectionNumber {
+    /**  */
+    TRANSFER_DIRECTION_UNSPECIFIED = 0,
+    /**  */
+    TRANSFER_DIRECTION_TRANSFER_FROM = 1,
+    /**  */
+    TRANSFER_DIRECTION_TRANSFER_TO = 2,
+    /**  */
+    TRANSFER_DIRECTION_TRANSFER_TO_OR_FROM = 3,
+  }
+
+  export interface AccountBalance {
+    owner?: string;
+    balance?: string;
+    asset?: string;
+    marketId?: string;
+    type?: vega.AccountType;
+  }
+
+  export interface AccountEdge {
+    node?: datanode.api.v2.AccountBalance;
+    cursor?: string;
+  }
+
+  export interface AccountFilter {
+    assetId?: string;
+    partyIds?: string[];
+    marketIds?: string[];
+    accountTypes?: vega.AccountType[];
+  }
+
+  export interface AccountSnapshotPage {
+    accounts?: datanode.api.v2.AccountBalance[];
+    lastPage?: boolean;
+  }
+
+  export interface AccountUpdates {
+    accounts?: datanode.api.v2.AccountBalance[];
+  }
+
+  export interface AccountsConnection {
+    edges?: datanode.api.v2.AccountEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface AggregatedBalance {
+    timestamp?: string | number;
+    balance?: string;
+    partyId?: string;
+    assetId?: string;
+    marketId?: string;
+    accountType?: vega.AccountType;
+  }
+
+  export interface AggregatedBalanceConnection {
+    edges?: datanode.api.v2.AggregatedBalanceEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface AggregatedBalanceEdge {
+    node?: datanode.api.v2.AggregatedBalance;
+    cursor?: string;
+  }
+
+  export interface AggregatedLedgerEntriesConnection {
+    edges?: datanode.api.v2.AggregatedLedgerEntriesEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface AggregatedLedgerEntriesEdge {
+    node?: datanode.api.v2.AggregatedLedgerEntry;
+    cursor?: string;
+  }
+
+  export interface AggregatedLedgerEntry {
+    timestamp?: string | number;
+    quantity?: string;
+    transferType?: vega.TransferType;
+    assetId?: string;
+    fromAccountType?: vega.AccountType;
+    toAccountType?: vega.AccountType;
+    fromAccountPartyId?: string;
+    toAccountPartyId?: string;
+    fromAccountMarketId?: string;
+    toAccountMarketId?: string;
+    fromAccountBalance?: string;
+    toAccountBalance?: string;
+    transferId?: string;
+  }
+
+  export interface AssetEdge {
+    node?: vega.Asset;
+    cursor?: string;
+  }
+
+  export interface AssetsConnection {
+    edges?: datanode.api.v2.AssetEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface Candle {
+    start?: string | number;
+    lastUpdate?: string | number;
+    high?: string;
+    low?: string;
+    open?: string;
+    close?: string;
+    volume?: string | number;
+    notional?: string | number;
+  }
+
+  export interface CandleDataConnection {
+    edges?: datanode.api.v2.CandleEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface CandleEdge {
+    node?: datanode.api.v2.Candle;
+    cursor?: string;
+  }
+
+  export interface Checkpoint {
+    hash?: string;
+    blockHash?: string;
+    atBlock?: string | number;
+  }
+
+  export interface CheckpointEdge {
+    node?: datanode.api.v2.Checkpoint;
+    cursor?: string;
+  }
+
+  export interface CheckpointsConnection {
+    edges?: datanode.api.v2.CheckpointEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface CollateralIncreaseEstimate {
+    worstCase?: string;
+    bestCase?: string;
+  }
+
+  export interface CoreSnapshotConnection {
+    edges?: datanode.api.v2.CoreSnapshotEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface CoreSnapshotEdge {
+    node?: vega.events.v1.CoreSnapshotData;
+    cursor?: string;
+  }
+
+  export interface DateRange {
+    startTimestamp?: string | number;
+    endTimestamp?: string | number;
+  }
+
+  export interface DelegationEdge {
+    node?: vega.Delegation;
+    cursor?: string;
+  }
+
+  export interface DelegationsConnection {
+    edges?: datanode.api.v2.DelegationEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface DepositEdge {
+    node?: vega.Deposit;
+    cursor?: string;
+  }
+
+  export interface DepositsConnection {
+    edges?: datanode.api.v2.DepositEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface ERC20MultiSigSignerAddedBundle {
+    newSigner?: string;
+    submitter?: string;
+    nonce?: string;
+    timestamp?: string | number;
+    signatures?: string;
+    epochSeq?: string;
+    chainId?: string;
+  }
+
+  export interface ERC20MultiSigSignerAddedBundleEdge {
+    node?: datanode.api.v2.ERC20MultiSigSignerAddedBundle;
+    cursor?: string;
+  }
+
+  export interface ERC20MultiSigSignerAddedConnection {
+    edges?: datanode.api.v2.ERC20MultiSigSignerAddedBundleEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface ERC20MultiSigSignerAddedEdge {
+    node?: vega.events.v1.ERC20MultiSigSignerAdded;
+    cursor?: string;
+  }
+
+  export interface ERC20MultiSigSignerRemovedBundle {
+    oldSigner?: string;
+    submitter?: string;
+    nonce?: string;
+    timestamp?: string | number;
+    signatures?: string;
+    epochSeq?: string;
+    chainId?: string;
+  }
+
+  export interface ERC20MultiSigSignerRemovedBundleEdge {
+    node?: datanode.api.v2.ERC20MultiSigSignerRemovedBundle;
+    cursor?: string;
+  }
+
+  export interface ERC20MultiSigSignerRemovedConnection {
+    edges?: datanode.api.v2.ERC20MultiSigSignerRemovedBundleEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface ERC20MultiSigSignerRemovedEdge {
+    node?: vega.events.v1.ERC20MultiSigSignerRemoved;
+    cursor?: string;
+  }
+
+  export interface EpochRewardSummaryConnection {
+    edges?: datanode.api.v2.EpochRewardSummaryEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface EpochRewardSummaryEdge {
+    node?: vega.EpochRewardSummary;
+    cursor?: string;
+  }
+
+  export interface EstimateFeeRequest {
+    marketId?: string;
+    price?: string;
+    size?: string | number;
+  }
+
+  export interface EstimateFeeResponse {
+    fee?: vega.Fee;
+  }
+
+  export interface EstimateMarginRequest {
+    marketId?: string;
+    partyId?: string;
+    side?: vega.Side;
+    type?: vega.OrderType;
+    size?: string | number;
+    price?: string;
+  }
+
+  export interface EstimateMarginResponse {
+    marginLevels?: vega.MarginLevels;
+  }
+
+  export interface EstimatePositionRequest {
+    marketId?: string;
+    openVolume?: string | number;
+    averageEntryPrice?: string;
+    orders?: datanode.api.v2.OrderInfo[];
+    marginAccountBalance?: string;
+    generalAccountBalance?: string;
+    orderMarginAccountBalance?: string;
+    marginMode?: vega.MarginMode;
+    marginFactor?: string;
+    includeRequiredPositionMarginInAvailableCollateral?: boolean;
+    scaleLiquidationPriceToMarketDecimals?: boolean;
+  }
+
+  export interface EstimatePositionResponse {
+    margin?: datanode.api.v2.MarginEstimate;
+    collateralIncreaseEstimate?: datanode.api.v2.CollateralIncreaseEstimate;
+    liquidation?: datanode.api.v2.LiquidationEstimate;
+  }
+
+  export interface EstimateTransferFeeRequest {
+    fromAccount?: string;
+    fromAccountType?: vega.AccountType;
+    toAccount?: string;
+    amount?: string;
+    assetId?: string;
+  }
+
+  export interface EstimateTransferFeeResponse {
+    fee?: string;
+    discount?: string;
+  }
+
+  export interface EthereumKeyRotationEdge {
+    node?: vega.events.v1.EthereumKeyRotation;
+    cursor?: string;
+  }
+
+  export interface EthereumKeyRotationsConnection {
+    edges?: datanode.api.v2.EthereumKeyRotationEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface ExportLedgerEntriesRequest {
+    partyId?: string;
+    assetId?: string;
+    dateRange?: datanode.api.v2.DateRange;
+  }
+
+  export interface ExportNetworkHistoryRequest {
+    fromBlock?: string | number;
+    toBlock?: string | number;
+    table?: datanode.api.v2.Table;
+  }
+
+  export interface FeesStatsForParty {
+    assetId?: string;
+    totalRewardsReceived?: string;
+    refereesDiscountApplied?: string;
+    volumeDiscountApplied?: string;
+    totalMakerFeesReceived?: string;
+  }
+
+  export interface FundingPayment {
+    partyId?: string;
+    marketId?: string;
+    fundingPeriodSeq?: string | number;
+    timestamp?: string | number;
+    amount?: string;
+  }
+
+  export interface FundingPaymentConnection {
+    edges?: datanode.api.v2.FundingPaymentEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface FundingPaymentEdge {
+    node?: datanode.api.v2.FundingPayment;
+    cursor?: string;
+  }
+
+  export interface FundingPeriodConnection {
+    edges?: datanode.api.v2.FundingPeriodEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface FundingPeriodDataPointConnection {
+    edges?: datanode.api.v2.FundingPeriodDataPointEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface FundingPeriodDataPointEdge {
+    node?: vega.events.v1.FundingPeriodDataPoint;
+    cursor?: string;
+  }
+
+  export interface FundingPeriodEdge {
+    node?: vega.events.v1.FundingPeriod;
+    cursor?: string;
+  }
+
+  export interface Game {
+    id?: string;
+    epoch?: string | number;
+    participants?: string | number;
+    team?: datanode.api.v2.TeamGameEntities;
+    individual?: datanode.api.v2.IndividualGameEntities;
+    rewardAssetId?: string;
+  }
+
+  export interface GameEdge {
+    node?: datanode.api.v2.Game;
+    cursor?: string;
+  }
+
+  export interface GamesConnection {
+    edges?: datanode.api.v2.GameEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface GetActiveNetworkHistoryPeerAddressesRequest {}
+
+  export interface GetActiveNetworkHistoryPeerAddressesResponse {
+    ipAddresses?: string[];
+  }
+
+  export interface GetAssetRequest {
+    assetId?: string;
+  }
+
+  export interface GetAssetResponse {
+    asset?: vega.Asset;
+  }
+
+  export interface GetBalanceHistoryRequest {
+    filter?: datanode.api.v2.AccountFilter;
+    groupBy?: datanode.api.v2.AccountField[];
+    pagination?: datanode.api.v2.Pagination;
+    dateRange?: datanode.api.v2.DateRange;
+  }
+
+  export interface GetBalanceHistoryResponse {
+    balances?: datanode.api.v2.AggregatedBalanceConnection;
+  }
+
+  export interface GetCurrentReferralProgramRequest {}
+
+  export interface GetCurrentReferralProgramResponse {
+    currentReferralProgram?: datanode.api.v2.ReferralProgram;
+  }
+
+  export interface GetCurrentVolumeDiscountProgramRequest {}
+
+  export interface GetCurrentVolumeDiscountProgramResponse {
+    currentVolumeDiscountProgram?: datanode.api.v2.VolumeDiscountProgram;
+  }
+
+  export interface GetDepositRequest {
+    id?: string;
+  }
+
+  export interface GetDepositResponse {
+    deposit?: vega.Deposit;
+  }
+
+  export interface GetERC20ListAssetBundleRequest {
+    assetId?: string;
+  }
+
+  export interface GetERC20ListAssetBundleResponse {
+    assetSource?: string;
+    vegaAssetId?: string;
+    nonce?: string;
+    signatures?: string;
+  }
+
+  export interface GetERC20SetAssetLimitsBundleRequest {
+    proposalId?: string;
+  }
+
+  export interface GetERC20SetAssetLimitsBundleResponse {
+    assetSource?: string;
+    vegaAssetId?: string;
+    nonce?: string;
+    lifetimeLimit?: string;
+    threshold?: string;
+    signatures?: string;
+  }
+
+  export interface GetERC20WithdrawalApprovalRequest {
+    withdrawalId?: string;
+  }
+
+  export interface GetERC20WithdrawalApprovalResponse {
+    assetSource?: string;
+    amount?: string;
+    nonce?: string;
+    signatures?: string;
+    targetAddress?: string;
+    creation?: string | number;
+    sourceChainId?: string;
+  }
+
+  export interface GetEpochRequest {
+    id?: string | number;
+    block?: string | number;
+  }
+
+  export interface GetEpochResponse {
+    epoch?: vega.Epoch;
+  }
+
+  export interface GetFeesStatsForPartyRequest {
+    partyId?: string;
+    assetId?: string;
+    fromEpoch?: string | number;
+    toEpoch?: string | number;
+  }
+
+  export interface GetFeesStatsForPartyResponse {
+    feesStatsForParty?: datanode.api.v2.FeesStatsForParty[];
+  }
+
+  export interface GetFeesStatsRequest {
+    marketId?: string;
+    assetId?: string;
+    epochSeq?: string | number;
+    partyId?: string;
+  }
+
+  export interface GetFeesStatsResponse {
+    feesStats?: vega.events.v1.FeesStats;
+  }
+
+  export interface GetGovernanceDataRequest {
+    proposalId?: string;
+    reference?: string;
+  }
+
+  export interface GetGovernanceDataResponse {
+    data?: vega.GovernanceData;
+  }
+
+  export interface GetLastTradeRequest {
+    marketId?: string;
+  }
+
+  export interface GetLastTradeResponse {
+    trade?: vega.Trade;
+  }
+
+  export interface GetLatestMarketDataRequest {
+    marketId?: string;
+  }
+
+  export interface GetLatestMarketDataResponse {
+    marketData?: vega.MarketData;
+  }
+
+  export interface GetLatestMarketDepthRequest {
+    marketId?: string;
+    maxDepth?: string | number;
+  }
+
+  export interface GetLatestMarketDepthResponse {
+    marketId?: string;
+    buy?: vega.PriceLevel[];
+    sell?: vega.PriceLevel[];
+    lastTrade?: vega.Trade;
+    sequenceNumber?: string | number;
+  }
+
+  export interface GetMarketDataHistoryByIDRequest {
+    marketId?: string;
+    startTimestamp?: string | number;
+    endTimestamp?: string | number;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface GetMarketDataHistoryByIDResponse {
+    marketData?: datanode.api.v2.MarketDataConnection;
+  }
+
+  export interface GetMarketRequest {
+    marketId?: string;
+  }
+
+  export interface GetMarketResponse {
+    market?: vega.Market;
+  }
+
+  export interface GetMostRecentNetworkHistorySegmentRequest {}
+
+  export interface GetMostRecentNetworkHistorySegmentResponse {
+    segment?: datanode.api.v2.HistorySegment;
+    swarmKeySeed?: string;
+  }
+
+  export interface GetNetworkDataRequest {}
+
+  export interface GetNetworkDataResponse {
+    nodeData?: vega.NodeData;
+  }
+
+  export interface GetNetworkHistoryBootstrapPeersRequest {}
+
+  export interface GetNetworkHistoryBootstrapPeersResponse {
+    bootstrapPeers?: string[];
+  }
+
+  export interface GetNetworkHistoryStatusRequest {}
+
+  export interface GetNetworkHistoryStatusResponse {
+    ipfsAddress?: string;
+    swarmKey?: string;
+    swarmKeySeed?: string;
+    connectedPeers?: string[];
+  }
+
+  export interface GetNetworkLimitsRequest {}
+
+  export interface GetNetworkLimitsResponse {
+    limits?: vega.NetworkLimits;
+  }
+
+  export interface GetNetworkParameterRequest {
+    key?: string;
+  }
+
+  export interface GetNetworkParameterResponse {
+    networkParameter?: vega.NetworkParameter;
+  }
+
+  export interface GetNodeRequest {
+    id?: string;
+  }
+
+  export interface GetNodeResponse {
+    node?: vega.Node;
+  }
+
+  export interface GetOracleSpecRequest {
+    oracleSpecId?: string;
+  }
+
+  export interface GetOracleSpecResponse {
+    oracleSpec?: vega.OracleSpec;
+  }
+
+  export interface GetOrderRequest {
+    orderId?: string;
+    version?: string | number;
+  }
+
+  export interface GetOrderResponse {
+    order?: vega.Order;
+  }
+
+  export interface GetPartyActivityStreakRequest {
+    partyId?: string;
+    epoch?: string | number;
+  }
+
+  export interface GetPartyActivityStreakResponse {
+    activityStreak?: vega.events.v1.PartyActivityStreak;
+  }
+
+  export interface GetPartyRequest {
+    partyId?: string;
+  }
+
+  export interface GetPartyResponse {
+    party?: vega.Party;
+  }
+
+  export interface GetPartyVestingStatsRequest {
+    partyId?: string;
+  }
+
+  export interface GetPartyVestingStatsResponse {
+    partyId?: string;
+    rewardBonusMultiplier?: string;
+    epochSeq?: string | number;
+    quantumBalance?: string;
+  }
+
+  export interface GetProtocolUpgradeStatusRequest {}
+
+  export interface GetProtocolUpgradeStatusResponse {
+    ready?: boolean;
+  }
+
+  export interface GetReferralSetStatsRequest {
+    referralSetId?: string;
+    atEpoch?: string | number;
+    referee?: string;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface GetReferralSetStatsResponse {
+    stats?: datanode.api.v2.ReferralSetStatsConnection;
+  }
+
+  export interface GetRiskFactorsRequest {
+    marketId?: string;
+  }
+
+  export interface GetRiskFactorsResponse {
+    riskFactor?: vega.RiskFactor;
+  }
+
+  export interface GetStakeRequest {
+    partyId?: string;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface GetStakeResponse {
+    currentStakeAvailable?: string;
+    stakeLinkings?: datanode.api.v2.StakesConnection;
+  }
+
+  export interface GetStopOrderRequest {
+    orderId?: string;
+  }
+
+  export interface GetStopOrderResponse {
+    order?: vega.events.v1.StopOrderEvent;
+  }
+
+  export interface GetTimeWeightedNotionalPositionRequest {
+    assetId?: string;
+    partyId?: string;
+    gameId?: string;
+    atEpoch?: string | number;
+  }
+
+  export interface GetTimeWeightedNotionalPositionResponse {
+    timeWeightedNotionalPosition?: datanode.api.v2.TimeWeightedNotionalPosition;
+  }
+
+  export interface GetTotalTransferFeeDiscountRequest {
+    partyId?: string;
+    assetId?: string;
+  }
+
+  export interface GetTotalTransferFeeDiscountResponse {
+    totalDiscount?: string;
+  }
+
+  export interface GetTransferRequest {
+    transferId?: string;
+  }
+
+  export interface GetTransferResponse {
+    transferNode?: datanode.api.v2.TransferNode;
+  }
+
+  export interface GetVegaTimeRequest {}
+
+  export interface GetVegaTimeResponse {
+    timestamp?: string | number;
+  }
+
+  export interface GetVestingBalancesSummaryRequest {
+    partyId?: string;
+    assetId?: string;
+  }
+
+  export interface GetVestingBalancesSummaryResponse {
+    partyId?: string;
+    epochSeq?: string | number;
+    lockedBalances?: vega.events.v1.PartyLockedBalance[];
+    vestingBalances?: vega.events.v1.PartyVestingBalance[];
+  }
+
+  export interface GetVolumeDiscountStatsRequest {
+    atEpoch?: string | number;
+    partyId?: string;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface GetVolumeDiscountStatsResponse {
+    stats?: datanode.api.v2.VolumeDiscountStatsConnection;
+  }
+
+  export interface GetWithdrawalRequest {
+    id?: string;
+  }
+
+  export interface GetWithdrawalResponse {
+    withdrawal?: vega.Withdrawal;
+  }
+
+  export interface GovernanceDataConnection {
+    edges?: datanode.api.v2.GovernanceDataEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface GovernanceDataEdge {
+    node?: vega.GovernanceData;
+    cursor?: string;
+  }
+
+  export interface HistorySegment {
+    fromHeight?: string | number;
+    toHeight?: string | number;
+    historySegmentId?: string;
+    previousHistorySegmentId?: string;
+    databaseVersion?: string | number;
+    chainId?: string;
+  }
+
+  export interface IndividualGameEntities {
+    individual?: datanode.api.v2.IndividualGameEntity[];
+  }
+
+  export interface IndividualGameEntity {
+    individual?: string;
+    rank?: string | number;
+    volume?: string;
+    rewardMetric?: vega.DispatchMetric;
+    rewardEarned?: string;
+    totalRewardsEarned?: string;
+    rewardEarnedQuantum?: string;
+    totalRewardsEarnedQuantum?: string;
+  }
+
+  export interface InfoRequest {}
+
+  export interface InfoResponse {
+    version?: string;
+    commitHash?: string;
+  }
+
+  export interface IntervalToCandleId {
+    interval?: string;
+    candleId?: string;
+  }
+
+  export interface KeyRotationConnection {
+    edges?: datanode.api.v2.KeyRotationEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface KeyRotationEdge {
+    node?: vega.events.v1.KeyRotation;
+    cursor?: string;
+  }
+
+  export interface LedgerEntryFilter {
+    closeOnAccountFilters?: boolean;
+    fromAccountFilter?: datanode.api.v2.AccountFilter;
+    toAccountFilter?: datanode.api.v2.AccountFilter;
+    transferTypes?: vega.TransferType[];
+    transferId?: string;
+  }
+
+  export interface LiquidationEstimate {
+    worstCase?: datanode.api.v2.LiquidationPrice;
+    bestCase?: datanode.api.v2.LiquidationPrice;
+  }
+
+  export interface LiquidationPrice {
+    openVolumeOnly?: string;
+    includingBuyOrders?: string;
+    includingSellOrders?: string;
+  }
+
+  export interface LiquidityProvider {
+    partyId?: string;
+    marketId?: string;
+    feeShare?: vega.LiquidityProviderFeeShare;
+    sla?: vega.LiquidityProviderSLA;
+  }
+
+  export interface LiquidityProviderConnection {
+    edges?: datanode.api.v2.LiquidityProviderEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface LiquidityProviderEdge {
+    node?: datanode.api.v2.LiquidityProvider;
+    cursor?: string;
+  }
+
+  export interface LiquidityProvision {
+    current?: vega.LiquidityProvision;
+    pending?: vega.LiquidityProvision;
+  }
+
+  export interface LiquidityProvisionWithPendingEdge {
+    node?: datanode.api.v2.LiquidityProvision;
+    cursor?: string;
+  }
+
+  export interface LiquidityProvisionsConnection {
+    edges?: datanode.api.v2.LiquidityProvisionsEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface LiquidityProvisionsEdge {
+    node?: vega.LiquidityProvision;
+    cursor?: string;
+  }
+
+  export interface LiquidityProvisionsWithPendingConnection {
+    edges?: datanode.api.v2.LiquidityProvisionWithPendingEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface ListAccountsRequest {
+    filter?: datanode.api.v2.AccountFilter;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListAccountsResponse {
+    accounts?: datanode.api.v2.AccountsConnection;
+  }
+
+  export interface ListAllLiquidityProvisionsRequest {
+    marketId?: string;
+    partyId?: string;
+    reference?: string;
+    live?: boolean;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListAllLiquidityProvisionsResponse {
+    liquidityProvisions?: datanode.api.v2.LiquidityProvisionsWithPendingConnection;
+  }
+
+  export interface ListAllNetworkHistorySegmentsRequest {}
+
+  export interface ListAllNetworkHistorySegmentsResponse {
+    segments?: datanode.api.v2.HistorySegment[];
+  }
+
+  export interface ListAllPositionsRequest {
+    filter?: datanode.api.v2.PositionsFilter;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListAllPositionsResponse {
+    positions?: datanode.api.v2.PositionConnection;
+  }
+
+  export interface ListAssetsRequest {
+    assetId?: string;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListAssetsResponse {
+    assets?: datanode.api.v2.AssetsConnection;
+  }
+
+  export interface ListBalanceChangesRequest {
+    filter?: datanode.api.v2.AccountFilter;
+    pagination?: datanode.api.v2.Pagination;
+    dateRange?: datanode.api.v2.DateRange;
+  }
+
+  export interface ListBalanceChangesResponse {
+    balances?: datanode.api.v2.AggregatedBalanceConnection;
+  }
+
+  export interface ListCandleDataRequest {
+    candleId?: string;
+    fromTimestamp?: string | number;
+    toTimestamp?: string | number;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListCandleDataResponse {
+    candles?: datanode.api.v2.CandleDataConnection;
+  }
+
+  export interface ListCandleIntervalsRequest {
+    marketId?: string;
+  }
+
+  export interface ListCandleIntervalsResponse {
+    intervalToCandleId?: datanode.api.v2.IntervalToCandleId[];
+  }
+
+  export interface ListCheckpointsRequest {
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListCheckpointsResponse {
+    checkpoints?: datanode.api.v2.CheckpointsConnection;
+  }
+
+  export interface ListCoreSnapshotsRequest {
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListCoreSnapshotsResponse {
+    coreSnapshots?: datanode.api.v2.CoreSnapshotConnection;
+  }
+
+  export interface ListDelegationsRequest {
+    partyId?: string;
+    nodeId?: string;
+    epochId?: string;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListDelegationsResponse {
+    delegations?: datanode.api.v2.DelegationsConnection;
+  }
+
+  export interface ListDepositsRequest {
+    partyId?: string;
+    pagination?: datanode.api.v2.Pagination;
+    dateRange?: datanode.api.v2.DateRange;
+  }
+
+  export interface ListDepositsResponse {
+    deposits?: datanode.api.v2.DepositsConnection;
+  }
+
+  export interface ListERC20MultiSigSignerAddedBundlesRequest {
+    nodeId?: string;
+    submitter?: string;
+    epochSeq?: string;
+    pagination?: datanode.api.v2.Pagination;
+    chainId?: string;
+  }
+
+  export interface ListERC20MultiSigSignerAddedBundlesResponse {
+    bundles?: datanode.api.v2.ERC20MultiSigSignerAddedConnection;
+  }
+
+  export interface ListERC20MultiSigSignerRemovedBundlesRequest {
+    nodeId?: string;
+    submitter?: string;
+    epochSeq?: string;
+    pagination?: datanode.api.v2.Pagination;
+    chainId?: string;
+  }
+
+  export interface ListERC20MultiSigSignerRemovedBundlesResponse {
+    bundles?: datanode.api.v2.ERC20MultiSigSignerRemovedConnection;
+  }
+
+  export interface ListEntitiesRequest {
+    transactionHash?: string;
+  }
+
+  export interface ListEntitiesResponse {
+    accounts?: vega.Account[];
+    orders?: vega.Order[];
+    positions?: vega.Position[];
+    ledgerEntries?: vega.LedgerEntry[];
+    balanceChanges?: datanode.api.v2.AccountBalance[];
+    transfers?: vega.events.v1.Transfer[];
+    votes?: vega.Vote[];
+    erc20MultiSigSignerAddedBundles?: datanode.api.v2.ERC20MultiSigSignerAddedBundle[];
+    erc20MultiSigSignerRemovedBundles?: datanode.api.v2.ERC20MultiSigSignerRemovedBundle[];
+    trades?: vega.Trade[];
+    oracleSpecs?: vega.OracleSpec[];
+    oracleData?: vega.OracleData[];
+    markets?: vega.Market[];
+    parties?: vega.Party[];
+    marginLevels?: vega.MarginLevels[];
+    rewards?: vega.Reward[];
+    deposits?: vega.Deposit[];
+    withdrawals?: vega.Withdrawal[];
+    assets?: vega.Asset[];
+    liquidityProvisions?: vega.LiquidityProvision[];
+    proposals?: vega.Proposal[];
+    delegations?: vega.Delegation[];
+    nodes?: datanode.api.v2.NodeBasic[];
+    nodeSignatures?: vega.commands.v1.NodeSignature[];
+    networkParameters?: vega.NetworkParameter[];
+    keyRotations?: vega.events.v1.KeyRotation[];
+    ethereumKeyRotations?: vega.events.v1.EthereumKeyRotation[];
+    protocolUpgradeProposals?: vega.events.v1.ProtocolUpgradeEvent[];
+  }
+
+  export interface ListEpochRewardSummariesRequest {
+    filter?: datanode.api.v2.RewardSummaryFilter;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListEpochRewardSummariesResponse {
+    summaries?: datanode.api.v2.EpochRewardSummaryConnection;
+  }
+
+  export interface ListEthereumKeyRotationsRequest {
+    nodeId?: string;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListEthereumKeyRotationsResponse {
+    keyRotations?: datanode.api.v2.EthereumKeyRotationsConnection;
+  }
+
+  export interface ListFundingPaymentsRequest {
+    partyId?: string;
+    marketId?: string;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListFundingPaymentsResponse {
+    fundingPayments?: datanode.api.v2.FundingPaymentConnection;
+  }
+
+  export interface ListFundingPeriodDataPointsRequest {
+    marketId?: string;
+    dateRange?: datanode.api.v2.DateRange;
+    source?: vega.events.v1.FundingPeriodDataPointSource;
+    seq?: string | number;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListFundingPeriodDataPointsResponse {
+    fundingPeriodDataPoints?: datanode.api.v2.FundingPeriodDataPointConnection;
+  }
+
+  export interface ListFundingPeriodsRequest {
+    marketId?: string;
+    dateRange?: datanode.api.v2.DateRange;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListFundingPeriodsResponse {
+    fundingPeriods?: datanode.api.v2.FundingPeriodConnection;
+  }
+
+  export interface ListGamesRequest {
+    gameId?: string;
+    epochFrom?: string | number;
+    epochTo?: string | number;
+    entityScope?: vega.EntityScope;
+    pagination?: datanode.api.v2.Pagination;
+    teamId?: string;
+    partyId?: string;
+  }
+
+  export interface ListGamesResponse {
+    games?: datanode.api.v2.GamesConnection;
+  }
+
+  export interface ListGovernanceDataRequest {
+    proposalState?: vega.ProposalState;
+    proposalType?: datanode.api.v2.ListGovernanceDataRequestType;
+    proposerPartyId?: string;
+    proposalReference?: string;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListGovernanceDataResponse {
+    connection?: datanode.api.v2.GovernanceDataConnection;
+  }
+
+  export interface ListKeyRotationsRequest {
+    nodeId?: string;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListKeyRotationsResponse {
+    rotations?: datanode.api.v2.KeyRotationConnection;
+  }
+
+  export interface ListLatestMarketDataRequest {}
+
+  export interface ListLatestMarketDataResponse {
+    marketsData?: vega.MarketData[];
+  }
+
+  export interface ListLedgerEntriesRequest {
+    filter?: datanode.api.v2.LedgerEntryFilter;
+    pagination?: datanode.api.v2.Pagination;
+    dateRange?: datanode.api.v2.DateRange;
+  }
+
+  export interface ListLedgerEntriesResponse {
+    ledgerEntries?: datanode.api.v2.AggregatedLedgerEntriesConnection;
+  }
+
+  export interface ListLiquidityProvidersRequest {
+    marketId?: string;
+    partyId?: string;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListLiquidityProvidersResponse {
+    liquidityProviders?: datanode.api.v2.LiquidityProviderConnection;
+  }
+
+  export interface ListLiquidityProvisionsRequest {
+    marketId?: string;
+    partyId?: string;
+    reference?: string;
+    live?: boolean;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListLiquidityProvisionsResponse {
+    liquidityProvisions?: datanode.api.v2.LiquidityProvisionsConnection;
+  }
+
+  export interface ListMarginLevelsRequest {
+    partyId?: string;
+    marketId?: string;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListMarginLevelsResponse {
+    marginLevels?: datanode.api.v2.MarginConnection;
+  }
+
+  export interface ListMarketsRequest {
+    pagination?: datanode.api.v2.Pagination;
+    includeSettled?: boolean;
+  }
+
+  export interface ListMarketsResponse {
+    markets?: datanode.api.v2.MarketConnection;
+  }
+
+  export interface ListNetworkParametersRequest {
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListNetworkParametersResponse {
+    networkParameters?: datanode.api.v2.NetworkParameterConnection;
+  }
+
+  export interface ListNodeSignaturesRequest {
+    id?: string;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListNodeSignaturesResponse {
+    signatures?: datanode.api.v2.NodeSignaturesConnection;
+  }
+
+  export interface ListNodesRequest {
+    epochSeq?: string | number;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListNodesResponse {
+    nodes?: datanode.api.v2.NodesConnection;
+  }
+
+  export interface ListOracleDataRequest {
+    oracleSpecId?: string;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListOracleDataResponse {
+    oracleData?: datanode.api.v2.OracleDataConnection;
+  }
+
+  export interface ListOracleSpecsRequest {
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListOracleSpecsResponse {
+    oracleSpecs?: datanode.api.v2.OracleSpecsConnection;
+  }
+
+  export interface ListOrderVersionsRequest {
+    orderId?: string;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListOrderVersionsResponse {
+    orders?: datanode.api.v2.OrderConnection;
+  }
+
+  export interface ListOrdersRequest {
+    pagination?: datanode.api.v2.Pagination;
+    filter?: datanode.api.v2.OrderFilter;
+  }
+
+  export interface ListOrdersResponse {
+    orders?: datanode.api.v2.OrderConnection;
+  }
+
+  export interface ListPaidLiquidityFeesRequest {
+    marketId?: string;
+    assetId?: string;
+    epochSeq?: string | number;
+    partyIds?: string[];
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListPaidLiquidityFeesResponse {
+    paidLiquidityFees?: datanode.api.v2.PaidLiquidityFeesConnection;
+  }
+
+  export interface ListPartiesProfilesRequest {
+    parties?: string[];
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListPartiesProfilesResponse {
+    profiles?: datanode.api.v2.PartiesProfilesConnection;
+  }
+
+  export interface ListPartiesRequest {
+    partyId?: string;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListPartiesResponse {
+    parties?: datanode.api.v2.PartyConnection;
+  }
+
+  export interface ListPartyMarginModesRequest {
+    marketId?: string;
+    partyId?: string;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListPartyMarginModesResponse {
+    partyMarginModes?: datanode.api.v2.PartyMarginModesConnection;
+  }
+
+  export interface ListPositionsRequest {
+    partyId?: string;
+    marketId?: string;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListPositionsResponse {
+    positions?: datanode.api.v2.PositionConnection;
+  }
+
+  export interface ListProtocolUpgradeProposalsRequest {
+    status?: vega.events.v1.ProtocolUpgradeProposalStatus;
+    approvedBy?: string;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListProtocolUpgradeProposalsResponse {
+    protocolUpgradeProposals?: datanode.api.v2.ProtocolUpgradeProposalConnection;
+  }
+
+  export interface ListReferralSetRefereesRequest {
+    referralSetId?: string;
+    pagination?: datanode.api.v2.Pagination;
+    referrer?: string;
+    referee?: string;
+    aggregationEpochs?: string | number;
+  }
+
+  export interface ListReferralSetRefereesResponse {
+    referralSetReferees?: datanode.api.v2.ReferralSetRefereeConnection;
+  }
+
+  export interface ListReferralSetsRequest {
+    referralSetId?: string;
+    pagination?: datanode.api.v2.Pagination;
+    referrer?: string;
+    referee?: string;
+  }
+
+  export interface ListReferralSetsResponse {
+    referralSets?: datanode.api.v2.ReferralSetConnection;
+  }
+
+  export interface ListRewardSummariesRequest {
+    partyId?: string;
+    assetId?: string;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListRewardSummariesResponse {
+    summaries?: vega.RewardSummary[];
+  }
+
+  export interface ListRewardsRequest {
+    partyId?: string;
+    assetId?: string;
+    pagination?: datanode.api.v2.Pagination;
+    fromEpoch?: string | number;
+    toEpoch?: string | number;
+    teamId?: string;
+    gameId?: string;
+  }
+
+  export interface ListRewardsResponse {
+    rewards?: datanode.api.v2.RewardsConnection;
+  }
+
+  export interface ListStopOrdersRequest {
+    pagination?: datanode.api.v2.Pagination;
+    filter?: datanode.api.v2.StopOrderFilter;
+  }
+
+  export interface ListStopOrdersResponse {
+    orders?: datanode.api.v2.StopOrderConnection;
+  }
+
+  export interface ListSuccessorMarketsRequest {
+    marketId?: string;
+    includeFullHistory?: boolean;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListSuccessorMarketsResponse {
+    successorMarkets?: datanode.api.v2.SuccessorMarketConnection;
+  }
+
+  export interface ListTeamMembersStatisticsRequest {
+    teamId?: string;
+    partyId?: string;
+    aggregationEpochs?: string | number;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListTeamMembersStatisticsResponse {
+    statistics?: datanode.api.v2.TeamMembersStatisticsConnection;
+  }
+
+  export interface ListTeamRefereeHistoryRequest {
+    referee?: string;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListTeamRefereeHistoryResponse {
+    teamRefereeHistory?: datanode.api.v2.TeamRefereeHistoryConnection;
+  }
+
+  export interface ListTeamRefereesRequest {
+    teamId?: string;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListTeamRefereesResponse {
+    teamReferees?: datanode.api.v2.TeamRefereeConnection;
+  }
+
+  export interface ListTeamsRequest {
+    teamId?: string;
+    partyId?: string;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListTeamsResponse {
+    teams?: datanode.api.v2.TeamConnection;
+  }
+
+  export interface ListTeamsStatisticsRequest {
+    teamId?: string;
+    aggregationEpochs?: string | number;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListTeamsStatisticsResponse {
+    statistics?: datanode.api.v2.TeamsStatisticsConnection;
+  }
+
+  export interface ListTradesRequest {
+    marketIds?: string[];
+    orderIds?: string[];
+    partyIds?: string[];
+    pagination?: datanode.api.v2.Pagination;
+    dateRange?: datanode.api.v2.DateRange;
+  }
+
+  export interface ListTradesResponse {
+    trades?: datanode.api.v2.TradeConnection;
+  }
+
+  export interface ListTransfersRequest {
+    pubkey?: string;
+    direction?: datanode.api.v2.TransferDirection;
+    pagination?: datanode.api.v2.Pagination;
+    isReward?: boolean;
+    fromEpoch?: string | number;
+    toEpoch?: string | number;
+    status?: vega.events.v1.TransferStatus;
+    scope?: datanode.api.v2.ListTransfersRequestScope;
+    gameId?: string;
+    fromAccountType?: vega.AccountType;
+    toAccountType?: vega.AccountType;
+  }
+
+  export interface ListTransfersResponse {
+    transfers?: datanode.api.v2.TransferConnection;
+  }
+
+  export interface ListVotesRequest {
+    partyId?: string;
+    proposalId?: string;
+    pagination?: datanode.api.v2.Pagination;
+  }
+
+  export interface ListVotesResponse {
+    votes?: datanode.api.v2.VoteConnection;
+  }
+
+  export interface ListWithdrawalsRequest {
+    partyId?: string;
+    pagination?: datanode.api.v2.Pagination;
+    dateRange?: datanode.api.v2.DateRange;
+  }
+
+  export interface ListWithdrawalsResponse {
+    withdrawals?: datanode.api.v2.WithdrawalsConnection;
+  }
+
+  export interface MarginConnection {
+    edges?: datanode.api.v2.MarginEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface MarginEdge {
+    node?: vega.MarginLevels;
+    cursor?: string;
+  }
+
+  export interface MarginEstimate {
+    worstCase?: vega.MarginLevels;
+    bestCase?: vega.MarginLevels;
+  }
+
+  export interface MarketConnection {
+    edges?: datanode.api.v2.MarketEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface MarketDataConnection {
+    edges?: datanode.api.v2.MarketDataEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface MarketDataEdge {
+    node?: vega.MarketData;
+    cursor?: string;
+  }
+
+  export interface MarketEdge {
+    node?: vega.Market;
+    cursor?: string;
+  }
+
+  export interface NetworkParameterConnection {
+    edges?: datanode.api.v2.NetworkParameterEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface NetworkParameterEdge {
+    node?: vega.NetworkParameter;
+    cursor?: string;
+  }
+
+  export interface NodeBasic {
+    id?: string;
+    pubKey?: string;
+    tmPubKey?: string;
+    ethereumAddress?: string;
+    infoUrl?: string;
+    location?: string;
+    status?: vega.NodeStatus;
+    name?: string;
+    avatarUrl?: string;
+  }
+
+  export interface NodeEdge {
+    node?: vega.Node;
+    cursor?: string;
+  }
+
+  export interface NodeSignatureEdge {
+    node?: vega.commands.v1.NodeSignature;
+    cursor?: string;
+  }
+
+  export interface NodeSignaturesConnection {
+    edges?: datanode.api.v2.NodeSignatureEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface NodesConnection {
+    edges?: datanode.api.v2.NodeEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface ObserveAccountsRequest {
+    marketId?: string;
+    partyId?: string;
+    asset?: string;
+    type?: vega.AccountType;
+  }
+
+  export interface ObserveAccountsResponse {
+    snapshot?: datanode.api.v2.AccountSnapshotPage;
+    updates?: datanode.api.v2.AccountUpdates;
+  }
+
+  export interface ObserveCandleDataRequest {
+    candleId?: string;
+  }
+
+  export interface ObserveCandleDataResponse {
+    candle?: datanode.api.v2.Candle;
+  }
+
+  export interface ObserveDelegationsRequest {
+    partyId?: string;
+    nodeId?: string;
+  }
+
+  export interface ObserveDelegationsResponse {
+    delegation?: vega.Delegation;
+  }
+
+  export interface ObserveEventBusRequest {
+    type?: vega.events.v1.BusEventType[];
+    marketId?: string;
+    partyId?: string;
+    batchSize?: string | number;
+  }
+
+  export interface ObserveEventBusResponse {
+    events?: vega.events.v1.BusEvent[];
+  }
+
+  export interface ObserveGovernanceRequest {
+    partyId?: string;
+  }
+
+  export interface ObserveGovernanceResponse {
+    data?: vega.GovernanceData;
+  }
+
+  export interface ObserveLedgerMovementsRequest {}
+
+  export interface ObserveLedgerMovementsResponse {
+    ledgerMovement?: vega.LedgerMovement;
+  }
+
+  export interface ObserveLiquidityProvisionsRequest {
+    marketId?: string;
+    partyId?: string;
+  }
+
+  export interface ObserveLiquidityProvisionsResponse {
+    liquidityProvisions?: vega.LiquidityProvision[];
+  }
+
+  export interface ObserveMarginLevelsRequest {
+    partyId?: string;
+    marketId?: string;
+  }
+
+  export interface ObserveMarginLevelsResponse {
+    marginLevels?: vega.MarginLevels;
+  }
+
+  export interface ObserveMarketsDataRequest {
+    marketIds?: string[];
+  }
+
+  export interface ObserveMarketsDataResponse {
+    marketData?: vega.MarketData[];
+  }
+
+  export interface ObserveMarketsDepthRequest {
+    marketIds?: string[];
+  }
+
+  export interface ObserveMarketsDepthResponse {
+    marketDepth?: vega.MarketDepth[];
+  }
+
+  export interface ObserveMarketsDepthUpdatesRequest {
+    marketIds?: string[];
+  }
+
+  export interface ObserveMarketsDepthUpdatesResponse {
+    update?: vega.MarketDepthUpdate[];
+  }
+
+  export interface ObserveOrdersRequest {
+    marketIds?: string[];
+    partyIds?: string[];
+    excludeLiquidity?: boolean;
+  }
+
+  export interface ObserveOrdersResponse {
+    snapshot?: datanode.api.v2.OrderSnapshotPage;
+    updates?: datanode.api.v2.OrderUpdates;
+  }
+
+  export interface ObservePositionsRequest {
+    partyId?: string;
+    marketId?: string;
+  }
+
+  export interface ObservePositionsResponse {
+    snapshot?: datanode.api.v2.PositionSnapshotPage;
+    updates?: datanode.api.v2.PositionUpdates;
+  }
+
+  export interface ObserveRewardsRequest {
+    assetId?: string;
+    partyId?: string;
+  }
+
+  export interface ObserveRewardsResponse {
+    reward?: vega.Reward;
+  }
+
+  export interface ObserveTradesRequest {
+    marketIds?: string[];
+    partyIds?: string[];
+  }
+
+  export interface ObserveTradesResponse {
+    trades?: vega.Trade[];
+  }
+
+  export interface ObserveTransactionResultsRequest {
+    partyIds?: string[];
+    hashes?: string[];
+    status?: boolean;
+  }
+
+  export interface ObserveTransactionResultsResponse {
+    transactionResults?: vega.events.v1.TransactionResult[];
+  }
+
+  export interface ObserveVotesRequest {
+    partyId?: string;
+    proposalId?: string;
+  }
+
+  export interface ObserveVotesResponse {
+    vote?: vega.Vote;
+  }
+
+  export interface OracleDataConnection {
+    edges?: datanode.api.v2.OracleDataEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface OracleDataEdge {
+    node?: vega.OracleData;
+    cursor?: string;
+  }
+
+  export interface OracleSpecEdge {
+    node?: vega.OracleSpec;
+    cursor?: string;
+  }
+
+  export interface OracleSpecsConnection {
+    edges?: datanode.api.v2.OracleSpecEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface OrderConnection {
+    edges?: datanode.api.v2.OrderEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface OrderEdge {
+    node?: vega.Order;
+    cursor?: string;
+  }
+
+  export interface OrderFilter {
+    statuses?: vega.OrderStatus[];
+    types?: vega.OrderType[];
+    timeInForces?: vega.OrderTimeInForce[];
+    excludeLiquidity?: boolean;
+    partyIds?: string[];
+    marketIds?: string[];
+    reference?: string;
+    dateRange?: datanode.api.v2.DateRange;
+    liveOnly?: boolean;
+  }
+
+  export interface OrderInfo {
+    side?: vega.Side;
+    price?: string;
+    remaining?: string | number;
+    isMarketOrder?: boolean;
+  }
+
+  export interface OrderSnapshotPage {
+    orders?: vega.Order[];
+    lastPage?: boolean;
+  }
+
+  export interface OrderUpdates {
+    orders?: vega.Order[];
+  }
+
+  export interface PageInfo {
+    hasNextPage?: boolean;
+    hasPreviousPage?: boolean;
+    startCursor?: string;
+    endCursor?: string;
+  }
+
+  export interface Pagination {
+    first?: string | number;
+    after?: string;
+    last?: string | number;
+    before?: string;
+    newestFirst?: boolean;
+  }
+
+  export interface PaidLiquidityFeesConnection {
+    edges?: datanode.api.v2.PaidLiquidityFeesEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface PaidLiquidityFeesEdge {
+    node?: vega.events.v1.PaidLiquidityFeesStats;
+    cursor?: string;
+  }
+
+  export interface PartiesProfilesConnection {
+    edges?: datanode.api.v2.PartyProfileEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface PartyConnection {
+    edges?: datanode.api.v2.PartyEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface PartyEdge {
+    node?: vega.Party;
+    cursor?: string;
+  }
+
+  export interface PartyMarginMode {
+    marketId?: string;
+    partyId?: string;
+    marginMode?: vega.MarginMode;
+    marginFactor?: string;
+    minTheoreticalMarginFactor?: string;
+    maxTheoreticalLeverage?: string;
+    atEpoch?: string | number;
+  }
+
+  export interface PartyMarginModeEdge {
+    node?: datanode.api.v2.PartyMarginMode;
+    cursor?: string;
+  }
+
+  export interface PartyMarginModesConnection {
+    edges?: datanode.api.v2.PartyMarginModeEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface PartyProfileEdge {
+    node?: vega.PartyProfile;
+    cursor?: string;
+  }
+
+  export interface PingRequest {}
+  export interface PingResponse {}
+
+  export interface PositionConnection {
+    edges?: datanode.api.v2.PositionEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface PositionEdge {
+    node?: vega.Position;
+    cursor?: string;
+  }
+
+  export interface PositionSnapshotPage {
+    positions?: vega.Position[];
+    lastPage?: boolean;
+  }
+
+  export interface PositionUpdates {
+    positions?: vega.Position[];
+  }
+
+  export interface PositionsFilter {
+    partyIds?: string[];
+    marketIds?: string[];
+  }
+
+  export interface ProtocolUpgradeProposalConnection {
+    edges?: datanode.api.v2.ProtocolUpgradeProposalEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface ProtocolUpgradeProposalEdge {
+    node?: vega.events.v1.ProtocolUpgradeEvent;
+    cursor?: string;
+  }
+
+  export interface QuantumRewardsPerEpoch {
+    epoch?: string | number;
+    totalQuantumRewards?: string;
+  }
+
+  export interface QuantumVolumesPerEpoch {
+    epoch?: string | number;
+    totalQuantumVolumes?: string;
+  }
+
+  export interface ReferralProgram {
+    version?: string | number;
+    id?: string;
+    benefitTiers?: vega.BenefitTier[];
+    endOfProgramTimestamp?: string | number;
+    windowLength?: string | number;
+    stakingTiers?: vega.StakingTier[];
+    endedAt?: string | number;
+  }
+
+  export interface ReferralSet {
+    id?: string;
+    referrer?: string;
+    createdAt?: string | number;
+    updatedAt?: string | number;
+    totalMembers?: string | number;
+  }
+
+  export interface ReferralSetConnection {
+    edges?: datanode.api.v2.ReferralSetEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface ReferralSetEdge {
+    node?: datanode.api.v2.ReferralSet;
+    cursor?: string;
+  }
+
+  export interface ReferralSetReferee {
+    referralSetId?: string;
+    referee?: string;
+    joinedAt?: string | number;
+    atEpoch?: string | number;
+    totalRefereeNotionalTakerVolume?: string;
+    totalRefereeGeneratedRewards?: string;
+  }
+
+  export interface ReferralSetRefereeConnection {
+    edges?: datanode.api.v2.ReferralSetRefereeEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface ReferralSetRefereeEdge {
+    node?: datanode.api.v2.ReferralSetReferee;
+    cursor?: string;
+  }
+
+  export interface ReferralSetStats {
+    atEpoch?: string | number;
+    referralSetRunningNotionalTakerVolume?: string;
+    partyId?: string;
+    discountFactor?: string;
+    rewardFactor?: string;
+    epochNotionalTakerVolume?: string;
+    rewardsMultiplier?: string;
+    rewardsFactorMultiplier?: string;
+    wasEligible?: boolean;
+    referrerTakerVolume?: string;
+  }
+
+  export interface ReferralSetStatsConnection {
+    edges?: datanode.api.v2.ReferralSetStatsEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface ReferralSetStatsEdge {
+    node?: datanode.api.v2.ReferralSetStats;
+    cursor?: string;
+  }
+
+  export interface RewardEdge {
+    node?: vega.Reward;
+    cursor?: string;
+  }
+
+  export interface RewardSummaryFilter {
+    assetIds?: string[];
+    marketIds?: string[];
+    fromEpoch?: string | number;
+    toEpoch?: string | number;
+  }
+
+  export interface RewardsConnection {
+    edges?: datanode.api.v2.RewardEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface StakeLinkingEdge {
+    node?: vega.events.v1.StakeLinking;
+    cursor?: string;
+  }
+
+  export interface StakesConnection {
+    edges?: datanode.api.v2.StakeLinkingEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface StopOrderConnection {
+    edges?: datanode.api.v2.StopOrderEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface StopOrderEdge {
+    node?: vega.events.v1.StopOrderEvent;
+    cursor?: string;
+  }
+
+  export interface StopOrderFilter {
+    statuses?: vega.StopOrderStatus[];
+    expiryStrategies?: vega.StopOrderExpiryStrategy[];
+    dateRange?: datanode.api.v2.DateRange;
+    partyIds?: string[];
+    marketIds?: string[];
+    liveOnly?: boolean;
+  }
+
+  export interface SuccessorMarket {
+    market?: vega.Market;
+    proposals?: vega.GovernanceData[];
+  }
+
+  export interface SuccessorMarketConnection {
+    edges?: datanode.api.v2.SuccessorMarketEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface SuccessorMarketEdge {
+    node?: datanode.api.v2.SuccessorMarket;
+    cursor?: string;
+  }
+
+  export interface Team {
+    teamId?: string;
+    referrer?: string;
+    name?: string;
+    teamUrl?: string;
+    avatarUrl?: string;
+    createdAt?: string | number;
+    closed?: boolean;
+    createdAtEpoch?: string | number;
+    allowList?: string[];
+    totalMembers?: string | number;
+  }
+
+  export interface TeamConnection {
+    edges?: datanode.api.v2.TeamEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface TeamEdge {
+    node?: datanode.api.v2.Team;
+    cursor?: string;
+  }
+
+  export interface TeamGameEntities {
+    team?: datanode.api.v2.TeamGameEntity[];
+  }
+
+  export interface TeamGameEntity {
+    team?: datanode.api.v2.TeamGameParticipation;
+    rank?: string | number;
+    volume?: string;
+    rewardMetric?: vega.DispatchMetric;
+    rewardEarned?: string;
+    totalRewardsEarned?: string;
+    rewardEarnedQuantum?: string;
+    totalRewardsEarnedQuantum?: string;
+  }
+
+  export interface TeamGameParticipation {
+    teamId?: string;
+    membersParticipating?: datanode.api.v2.IndividualGameEntity[];
+  }
+
+  export interface TeamMemberStatistics {
+    partyId?: string;
+    totalQuantumVolume?: string;
+    totalQuantumRewards?: string;
+    quantumRewards?: datanode.api.v2.QuantumRewardsPerEpoch[];
+    totalGamesPlayed?: string | number;
+    gamesPlayed?: string[];
+    quantumVolumes?: datanode.api.v2.QuantumVolumesPerEpoch[];
+  }
+
+  export interface TeamMemberStatisticsEdge {
+    node?: datanode.api.v2.TeamMemberStatistics;
+    cursor?: string;
+  }
+
+  export interface TeamMembersStatisticsConnection {
+    edges?: datanode.api.v2.TeamMemberStatisticsEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface TeamReferee {
+    teamId?: string;
+    referee?: string;
+    joinedAt?: string | number;
+    joinedAtEpoch?: string | number;
+  }
+
+  export interface TeamRefereeConnection {
+    edges?: datanode.api.v2.TeamRefereeEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface TeamRefereeEdge {
+    node?: datanode.api.v2.TeamReferee;
+    cursor?: string;
+  }
+
+  export interface TeamRefereeHistory {
+    teamId?: string;
+    joinedAt?: string | number;
+    joinedAtEpoch?: string | number;
+  }
+
+  export interface TeamRefereeHistoryConnection {
+    edges?: datanode.api.v2.TeamRefereeHistoryEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface TeamRefereeHistoryEdge {
+    node?: datanode.api.v2.TeamRefereeHistory;
+    cursor?: string;
+  }
+
+  export interface TeamStatistics {
+    teamId?: string;
+    totalQuantumVolume?: string;
+    totalQuantumRewards?: string;
+    quantumRewards?: datanode.api.v2.QuantumRewardsPerEpoch[];
+    totalGamesPlayed?: string | number;
+    gamesPlayed?: string[];
+    quantumVolumes?: datanode.api.v2.QuantumVolumesPerEpoch[];
+  }
+
+  export interface TeamStatisticsEdge {
+    node?: datanode.api.v2.TeamStatistics;
+    cursor?: string;
+  }
+
+  export interface TeamsStatisticsConnection {
+    edges?: datanode.api.v2.TeamStatisticsEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface TimeWeightedNotionalPosition {
+    assetId?: string;
+    partyId?: string;
+    gameId?: string;
+    atEpoch?: string | number;
+    timeWeightedNotionalPosition?: string;
+    lastUpdated?: string | number;
+  }
+
+  export interface TradeConnection {
+    edges?: datanode.api.v2.TradeEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface TradeEdge {
+    node?: vega.Trade;
+    cursor?: string;
+  }
+
+  export interface TransferConnection {
+    edges?: datanode.api.v2.TransferEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface TransferEdge {
+    node?: datanode.api.v2.TransferNode;
+    cursor?: string;
+  }
+
+  export interface TransferNode {
+    transfer?: vega.events.v1.Transfer;
+    fees?: vega.events.v1.TransferFees[];
+  }
+
+  export interface VolumeDiscountProgram {
+    version?: string | number;
+    id?: string;
+    benefitTiers?: vega.VolumeBenefitTier[];
+    endOfProgramTimestamp?: string | number;
+    windowLength?: string | number;
+    endedAt?: string | number;
+  }
+
+  export interface VolumeDiscountStats {
+    atEpoch?: string | number;
+    partyId?: string;
+    discountFactor?: string;
+    runningVolume?: string;
+  }
+
+  export interface VolumeDiscountStatsConnection {
+    edges?: datanode.api.v2.VolumeDiscountStatsEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface VolumeDiscountStatsEdge {
+    node?: datanode.api.v2.VolumeDiscountStats;
+    cursor?: string;
+  }
+
+  export interface VoteConnection {
+    edges?: datanode.api.v2.VoteEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+
+  export interface VoteEdge {
+    node?: vega.Vote;
+    cursor?: string;
+  }
+
+  export interface WithdrawalEdge {
+    node?: vega.Withdrawal;
+    cursor?: string;
+  }
+
+  export interface WithdrawalsConnection {
+    edges?: datanode.api.v2.WithdrawalEdge[];
+    pageInfo?: datanode.api.v2.PageInfo;
+  }
+}
+namespace vega.api.v1 {
+  /** Blockchain transaction type*/
+  export enum SubmitRawTransactionRequestType {
+    /**  */
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED",
+    /** Transaction will be submitted without waiting for response */
+    TYPE_ASYNC = "TYPE_ASYNC",
+    /** Transaction will be submitted, and blocking until the
   tendermint mempool returns a response */
-  TYPE_SYNC = "TYPE_SYNC",
-  /** Transaction will be submitted, and blocking until the tendermint
+    TYPE_SYNC = "TYPE_SYNC",
+    /** Transaction will be submitted, and blocking until the tendermint
   network has committed it into a block. Used only for debugging,
   not for submitting transactions */
-  TYPE_COMMIT = "TYPE_COMMIT"
-}
+    TYPE_COMMIT = "TYPE_COMMIT",
+  }
 
-/** Blockchain transaction type*/
-export enum SubmitRawTransactionRequestTypeNumber {
-  /**  */
-  TYPE_UNSPECIFIED = 0,
-  /** Transaction will be submitted without waiting for response */
-  TYPE_ASYNC = 1,
-  /** Transaction will be submitted, and blocking until the
+  /** Blockchain transaction type*/
+  export enum SubmitRawTransactionRequestTypeNumber {
+    /**  */
+    TYPE_UNSPECIFIED = 0,
+    /** Transaction will be submitted without waiting for response */
+    TYPE_ASYNC = 1,
+    /** Transaction will be submitted, and blocking until the
   tendermint mempool returns a response */
-  TYPE_SYNC = 2,
-  /** Transaction will be submitted, and blocking until the tendermint
+    TYPE_SYNC = 2,
+    /** Transaction will be submitted, and blocking until the tendermint
   network has committed it into a block. Used only for debugging,
   not for submitting transactions */
-  TYPE_COMMIT = 3
-}
+    TYPE_COMMIT = 3,
+  }
 
-/** Blockchain transaction type.*/
-export enum SubmitTransactionRequestType {
-  /**  */
-  TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED",
-  /** Transaction will be submitted without waiting for a response. */
-  TYPE_ASYNC = "TYPE_ASYNC",
-  /** Transaction will be submitted, and blocking until the mempool returns a response. */
-  TYPE_SYNC = "TYPE_SYNC",
-  /** Transaction will be submitted, and blocking until the network has committed it into a block.
+  /** Blockchain transaction type.*/
+  export enum SubmitTransactionRequestType {
+    /**  */
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED",
+    /** Transaction will be submitted without waiting for a response. */
+    TYPE_ASYNC = "TYPE_ASYNC",
+    /** Transaction will be submitted, and blocking until the mempool returns a response. */
+    TYPE_SYNC = "TYPE_SYNC",
+    /** Transaction will be submitted, and blocking until the network has committed it into a block.
   Used only for debugging local network, not for submitting transactions. */
-  TYPE_COMMIT = "TYPE_COMMIT"
-}
+    TYPE_COMMIT = "TYPE_COMMIT",
+  }
 
-/** Blockchain transaction type.*/
-export enum SubmitTransactionRequestTypeNumber {
-  /**  */
-  TYPE_UNSPECIFIED = 0,
-  /** Transaction will be submitted without waiting for a response. */
-  TYPE_ASYNC = 1,
-  /** Transaction will be submitted, and blocking until the mempool returns a response. */
-  TYPE_SYNC = 2,
-  /** Transaction will be submitted, and blocking until the network has committed it into a block.
+  /** Blockchain transaction type.*/
+  export enum SubmitTransactionRequestTypeNumber {
+    /**  */
+    TYPE_UNSPECIFIED = 0,
+    /** Transaction will be submitted without waiting for a response. */
+    TYPE_ASYNC = 1,
+    /** Transaction will be submitted, and blocking until the mempool returns a response. */
+    TYPE_SYNC = 2,
+    /** Transaction will be submitted, and blocking until the network has committed it into a block.
   Used only for debugging local network, not for submitting transactions. */
-  TYPE_COMMIT = 3
+    TYPE_COMMIT = 3,
+  }
+
+  export interface CheckRawTransactionRequest {
+    tx?: string;
+  }
+
+  export interface CheckRawTransactionResponse {
+    success?: boolean;
+    code?: string | number;
+    gasWanted?: string | number;
+    gasUsed?: string | number;
+    data?: string;
+    log?: string;
+    info?: string;
+  }
+
+  export interface CheckTransactionRequest {
+    tx?: vega.commands.v1.Transaction;
+  }
+
+  export interface CheckTransactionResponse {
+    success?: boolean;
+    code?: string | number;
+    gasWanted?: string | number;
+    gasUsed?: string | number;
+    data?: string;
+    log?: string;
+    info?: string;
+  }
+
+  export interface GetSpamStatisticsRequest {
+    partyId?: string;
+  }
+
+  export interface GetSpamStatisticsResponse {
+    chainId?: string;
+    statistics?: vega.api.v1.SpamStatistics;
+  }
+
+  export interface GetVegaTimeRequest {}
+
+  export interface GetVegaTimeResponse {
+    timestamp?: string | number;
+  }
+
+  export interface LastBlockHeightRequest {}
+
+  export interface LastBlockHeightResponse {
+    height?: string | number;
+    hash?: string;
+    spamPowHashFunction?: string;
+    spamPowDifficulty?: string | number;
+    spamPowNumberOfPastBlocks?: string | number;
+    spamPowNumberOfTxPerBlock?: string | number;
+    spamPowIncreasingDifficulty?: boolean;
+    chainId?: string;
+  }
+
+  export interface ObserveEventBusRequest {
+    type?: vega.events.v1.BusEventType[];
+    marketId?: string;
+    partyId?: string;
+    batchSize?: string | number;
+  }
+
+  export interface ObserveEventBusResponse {
+    events?: vega.events.v1.BusEvent[];
+  }
+
+  export interface PoWBlockState {
+    blockHeight?: string | number;
+    blockHash?: string;
+    transactionsSeen?: string | number;
+    expectedDifficulty?: string | number;
+    hashFunction?: string;
+    difficulty?: string | number;
+    txPerBlock?: string | number;
+    increasingDifficulty?: boolean;
+  }
+
+  export interface PoWStatistic {
+    blockStates?: vega.api.v1.PoWBlockState[];
+    bannedUntil?: string;
+    numberOfPastBlocks?: string | number;
+  }
+
+  export interface PropagateChainEventRequest {
+    event?: string;
+    pubKey?: string;
+    signature?: string;
+  }
+
+  export interface PropagateChainEventResponse {
+    success?: boolean;
+  }
+
+  export interface SpamStatistic {
+    countForEpoch?: string | number;
+    maxForEpoch?: string | number;
+    bannedUntil?: string;
+    minTokensRequired?: string;
+  }
+
+  export interface SpamStatistics {
+    proposals?: vega.api.v1.SpamStatistic;
+    delegations?: vega.api.v1.SpamStatistic;
+    transfers?: vega.api.v1.SpamStatistic;
+    nodeAnnouncements?: vega.api.v1.SpamStatistic;
+    votes?: vega.api.v1.VoteSpamStatistics;
+    pow?: vega.api.v1.PoWStatistic;
+    issueSignatures?: vega.api.v1.SpamStatistic;
+    epochSeq?: string | number;
+    createReferralSet?: vega.api.v1.SpamStatistic;
+    updateReferralSet?: vega.api.v1.SpamStatistic;
+    applyReferralCode?: vega.api.v1.SpamStatistic;
+  }
+
+  export interface Statistics {
+    blockHeight?: string | number;
+    backlogLength?: string | number;
+    totalPeers?: string | number;
+    genesisTime?: string;
+    currentTime?: string;
+    vegaTime?: string;
+    status?: vega.ChainStatus;
+    txPerBlock?: string | number;
+    averageTxBytes?: string | number;
+    averageOrdersPerBlock?: string | number;
+    tradesPerSecond?: string | number;
+    ordersPerSecond?: string | number;
+    totalMarkets?: string | number;
+    totalAmendOrder?: string | number;
+    totalCancelOrder?: string | number;
+    totalCreateOrder?: string | number;
+    totalOrders?: string | number;
+    totalTrades?: string | number;
+    orderSubscriptions?: string | number;
+    tradeSubscriptions?: string | number;
+    candleSubscriptions?: string | number;
+    marketDepthSubscriptions?: string | number;
+    positionsSubscriptions?: string | number;
+    accountSubscriptions?: string | number;
+    marketDataSubscriptions?: string | number;
+    appVersionHash?: string;
+    appVersion?: string;
+    chainVersion?: string;
+    blockDuration?: string | number;
+    uptime?: string;
+    chainId?: string;
+    marketDepthUpdatesSubscriptions?: string | number;
+    blockHash?: string;
+    epochSeq?: string | number;
+    epochStartTime?: string;
+    epochExpiryTime?: string;
+    eventCount?: string | number;
+    eventsPerSecond?: string | number;
+  }
+
+  export interface StatisticsRequest {}
+
+  export interface StatisticsResponse {
+    statistics?: vega.api.v1.Statistics;
+  }
+
+  export interface SubmitRawTransactionRequest {
+    tx?: string;
+    type?: vega.api.v1.SubmitRawTransactionRequestType;
+  }
+
+  export interface SubmitRawTransactionResponse {
+    success?: boolean;
+    txHash?: string;
+    code?: string | number;
+    data?: string;
+    log?: string;
+    height?: string | number;
+  }
+
+  export interface SubmitTransactionRequest {
+    tx?: vega.commands.v1.Transaction;
+    type?: vega.api.v1.SubmitTransactionRequestType;
+  }
+
+  export interface SubmitTransactionResponse {
+    success?: boolean;
+    txHash?: string;
+    code?: string | number;
+    data?: string;
+    log?: string;
+    height?: string | number;
+  }
+
+  export interface VoteSpamStatistic {
+    proposal?: string;
+    countForEpoch?: string | number;
+    minTokensRequired?: string;
+  }
+
+  export interface VoteSpamStatistics {
+    statistics?: vega.api.v1.VoteSpamStatistic[];
+    maxForEpoch?: string | number;
+    bannedUntil?: string;
+  }
 }
+namespace vega.api.v1 {
+  export interface Account {
+    party?: string;
+    market?: string;
+    balance?: string;
+    asset?: string;
+    type?: string;
+  }
 
-export interface CheckRawTransactionRequest {
-  tx?: string;
+  export interface ListAccountsRequest {
+    party?: string;
+    market?: string;
+  }
+
+  export interface ListAccountsResponse {
+    accounts?: vega.api.v1.Account[];
+  }
+
+  export interface ListAssetsRequest {
+    asset?: string;
+  }
+
+  export interface ListAssetsResponse {
+    assets?: vega.Asset[];
+  }
+
+  export interface ListDelegationsRequest {
+    party?: string;
+    node?: string;
+    epochSeq?: string;
+  }
+
+  export interface ListDelegationsResponse {
+    delegations?: vega.Delegation[];
+  }
+
+  export interface ListMarketsDataRequest {
+    market?: string;
+  }
+
+  export interface ListMarketsDataResponse {
+    marketsData?: vega.MarketData[];
+  }
+
+  export interface ListMarketsRequest {
+    market?: string;
+  }
+
+  export interface ListMarketsResponse {
+    markets?: vega.Market[];
+  }
+
+  export interface ListNetworkLimitsRequest {}
+
+  export interface ListNetworkLimitsResponse {
+    networkLimits?: vega.NetworkLimits;
+  }
+
+  export interface ListNetworkParametersRequest {
+    networkParameterKey?: string;
+  }
+
+  export interface ListNetworkParametersResponse {
+    networkParameters?: vega.NetworkParameter[];
+  }
+
+  export interface ListPartiesRequest {}
+
+  export interface ListPartiesResponse {
+    parties?: vega.Party[];
+  }
+
+  export interface ListPartiesStakeRequest {
+    party?: string;
+  }
+
+  export interface ListPartiesStakeResponse {
+    partiesStake?: vega.api.v1.PartyStake[];
+  }
+
+  export interface ListProposalsRequest {
+    proposal?: string;
+    proposer?: string;
+  }
+
+  export interface ListProposalsResponse {
+    proposals?: vega.Proposal[];
+  }
+
+  export interface ListValidatorsRequest {}
+
+  export interface ListValidatorsResponse {
+    validators?: vega.events.v1.ValidatorUpdate[];
+  }
+
+  export interface ListVotesRequest {
+    proposal?: string;
+    party?: string;
+  }
+
+  export interface ListVotesResponse {
+    votes?: vega.Vote[];
+  }
+
+  export interface PartyStake {
+    party?: string;
+    currentStakeAvailable?: string;
+    stakeLinkings?: vega.events.v1.StakeLinking[];
+  }
 }
-
-export interface CheckRawTransactionResponse {
-  success?: boolean;
-  code?: string | number;
-  gasWanted?: string | number;
-  gasUsed?: string | number;
-  data?: string;
-  log?: string;
-  info?: string;
+namespace vega.wallet.v1 {
+  export interface SubmitTransactionRequest {
+    pubKey?: string;
+    propagate?: boolean;
+    orderSubmission?: vega.commands.v1.OrderSubmission;
+    orderCancellation?: vega.commands.v1.OrderCancellation;
+    orderAmendment?: vega.commands.v1.OrderAmendment;
+    withdrawSubmission?: vega.commands.v1.WithdrawSubmission;
+    proposalSubmission?: vega.commands.v1.ProposalSubmission;
+    voteSubmission?: vega.commands.v1.VoteSubmission;
+    liquidityProvisionSubmission?: vega.commands.v1.LiquidityProvisionSubmission;
+    delegateSubmission?: vega.commands.v1.DelegateSubmission;
+    undelegateSubmission?: vega.commands.v1.UndelegateSubmission;
+    liquidityProvisionCancellation?: vega.commands.v1.LiquidityProvisionCancellation;
+    liquidityProvisionAmendment?: vega.commands.v1.LiquidityProvisionAmendment;
+    transfer?: vega.commands.v1.Transfer;
+    cancelTransfer?: vega.commands.v1.CancelTransfer;
+    announceNode?: vega.commands.v1.AnnounceNode;
+    batchMarketInstructions?: vega.commands.v1.BatchMarketInstructions;
+    stopOrdersSubmission?: vega.commands.v1.StopOrdersSubmission;
+    stopOrdersCancellation?: vega.commands.v1.StopOrdersCancellation;
+    createReferralSet?: vega.commands.v1.CreateReferralSet;
+    updateReferralSet?: vega.commands.v1.UpdateReferralSet;
+    applyReferralCode?: vega.commands.v1.ApplyReferralCode;
+    updateMarginMode?: vega.commands.v1.UpdateMarginMode;
+    joinTeam?: vega.commands.v1.JoinTeam;
+    batchProposalSubmission?: vega.commands.v1.BatchProposalSubmission;
+    updatePartyProfile?: vega.commands.v1.UpdatePartyProfile;
+    nodeVote?: vega.commands.v1.NodeVote;
+    nodeSignature?: vega.commands.v1.NodeSignature;
+    chainEvent?: vega.commands.v1.ChainEvent;
+    keyRotateSubmission?: vega.commands.v1.KeyRotateSubmission;
+    stateVariableProposal?: vega.commands.v1.StateVariableProposal;
+    validatorHeartbeat?: vega.commands.v1.ValidatorHeartbeat;
+    ethereumKeyRotateSubmission?: vega.commands.v1.EthereumKeyRotateSubmission;
+    protocolUpgradeProposal?: vega.commands.v1.ProtocolUpgradeProposal;
+    issueSignatures?: vega.commands.v1.IssueSignatures;
+    oracleDataSubmission?: vega.commands.v1.OracleDataSubmission;
+  }
 }
-
-export interface CheckTransactionRequest {
-  tx?: vega.commands.v1.Transaction;
-}
-
-export interface CheckTransactionResponse {
-  success?: boolean;
-  code?: string | number;
-  gasWanted?: string | number;
-  gasUsed?: string | number;
-  data?: string;
-  log?: string;
-  info?: string;
-}
-
-export interface GetSpamStatisticsRequest {
-  partyId?: string;
-}
-
-export interface GetSpamStatisticsResponse {
-  chainId?: string;
-  statistics?: vega.api.v1.SpamStatistics;
-}
-
-export interface GetVegaTimeRequest {}
-
-export interface GetVegaTimeResponse {
-  timestamp?: string | number;
-}
-
-export interface LastBlockHeightRequest {}
-
-export interface LastBlockHeightResponse {
-  height?: string | number;
-  hash?: string;
-  spamPowHashFunction?: string;
-  spamPowDifficulty?: string | number;
-  spamPowNumberOfPastBlocks?: string | number;
-  spamPowNumberOfTxPerBlock?: string | number;
-  spamPowIncreasingDifficulty?: boolean;
-  chainId?: string;
-}
-
-export interface ObserveEventBusRequest {
-  type?: vega.events.v1.BusEventType[];
-  marketId?: string;
-  partyId?: string;
-  batchSize?: string | number;
-}
-
-export interface ObserveEventBusResponse {
-  events?: vega.events.v1.BusEvent[];
-}
-
-export interface PoWBlockState {
-  blockHeight?: string | number;
-  blockHash?: string;
-  transactionsSeen?: string | number;
-  expectedDifficulty?: string | number;
-  hashFunction?: string;
-  difficulty?: string | number;
-  txPerBlock?: string | number;
-  increasingDifficulty?: boolean;
-}
-
-export interface PoWStatistic {
-  blockStates?: vega.api.v1.PoWBlockState[];
-  bannedUntil?: string;
-  numberOfPastBlocks?: string | number;
-}
-
-export interface PropagateChainEventRequest {
-  event?: string;
-  pubKey?: string;
-  signature?: string;
-}
-
-export interface PropagateChainEventResponse {
-  success?: boolean;
-}
-
-export interface SpamStatistic {
-  countForEpoch?: string | number;
-  maxForEpoch?: string | number;
-  bannedUntil?: string;
-  minTokensRequired?: string;
-}
-
-export interface SpamStatistics {
-  proposals?: vega.api.v1.SpamStatistic;
-  delegations?: vega.api.v1.SpamStatistic;
-  transfers?: vega.api.v1.SpamStatistic;
-  nodeAnnouncements?: vega.api.v1.SpamStatistic;
-  votes?: vega.api.v1.VoteSpamStatistics;
-  pow?: vega.api.v1.PoWStatistic;
-  issueSignatures?: vega.api.v1.SpamStatistic;
-  epochSeq?: string | number;
-  createReferralSet?: vega.api.v1.SpamStatistic;
-  updateReferralSet?: vega.api.v1.SpamStatistic;
-  applyReferralCode?: vega.api.v1.SpamStatistic;
-}
-
-export interface Statistics {
-  blockHeight?: string | number;
-  backlogLength?: string | number;
-  totalPeers?: string | number;
-  genesisTime?: string;
-  currentTime?: string;
-  vegaTime?: string;
-  status?: vega.ChainStatus;
-  txPerBlock?: string | number;
-  averageTxBytes?: string | number;
-  averageOrdersPerBlock?: string | number;
-  tradesPerSecond?: string | number;
-  ordersPerSecond?: string | number;
-  totalMarkets?: string | number;
-  totalAmendOrder?: string | number;
-  totalCancelOrder?: string | number;
-  totalCreateOrder?: string | number;
-  totalOrders?: string | number;
-  totalTrades?: string | number;
-  orderSubscriptions?: string | number;
-  tradeSubscriptions?: string | number;
-  candleSubscriptions?: string | number;
-  marketDepthSubscriptions?: string | number;
-  positionsSubscriptions?: string | number;
-  accountSubscriptions?: string | number;
-  marketDataSubscriptions?: string | number;
-  appVersionHash?: string;
-  appVersion?: string;
-  chainVersion?: string;
-  blockDuration?: string | number;
-  uptime?: string;
-  chainId?: string;
-  marketDepthUpdatesSubscriptions?: string | number;
-  blockHash?: string;
-  epochSeq?: string | number;
-  epochStartTime?: string;
-  epochExpiryTime?: string;
-  eventCount?: string | number;
-  eventsPerSecond?: string | number;
-}
-
-export interface StatisticsRequest {}
-
-export interface StatisticsResponse {
-  statistics?: vega.api.v1.Statistics;
-}
-
-export interface SubmitRawTransactionRequest {
-  tx?: string;
-  type?: vega.api.v1.SubmitRawTransactionRequestType;
-}
-
-export interface SubmitRawTransactionResponse {
-  success?: boolean;
-  txHash?: string;
-  code?: string | number;
-  data?: string;
-  log?: string;
-  height?: string | number;
-}
-
-export interface SubmitTransactionRequest {
-  tx?: vega.commands.v1.Transaction;
-  type?: vega.api.v1.SubmitTransactionRequestType;
-}
-
-export interface SubmitTransactionResponse {
-  success?: boolean;
-  txHash?: string;
-  code?: string | number;
-  data?: string;
-  log?: string;
-  height?: string | number;
-}
-
-export interface VoteSpamStatistic {
-  proposal?: string;
-  countForEpoch?: string | number;
-  minTokensRequired?: string;
-}
-
-export interface VoteSpamStatistics {
-  statistics?: vega.api.v1.VoteSpamStatistic[];
-  maxForEpoch?: string | number;
-  bannedUntil?: string;
-}
-
-};
-namespace vega.api.v1 {;
-
-export interface Account {
-  party?: string;
-  market?: string;
-  balance?: string;
-  asset?: string;
-  type?: string;
-}
-
-export interface ListAccountsRequest {
-  party?: string;
-  market?: string;
-}
-
-export interface ListAccountsResponse {
-  accounts?: vega.api.v1.Account[];
-}
-
-export interface ListAssetsRequest {
-  asset?: string;
-}
-
-export interface ListAssetsResponse {
-  assets?: vega.Asset[];
-}
-
-export interface ListDelegationsRequest {
-  party?: string;
-  node?: string;
-  epochSeq?: string;
-}
-
-export interface ListDelegationsResponse {
-  delegations?: vega.Delegation[];
-}
-
-export interface ListMarketsDataRequest {
-  market?: string;
-}
-
-export interface ListMarketsDataResponse {
-  marketsData?: vega.MarketData[];
-}
-
-export interface ListMarketsRequest {
-  market?: string;
-}
-
-export interface ListMarketsResponse {
-  markets?: vega.Market[];
-}
-
-export interface ListNetworkLimitsRequest {}
-
-export interface ListNetworkLimitsResponse {
-  networkLimits?: vega.NetworkLimits;
-}
-
-export interface ListNetworkParametersRequest {
-  networkParameterKey?: string;
-}
-
-export interface ListNetworkParametersResponse {
-  networkParameters?: vega.NetworkParameter[];
-}
-
-export interface ListPartiesRequest {}
-
-export interface ListPartiesResponse {
-  parties?: vega.Party[];
-}
-
-export interface ListPartiesStakeRequest {
-  party?: string;
-}
-
-export interface ListPartiesStakeResponse {
-  partiesStake?: vega.api.v1.PartyStake[];
-}
-
-export interface ListProposalsRequest {
-  proposal?: string;
-  proposer?: string;
-}
-
-export interface ListProposalsResponse {
-  proposals?: vega.Proposal[];
-}
-
-export interface ListValidatorsRequest {}
-
-export interface ListValidatorsResponse {
-  validators?: vega.events.v1.ValidatorUpdate[];
-}
-
-export interface ListVotesRequest {
-  proposal?: string;
-  party?: string;
-}
-
-export interface ListVotesResponse {
-  votes?: vega.Vote[];
-}
-
-export interface PartyStake {
-  party?: string;
-  currentStakeAvailable?: string;
-  stakeLinkings?: vega.events.v1.StakeLinking[];
-}
-
-};
-namespace vega.wallet.v1 {;
-
-export interface SubmitTransactionRequest {
-  pubKey?: string;
-  propagate?: boolean;
-  orderSubmission?: vega.commands.v1.OrderSubmission;
-  orderCancellation?: vega.commands.v1.OrderCancellation;
-  orderAmendment?: vega.commands.v1.OrderAmendment;
-  withdrawSubmission?: vega.commands.v1.WithdrawSubmission;
-  proposalSubmission?: vega.commands.v1.ProposalSubmission;
-  voteSubmission?: vega.commands.v1.VoteSubmission;
-  liquidityProvisionSubmission?: vega.commands.v1.LiquidityProvisionSubmission;
-  delegateSubmission?: vega.commands.v1.DelegateSubmission;
-  undelegateSubmission?: vega.commands.v1.UndelegateSubmission;
-  liquidityProvisionCancellation?: vega.commands.v1.LiquidityProvisionCancellation;
-  liquidityProvisionAmendment?: vega.commands.v1.LiquidityProvisionAmendment;
-  transfer?: vega.commands.v1.Transfer;
-  cancelTransfer?: vega.commands.v1.CancelTransfer;
-  announceNode?: vega.commands.v1.AnnounceNode;
-  batchMarketInstructions?: vega.commands.v1.BatchMarketInstructions;
-  stopOrdersSubmission?: vega.commands.v1.StopOrdersSubmission;
-  stopOrdersCancellation?: vega.commands.v1.StopOrdersCancellation;
-  createReferralSet?: vega.commands.v1.CreateReferralSet;
-  updateReferralSet?: vega.commands.v1.UpdateReferralSet;
-  applyReferralCode?: vega.commands.v1.ApplyReferralCode;
-  updateMarginMode?: vega.commands.v1.UpdateMarginMode;
-  joinTeam?: vega.commands.v1.JoinTeam;
-  batchProposalSubmission?: vega.commands.v1.BatchProposalSubmission;
-  updatePartyProfile?: vega.commands.v1.UpdatePartyProfile;
-  nodeVote?: vega.commands.v1.NodeVote;
-  nodeSignature?: vega.commands.v1.NodeSignature;
-  chainEvent?: vega.commands.v1.ChainEvent;
-  keyRotateSubmission?: vega.commands.v1.KeyRotateSubmission;
-  stateVariableProposal?: vega.commands.v1.StateVariableProposal;
-  validatorHeartbeat?: vega.commands.v1.ValidatorHeartbeat;
-  ethereumKeyRotateSubmission?: vega.commands.v1.EthereumKeyRotateSubmission;
-  protocolUpgradeProposal?: vega.commands.v1.ProtocolUpgradeProposal;
-  issueSignatures?: vega.commands.v1.IssueSignatures;
-  oracleDataSubmission?: vega.commands.v1.OracleDataSubmission;
-}
-
-};
