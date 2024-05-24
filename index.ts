@@ -7,7 +7,7 @@ namespace vega.commands.v1 {;
 export interface Signature {
   value?: string;
   algo?: string;
-  version?: number;
+  version?: string | number;
 }
 
 };
@@ -54,8 +54,8 @@ export interface ERC20Deposit {
 }
 
 export interface ERC20Event {
-  index?: number;
-  block?: number;
+  index?: string | number;
+  block?: string | number;
   chainId?: string;
   assetList?: vega.ERC20AssetList;
   assetDelist?: vega.ERC20AssetDelist;
@@ -67,8 +67,8 @@ export interface ERC20Event {
 }
 
 export interface ERC20MultiSigEvent {
-  index?: number;
-  block?: number;
+  index?: string | number;
+  block?: string | number;
   chainId?: string;
   signerAdded?: vega.ERC20SignerAdded;
   signerRemoved?: vega.ERC20SignerRemoved;
@@ -78,19 +78,19 @@ export interface ERC20MultiSigEvent {
 export interface ERC20SignerAdded {
   newSigner?: string;
   nonce?: string;
-  blockTime?: number;
+  blockTime?: string | number;
 }
 
 export interface ERC20SignerRemoved {
   oldSigner?: string;
   nonce?: string;
-  blockTime?: number;
+  blockTime?: string | number;
 }
 
 export interface ERC20ThresholdSet {
-  newThreshold?: number;
+  newThreshold?: string | number;
   nonce?: string;
-  blockTime?: number;
+  blockTime?: string | number;
 }
 
 export interface ERC20Withdrawal {
@@ -101,11 +101,11 @@ export interface ERC20Withdrawal {
 
 export interface EthContractCallEvent {
   specId?: string;
-  blockHeight?: number;
-  blockTime?: number;
+  blockHeight?: string | number;
+  blockTime?: string | number;
   result?: string;
   error?: string;
-  sourceChainId?: number;
+  sourceChainId?: string | number;
   heartbeat?: boolean;
 }
 
@@ -113,14 +113,14 @@ export interface StakeDeposited {
   ethereumAddress?: string;
   vegaPublicKey?: string;
   amount?: string;
-  blockTime?: number;
+  blockTime?: string | number;
 }
 
 export interface StakeRemoved {
   ethereumAddress?: string;
   vegaPublicKey?: string;
   amount?: string;
-  blockTime?: number;
+  blockTime?: string | number;
 }
 
 export interface StakeTotalSupply {
@@ -129,8 +129,8 @@ export interface StakeTotalSupply {
 }
 
 export interface StakingEvent {
-  index?: number;
-  block?: number;
+  index?: string | number;
+  block?: string | number;
   stakeDeposited?: vega.StakeDeposited;
   stakeRemoved?: vega.StakeRemoved;
   totalSupply?: vega.StakeTotalSupply;
@@ -143,7 +143,7 @@ export interface Data {
   signers?: vega.data.v1.Signer[];
   data?: vega.data.v1.Property[];
   matchedSpecIds?: string[];
-  broadcastAt?: number;
+  broadcastAt?: string | number;
   metaData?: vega.data.v1.Property[];
   error?: string;
 }
@@ -258,14 +258,14 @@ export interface Filter {
 }
 
 export interface InternalTimeTrigger {
-  initial?: number;
-  every?: number;
+  initial?: string | number;
+  every?: string | number;
 }
 
 export interface PropertyKey {
   name?: string;
   type?: vega.data.v1.PropertyKeyType;
-  numberDecimalPlaces?: number;
+  numberDecimalPlaces?: string | number;
 }
 
 };
@@ -310,8 +310,8 @@ export interface DataSourceDefinitionInternal {
 
 export interface DataSourceSpec {
   id?: string;
-  createdAt?: number;
-  updatedAt?: number;
+  createdAt?: string | number;
+  updatedAt?: string | number;
   data?: vega.DataSourceDefinition;
   status?: vega.DataSourceSpecStatus;
 }
@@ -336,10 +336,10 @@ export interface EthCallSpec {
   method?: string;
   args?: any[];
   trigger?: vega.EthCallTrigger;
-  requiredConfirmations?: number;
+  requiredConfirmations?: string | number;
   filters?: vega.data.v1.Filter[];
   normalisers?: vega.Normaliser[];
-  sourceChainId?: number;
+  sourceChainId?: string | number;
 }
 
 export interface EthCallTrigger {
@@ -347,9 +347,9 @@ export interface EthCallTrigger {
 }
 
 export interface EthTimeTrigger {
-  initial?: number;
-  every?: number;
-  until?: number;
+  initial?: string | number;
+  every?: string | number;
+  until?: string | number;
 }
 
 export interface ExternalDataSourceSpec {
@@ -509,13 +509,13 @@ export enum MarketTradingModeNumber {
 }
 
 export interface AuctionDuration {
-  duration?: number;
-  volume?: number;
+  duration?: string | number;
+  volume?: string | number;
 }
 
 export interface CompositePriceConfiguration {
   decayWeight?: string;
-  decayPower?: number;
+  decayPower?: string | number;
   cashAmount?: string;
   sourceWeights?: string[];
   sourceStalenessTolerance?: string[];
@@ -568,9 +568,9 @@ export interface InstrumentMetadata {
 }
 
 export interface LiquidationStrategy {
-  disposalTimeStep?: number;
+  disposalTimeStep?: string | number;
   disposalFraction?: string;
-  fullDisposalSize?: number;
+  fullDisposalSize?: string | number;
   maxFractionConsumed?: string;
   disposalSlippageRange?: string;
 }
@@ -583,25 +583,25 @@ export interface LiquidityFeeSettings {
 export interface LiquidityMonitoringParameters {
   targetStakeParameters?: vega.TargetStakeParameters;
   triggeringRatio?: string;
-  auctionExtension?: number;
+  auctionExtension?: string | number;
 }
 
 export interface LiquiditySLAParameters {
   priceRange?: string;
   commitmentMinTimeFraction?: string;
-  performanceHysteresisEpochs?: number;
+  performanceHysteresisEpochs?: string | number;
   slaCompetitionFactor?: string;
 }
 
 export interface LogNormalModelParams {
-  mu?: number;
-  r?: number;
-  sigma?: number;
+  mu?: string | number;
+  r?: string | number;
+  sigma?: string | number;
 }
 
 export interface LogNormalRiskModel {
-  riskAversionParameter?: number;
-  tau?: number;
+  riskAversionParameter?: string | number;
+  tau?: string | number;
   params?: vega.LogNormalModelParams;
 }
 
@@ -612,7 +612,7 @@ export interface MarginCalculator {
 export interface Market {
   id?: string;
   tradableInstrument?: vega.TradableInstrument;
-  decimalPlaces?: number;
+  decimalPlaces?: string | number;
   fees?: vega.Fees;
   openingAuction?: vega.AuctionDuration;
   priceMonitoringSettings?: vega.PriceMonitoringSettings;
@@ -620,7 +620,7 @@ export interface Market {
   tradingMode?: vega.MarketTradingMode;
   state?: vega.MarketState;
   marketTimestamps?: vega.MarketTimestamps;
-  positionDecimalPlaces?: number;
+  positionDecimalPlaces?: string | number;
   lpPriceRange?: string;
   linearSlippageFactor?: string;
   quadraticSlippageFactor?: string;
@@ -634,10 +634,10 @@ export interface Market {
 }
 
 export interface MarketTimestamps {
-  proposed?: number;
-  pending?: number;
-  open?: number;
-  close?: number;
+  proposed?: string | number;
+  pending?: string | number;
+  open?: string | number;
+  close?: string | number;
 }
 
 export interface Perpetual {
@@ -665,23 +665,23 @@ export interface PriceMonitoringSettings {
 }
 
 export interface PriceMonitoringTrigger {
-  horizon?: number;
+  horizon?: string | number;
   probability?: string;
-  auctionExtension?: number;
+  auctionExtension?: string | number;
 }
 
 export interface ScalingFactors {
-  searchLevel?: number;
-  initialMargin?: number;
-  collateralRelease?: number;
+  searchLevel?: string | number;
+  initialMargin?: string | number;
+  collateralRelease?: string | number;
 }
 
 export interface SimpleModelParams {
-  factorLong?: number;
-  factorShort?: number;
-  maxMoveUp?: number;
-  minMoveDown?: number;
-  probabilityOfTrading?: number;
+  factorLong?: string | number;
+  factorShort?: string | number;
+  maxMoveUp?: string | number;
+  minMoveDown?: string | number;
+  probabilityOfTrading?: string | number;
 }
 
 export interface SimpleRiskModel {
@@ -694,8 +694,8 @@ export interface Spot {
 }
 
 export interface TargetStakeParameters {
-  timeWindow?: number;
-  scalingFactor?: number;
+  timeWindow?: string | number;
+  scalingFactor?: string | number;
 }
 
 export interface TradableInstrument {
@@ -2063,7 +2063,7 @@ export interface AccountDetails {
 }
 
 export interface ActivityStreakBenefitTier {
-  minimumActivityStreak?: number;
+  minimumActivityStreak?: string | number;
   rewardMultiplier?: string;
   vestingMultiplier?: string;
 }
@@ -2075,9 +2075,9 @@ export interface ActivityStreakBenefitTiers {
 export interface AuctionIndicativeState {
   marketId?: string;
   indicativePrice?: string;
-  indicativeVolume?: number;
-  auctionStart?: number;
-  auctionEnd?: number;
+  indicativeVolume?: string | number;
+  auctionStart?: string | number;
+  auctionEnd?: string | number;
 }
 
 export interface BenefitTier {
@@ -2088,21 +2088,21 @@ export interface BenefitTier {
 }
 
 export interface Candle {
-  timestamp?: number;
+  timestamp?: string | number;
   datetime?: string;
   high?: string;
   low?: string;
   open?: string;
   close?: string;
-  volume?: number;
+  volume?: string | number;
   interval?: vega.Interval;
-  notional?: number;
+  notional?: string | number;
 }
 
 export interface CompositePriceSource {
   priceSource?: string;
   price?: string;
-  lastUpdated?: number;
+  lastUpdated?: string | number;
 }
 
 export interface CompositePriceState {
@@ -2123,8 +2123,8 @@ export interface Deposit {
   asset?: string;
   amount?: string;
   txHash?: string;
-  creditedTimestamp?: number;
-  createdTimestamp?: number;
+  creditedTimestamp?: string | number;
+  createdTimestamp?: string | number;
 }
 
 export interface DispatchStrategy {
@@ -2137,19 +2137,19 @@ export interface DispatchStrategy {
   nTopPerformers?: string;
   stakingRequirement?: string;
   notionalTimeWeightedAveragePositionRequirement?: string;
-  windowLength?: number;
-  lockPeriod?: number;
+  windowLength?: string | number;
+  lockPeriod?: string | number;
   distributionStrategy?: vega.DistributionStrategy;
   rankTable?: vega.Rank[];
   capRewardFeeMultiple?: string;
-  transferInterval?: number;
+  transferInterval?: string | number;
 }
 
 export interface EVMBridgeConfig {
   networkId?: string;
   chainId?: string;
   collateralBridgeContract?: vega.EthereumContractConfig;
-  confirmations?: number;
+  confirmations?: string | number;
   multisigControlContract?: vega.EthereumContractConfig;
   blockTime?: string;
   name?: string;
@@ -2160,27 +2160,27 @@ export interface EVMBridgeConfigs {
 }
 
 export interface Epoch {
-  seq?: number;
+  seq?: string | number;
   timestamps?: vega.EpochTimestamps;
   validators?: vega.Node[];
   delegations?: vega.Delegation[];
 }
 
 export interface EpochData {
-  total?: number;
-  offline?: number;
-  online?: number;
+  total?: string | number;
+  offline?: string | number;
+  online?: string | number;
 }
 
 export interface EpochParticipation {
   epoch?: vega.Epoch;
-  offline?: number;
-  online?: number;
-  totalRewards?: number;
+  offline?: string | number;
+  online?: string | number;
+  totalRewards?: string | number;
 }
 
 export interface EpochRewardSummary {
-  epoch?: number;
+  epoch?: string | number;
   assetId?: string;
   marketId?: string;
   rewardType?: string;
@@ -2188,11 +2188,11 @@ export interface EpochRewardSummary {
 }
 
 export interface EpochTimestamps {
-  startTime?: number;
-  expiryTime?: number;
-  endTime?: number;
-  firstBlock?: number;
-  lastBlock?: number;
+  startTime?: string | number;
+  expiryTime?: string | number;
+  endTime?: string | number;
+  firstBlock?: string | number;
+  lastBlock?: string | number;
 }
 
 export interface Erc20WithdrawExt {
@@ -2200,7 +2200,7 @@ export interface Erc20WithdrawExt {
 }
 
 export interface ErrorDetail {
-  code?: number;
+  code?: string | number;
   message?: string;
   inner?: string;
 }
@@ -2209,7 +2209,7 @@ export interface EthereumConfig {
   networkId?: string;
   chainId?: string;
   collateralBridgeContract?: vega.EthereumContractConfig;
-  confirmations?: number;
+  confirmations?: string | number;
   stakingBridgeContract?: vega.EthereumContractConfig;
   tokenVestingContract?: vega.EthereumContractConfig;
   multisigControlContract?: vega.EthereumContractConfig;
@@ -2217,15 +2217,15 @@ export interface EthereumConfig {
 
 export interface EthereumContractConfig {
   address?: string;
-  deploymentBlockHeight?: number;
+  deploymentBlockHeight?: string | number;
 }
 
 export interface EthereumL2Config {
   networkId?: string;
   chainId?: string;
-  confirmations?: number;
+  confirmations?: string | number;
   name?: string;
-  blockInterval?: number;
+  blockInterval?: string | number;
 }
 
 export interface EthereumL2Configs {
@@ -2250,9 +2250,9 @@ export interface FinancialAmount {
 }
 
 export interface IcebergOrder {
-  peakSize?: number;
-  minimumVisibleSize?: number;
-  reservedRemaining?: number;
+  peakSize?: string | number;
+  minimumVisibleSize?: string | number;
+  reservedRemaining?: string | number;
 }
 
 export interface KeyValueBundle {
@@ -2266,7 +2266,7 @@ export interface LedgerEntry {
   toAccount?: vega.AccountDetails;
   amount?: string;
   type?: vega.TransferType;
-  timestamp?: number;
+  timestamp?: string | number;
   fromAccountBalance?: string;
   toAccountBalance?: string;
   transferId?: string;
@@ -2279,7 +2279,7 @@ export interface LedgerMovement {
 
 export interface LiquidityOrder {
   reference?: vega.PeggedReference;
-  proportion?: number;
+  proportion?: string | number;
   offset?: string;
 }
 
@@ -2311,14 +2311,14 @@ export interface LiquidityProviderSLA {
 export interface LiquidityProvision {
   id?: string;
   partyId?: string;
-  createdAt?: number;
-  updatedAt?: number;
+  createdAt?: string | number;
+  updatedAt?: string | number;
   marketId?: string;
   commitmentAmount?: string;
   fee?: string;
   sells?: vega.LiquidityOrderReference[];
   buys?: vega.LiquidityOrderReference[];
-  version?: number;
+  version?: string | number;
   status?: vega.LiquidityProvisionStatus;
   reference?: string;
 }
@@ -2331,7 +2331,7 @@ export interface MarginLevels {
   partyId?: string;
   marketId?: string;
   asset?: string;
-  timestamp?: number;
+  timestamp?: string | number;
   orderMargin?: string;
   marginMode?: vega.MarginMode;
   marginFactor?: string;
@@ -2340,22 +2340,22 @@ export interface MarginLevels {
 export interface MarketData {
   markPrice?: string;
   bestBidPrice?: string;
-  bestBidVolume?: number;
+  bestBidVolume?: string | number;
   bestOfferPrice?: string;
-  bestOfferVolume?: number;
+  bestOfferVolume?: string | number;
   bestStaticBidPrice?: string;
-  bestStaticBidVolume?: number;
+  bestStaticBidVolume?: string | number;
   bestStaticOfferPrice?: string;
-  bestStaticOfferVolume?: number;
+  bestStaticOfferVolume?: string | number;
   midPrice?: string;
   staticMidPrice?: string;
   market?: string;
-  timestamp?: number;
-  openInterest?: number;
-  auctionEnd?: number;
-  auctionStart?: number;
+  timestamp?: string | number;
+  openInterest?: string | number;
+  auctionEnd?: string | number;
+  auctionStart?: string | number;
   indicativePrice?: string;
-  indicativeVolume?: number;
+  indicativeVolume?: string | number;
   marketTradingMode?: vega.MarketTradingMode;
   trigger?: vega.AuctionTrigger;
   extensionTrigger?: vega.AuctionTrigger;
@@ -2365,12 +2365,12 @@ export interface MarketData {
   marketValueProxy?: string;
   liquidityProviderFeeShare?: vega.LiquidityProviderFeeShare[];
   marketState?: vega.MarketState;
-  nextMarkToMarket?: number;
+  nextMarkToMarket?: string | number;
   lastTradedPrice?: string;
   marketGrowth?: string;
   productData?: vega.ProductData;
   liquidityProviderSla?: vega.LiquidityProviderSLA[];
-  nextNetworkCloseout?: number;
+  nextNetworkCloseout?: string | number;
   markPriceType?: vega.CompositePriceType;
   markPriceState?: vega.CompositePriceState;
 }
@@ -2379,15 +2379,15 @@ export interface MarketDepth {
   marketId?: string;
   buy?: vega.PriceLevel[];
   sell?: vega.PriceLevel[];
-  sequenceNumber?: number;
+  sequenceNumber?: string | number;
 }
 
 export interface MarketDepthUpdate {
   marketId?: string;
   buy?: vega.PriceLevel[];
   sell?: vega.PriceLevel[];
-  sequenceNumber?: number;
-  previousSequenceNumber?: number;
+  sequenceNumber?: string | number;
+  previousSequenceNumber?: string | number;
 }
 
 export interface MatrixValue {
@@ -2405,8 +2405,8 @@ export interface NetworkLimits {
   proposeMarketEnabled?: boolean;
   proposeAssetEnabled?: boolean;
   genesisLoaded?: boolean;
-  proposeMarketEnabledFrom?: number;
-  proposeAssetEnabledFrom?: number;
+  proposeMarketEnabledFrom?: string | number;
+  proposeAssetEnabledFrom?: string | number;
   canProposeSpotMarket?: boolean;
   canProposePerpetualMarket?: boolean;
 }
@@ -2439,20 +2439,20 @@ export interface Node {
 
 export interface NodeData {
   stakedTotal?: string;
-  totalNodes?: number;
-  inactiveNodes?: number;
+  totalNodes?: string | number;
+  inactiveNodes?: string | number;
   tendermintNodes?: vega.NodeSet;
   ersatzNodes?: vega.NodeSet;
   pendingNodes?: vega.NodeSet;
-  uptime?: number;
+  uptime?: string | number;
 }
 
 export interface NodeSet {
-  total?: number;
-  inactive?: number;
+  total?: string | number;
+  inactive?: string | number;
   promoted?: string[];
   demoted?: string[];
-  maximum?: number;
+  maximum?: string | number;
 }
 
 export interface Order {
@@ -2461,18 +2461,18 @@ export interface Order {
   partyId?: string;
   side?: vega.Side;
   price?: string;
-  size?: number;
-  remaining?: number;
+  size?: string | number;
+  remaining?: string | number;
   timeInForce?: vega.OrderTimeInForce;
   type?: vega.OrderType;
-  createdAt?: number;
+  createdAt?: string | number;
   status?: vega.OrderStatus;
-  expiresAt?: number;
+  expiresAt?: string | number;
   reference?: string;
   reason?: vega.OrderError;
-  updatedAt?: number;
-  version?: number;
-  batchId?: number;
+  updatedAt?: string | number;
+  version?: string | number;
+  batchId?: string | number;
   peggedOrder?: vega.PeggedOrder;
   liquidityProvisionId?: string;
   postOnly?: boolean;
@@ -2512,10 +2512,10 @@ export interface PerpetualData {
   fundingRate?: string;
   internalTwap?: string;
   externalTwap?: string;
-  seqNum?: number;
-  startTime?: number;
+  seqNum?: string | number;
+  startTime?: string | number;
   internalCompositePrice?: string;
-  nextInternalCompositePriceCalc?: number;
+  nextInternalCompositePriceCalc?: string | number;
   internalCompositePriceType?: vega.CompositePriceType;
   underlyingIndexPrice?: string;
   internalCompositePriceState?: vega.CompositePriceState;
@@ -2524,17 +2524,17 @@ export interface PerpetualData {
 export interface Position {
   marketId?: string;
   partyId?: string;
-  openVolume?: number;
+  openVolume?: string | number;
   realisedPnl?: string;
   unrealisedPnl?: string;
   averageEntryPrice?: string;
-  updatedAt?: number;
+  updatedAt?: string | number;
   lossSocialisationAmount?: string;
   positionStatus?: vega.PositionStatus;
 }
 
 export interface PositionTrade {
-  volume?: number;
+  volume?: string | number;
   price?: string;
 }
 
@@ -2545,8 +2545,8 @@ export interface PostTransferBalance {
 
 export interface PriceLevel {
   price?: string;
-  numberOfOrders?: number;
-  volume?: number;
+  numberOfOrders?: string | number;
+  volume?: string | number;
 }
 
 export interface PriceMonitoringBounds {
@@ -2561,8 +2561,8 @@ export interface ProductData {
 }
 
 export interface Rank {
-  startRank?: number;
-  shareRatio?: number;
+  startRank?: string | number;
+  shareRatio?: string | number;
 }
 
 export interface RankingScore {
@@ -2570,29 +2570,29 @@ export interface RankingScore {
   performanceScore?: string;
   previousStatus?: vega.ValidatorNodeStatus;
   status?: vega.ValidatorNodeStatus;
-  votingPower?: number;
+  votingPower?: string | number;
   rankingScore?: string;
 }
 
 export interface ReferralProgram {
-  version?: number;
+  version?: string | number;
   id?: string;
   benefitTiers?: vega.BenefitTier[];
-  endOfProgramTimestamp?: number;
-  windowLength?: number;
+  endOfProgramTimestamp?: string | number;
+  windowLength?: string | number;
   stakingTiers?: vega.StakingTier[];
 }
 
 export interface Reward {
   assetId?: string;
   partyId?: string;
-  epoch?: number;
+  epoch?: string | number;
   amount?: string;
   percentageOfTotal?: string;
-  receivedAt?: number;
+  receivedAt?: string | number;
   marketId?: string;
   rewardType?: string;
-  lockedUntilEpoch?: number;
+  lockedUntilEpoch?: string | number;
   quantumAmount?: string;
   gameId?: string;
   teamId?: string;
@@ -2643,12 +2643,12 @@ export interface StateVarValue {
 export interface StopOrder {
   id?: string;
   ocoLinkId?: string;
-  expiresAt?: number;
+  expiresAt?: string | number;
   expiryStrategy?: vega.StopOrderExpiryStrategy;
   triggerDirection?: vega.StopOrderTriggerDirection;
   status?: vega.StopOrderStatus;
-  createdAt?: number;
-  updatedAt?: number;
+  createdAt?: string | number;
+  updatedAt?: string | number;
   orderId?: string;
   partyId?: string;
   marketId?: string;
@@ -2667,18 +2667,18 @@ export interface Trade {
   id?: string;
   marketId?: string;
   price?: string;
-  size?: number;
+  size?: string | number;
   buyer?: string;
   seller?: string;
   aggressor?: vega.Side;
   buyOrder?: string;
   sellOrder?: string;
-  timestamp?: number;
+  timestamp?: string | number;
   type?: vega.TradeType;
   buyerFee?: vega.Fee;
   sellerFee?: vega.Fee;
-  buyerAuctionBatch?: number;
-  sellerAuctionBatch?: number;
+  buyerAuctionBatch?: string | number;
+  sellerAuctionBatch?: string | number;
   assetPrice?: string;
 }
 
@@ -2722,11 +2722,11 @@ export interface VolumeBenefitTier {
 }
 
 export interface VolumeDiscountProgram {
-  version?: number;
+  version?: string | number;
   id?: string;
   benefitTiers?: vega.VolumeBenefitTier[];
-  endOfProgramTimestamp?: number;
-  windowLength?: number;
+  endOfProgramTimestamp?: string | number;
+  windowLength?: string | number;
 }
 
 export interface WithdrawExt {
@@ -2741,8 +2741,8 @@ export interface Withdrawal {
   status?: vega.WithdrawalStatus;
   ref?: string;
   txHash?: string;
-  createdTimestamp?: number;
-  withdrawnTimestamp?: number;
+  createdTimestamp?: string | number;
+  withdrawnTimestamp?: string | number;
   ext?: vega.WithdrawExt;
 }
 
@@ -2854,8 +2854,8 @@ export interface AnnounceNode {
   id?: string;
   name?: string;
   avatarUrl?: string;
-  vegaPubKeyIndex?: number;
-  fromEpoch?: number;
+  vegaPubKeyIndex?: string | number;
+  fromEpoch?: string | number;
   ethereumSignature?: vega.commands.v1.Signature;
   vegaSignature?: vega.commands.v1.Signature;
   submitterAddress?: string;
@@ -2863,7 +2863,7 @@ export interface AnnounceNode {
 
 export interface ChainEvent {
   txId?: string;
-  nonce?: number;
+  nonce?: string | number;
   builtin?: vega.BuiltinAssetEvent;
   erc20?: vega.ERC20Event;
   stakingEvent?: vega.StakingEvent;
@@ -2872,7 +2872,7 @@ export interface ChainEvent {
 }
 
 export interface EthereumKeyRotateSubmission {
-  targetBlock?: number;
+  targetBlock?: string | number;
   newAddress?: string;
   currentAddress?: string;
   submitterAddress?: string;
@@ -2880,8 +2880,8 @@ export interface EthereumKeyRotateSubmission {
 }
 
 export interface KeyRotateSubmission {
-  newPubKeyIndex?: number;
-  targetBlock?: number;
+  newPubKeyIndex?: string | number;
+  targetBlock?: string | number;
   newPubKey?: string;
   currentPubKeyHash?: string;
 }
@@ -2898,7 +2898,7 @@ export interface NodeVote {
 }
 
 export interface ProtocolUpgradeProposal {
-  upgradeBlockHeight?: number;
+  upgradeBlockHeight?: string | number;
   vegaReleaseTag?: string;
 }
 
@@ -2953,7 +2953,7 @@ export interface Asset {
 export interface AssetDetails {
   name?: string;
   symbol?: string;
-  decimals?: number;
+  decimals?: string | number;
   quantum?: string;
   builtinAsset?: vega.BuiltinAsset;
   erc20?: vega.ERC20;
@@ -3346,14 +3346,14 @@ export enum VoteValueNumber {
 }
 
 export interface BatchProposalTerms {
-  closingTimestamp?: number;
+  closingTimestamp?: string | number;
   proposalParams?: vega.ProposalParameters;
   changes?: vega.BatchProposalTermsChange[];
 }
 
 export interface BatchProposalTermsChange {
-  enactmentTimestamp?: number;
-  validationTimestamp?: number;
+  enactmentTimestamp?: string | number;
+  validationTimestamp?: string | number;
   updateMarket?: vega.UpdateMarket;
   newMarket?: vega.NewMarket;
   updateNetworkParameter?: vega.UpdateNetworkParameter;
@@ -3425,13 +3425,13 @@ export interface NewMarket {
 
 export interface NewMarketConfiguration {
   instrument?: vega.InstrumentConfiguration;
-  decimalPlaces?: number;
+  decimalPlaces?: string | number;
   metadata?: string[];
   priceMonitoringParameters?: vega.PriceMonitoringParameters;
   liquidityMonitoringParameters?: vega.LiquidityMonitoringParameters;
   simple?: vega.SimpleModelParams;
   logNormal?: vega.LogNormalRiskModel;
-  positionDecimalPlaces?: number;
+  positionDecimalPlaces?: string | number;
   lpPriceRange?: string;
   linearSlippageFactor?: string;
   quadraticSlippageFactor?: string;
@@ -3449,13 +3449,13 @@ export interface NewSpotMarket {
 
 export interface NewSpotMarketConfiguration {
   instrument?: vega.InstrumentConfiguration;
-  priceDecimalPlaces?: number;
+  priceDecimalPlaces?: string | number;
   metadata?: string[];
   priceMonitoringParameters?: vega.PriceMonitoringParameters;
   targetStakeParameters?: vega.TargetStakeParameters;
   simple?: vega.SimpleModelParams;
   logNormal?: vega.LogNormalRiskModel;
-  sizeDecimalPlaces?: number;
+  sizeDecimalPlaces?: string | number;
   slaParams?: vega.LiquiditySLAParameters;
   liquidityFeeSettings?: vega.LiquidityFeeSettings;
   tickSize?: string;
@@ -3479,7 +3479,7 @@ export interface NewTransferConfiguration {
 }
 
 export interface OneOffTransfer {
-  deliverOn?: number;
+  deliverOn?: string | number;
 }
 
 export interface PerpetualProduct {
@@ -3503,7 +3503,7 @@ export interface Proposal {
   reference?: string;
   partyId?: string;
   state?: vega.ProposalState;
-  timestamp?: number;
+  timestamp?: string | number;
   terms?: vega.ProposalTerms;
   reason?: vega.ProposalError;
   errorDetails?: string;
@@ -3517,10 +3517,10 @@ export interface Proposal {
 }
 
 export interface ProposalParameters {
-  minClose?: number;
-  maxClose?: number;
-  minEnact?: number;
-  maxEnact?: number;
+  minClose?: string | number;
+  maxClose?: string | number;
+  minEnact?: string | number;
+  maxEnact?: string | number;
   requiredParticipation?: string;
   requiredMajority?: string;
   minProposerBalance?: string;
@@ -3536,9 +3536,9 @@ export interface ProposalRationale {
 }
 
 export interface ProposalTerms {
-  closingTimestamp?: number;
-  enactmentTimestamp?: number;
-  validationTimestamp?: number;
+  closingTimestamp?: string | number;
+  enactmentTimestamp?: string | number;
+  validationTimestamp?: string | number;
   updateMarket?: vega.UpdateMarket;
   newMarket?: vega.NewMarket;
   updateNetworkParameter?: vega.UpdateNetworkParameter;
@@ -3555,15 +3555,15 @@ export interface ProposalTerms {
 }
 
 export interface RecurringTransfer {
-  startEpoch?: number;
-  endEpoch?: number;
+  startEpoch?: string | number;
+  endEpoch?: string | number;
   dispatchStrategy?: vega.DispatchStrategy;
 }
 
 export interface ReferralProgramChanges {
   benefitTiers?: vega.BenefitTier[];
-  endOfProgramTimestamp?: number;
-  windowLength?: number;
+  endOfProgramTimestamp?: string | number;
+  windowLength?: string | number;
   stakingTiers?: vega.StakingTier[];
 }
 
@@ -3679,15 +3679,15 @@ export interface UpdateVolumeDiscountProgram {
 
 export interface VolumeDiscountProgramChanges {
   benefitTiers?: vega.VolumeBenefitTier[];
-  endOfProgramTimestamp?: number;
-  windowLength?: number;
+  endOfProgramTimestamp?: string | number;
+  windowLength?: string | number;
 }
 
 export interface Vote {
   partyId?: string;
   value?: vega.VoteValue;
   proposalId?: string;
-  timestamp?: number;
+  timestamp?: string | number;
   totalGovernanceTokenBalance?: string;
   totalGovernanceTokenWeight?: string;
   totalEquityLikeShareWeight?: string;
@@ -3762,7 +3762,7 @@ export interface BatchProposalSubmission {
 }
 
 export interface BatchProposalSubmissionTerms {
-  closingTimestamp?: number;
+  closingTimestamp?: string | number;
   changes?: vega.BatchProposalTermsChange[];
 }
 
@@ -3789,8 +3789,8 @@ export interface DelegateSubmission {
 }
 
 export interface IcebergOpts {
-  peakSize?: number;
-  minimumVisibleSize?: number;
+  peakSize?: string | number;
+  minimumVisibleSize?: string | number;
 }
 
 export interface IssueSignatures {
@@ -3823,19 +3823,19 @@ export interface LiquidityProvisionSubmission {
 }
 
 export interface OneOffTransfer {
-  deliverOn?: number;
+  deliverOn?: string | number;
 }
 
 export interface OrderAmendment {
   orderId?: string;
   marketId?: string;
   price?: string;
-  sizeDelta?: number;
-  expiresAt?: number;
+  sizeDelta?: string | number;
+  expiresAt?: string | number;
   timeInForce?: vega.OrderTimeInForce;
   peggedOffset?: string;
   peggedReference?: vega.PeggedReference;
-  size?: number;
+  size?: string | number;
 }
 
 export interface OrderCancellation {
@@ -3846,10 +3846,10 @@ export interface OrderCancellation {
 export interface OrderSubmission {
   marketId?: string;
   price?: string;
-  size?: number;
+  size?: string | number;
   side?: vega.Side;
   timeInForce?: vega.OrderTimeInForce;
-  expiresAt?: number;
+  expiresAt?: string | number;
   type?: vega.OrderType;
   reference?: string;
   peggedOrder?: vega.PeggedOrder;
@@ -3865,15 +3865,15 @@ export interface ProposalSubmission {
 }
 
 export interface RecurringTransfer {
-  startEpoch?: number;
-  endEpoch?: number;
+  startEpoch?: string | number;
+  endEpoch?: string | number;
   factor?: string;
   dispatchStrategy?: vega.DispatchStrategy;
 }
 
 export interface StopOrderSetup {
   orderSubmission?: vega.commands.v1.OrderSubmission;
-  expiresAt?: number;
+  expiresAt?: string | number;
   expiryStrategy?: vega.StopOrderExpiryStrategy;
   sizeOverrideSetting?: vega.StopOrderSizeOverrideSetting;
   sizeOverrideValue?: vega.StopOrderSizeOverrideValue;
@@ -4000,8 +4000,8 @@ export enum TxVersionNumber {
 }
 
 export interface InputData {
-  nonce?: number;
-  blockHeight?: number;
+  nonce?: string | number;
+  blockHeight?: string | number;
   orderSubmission?: vega.commands.v1.OrderSubmission;
   orderCancellation?: vega.commands.v1.OrderCancellation;
   orderAmendment?: vega.commands.v1.OrderAmendment;
@@ -4040,7 +4040,7 @@ export interface InputData {
 
 export interface ProofOfWork {
   tid?: string;
-  nonce?: number;
+  nonce?: string | number;
 }
 
 export interface Transaction {
@@ -4077,8 +4077,8 @@ export interface ListTransactionsRequest {
   cmdTypes?: string[];
   excludeCmdTypes?: string[];
   parties?: string[];
-  first?: number;
-  last?: number;
+  first?: string | number;
+  last?: string | number;
 }
 
 export interface ListTransactionsRequestFiltersEntry {
@@ -4091,12 +4091,12 @@ export interface ListTransactionsResponse {
 }
 
 export interface Transaction {
-  block?: number;
-  index?: number;
+  block?: string | number;
+  index?: string | number;
   hash?: string;
   submitter?: string;
   type?: string;
-  code?: number;
+  code?: string | number;
   cursor?: string;
   command?: vega.commands.v1.InputData;
   signature?: vega.commands.v1.Signature;
@@ -4648,15 +4648,15 @@ export interface AuctionEvent {
   marketId?: string;
   openingAuction?: boolean;
   leave?: boolean;
-  start?: number;
-  end?: number;
+  start?: string | number;
+  end?: string | number;
   trigger?: vega.AuctionTrigger;
   extensionTrigger?: vega.AuctionTrigger;
 }
 
 export interface BeginBlock {
-  height?: number;
-  timestamp?: number;
+  height?: string | number;
+  timestamp?: string | number;
   hash?: string;
 }
 
@@ -4752,7 +4752,7 @@ export interface BusEvent {
   cancelledOrders?: vega.events.v1.CancelledOrders;
   market?: vega.events.v1.MarketEvent;
   txErrEvent?: vega.events.v1.TxErrorEvent;
-  version?: number;
+  version?: string | number;
   chainId?: string;
   txHash?: string;
 }
@@ -4766,11 +4766,11 @@ export interface CancelledOrders {
 export interface CheckpointEvent {
   hash?: string;
   blockHash?: string;
-  blockHeight?: number;
+  blockHeight?: string | number;
 }
 
 export interface CoreSnapshotData {
-  blockHeight?: number;
+  blockHeight?: string | number;
   blockHash?: string;
   coreVersion?: string;
   protocolUpgradeBlock?: boolean;
@@ -4797,7 +4797,7 @@ export interface DistressedPositions {
 export interface ERC20MultiSigSignerAdded {
   signatureId?: string;
   validatorId?: string;
-  timestamp?: number;
+  timestamp?: string | number;
   newSigner?: string;
   submitter?: string;
   nonce?: string;
@@ -4810,17 +4810,17 @@ export interface ERC20MultiSigSignerEvent {
   type?: vega.events.v1.ERC20MultiSigSignerEventType;
   signer?: string;
   nonce?: string;
-  blockTime?: number;
+  blockTime?: string | number;
   txHash?: string;
-  logIndex?: number;
-  blockNumber?: number;
+  logIndex?: string | number;
+  blockNumber?: string | number;
   chainId?: string;
 }
 
 export interface ERC20MultiSigSignerRemoved {
   signatureSubmitters?: vega.events.v1.ERC20MultiSigSignerRemovedSubmitter[];
   validatorId?: string;
-  timestamp?: number;
+  timestamp?: string | number;
   oldSigner?: string;
   nonce?: string;
   epochSeq?: string;
@@ -4834,32 +4834,32 @@ export interface ERC20MultiSigSignerRemovedSubmitter {
 
 export interface ERC20MultiSigThresholdSetEvent {
   id?: string;
-  newThreshold?: number;
+  newThreshold?: string | number;
   nonce?: string;
-  blockTime?: number;
+  blockTime?: string | number;
   txHash?: string;
-  logIndex?: number;
-  blockNumber?: number;
+  logIndex?: string | number;
+  blockNumber?: string | number;
   chainId?: string;
 }
 
 export interface EndBlock {
-  height?: number;
+  height?: string | number;
 }
 
 export interface EpochEvent {
-  seq?: number;
+  seq?: string | number;
   action?: vega.EpochAction;
-  startTime?: number;
-  expireTime?: number;
-  endTime?: number;
+  startTime?: string | number;
+  expireTime?: string | number;
+  endTime?: string | number;
 }
 
 export interface EthereumKeyRotation {
   nodeId?: string;
   oldAddress?: string;
   newAddress?: string;
-  blockHeight?: number;
+  blockHeight?: string | number;
 }
 
 export interface ExpiredOrders {
@@ -4870,7 +4870,7 @@ export interface ExpiredOrders {
 export interface FeesStats {
   market?: string;
   asset?: string;
-  epochSeq?: number;
+  epochSeq?: string | number;
   totalRewardsReceived?: vega.events.v1.PartyAmount[];
   referrerRewardsGenerated?: vega.events.v1.ReferrerRewardsGenerated[];
   refereesDiscountApplied?: vega.events.v1.PartyAmount[];
@@ -4887,15 +4887,15 @@ export interface FundingPayment {
 
 export interface FundingPayments {
   marketId?: string;
-  seq?: number;
+  seq?: string | number;
   payments?: vega.events.v1.FundingPayment[];
 }
 
 export interface FundingPeriod {
   marketId?: string;
-  seq?: number;
-  start?: number;
-  end?: number;
+  seq?: string | number;
+  start?: string | number;
+  end?: string | number;
   fundingPayment?: string;
   fundingRate?: string;
   internalTwap?: string;
@@ -4904,10 +4904,10 @@ export interface FundingPeriod {
 
 export interface FundingPeriodDataPoint {
   marketId?: string;
-  seq?: number;
+  seq?: string | number;
   dataPointType?: vega.events.v1.FundingPeriodDataPointSource;
   price?: string;
-  timestamp?: number;
+  timestamp?: string | number;
   twap?: string;
 }
 
@@ -4915,7 +4915,7 @@ export interface KeyRotation {
   nodeId?: string;
   oldPubKey?: string;
   newPubKey?: string;
-  blockHeight?: number;
+  blockHeight?: string | number;
 }
 
 export interface LedgerMovements {
@@ -4940,33 +4940,33 @@ export interface MarketEvent {
 
 export interface MarketTick {
   id?: string;
-  time?: number;
+  time?: string | number;
 }
 
 export interface OneOffGovernanceTransfer {
-  deliverOn?: number;
+  deliverOn?: string | number;
 }
 
 export interface OneOffTransfer {
-  deliverOn?: number;
+  deliverOn?: string | number;
 }
 
 export interface PaidLiquidityFeesStats {
   market?: string;
   asset?: string;
-  epochSeq?: number;
+  epochSeq?: string | number;
   totalFeesPaid?: string;
   feesPaidPerParty?: vega.events.v1.PartyAmount[];
 }
 
 export interface PartyActivityStreak {
   party?: string;
-  activeFor?: number;
-  inactiveFor?: number;
+  activeFor?: string | number;
+  inactiveFor?: string | number;
   isActive?: boolean;
   rewardDistributionActivityMultiplier?: string;
   rewardVestingActivityMultiplier?: string;
-  epoch?: number;
+  epoch?: string | number;
   tradedVolume?: string;
   openVolume?: string;
 }
@@ -4979,7 +4979,7 @@ export interface PartyAmount {
 
 export interface PartyLockedBalance {
   asset?: string;
-  untilEpoch?: number;
+  untilEpoch?: string | number;
   balance?: string;
 }
 
@@ -4990,7 +4990,7 @@ export interface PartyMarginModeUpdated {
   marginFactor?: string;
   minTheoreticalMarginFactor?: string;
   maxTheoreticalLeverage?: string;
-  atEpoch?: number;
+  atEpoch?: string | number;
 }
 
 export interface PartyProfileUpdated {
@@ -5022,45 +5022,45 @@ export interface PartyVolumeDiscountStats {
 
 export interface PositionResolution {
   marketId?: string;
-  distressed?: number;
-  closed?: number;
+  distressed?: string | number;
+  closed?: string | number;
   markPrice?: string;
 }
 
 export interface PositionStateEvent {
   partyId?: string;
   marketId?: string;
-  size?: number;
-  potentialBuys?: number;
-  potentialSells?: number;
+  size?: string | number;
+  potentialBuys?: string | number;
+  potentialSells?: string | number;
   vwBuyPrice?: string;
   vwSellPrice?: string;
 }
 
 export interface ProtocolUpgradeDataNodeReady {
-  lastBlockHeight?: number;
+  lastBlockHeight?: string | number;
 }
 
 export interface ProtocolUpgradeEvent {
-  upgradeBlockHeight?: number;
+  upgradeBlockHeight?: string | number;
   vegaReleaseTag?: string;
   approvers?: string[];
   status?: vega.events.v1.ProtocolUpgradeProposalStatus;
 }
 
 export interface ProtocolUpgradeStarted {
-  lastBlockHeight?: number;
+  lastBlockHeight?: string | number;
 }
 
 export interface RecurringGovernanceTransfer {
-  startEpoch?: number;
-  endEpoch?: number;
+  startEpoch?: string | number;
+  endEpoch?: string | number;
   dispatchStrategy?: vega.DispatchStrategy;
 }
 
 export interface RecurringTransfer {
-  startEpoch?: number;
-  endEpoch?: number;
+  startEpoch?: string | number;
+  endEpoch?: string | number;
   factor?: string;
   dispatchStrategy?: vega.DispatchStrategy;
 }
@@ -5068,15 +5068,15 @@ export interface RecurringTransfer {
 export interface RefereeJoinedReferralSet {
   setId?: string;
   referee?: string;
-  joinedAt?: number;
-  atEpoch?: number;
+  joinedAt?: string | number;
+  atEpoch?: string | number;
 }
 
 export interface RefereeJoinedTeam {
   teamId?: string;
   referee?: string;
-  joinedAt?: number;
-  atEpoch?: number;
+  joinedAt?: string | number;
+  atEpoch?: string | number;
 }
 
 export interface RefereeStats {
@@ -5089,39 +5089,39 @@ export interface RefereeSwitchedTeam {
   fromTeamId?: string;
   toTeamId?: string;
   referee?: string;
-  switchedAt?: number;
-  atEpoch?: number;
+  switchedAt?: string | number;
+  atEpoch?: string | number;
 }
 
 export interface ReferralProgramEnded {
-  version?: number;
+  version?: string | number;
   id?: string;
-  endedAt?: number;
-  atEpoch?: number;
+  endedAt?: string | number;
+  atEpoch?: string | number;
 }
 
 export interface ReferralProgramStarted {
   program?: vega.ReferralProgram;
-  startedAt?: number;
-  atEpoch?: number;
+  startedAt?: string | number;
+  atEpoch?: string | number;
 }
 
 export interface ReferralProgramUpdated {
   program?: vega.ReferralProgram;
-  updatedAt?: number;
-  atEpoch?: number;
+  updatedAt?: string | number;
+  atEpoch?: string | number;
 }
 
 export interface ReferralSetCreated {
   setId?: string;
   referrer?: string;
-  createdAt?: number;
-  updatedAt?: number;
+  createdAt?: string | number;
+  updatedAt?: string | number;
 }
 
 export interface ReferralSetStatsUpdated {
   setId?: string;
-  atEpoch?: number;
+  atEpoch?: string | number;
   referralSetRunningNotionalTakerVolume?: string;
   refereesStats?: vega.events.v1.RefereeStats[];
   rewardFactor?: string;
@@ -5142,7 +5142,7 @@ export interface RewardPayoutEvent {
   asset?: string;
   amount?: string;
   percentOfTotalReward?: string;
-  timestamp?: number;
+  timestamp?: string | number;
   rewardType?: string;
   lockedUntilEpoch?: string;
   quantumAmount?: string;
@@ -5173,15 +5173,15 @@ export interface SettlePosition {
 export interface StakeLinking {
   id?: string;
   type?: vega.events.v1.StakeLinkingType;
-  ts?: number;
+  ts?: string | number;
   party?: string;
   amount?: string;
   status?: vega.events.v1.StakeLinkingStatus;
-  finalizedAt?: number;
+  finalizedAt?: string | number;
   txHash?: string;
-  blockHeight?: number;
-  blockTime?: number;
-  logIndex?: number;
+  blockHeight?: string | number;
+  blockTime?: string | number;
+  logIndex?: string | number;
   ethereumAddress?: string;
 }
 
@@ -5206,9 +5206,9 @@ export interface TeamCreated {
   name?: string;
   teamUrl?: string;
   avatarUrl?: string;
-  createdAt?: number;
+  createdAt?: string | number;
   closed?: boolean;
-  atEpoch?: number;
+  atEpoch?: string | number;
   allowList?: string[];
 }
 
@@ -5232,16 +5232,16 @@ export interface TeamUpdated {
 }
 
 export interface TeamsStatsUpdated {
-  atEpoch?: number;
+  atEpoch?: string | number;
   stats?: vega.events.v1.TeamStats[];
 }
 
 export interface TimeUpdate {
-  timestamp?: number;
+  timestamp?: string | number;
 }
 
 export interface TimeWeightedNotionalPositionUpdated {
-  epochSeq?: number;
+  epochSeq?: string | number;
   asset?: string;
   party?: string;
   gameId?: string;
@@ -5249,7 +5249,7 @@ export interface TimeWeightedNotionalPositionUpdated {
 }
 
 export interface TradeSettlement {
-  size?: number;
+  size?: string | number;
   price?: string;
   marketPrice?: string;
 }
@@ -5307,7 +5307,7 @@ export interface Transfer {
   amount?: string;
   reference?: string;
   status?: vega.events.v1.TransferStatus;
-  timestamp?: number;
+  timestamp?: string | number;
   reason?: string;
   gameId?: string;
   oneOff?: vega.events.v1.OneOffTransfer;
@@ -5319,7 +5319,7 @@ export interface Transfer {
 export interface TransferFees {
   transferId?: string;
   amount?: string;
-  epoch?: number;
+  epoch?: string | number;
   discountApplied?: string;
 }
 
@@ -5327,7 +5327,7 @@ export interface TransferFeesDiscount {
   party?: string;
   asset?: string;
   amount?: string;
-  epoch?: number;
+  epoch?: string | number;
 }
 
 export interface TxErrorEvent {
@@ -5361,7 +5361,7 @@ export interface ValidatorRankingEvent {
   previousStatus?: string;
   nextStatus?: string;
   epochSeq?: string;
-  tmVotingPower?: number;
+  tmVotingPower?: string | number;
 }
 
 export interface ValidatorScoreEvent {
@@ -5384,44 +5384,44 @@ export interface ValidatorUpdate {
   country?: string;
   name?: string;
   avatarUrl?: string;
-  vegaPubKeyIndex?: number;
+  vegaPubKeyIndex?: string | number;
   added?: boolean;
-  fromEpoch?: number;
+  fromEpoch?: string | number;
   submitterAddress?: string;
-  epochSeq?: number;
+  epochSeq?: string | number;
 }
 
 export interface VestingBalancesSummary {
-  epochSeq?: number;
+  epochSeq?: string | number;
   partiesVestingSummary?: vega.events.v1.PartyVestingSummary[];
 }
 
 export interface VestingStatsUpdated {
-  atEpoch?: number;
+  atEpoch?: string | number;
   stats?: vega.events.v1.PartyVestingStats[];
 }
 
 export interface VolumeDiscountProgramEnded {
-  version?: number;
+  version?: string | number;
   id?: string;
-  endedAt?: number;
-  atEpoch?: number;
+  endedAt?: string | number;
+  atEpoch?: string | number;
 }
 
 export interface VolumeDiscountProgramStarted {
   program?: vega.VolumeDiscountProgram;
-  startedAt?: number;
-  atEpoch?: number;
+  startedAt?: string | number;
+  atEpoch?: string | number;
 }
 
 export interface VolumeDiscountProgramUpdated {
   program?: vega.VolumeDiscountProgram;
-  updatedAt?: number;
-  atEpoch?: number;
+  updatedAt?: string | number;
+  atEpoch?: string | number;
 }
 
 export interface VolumeDiscountStatsUpdated {
-  atEpoch?: number;
+  atEpoch?: string | number;
   stats?: vega.events.v1.PartyVolumeDiscountStats[];
 }
 
@@ -5703,7 +5703,7 @@ export interface AccountsConnection {
 }
 
 export interface AggregatedBalance {
-  timestamp?: number;
+  timestamp?: string | number;
   balance?: string;
   partyId?: string;
   assetId?: string;
@@ -5732,7 +5732,7 @@ export interface AggregatedLedgerEntriesEdge {
 }
 
 export interface AggregatedLedgerEntry {
-  timestamp?: number;
+  timestamp?: string | number;
   quantity?: string;
   transferType?: vega.TransferType;
   assetId?: string;
@@ -5758,14 +5758,14 @@ export interface AssetsConnection {
 }
 
 export interface Candle {
-  start?: number;
-  lastUpdate?: number;
+  start?: string | number;
+  lastUpdate?: string | number;
   high?: string;
   low?: string;
   open?: string;
   close?: string;
-  volume?: number;
-  notional?: number;
+  volume?: string | number;
+  notional?: string | number;
 }
 
 export interface CandleDataConnection {
@@ -5781,7 +5781,7 @@ export interface CandleEdge {
 export interface Checkpoint {
   hash?: string;
   blockHash?: string;
-  atBlock?: number;
+  atBlock?: string | number;
 }
 
 export interface CheckpointEdge {
@@ -5810,8 +5810,8 @@ export interface CoreSnapshotEdge {
 }
 
 export interface DateRange {
-  startTimestamp?: number;
-  endTimestamp?: number;
+  startTimestamp?: string | number;
+  endTimestamp?: string | number;
 }
 
 export interface DelegationEdge {
@@ -5838,7 +5838,7 @@ export interface ERC20MultiSigSignerAddedBundle {
   newSigner?: string;
   submitter?: string;
   nonce?: string;
-  timestamp?: number;
+  timestamp?: string | number;
   signatures?: string;
   epochSeq?: string;
   chainId?: string;
@@ -5863,7 +5863,7 @@ export interface ERC20MultiSigSignerRemovedBundle {
   oldSigner?: string;
   submitter?: string;
   nonce?: string;
-  timestamp?: number;
+  timestamp?: string | number;
   signatures?: string;
   epochSeq?: string;
   chainId?: string;
@@ -5897,7 +5897,7 @@ export interface EpochRewardSummaryEdge {
 export interface EstimateFeeRequest {
   marketId?: string;
   price?: string;
-  size?: number;
+  size?: string | number;
 }
 
 export interface EstimateFeeResponse {
@@ -5909,7 +5909,7 @@ export interface EstimateMarginRequest {
   partyId?: string;
   side?: vega.Side;
   type?: vega.OrderType;
-  size?: number;
+  size?: string | number;
   price?: string;
 }
 
@@ -5919,7 +5919,7 @@ export interface EstimateMarginResponse {
 
 export interface EstimatePositionRequest {
   marketId?: string;
-  openVolume?: number;
+  openVolume?: string | number;
   averageEntryPrice?: string;
   orders?: datanode.api.v2.OrderInfo[];
   marginAccountBalance?: string;
@@ -5967,8 +5967,8 @@ export interface ExportLedgerEntriesRequest {
 }
 
 export interface ExportNetworkHistoryRequest {
-  fromBlock?: number;
-  toBlock?: number;
+  fromBlock?: string | number;
+  toBlock?: string | number;
   table?: datanode.api.v2.Table;
 }
 
@@ -5983,8 +5983,8 @@ export interface FeesStatsForParty {
 export interface FundingPayment {
   partyId?: string;
   marketId?: string;
-  fundingPeriodSeq?: number;
-  timestamp?: number;
+  fundingPeriodSeq?: string | number;
+  timestamp?: string | number;
   amount?: string;
 }
 
@@ -6020,8 +6020,8 @@ export interface FundingPeriodEdge {
 
 export interface Game {
   id?: string;
-  epoch?: number;
-  participants?: number;
+  epoch?: string | number;
+  participants?: string | number;
   team?: datanode.api.v2.TeamGameEntities;
   individual?: datanode.api.v2.IndividualGameEntities;
   rewardAssetId?: string;
@@ -6116,13 +6116,13 @@ export interface GetERC20WithdrawalApprovalResponse {
   nonce?: string;
   signatures?: string;
   targetAddress?: string;
-  creation?: number;
+  creation?: string | number;
   sourceChainId?: string;
 }
 
 export interface GetEpochRequest {
-  id?: number;
-  block?: number;
+  id?: string | number;
+  block?: string | number;
 }
 
 export interface GetEpochResponse {
@@ -6132,8 +6132,8 @@ export interface GetEpochResponse {
 export interface GetFeesStatsForPartyRequest {
   partyId?: string;
   assetId?: string;
-  fromEpoch?: number;
-  toEpoch?: number;
+  fromEpoch?: string | number;
+  toEpoch?: string | number;
 }
 
 export interface GetFeesStatsForPartyResponse {
@@ -6143,7 +6143,7 @@ export interface GetFeesStatsForPartyResponse {
 export interface GetFeesStatsRequest {
   marketId?: string;
   assetId?: string;
-  epochSeq?: number;
+  epochSeq?: string | number;
   partyId?: string;
 }
 
@@ -6178,7 +6178,7 @@ export interface GetLatestMarketDataResponse {
 
 export interface GetLatestMarketDepthRequest {
   marketId?: string;
-  maxDepth?: number;
+  maxDepth?: string | number;
 }
 
 export interface GetLatestMarketDepthResponse {
@@ -6186,13 +6186,13 @@ export interface GetLatestMarketDepthResponse {
   buy?: vega.PriceLevel[];
   sell?: vega.PriceLevel[];
   lastTrade?: vega.Trade;
-  sequenceNumber?: number;
+  sequenceNumber?: string | number;
 }
 
 export interface GetMarketDataHistoryByIDRequest {
   marketId?: string;
-  startTimestamp?: number;
-  endTimestamp?: number;
+  startTimestamp?: string | number;
+  endTimestamp?: string | number;
   pagination?: datanode.api.v2.Pagination;
 }
 
@@ -6268,7 +6268,7 @@ export interface GetOracleSpecResponse {
 
 export interface GetOrderRequest {
   orderId?: string;
-  version?: number;
+  version?: string | number;
 }
 
 export interface GetOrderResponse {
@@ -6277,7 +6277,7 @@ export interface GetOrderResponse {
 
 export interface GetPartyActivityStreakRequest {
   partyId?: string;
-  epoch?: number;
+  epoch?: string | number;
 }
 
 export interface GetPartyActivityStreakResponse {
@@ -6299,7 +6299,7 @@ export interface GetPartyVestingStatsRequest {
 export interface GetPartyVestingStatsResponse {
   partyId?: string;
   rewardBonusMultiplier?: string;
-  epochSeq?: number;
+  epochSeq?: string | number;
   quantumBalance?: string;
 }
 
@@ -6311,7 +6311,7 @@ export interface GetProtocolUpgradeStatusResponse {
 
 export interface GetReferralSetStatsRequest {
   referralSetId?: string;
-  atEpoch?: number;
+  atEpoch?: string | number;
   referee?: string;
   pagination?: datanode.api.v2.Pagination;
 }
@@ -6350,7 +6350,7 @@ export interface GetTimeWeightedNotionalPositionRequest {
   assetId?: string;
   partyId?: string;
   gameId?: string;
-  atEpoch?: number;
+  atEpoch?: string | number;
 }
 
 export interface GetTimeWeightedNotionalPositionResponse {
@@ -6377,7 +6377,7 @@ export interface GetTransferResponse {
 export interface GetVegaTimeRequest {}
 
 export interface GetVegaTimeResponse {
-  timestamp?: number;
+  timestamp?: string | number;
 }
 
 export interface GetVestingBalancesSummaryRequest {
@@ -6387,13 +6387,13 @@ export interface GetVestingBalancesSummaryRequest {
 
 export interface GetVestingBalancesSummaryResponse {
   partyId?: string;
-  epochSeq?: number;
+  epochSeq?: string | number;
   lockedBalances?: vega.events.v1.PartyLockedBalance[];
   vestingBalances?: vega.events.v1.PartyVestingBalance[];
 }
 
 export interface GetVolumeDiscountStatsRequest {
-  atEpoch?: number;
+  atEpoch?: string | number;
   partyId?: string;
   pagination?: datanode.api.v2.Pagination;
 }
@@ -6421,11 +6421,11 @@ export interface GovernanceDataEdge {
 }
 
 export interface HistorySegment {
-  fromHeight?: number;
-  toHeight?: number;
+  fromHeight?: string | number;
+  toHeight?: string | number;
   historySegmentId?: string;
   previousHistorySegmentId?: string;
-  databaseVersion?: number;
+  databaseVersion?: string | number;
   chainId?: string;
 }
 
@@ -6435,7 +6435,7 @@ export interface IndividualGameEntities {
 
 export interface IndividualGameEntity {
   individual?: string;
-  rank?: number;
+  rank?: string | number;
   volume?: string;
   rewardMetric?: vega.DispatchMetric;
   rewardEarned?: string;
@@ -6584,8 +6584,8 @@ export interface ListBalanceChangesResponse {
 
 export interface ListCandleDataRequest {
   candleId?: string;
-  fromTimestamp?: number;
-  toTimestamp?: number;
+  fromTimestamp?: string | number;
+  toTimestamp?: string | number;
   pagination?: datanode.api.v2.Pagination;
 }
 
@@ -6729,7 +6729,7 @@ export interface ListFundingPeriodDataPointsRequest {
   marketId?: string;
   dateRange?: datanode.api.v2.DateRange;
   source?: vega.events.v1.FundingPeriodDataPointSource;
-  seq?: number;
+  seq?: string | number;
   pagination?: datanode.api.v2.Pagination;
 }
 
@@ -6749,8 +6749,8 @@ export interface ListFundingPeriodsResponse {
 
 export interface ListGamesRequest {
   gameId?: string;
-  epochFrom?: number;
-  epochTo?: number;
+  epochFrom?: string | number;
+  epochTo?: string | number;
   entityScope?: vega.EntityScope;
   pagination?: datanode.api.v2.Pagination;
   teamId?: string;
@@ -6857,7 +6857,7 @@ export interface ListNodeSignaturesResponse {
 }
 
 export interface ListNodesRequest {
-  epochSeq?: number;
+  epochSeq?: string | number;
   pagination?: datanode.api.v2.Pagination;
 }
 
@@ -6903,7 +6903,7 @@ export interface ListOrdersResponse {
 export interface ListPaidLiquidityFeesRequest {
   marketId?: string;
   assetId?: string;
-  epochSeq?: number;
+  epochSeq?: string | number;
   partyIds?: string[];
   pagination?: datanode.api.v2.Pagination;
 }
@@ -6965,7 +6965,7 @@ export interface ListReferralSetRefereesRequest {
   pagination?: datanode.api.v2.Pagination;
   referrer?: string;
   referee?: string;
-  aggregationEpochs?: number;
+  aggregationEpochs?: string | number;
 }
 
 export interface ListReferralSetRefereesResponse {
@@ -6997,8 +6997,8 @@ export interface ListRewardsRequest {
   partyId?: string;
   assetId?: string;
   pagination?: datanode.api.v2.Pagination;
-  fromEpoch?: number;
-  toEpoch?: number;
+  fromEpoch?: string | number;
+  toEpoch?: string | number;
   teamId?: string;
   gameId?: string;
 }
@@ -7029,7 +7029,7 @@ export interface ListSuccessorMarketsResponse {
 export interface ListTeamMembersStatisticsRequest {
   teamId?: string;
   partyId?: string;
-  aggregationEpochs?: number;
+  aggregationEpochs?: string | number;
   pagination?: datanode.api.v2.Pagination;
 }
 
@@ -7067,7 +7067,7 @@ export interface ListTeamsResponse {
 
 export interface ListTeamsStatisticsRequest {
   teamId?: string;
-  aggregationEpochs?: number;
+  aggregationEpochs?: string | number;
   pagination?: datanode.api.v2.Pagination;
 }
 
@@ -7092,8 +7092,8 @@ export interface ListTransfersRequest {
   direction?: datanode.api.v2.TransferDirection;
   pagination?: datanode.api.v2.Pagination;
   isReward?: boolean;
-  fromEpoch?: number;
-  toEpoch?: number;
+  fromEpoch?: string | number;
+  toEpoch?: string | number;
   status?: vega.events.v1.TransferStatus;
   scope?: datanode.api.v2.ListTransfersRequestScope;
   gameId?: string;
@@ -7235,7 +7235,7 @@ export interface ObserveEventBusRequest {
   type?: vega.events.v1.BusEventType[];
   marketId?: string;
   partyId?: string;
-  batchSize?: number;
+  batchSize?: string | number;
 }
 
 export interface ObserveEventBusResponse {
@@ -7401,7 +7401,7 @@ export interface OrderFilter {
 export interface OrderInfo {
   side?: vega.Side;
   price?: string;
-  remaining?: number;
+  remaining?: string | number;
   isMarketOrder?: boolean;
 }
 
@@ -7422,9 +7422,9 @@ export interface PageInfo {
 }
 
 export interface Pagination {
-  first?: number;
+  first?: string | number;
   after?: string;
-  last?: number;
+  last?: string | number;
   before?: string;
   newestFirst?: boolean;
 }
@@ -7461,7 +7461,7 @@ export interface PartyMarginMode {
   marginFactor?: string;
   minTheoreticalMarginFactor?: string;
   maxTheoreticalLeverage?: string;
-  atEpoch?: number;
+  atEpoch?: string | number;
 }
 
 export interface PartyMarginModeEdge {
@@ -7517,31 +7517,31 @@ export interface ProtocolUpgradeProposalEdge {
 }
 
 export interface QuantumRewardsPerEpoch {
-  epoch?: number;
+  epoch?: string | number;
   totalQuantumRewards?: string;
 }
 
 export interface QuantumVolumesPerEpoch {
-  epoch?: number;
+  epoch?: string | number;
   totalQuantumVolumes?: string;
 }
 
 export interface ReferralProgram {
-  version?: number;
+  version?: string | number;
   id?: string;
   benefitTiers?: vega.BenefitTier[];
-  endOfProgramTimestamp?: number;
-  windowLength?: number;
+  endOfProgramTimestamp?: string | number;
+  windowLength?: string | number;
   stakingTiers?: vega.StakingTier[];
-  endedAt?: number;
+  endedAt?: string | number;
 }
 
 export interface ReferralSet {
   id?: string;
   referrer?: string;
-  createdAt?: number;
-  updatedAt?: number;
-  totalMembers?: number;
+  createdAt?: string | number;
+  updatedAt?: string | number;
+  totalMembers?: string | number;
 }
 
 export interface ReferralSetConnection {
@@ -7557,8 +7557,8 @@ export interface ReferralSetEdge {
 export interface ReferralSetReferee {
   referralSetId?: string;
   referee?: string;
-  joinedAt?: number;
-  atEpoch?: number;
+  joinedAt?: string | number;
+  atEpoch?: string | number;
   totalRefereeNotionalTakerVolume?: string;
   totalRefereeGeneratedRewards?: string;
 }
@@ -7574,7 +7574,7 @@ export interface ReferralSetRefereeEdge {
 }
 
 export interface ReferralSetStats {
-  atEpoch?: number;
+  atEpoch?: string | number;
   referralSetRunningNotionalTakerVolume?: string;
   partyId?: string;
   discountFactor?: string;
@@ -7604,8 +7604,8 @@ export interface RewardEdge {
 export interface RewardSummaryFilter {
   assetIds?: string[];
   marketIds?: string[];
-  fromEpoch?: number;
-  toEpoch?: number;
+  fromEpoch?: string | number;
+  toEpoch?: string | number;
 }
 
 export interface RewardsConnection {
@@ -7663,11 +7663,11 @@ export interface Team {
   name?: string;
   teamUrl?: string;
   avatarUrl?: string;
-  createdAt?: number;
+  createdAt?: string | number;
   closed?: boolean;
-  createdAtEpoch?: number;
+  createdAtEpoch?: string | number;
   allowList?: string[];
-  totalMembers?: number;
+  totalMembers?: string | number;
 }
 
 export interface TeamConnection {
@@ -7686,7 +7686,7 @@ export interface TeamGameEntities {
 
 export interface TeamGameEntity {
   team?: datanode.api.v2.TeamGameParticipation;
-  rank?: number;
+  rank?: string | number;
   volume?: string;
   rewardMetric?: vega.DispatchMetric;
   rewardEarned?: string;
@@ -7705,7 +7705,7 @@ export interface TeamMemberStatistics {
   totalQuantumVolume?: string;
   totalQuantumRewards?: string;
   quantumRewards?: datanode.api.v2.QuantumRewardsPerEpoch[];
-  totalGamesPlayed?: number;
+  totalGamesPlayed?: string | number;
   gamesPlayed?: string[];
   quantumVolumes?: datanode.api.v2.QuantumVolumesPerEpoch[];
 }
@@ -7723,8 +7723,8 @@ export interface TeamMembersStatisticsConnection {
 export interface TeamReferee {
   teamId?: string;
   referee?: string;
-  joinedAt?: number;
-  joinedAtEpoch?: number;
+  joinedAt?: string | number;
+  joinedAtEpoch?: string | number;
 }
 
 export interface TeamRefereeConnection {
@@ -7739,8 +7739,8 @@ export interface TeamRefereeEdge {
 
 export interface TeamRefereeHistory {
   teamId?: string;
-  joinedAt?: number;
-  joinedAtEpoch?: number;
+  joinedAt?: string | number;
+  joinedAtEpoch?: string | number;
 }
 
 export interface TeamRefereeHistoryConnection {
@@ -7758,7 +7758,7 @@ export interface TeamStatistics {
   totalQuantumVolume?: string;
   totalQuantumRewards?: string;
   quantumRewards?: datanode.api.v2.QuantumRewardsPerEpoch[];
-  totalGamesPlayed?: number;
+  totalGamesPlayed?: string | number;
   gamesPlayed?: string[];
   quantumVolumes?: datanode.api.v2.QuantumVolumesPerEpoch[];
 }
@@ -7777,9 +7777,9 @@ export interface TimeWeightedNotionalPosition {
   assetId?: string;
   partyId?: string;
   gameId?: string;
-  atEpoch?: number;
+  atEpoch?: string | number;
   timeWeightedNotionalPosition?: string;
-  lastUpdated?: number;
+  lastUpdated?: string | number;
 }
 
 export interface TradeConnection {
@@ -7808,16 +7808,16 @@ export interface TransferNode {
 }
 
 export interface VolumeDiscountProgram {
-  version?: number;
+  version?: string | number;
   id?: string;
   benefitTiers?: vega.VolumeBenefitTier[];
-  endOfProgramTimestamp?: number;
-  windowLength?: number;
-  endedAt?: number;
+  endOfProgramTimestamp?: string | number;
+  windowLength?: string | number;
+  endedAt?: string | number;
 }
 
 export interface VolumeDiscountStats {
-  atEpoch?: number;
+  atEpoch?: string | number;
   partyId?: string;
   discountFactor?: string;
   runningVolume?: string;
@@ -7918,9 +7918,9 @@ export interface CheckRawTransactionRequest {
 
 export interface CheckRawTransactionResponse {
   success?: boolean;
-  code?: number;
-  gasWanted?: number;
-  gasUsed?: number;
+  code?: string | number;
+  gasWanted?: string | number;
+  gasUsed?: string | number;
   data?: string;
   log?: string;
   info?: string;
@@ -7932,9 +7932,9 @@ export interface CheckTransactionRequest {
 
 export interface CheckTransactionResponse {
   success?: boolean;
-  code?: number;
-  gasWanted?: number;
-  gasUsed?: number;
+  code?: string | number;
+  gasWanted?: string | number;
+  gasUsed?: string | number;
   data?: string;
   log?: string;
   info?: string;
@@ -7952,18 +7952,18 @@ export interface GetSpamStatisticsResponse {
 export interface GetVegaTimeRequest {}
 
 export interface GetVegaTimeResponse {
-  timestamp?: number;
+  timestamp?: string | number;
 }
 
 export interface LastBlockHeightRequest {}
 
 export interface LastBlockHeightResponse {
-  height?: number;
+  height?: string | number;
   hash?: string;
   spamPowHashFunction?: string;
-  spamPowDifficulty?: number;
-  spamPowNumberOfPastBlocks?: number;
-  spamPowNumberOfTxPerBlock?: number;
+  spamPowDifficulty?: string | number;
+  spamPowNumberOfPastBlocks?: string | number;
+  spamPowNumberOfTxPerBlock?: string | number;
   spamPowIncreasingDifficulty?: boolean;
   chainId?: string;
 }
@@ -7972,7 +7972,7 @@ export interface ObserveEventBusRequest {
   type?: vega.events.v1.BusEventType[];
   marketId?: string;
   partyId?: string;
-  batchSize?: number;
+  batchSize?: string | number;
 }
 
 export interface ObserveEventBusResponse {
@@ -7980,20 +7980,20 @@ export interface ObserveEventBusResponse {
 }
 
 export interface PoWBlockState {
-  blockHeight?: number;
+  blockHeight?: string | number;
   blockHash?: string;
-  transactionsSeen?: number;
-  expectedDifficulty?: number;
+  transactionsSeen?: string | number;
+  expectedDifficulty?: string | number;
   hashFunction?: string;
-  difficulty?: number;
-  txPerBlock?: number;
+  difficulty?: string | number;
+  txPerBlock?: string | number;
   increasingDifficulty?: boolean;
 }
 
 export interface PoWStatistic {
   blockStates?: vega.api.v1.PoWBlockState[];
   bannedUntil?: string;
-  numberOfPastBlocks?: number;
+  numberOfPastBlocks?: string | number;
 }
 
 export interface PropagateChainEventRequest {
@@ -8007,8 +8007,8 @@ export interface PropagateChainEventResponse {
 }
 
 export interface SpamStatistic {
-  countForEpoch?: number;
-  maxForEpoch?: number;
+  countForEpoch?: string | number;
+  maxForEpoch?: string | number;
   bannedUntil?: string;
   minTokensRequired?: string;
 }
@@ -8021,51 +8021,51 @@ export interface SpamStatistics {
   votes?: vega.api.v1.VoteSpamStatistics;
   pow?: vega.api.v1.PoWStatistic;
   issueSignatures?: vega.api.v1.SpamStatistic;
-  epochSeq?: number;
+  epochSeq?: string | number;
   createReferralSet?: vega.api.v1.SpamStatistic;
   updateReferralSet?: vega.api.v1.SpamStatistic;
   applyReferralCode?: vega.api.v1.SpamStatistic;
 }
 
 export interface Statistics {
-  blockHeight?: number;
-  backlogLength?: number;
-  totalPeers?: number;
+  blockHeight?: string | number;
+  backlogLength?: string | number;
+  totalPeers?: string | number;
   genesisTime?: string;
   currentTime?: string;
   vegaTime?: string;
   status?: vega.ChainStatus;
-  txPerBlock?: number;
-  averageTxBytes?: number;
-  averageOrdersPerBlock?: number;
-  tradesPerSecond?: number;
-  ordersPerSecond?: number;
-  totalMarkets?: number;
-  totalAmendOrder?: number;
-  totalCancelOrder?: number;
-  totalCreateOrder?: number;
-  totalOrders?: number;
-  totalTrades?: number;
-  orderSubscriptions?: number;
-  tradeSubscriptions?: number;
-  candleSubscriptions?: number;
-  marketDepthSubscriptions?: number;
-  positionsSubscriptions?: number;
-  accountSubscriptions?: number;
-  marketDataSubscriptions?: number;
+  txPerBlock?: string | number;
+  averageTxBytes?: string | number;
+  averageOrdersPerBlock?: string | number;
+  tradesPerSecond?: string | number;
+  ordersPerSecond?: string | number;
+  totalMarkets?: string | number;
+  totalAmendOrder?: string | number;
+  totalCancelOrder?: string | number;
+  totalCreateOrder?: string | number;
+  totalOrders?: string | number;
+  totalTrades?: string | number;
+  orderSubscriptions?: string | number;
+  tradeSubscriptions?: string | number;
+  candleSubscriptions?: string | number;
+  marketDepthSubscriptions?: string | number;
+  positionsSubscriptions?: string | number;
+  accountSubscriptions?: string | number;
+  marketDataSubscriptions?: string | number;
   appVersionHash?: string;
   appVersion?: string;
   chainVersion?: string;
-  blockDuration?: number;
+  blockDuration?: string | number;
   uptime?: string;
   chainId?: string;
-  marketDepthUpdatesSubscriptions?: number;
+  marketDepthUpdatesSubscriptions?: string | number;
   blockHash?: string;
-  epochSeq?: number;
+  epochSeq?: string | number;
   epochStartTime?: string;
   epochExpiryTime?: string;
-  eventCount?: number;
-  eventsPerSecond?: number;
+  eventCount?: string | number;
+  eventsPerSecond?: string | number;
 }
 
 export interface StatisticsRequest {}
@@ -8082,10 +8082,10 @@ export interface SubmitRawTransactionRequest {
 export interface SubmitRawTransactionResponse {
   success?: boolean;
   txHash?: string;
-  code?: number;
+  code?: string | number;
   data?: string;
   log?: string;
-  height?: number;
+  height?: string | number;
 }
 
 export interface SubmitTransactionRequest {
@@ -8096,21 +8096,21 @@ export interface SubmitTransactionRequest {
 export interface SubmitTransactionResponse {
   success?: boolean;
   txHash?: string;
-  code?: number;
+  code?: string | number;
   data?: string;
   log?: string;
-  height?: number;
+  height?: string | number;
 }
 
 export interface VoteSpamStatistic {
   proposal?: string;
-  countForEpoch?: number;
+  countForEpoch?: string | number;
   minTokensRequired?: string;
 }
 
 export interface VoteSpamStatistics {
   statistics?: vega.api.v1.VoteSpamStatistic[];
-  maxForEpoch?: number;
+  maxForEpoch?: string | number;
   bannedUntil?: string;
 }
 

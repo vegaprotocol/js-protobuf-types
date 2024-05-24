@@ -60,7 +60,7 @@ const getInterfaceFieldType = (field, b) => {
       field.longType
     )
   )
-    return b.tsNumberKeyword(); // TODO this should be number | bigint
+    return b.tsUnionType([b.tsStringKeyword(), b.tsNumberKeyword()]);
   return b.tsTypeReference(
     b.identifier(
       enums[field.fullType] ||
