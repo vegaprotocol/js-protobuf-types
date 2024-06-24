@@ -18,6 +18,7 @@ jobs:
         uses: vegaprotocol/github-action-get-vega-version@v0.0.1
         with:
           previous-version: ${{ steps.current-vega-version.outputs.version }}
+          latest: true
   regenerate-enums:
     needs: check-for-new-version
     runs-on: ubuntu-latest
