@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "@vegaprotocol/tx-types",
-  "version": "0.77.0",
+  "version": "0.77.1",
   "description": "Types for Vega Transactions",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
